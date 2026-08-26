@@ -5,12 +5,10 @@
 
 ## 内置 IP
 
-| 名称 | id / 别名 | 原始身份图 | 身份协议 |
+| 牙仔（默认） | 绒宝 | 阿龅 | 小美 |
 | --- | --- | --- | --- |
-| 牙仔（默认） | `yazai` / 牙仔 | [WebP](ip-master/assets/characters/yazai.webp) | [协议](ip-master/references/characters/yazai.md) |
-| 绒宝 | `rongbao` / 绒宝 | [WebP](ip-master/assets/characters/rongbao.webp) | [协议](ip-master/references/characters/rongbao.md) |
-| 阿龅 | `abao` / 阿龅 | [WebP](ip-master/assets/characters/abao.webp) | [协议](ip-master/references/characters/abao.md) |
-| 小美 | `xiaomei` / 小美 | [WebP](ip-master/assets/characters/xiaomei.webp) | [协议](ip-master/references/characters/xiaomei.md) |
+| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/characters/yazai.webp" alt="牙仔" width="170"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/characters/rongbao.webp" alt="绒宝" width="170"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/characters/abao.webp" alt="阿龅" width="170"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/characters/xiaomei.webp" alt="小美" width="136"> |
+| `yazai` / 牙仔<br>[身份图](ip-master/assets/characters/yazai.webp) · [协议](ip-master/references/characters/yazai.md) | `rongbao` / 绒宝<br>[身份图](ip-master/assets/characters/rongbao.webp) · [协议](ip-master/references/characters/rongbao.md) | `abao` / 阿龅<br>[身份图](ip-master/assets/characters/abao.webp) · [协议](ip-master/references/characters/abao.md) | `xiaomei` / 小美<br>[身份图](ip-master/assets/characters/xiaomei.webp) · [协议](ip-master/references/characters/xiaomei.md) |
 
 写中文名或英文别名即可选择角色；同时写多个名称会按注册顺序分别注入。
 未写角色但已明确外部目标时使用默认牙仔。新增角色必须经过用户确认，见
