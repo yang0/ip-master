@@ -44,6 +44,10 @@
 | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/xiaohei-article-illustration.webp" alt="小黑文章配图示例" width="280"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-article-illustration.webp" alt="Baoyu 文章插画示例" width="280"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/everett-mini-article-illustration.webp" alt="Everett 萌粒文章插图示例" width="210"> |
 | `ian-xiaohei-illustrations` · 16:9 | `baoyu-article-illustrator` · 16:9 | `ip-illustration-character-system` · 3:4 |
 
+| Baoyu · 纸艺拼贴编辑插画 |
+| --- |
+| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-article-paper-cut.webp" alt="Baoyu 纸艺拼贴文章插图" width="420"> |
+
 ### 知识漫画
 
 | Skill | 风格数量 | 风格摘要 |
@@ -67,6 +71,10 @@
 | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/dongfang-cover.webp" alt="Dongfang 横版封面示例" width="280"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-cover.webp" alt="Baoyu 封面示例" width="210"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/gbro-cover.webp" alt="GBRO 封面示例" width="210"> |
 | `dongfang-cover-design` · 16:9 | `baoyu-cover-image` · 4:3 | `gbro-cover-design` · 3:4 |
 
+| Baoyu · 黏土定格 3D | GBRO · 孔版印刷复古海报 |
+| --- | --- |
+| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-cover-clay.webp" alt="Baoyu 黏土 3D 封面" width="280"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/gbro-riso-cover.webp" alt="GBRO 孔版印刷封面" width="210"> |
+
 ### 知识卡片 / 信息图
 
 | Skill | 风格数量 | 风格摘要 |
@@ -79,6 +87,10 @@
 | --- | --- | --- |
 | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-infographic.webp" alt="Baoyu 信息图示例" width="250"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/guizang-social-card.webp" alt="Guizang 社交卡示例" width="210"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/everett-infographic.webp" alt="Everett 信息图示例" width="210"> |
 | `baoyu-infographic` | `guizang-social-card-skill` | `ip-illustration-character-system` |
+
+| Baoyu · 霓虹等距信息图 |
+| --- |
+| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-infographic-neon.webp" alt="Baoyu 霓虹等距信息图" width="420"> |
 
 ### 贴纸 / 角色设定
 
@@ -104,6 +116,10 @@
 | --- | --- | --- |
 | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-xhs.webp" alt="Baoyu 小红书图文示例" width="210"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-slide-deck.webp" alt="Baoyu 幻灯片示例" width="280"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/gpt-image-2-style-library.webp" alt="高密度彩色海报风格增强示意" width="210"> |
 | `baoyu-xhs-images` · 3:4 | `baoyu-slide-deck` · 16:9 | 增强层与 `dongfang-cover-design` 组合 · 3:4 |
+
+| Baoyu 小红书 · 手账拼贴 | Baoyu 幻灯片 · 暗色 cinematic keynote |
+| --- | --- |
+| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-xhs-scrapbook.webp" alt="Baoyu 小红书手账拼贴" width="210"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-slide-deck-dark.webp" alt="Baoyu 暗色 keynote 幻灯片" width="360"> |
 
 普通“文章配图”与多候选场景会先列出可选 Skill；IP Master 不擅自安装或
 决定一个默认目标。点名 Skill 后，缺失依赖会展示来源和安装命令，确认后
