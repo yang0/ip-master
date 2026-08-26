@@ -5,8 +5,8 @@
 The IP Master orchestration code and documentation are maintained as this
 independent project. The four registered character reference images and
 identity protocols are project-maintained inputs; no upstream Skill owns or
-supplies them. The single README example is a project-generated derivative
-example and is not an upstream asset.
+supplies them. The README gallery previews are project-generated derivative
+examples and are not upstream assets.
 
 ## Optional external Skills
 

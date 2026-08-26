@@ -24,6 +24,11 @@
 个人照片包上游未声明许可证；按需安装，不推断许可证、不复制源码或素材。
 动物、吉祥物和虚构角色不会误路由到个人照片包。
 
+| Personal IP Image Pack | Everett Mini Illustration System |
+| --- | --- |
+| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/personal-ip-image-pack.webp" alt="小美个人 IP 制作流程" width="360"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/everett-character-anchor.webp" alt="Everett 角色锚点示例" width="230"> |
+| 真人照片 → 个人卡通 IP 流程 | 萌粒角色锚点 |
+
 ## 可注入 Skill
 
 ### 文章配图
@@ -34,11 +39,20 @@
 | [`baoyu-article-illustrator`](https://github.com/JimLiu/baoyu-skills/tree/main/skills/baoyu-article-illustrator) | 23 | 细分风格与编辑插画入口，含场景、流程图、信息图 | 可选；无默认 |
 | [`ip-illustration-character-system`](https://github.com/EverettFish/ip_illustration_for_yourself) | 1 | 萌粒钢笔涂鸦文章插图 | 可选；需 GPT Image 2 |
 
+| 小黑手绘 | Baoyu 编辑插画 | Everett 萌粒插画 |
+| --- | --- | --- |
+| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/xiaohei-article-illustration.webp" alt="小黑文章配图示例" width="280"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-article-illustration.webp" alt="Baoyu 文章插画示例" width="280"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/everett-mini-article-illustration.webp" alt="Everett 萌粒文章插图示例" width="210"> |
+| `ian-xiaohei-illustrations` · 16:9 | `baoyu-article-illustrator` · 16:9 | `ip-illustration-character-system` · 3:4 |
+
 ### 知识漫画
 
 | Skill | 风格数量 | 风格摘要 |
 | --- | ---: | --- |
 | [`baoyu-comic`](https://github.com/JimLiu/baoyu-skills/tree/main/skills/baoyu-comic) | 5 | 漫画预设、版式与情绪色调 |
+
+<img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-comic.webp" alt="Baoyu 知识漫画示例" width="420">
+
+`baoyu-comic` · 4:3 知识漫画
 
 ### 封面 / 海报
 
@@ -48,6 +62,11 @@
 | [`baoyu-cover-image`](https://github.com/JimLiu/baoyu-skills/tree/main/skills/baoyu-cover-image) | 26 | 风格预设与渲染媒介 |
 | [`gbro-cover-design`](https://github.com/pyang5166/gbro-cover-design) | 10 | 3:4 构图风格；只输出封面提示词 |
 
+| Dongfang 横版封面 | Baoyu 封面 | GBRO 3:4 封面提示词 |
+| --- | --- | --- |
+| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/dongfang-cover.webp" alt="Dongfang 横版封面示例" width="280"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-cover.webp" alt="Baoyu 封面示例" width="210"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/gbro-cover.webp" alt="GBRO 封面示例" width="210"> |
+| `dongfang-cover-design` · 16:9 | `baoyu-cover-image` · 4:3 | `gbro-cover-design` · 3:4 |
+
 ### 知识卡片 / 信息图
 
 | Skill | 风格数量 | 风格摘要 |
@@ -56,12 +75,21 @@
 | [`guizang-social-card-skill`](https://github.com/op7418/guizang-social-card-skill) | 2 | 瑞士风与电子杂志风，含多种卡片布局 |
 | [`ip-illustration-character-system`](https://github.com/EverettFish/ip_illustration_for_yourself) | 1 | 萌粒钢笔涂鸦 3:4 信息图 |
 
+| Baoyu 信息图 | Guizang 社交卡 | Everett 3:4 信息图 |
+| --- | --- | --- |
+| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-infographic.webp" alt="Baoyu 信息图示例" width="250"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/guizang-social-card.webp" alt="Guizang 社交卡示例" width="210"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/everett-infographic.webp" alt="Everett 信息图示例" width="210"> |
+| `baoyu-infographic` | `guizang-social-card-skill` | `ip-illustration-character-system` |
+
 ### 贴纸 / 角色设定
 
 | Skill | 风格数量 | 风格摘要 |
 | --- | ---: | --- |
 | [`personal-ip-image-pack`](https://github.com/DoraRabbitYan/personal-ip-image-pack) | 6 | 真人卡通 IP 的表情、动作与贴纸套图 |
 | [`ip-illustration-character-system`](https://github.com/EverettFish/ip_illustration_for_yourself) | 1 | 萌粒角色锚点、三视图与 3:4 贴纸页 |
+
+<img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/everett-sticker.webp" alt="阿龅贴纸示例" width="240">
+
+`ip-illustration-character-system` · 3:4 单角色贴纸预览
 
 ### 小红书 / 公众号 / PPT / 提示词增强
 
@@ -72,15 +100,21 @@
 | PPT | [`baoyu-slide-deck`](https://github.com/JimLiu/baoyu-skills/tree/main/skills/baoyu-slide-deck) | 17 | 幻灯片视觉风格 |
 | 提示词增强 | [`gpt-image-2-style-library`](https://github.com/freestylefly/awesome-gpt-image-2) | 500+ | GPT Image 2 案例模板，只增强提示词，不替换基础 Skill |
 
+| Baoyu 小红书 | Baoyu 幻灯片 | GPT Image 2 风格库增强示意 |
+| --- | --- | --- |
+| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-xhs.webp" alt="Baoyu 小红书图文示例" width="210"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-slide-deck.webp" alt="Baoyu 幻灯片示例" width="280"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/gpt-image-2-style-library.webp" alt="高密度彩色海报风格增强示意" width="210"> |
+| `baoyu-xhs-images` · 3:4 | `baoyu-slide-deck` · 16:9 | 增强层与 `dongfang-cover-design` 组合 · 3:4 |
+
 普通“文章配图”与多候选场景会先列出可选 Skill；IP Master 不擅自安装或
 决定一个默认目标。点名 Skill 后，缺失依赖会展示来源和安装命令，确认后
 才由系统安装器处理。完整规则见
 [能力路由](ip-master/references/capability-routing.md)和
 [角色注入协议](ip-master/references/character-injection.md)。
 
-## 一张范例
+## 示例边界
 
-![小美个人 IP 从照片到插画的流程示例](ip-master/assets/ip-master-example.webp)
+以上预览均为本项目此前生成的衍生示例，只用于说明可注入后的输出类型；
+不是上游 Skill 的源码、模板或官方素材。
 
 ## 最小调用
 
