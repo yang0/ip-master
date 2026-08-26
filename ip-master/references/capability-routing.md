@@ -12,7 +12,8 @@ IP Master 只管理角色、外部 Skill 和安装信息，不提供原生生图
 | 文章配图 | `ian-xiaohei-illustrations`、`baoyu-article-illustrator`、`ip-illustration-character-system` |
 | 知识漫画 | `baoyu-comic` |
 | 封面 / 海报 | `dongfang-cover-design`、`baoyu-cover-image`、`gbro-cover-design` |
-| 知识卡片 / 信息图 | `baoyu-infographic`、`guizang-social-card-skill`、`ip-illustration-character-system` |
+| 知识卡片 / 信息图 | `baoyu-infographic`、`ip-illustration-character-system` |
+| 小红书图文 / 公众号封面对 / Live Photo | `guizang-social-card-skill` |
 | 贴纸 / 角色设定 | `personal-ip-image-pack`、`ip-illustration-character-system` |
 | 小红书 | `baoyu-xhs-images`、`guizang-social-card-skill` |
 | 公众号 | `guizang-social-card-skill`、`baoyu-cover-image` |

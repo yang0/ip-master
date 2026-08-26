@@ -151,7 +151,7 @@
       "categories": ["xiaohongshu", "wechat-cover", "knowledge-card"],
       "capabilities": ["xhs-social-cards", "swiss-social-card", "editorial-social-card", "wechat-cover-pair", "live-photo-card"],
       "style_count": 2,
-      "style_summary": "2 套主视觉系统：瑞士风与电子杂志风；含 28 布局、10 主题",
+      "style_summary": "2 套主视觉系统：Editorial 电子杂志风与 Swiss 瑞士国际主义风；支持小红书组图、公众号 21:9+1:1 封面对、Live Photo",
       "license": "AGPL-3.0"
     },
     {

@@ -3,6 +3,9 @@
 角色注册、外部设计 Skill 路由与身份参考注入。IP Master 本身不生图，
 也不复制上游 Skill；它只把明确选择的角色原图交给明确选择的外部 Skill。
 
+能力名称按各上游真实交付物整理，不用笼统的“社交卡”代替具体功能：归藏
+实际负责小红书图文组图、公众号 21:9 + 1:1 封面对和 Live Photo 动态卡。
+
 ## 内置 IP
 
 | 牙仔（默认） | 绒宝 | 阿龅 | 小美 |
@@ -52,7 +55,7 @@
 
 | Skill | 风格数量 | 风格摘要 |
 | --- | ---: | --- |
-| [`baoyu-comic`](https://github.com/JimLiu/baoyu-skills/tree/main/skills/baoyu-comic) | 5 | 漫画预设、版式与情绪色调 |
+| [`baoyu-comic`](https://github.com/JimLiu/baoyu-skills/tree/main/skills/baoyu-comic) | 5 | 5 个漫画预设；6 种画风、7 种情绪和多种分镜版式 |
 
 <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-comic.webp" alt="Baoyu 知识漫画示例" width="420">
 
@@ -63,7 +66,7 @@
 | Skill | 风格数量 | 风格摘要 |
 | --- | ---: | --- |
 | [`dongfang-cover-design`](https://github.com/yang0/dongfang) | 6 | 东方美学方向，横版、竖版、方图 |
-| [`baoyu-cover-image`](https://github.com/JimLiu/baoyu-skills/tree/main/skills/baoyu-cover-image) | 26 | 风格预设与渲染媒介 |
+| [`baoyu-cover-image`](https://github.com/JimLiu/baoyu-skills/tree/main/skills/baoyu-cover-image) | 26 | 文章封面：6 类内容类型、11 套色板、7 种渲染媒介 |
 | [`gbro-cover-design`](https://github.com/pyang5166/gbro-cover-design) | 10 | 3:4 构图风格；只输出封面提示词 |
 
 | Dongfang 横版封面 | Baoyu 封面 | GBRO 3:4 封面提示词 |
@@ -79,14 +82,13 @@
 
 | Skill | 风格数量 | 风格摘要 |
 | --- | ---: | --- |
-| [`baoyu-infographic`](https://github.com/JimLiu/baoyu-skills/tree/main/skills/baoyu-infographic) | 22 | 信息图风格与结构化版式 |
-| [`guizang-social-card-skill`](https://github.com/op7418/guizang-social-card-skill) | 2 | 瑞士风与电子杂志风，含多种卡片布局 |
+| [`baoyu-infographic`](https://github.com/JimLiu/baoyu-skills/tree/main/skills/baoyu-infographic) | 22 | 21 种信息结构 × 22 种视觉风格，生成结构化信息图 |
 | [`ip-illustration-character-system`](https://github.com/EverettFish/ip_illustration_for_yourself) | 1 | 萌粒钢笔涂鸦 3:4 信息图 |
 
-| Baoyu 信息图 | Guizang 社交卡 | Everett 3:4 信息图 |
-| --- | --- | --- |
-| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-infographic.webp" alt="Baoyu 信息图示例" width="250"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/guizang-social-card.webp" alt="Guizang 社交卡示例" width="210"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/everett-infographic.webp" alt="Everett 信息图示例" width="210"> |
-| `baoyu-infographic` | `guizang-social-card-skill` | `ip-illustration-character-system` |
+| Baoyu 信息图 | Everett 3:4 信息图 |
+| --- | --- |
+| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-infographic.webp" alt="Baoyu 信息图示例" width="250"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/everett-infographic.webp" alt="Everett 信息图示例" width="210"> |
+| `baoyu-infographic` | `ip-illustration-character-system` |
 
 | Baoyu · 霓虹等距信息图 |
 | --- |
@@ -103,13 +105,19 @@
 
 `ip-illustration-character-system` · 3:4 单角色贴纸预览
 
-### 小红书 / 公众号 / PPT / 提示词增强
+### 小红书图文 / 公众号封面对 / Live Photo
+
+| 归藏 Swiss 瑞士国际主义 | 归藏 Editorial 电子杂志 |
+| --- | --- |
+| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/guizang-social-card.webp" alt="归藏 Swiss 小红书图文组图" width="230"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/guizang-editorial.webp" alt="归藏 Editorial 小红书图文组图" width="230"> |
+| `guizang-social-card-skill` · 网格、锚点色、强字号对比 | `guizang-social-card-skill` · 克制版面、叙事与生活方式 |
+
+### 小红书 / PPT / 提示词增强
 
 | 用途 | Skill | 风格数量 | 风格摘要 |
 | --- | --- | ---: | --- |
-| 小红书 | [`baoyu-xhs-images`](https://github.com/JimLiu/baoyu-skills/tree/main/skills/baoyu-xhs-images) | 12 | 基础风格与小红书预设 |
-| 小红书、公众号 | [`guizang-social-card-skill`](https://github.com/op7418/guizang-social-card-skill) | 2 | 瑞士风、电子杂志风、公众号封面对 |
-| PPT | [`baoyu-slide-deck`](https://github.com/JimLiu/baoyu-skills/tree/main/skills/baoyu-slide-deck) | 17 | 幻灯片视觉风格 |
+| 小红书 | [`baoyu-xhs-images`](https://github.com/JimLiu/baoyu-skills/tree/main/skills/baoyu-xhs-images) | 12 | 12 种视觉风格 × 8 种版式 × 3 套配色，输出 1–10 张图文卡片 |
+| PPT | [`baoyu-slide-deck`](https://github.com/JimLiu/baoyu-skills/tree/main/skills/baoyu-slide-deck) | 17 | 17 套预设，组合材质、情绪、字体与信息密度 |
 | 提示词增强 | [`gpt-image-2-style-library`](https://github.com/freestylefly/awesome-gpt-image-2) | 500+ | GPT Image 2 案例模板，只增强提示词，不替换基础 Skill |
 
 | Baoyu 小红书 | Baoyu 幻灯片 | GPT Image 2 风格库增强示意 |
@@ -154,7 +162,7 @@
 - [IP Mini Illustration System](https://github.com/EverettFish/ip_illustration_for_yourself)
 - [Dongfang](https://github.com/yang0/dongfang)
 - [Baoyu Skills](https://github.com/JimLiu/baoyu-skills)
-- [Guizang Social Card Skill](https://github.com/op7418/guizang-social-card-skill)
+- [归藏小红书图文与公众号封面对技能（上游仓库）](https://github.com/op7418/guizang-social-card-skill)
 - [GBRO Cover Design](https://github.com/pyang5166/gbro-cover-design)
 - [GPT Image 2 Style Library](https://github.com/freestylefly/awesome-gpt-image-2)
 
