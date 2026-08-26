@@ -8,7 +8,8 @@ IP Master 只管理角色、外部 Skill 和安装信息，不提供原生生图
 
 | 用途 | 可选 Skill |
 | --- | --- |
-| IP 设计 | `personal-ip-image-pack`、`ip-illustration-character-system` |
+| IP 设计 | `personal-ip-image-pack` |
+| 角色绘制媒介 / 可注入风格 | `ip-illustration-character-system` |
 | 文章配图 | `ian-xiaohei-illustrations`、`baoyu-article-illustrator`、`ip-illustration-character-system` |
 | 知识漫画 | `baoyu-comic` |
 | 封面 / 海报 | `dongfang-cover-design`、`baoyu-cover-image`、`gbro-cover-design` |

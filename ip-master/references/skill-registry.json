@@ -98,7 +98,7 @@
       "categories": ["cover-poster"],
       "capabilities": ["landscape-cover", "portrait-poster", "square-graphic"],
       "style_count": 6,
-      "style_summary": "6 类视觉方向，支持横版、竖版和方图"
+        "style_summary": "6 类视觉方向；支持 high-density-thumbnail 传播结构、横版、竖版和方图"
     },
     {
       "skill_id": "gbro-cover-design",

@@ -22,15 +22,15 @@
 | Skill | 风格数量 | 风格摘要 | 触发 |
 | --- | ---: | --- | --- |
 | [`personal-ip-image-pack`](https://github.com/DoraRabbitYan/personal-ip-image-pack) | 6 | IP-01 至 IP-06；真人照片→个人卡通 IP→表情、动作、贴纸包 | 真人照片、本人卡通形象、博主形象 |
-| [`ip-illustration-character-system`](https://github.com/EverettFish/ip_illustration_for_yourself) | 1 | 萌粒钢笔涂鸦视觉系统 | 角色锚点、三视图、萌粒 |
 
 个人照片包上游未声明许可证；按需安装，不推断许可证、不复制源码或素材。
-动物、吉祥物和虚构角色不会误路由到个人照片包。
+动物、吉祥物和虚构角色不会误路由到个人照片包。Everett Mini Illustration System
+属于可注入的绘制 Skill，不属于 IP 设计工具。
 
-| Personal IP Image Pack | Everett Mini Illustration System |
-| --- | --- |
-| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/personal-ip-image-pack.webp" alt="小美个人 IP 制作流程" width="360"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/everett-character-anchor.webp" alt="Everett 角色锚点示例" width="230"> |
-| 真人照片 → 个人卡通 IP 流程 | 萌粒角色锚点 |
+| Personal IP Image Pack |
+| --- |
+| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/personal-ip-image-pack.webp" alt="小美个人 IP 制作流程" width="360"> |
+| 真人照片 → 个人卡通 IP 流程 |
 
 ## 可注入 Skill
 
@@ -65,7 +65,7 @@
 
 | Skill | 风格数量 | 风格摘要 |
 | --- | ---: | --- |
-| [`dongfang-cover-design`](https://github.com/yang0/dongfang) | 6 | 东方美学方向，横版、竖版、方图 |
+| [`dongfang-cover-design`](https://github.com/yang0/dongfang) | 6 | 东方美学方向；支持高密度缩略图结构、横版、竖版、方图 |
 | [`baoyu-cover-image`](https://github.com/JimLiu/baoyu-skills/tree/main/skills/baoyu-cover-image) | 26 | 文章封面：6 类内容类型、11 套色板、7 种渲染媒介 |
 | [`gbro-cover-design`](https://github.com/pyang5166/gbro-cover-design) | 10 | 3:4 构图风格；只输出封面提示词 |
 
@@ -73,6 +73,11 @@
 | --- | --- | --- |
 | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/dongfang-cover.webp" alt="Dongfang 横版封面示例" width="280"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-cover.webp" alt="Baoyu 封面示例" width="210"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/gbro-cover.webp" alt="GBRO 封面示例" width="210"> |
 | `dongfang-cover-design` · 16:9 | `baoyu-cover-image` · 4:3 | `gbro-cover-design` · 3:4 |
+
+| Dongfang · 高密度 3D 牙仔封面 |
+| --- |
+| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/dongfang-high-density-3d-yazai.webp" alt="Dongfang 高密度 3D 牙仔封面：最好的IP设计工具" width="560"> |
+| `dongfang-cover-design` · `high-density-thumbnail` · 16:9 · 主题：最好的IP设计工具 |
 
 | Baoyu · 黏土定格 3D | GBRO · 孔版印刷复古海报 |
 | --- | --- |
