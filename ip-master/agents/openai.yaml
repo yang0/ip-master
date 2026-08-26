@@ -1,0 +1,7 @@
+interface:
+  display_name: "IP Master"
+  short_description: "管理 IP 角色并路由到外部设计 Skill"
+  default_prompt: "Use $ip-master 选择 IP 角色并路由到合适的外部设计 Skill。"
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "default_character": "yazai",
+  "characters": [
+    {
+      "id": "yazai",
+      "display_name": "牙仔",
+      "aliases": ["牙仔", "yazai"],
+      "asset": "assets/characters/yazai.webp",
+      "identity_reference": "references/characters/yazai.md"
+    },
+    {
+      "id": "rongbao",
+      "display_name": "绒宝",
+      "aliases": ["绒宝", "rongbao"],
+      "asset": "assets/characters/rongbao.webp",
+      "identity_reference": "references/characters/rongbao.md"
+    },
+    {
+      "id": "abao",
+      "display_name": "阿龅",
+      "aliases": ["阿龅", "abao"],
+      "asset": "assets/characters/abao.webp",
+      "identity_reference": "references/characters/abao.md"
+    },
+    {
+      "id": "xiaomei",
+      "display_name": "小美",
+      "aliases": ["小美", "xiaomei"],
+      "asset": "assets/characters/xiaomei.webp",
+      "identity_reference": "references/characters/xiaomei.md"
+    }
+  ]
+}
