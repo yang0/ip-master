@@ -1,0 +1,514 @@
+{
+  "version": 1,
+  "upstream": {
+    "repository": "https://github.com/nevertoday/100-layout-compositions",
+    "git": "https://github.com/nevertoday/100-layout-compositions.git",
+    "branch": "main",
+    "commit": "deea732fb0834c12a8c638e169ed0604a87f9b21",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "asset_kind": "thumbnails only"
+  },
+  "layouts": [
+    {
+      "id": "layout-001",
+      "number": "01",
+      "thumbnail": "thumbnails/layout-001.jpg"
+    },
+    {
+      "id": "layout-002",
+      "number": "02",
+      "thumbnail": "thumbnails/layout-002.jpg"
+    },
+    {
+      "id": "layout-003",
+      "number": "03",
+      "thumbnail": "thumbnails/layout-003.jpg"
+    },
+    {
+      "id": "layout-004",
+      "number": "04",
+      "thumbnail": "thumbnails/layout-004.jpg"
+    },
+    {
+      "id": "layout-005",
+      "number": "05",
+      "thumbnail": "thumbnails/layout-005.jpg"
+    },
+    {
+      "id": "layout-006",
+      "number": "06",
+      "thumbnail": "thumbnails/layout-006.jpg"
+    },
+    {
+      "id": "layout-007",
+      "number": "07",
+      "thumbnail": "thumbnails/layout-007.jpg"
+    },
+    {
+      "id": "layout-008",
+      "number": "08",
+      "thumbnail": "thumbnails/layout-008.jpg"
+    },
+    {
+      "id": "layout-009",
+      "number": "09",
+      "thumbnail": "thumbnails/layout-009.jpg"
+    },
+    {
+      "id": "layout-010",
+      "number": "10",
+      "thumbnail": "thumbnails/layout-010.jpg"
+    },
+    {
+      "id": "layout-011",
+      "number": "11",
+      "thumbnail": "thumbnails/layout-011.jpg"
+    },
+    {
+      "id": "layout-012",
+      "number": "12",
+      "thumbnail": "thumbnails/layout-012.jpg"
+    },
+    {
+      "id": "layout-013",
+      "number": "13",
+      "thumbnail": "thumbnails/layout-013.jpg"
+    },
+    {
+      "id": "layout-014",
+      "number": "14",
+      "thumbnail": "thumbnails/layout-014.jpg"
+    },
+    {
+      "id": "layout-015",
+      "number": "15",
+      "thumbnail": "thumbnails/layout-015.jpg"
+    },
+    {
+      "id": "layout-016",
+      "number": "16",
+      "thumbnail": "thumbnails/layout-016.jpg"
+    },
+    {
+      "id": "layout-017",
+      "number": "17",
+      "thumbnail": "thumbnails/layout-017.jpg"
+    },
+    {
+      "id": "layout-018",
+      "number": "18",
+      "thumbnail": "thumbnails/layout-018.jpg"
+    },
+    {
+      "id": "layout-019",
+      "number": "19",
+      "thumbnail": "thumbnails/layout-019.jpg"
+    },
+    {
+      "id": "layout-020",
+      "number": "20",
+      "thumbnail": "thumbnails/layout-020.jpg"
+    },
+    {
+      "id": "layout-021",
+      "number": "21",
+      "thumbnail": "thumbnails/layout-021.jpg"
+    },
+    {
+      "id": "layout-022",
+      "number": "22",
+      "thumbnail": "thumbnails/layout-022.jpg"
+    },
+    {
+      "id": "layout-023",
+      "number": "23",
+      "thumbnail": "thumbnails/layout-023.jpg"
+    },
+    {
+      "id": "layout-024",
+      "number": "24",
+      "thumbnail": "thumbnails/layout-024.jpg"
+    },
+    {
+      "id": "layout-025",
+      "number": "25",
+      "thumbnail": "thumbnails/layout-025.jpg"
+    },
+    {
+      "id": "layout-026",
+      "number": "26",
+      "thumbnail": "thumbnails/layout-026.jpg"
+    },
+    {
+      "id": "layout-027",
+      "number": "27",
+      "thumbnail": "thumbnails/layout-027.jpg"
+    },
+    {
+      "id": "layout-028",
+      "number": "28",
+      "thumbnail": "thumbnails/layout-028.jpg"
+    },
+    {
+      "id": "layout-029",
+      "number": "29",
+      "thumbnail": "thumbnails/layout-029.jpg"
+    },
+    {
+      "id": "layout-030",
+      "number": "30",
+      "thumbnail": "thumbnails/layout-030.jpg"
+    },
+    {
+      "id": "layout-031",
+      "number": "31",
+      "thumbnail": "thumbnails/layout-031.jpg"
+    },
+    {
+      "id": "layout-032",
+      "number": "32",
+      "thumbnail": "thumbnails/layout-032.jpg"
+    },
+    {
+      "id": "layout-033",
+      "number": "33",
+      "thumbnail": "thumbnails/layout-033.jpg"
+    },
+    {
+      "id": "layout-034",
+      "number": "34",
+      "thumbnail": "thumbnails/layout-034.jpg"
+    },
+    {
+      "id": "layout-035",
+      "number": "35",
+      "thumbnail": "thumbnails/layout-035.jpg"
+    },
+    {
+      "id": "layout-036",
+      "number": "36",
+      "thumbnail": "thumbnails/layout-036.jpg"
+    },
+    {
+      "id": "layout-037",
+      "number": "37",
+      "thumbnail": "thumbnails/layout-037.jpg"
+    },
+    {
+      "id": "layout-038",
+      "number": "38",
+      "thumbnail": "thumbnails/layout-038.jpg"
+    },
+    {
+      "id": "layout-039",
+      "number": "39",
+      "thumbnail": "thumbnails/layout-039.jpg"
+    },
+    {
+      "id": "layout-040",
+      "number": "40",
+      "thumbnail": "thumbnails/layout-040.jpg"
+    },
+    {
+      "id": "layout-041",
+      "number": "41",
+      "thumbnail": "thumbnails/layout-041.jpg"
+    },
+    {
+      "id": "layout-042",
+      "number": "42",
+      "thumbnail": "thumbnails/layout-042.jpg"
+    },
+    {
+      "id": "layout-043",
+      "number": "43",
+      "thumbnail": "thumbnails/layout-043.jpg"
+    },
+    {
+      "id": "layout-044",
+      "number": "44",
+      "thumbnail": "thumbnails/layout-044.jpg"
+    },
+    {
+      "id": "layout-045",
+      "number": "45",
+      "thumbnail": "thumbnails/layout-045.jpg"
+    },
+    {
+      "id": "layout-046",
+      "number": "46",
+      "thumbnail": "thumbnails/layout-046.jpg"
+    },
+    {
+      "id": "layout-047",
+      "number": "47",
+      "thumbnail": "thumbnails/layout-047.jpg"
+    },
+    {
+      "id": "layout-048",
+      "number": "48",
+      "thumbnail": "thumbnails/layout-048.jpg"
+    },
+    {
+      "id": "layout-049",
+      "number": "49",
+      "thumbnail": "thumbnails/layout-049.jpg"
+    },
+    {
+      "id": "layout-050",
+      "number": "50",
+      "thumbnail": "thumbnails/layout-050.jpg"
+    },
+    {
+      "id": "layout-051",
+      "number": "51",
+      "thumbnail": "thumbnails/layout-051.jpg"
+    },
+    {
+      "id": "layout-052",
+      "number": "52",
+      "thumbnail": "thumbnails/layout-052.jpg"
+    },
+    {
+      "id": "layout-053",
+      "number": "53",
+      "thumbnail": "thumbnails/layout-053.jpg"
+    },
+    {
+      "id": "layout-054",
+      "number": "54",
+      "thumbnail": "thumbnails/layout-054.jpg"
+    },
+    {
+      "id": "layout-055",
+      "number": "55",
+      "thumbnail": "thumbnails/layout-055.jpg"
+    },
+    {
+      "id": "layout-056",
+      "number": "56",
+      "thumbnail": "thumbnails/layout-056.jpg"
+    },
+    {
+      "id": "layout-057",
+      "number": "57",
+      "thumbnail": "thumbnails/layout-057.jpg"
+    },
+    {
+      "id": "layout-058",
+      "number": "58",
+      "thumbnail": "thumbnails/layout-058.jpg"
+    },
+    {
+      "id": "layout-059",
+      "number": "59",
+      "thumbnail": "thumbnails/layout-059.jpg"
+    },
+    {
+      "id": "layout-060",
+      "number": "60",
+      "thumbnail": "thumbnails/layout-060.jpg"
+    },
+    {
+      "id": "layout-061",
+      "number": "61",
+      "thumbnail": "thumbnails/layout-061.jpg"
+    },
+    {
+      "id": "layout-062",
+      "number": "62",
+      "thumbnail": "thumbnails/layout-062.jpg"
+    },
+    {
+      "id": "layout-063",
+      "number": "63",
+      "thumbnail": "thumbnails/layout-063.jpg"
+    },
+    {
+      "id": "layout-064",
+      "number": "64",
+      "thumbnail": "thumbnails/layout-064.jpg"
+    },
+    {
+      "id": "layout-065",
+      "number": "65",
+      "thumbnail": "thumbnails/layout-065.jpg"
+    },
+    {
+      "id": "layout-066",
+      "number": "66",
+      "thumbnail": "thumbnails/layout-066.jpg"
+    },
+    {
+      "id": "layout-067",
+      "number": "67",
+      "thumbnail": "thumbnails/layout-067.jpg"
+    },
+    {
+      "id": "layout-068",
+      "number": "68",
+      "thumbnail": "thumbnails/layout-068.jpg"
+    },
+    {
+      "id": "layout-069",
+      "number": "69",
+      "thumbnail": "thumbnails/layout-069.jpg"
+    },
+    {
+      "id": "layout-070",
+      "number": "70",
+      "thumbnail": "thumbnails/layout-070.jpg"
+    },
+    {
+      "id": "layout-071",
+      "number": "71",
+      "thumbnail": "thumbnails/layout-071.jpg"
+    },
+    {
+      "id": "layout-072",
+      "number": "72",
+      "thumbnail": "thumbnails/layout-072.jpg"
+    },
+    {
+      "id": "layout-073",
+      "number": "73",
+      "thumbnail": "thumbnails/layout-073.jpg"
+    },
+    {
+      "id": "layout-074",
+      "number": "74",
+      "thumbnail": "thumbnails/layout-074.jpg"
+    },
+    {
+      "id": "layout-075",
+      "number": "75",
+      "thumbnail": "thumbnails/layout-075.jpg"
+    },
+    {
+      "id": "layout-076",
+      "number": "76",
+      "thumbnail": "thumbnails/layout-076.jpg"
+    },
+    {
+      "id": "layout-077",
+      "number": "77",
+      "thumbnail": "thumbnails/layout-077.jpg"
+    },
+    {
+      "id": "layout-078",
+      "number": "78",
+      "thumbnail": "thumbnails/layout-078.jpg"
+    },
+    {
+      "id": "layout-079",
+      "number": "79",
+      "thumbnail": "thumbnails/layout-079.jpg"
+    },
+    {
+      "id": "layout-080",
+      "number": "80",
+      "thumbnail": "thumbnails/layout-080.jpg"
+    },
+    {
+      "id": "layout-081",
+      "number": "81",
+      "thumbnail": "thumbnails/layout-081.jpg"
+    },
+    {
+      "id": "layout-082",
+      "number": "82",
+      "thumbnail": "thumbnails/layout-082.jpg"
+    },
+    {
+      "id": "layout-083",
+      "number": "83",
+      "thumbnail": "thumbnails/layout-083.jpg"
+    },
+    {
+      "id": "layout-084",
+      "number": "84",
+      "thumbnail": "thumbnails/layout-084.jpg"
+    },
+    {
+      "id": "layout-085",
+      "number": "85",
+      "thumbnail": "thumbnails/layout-085.jpg"
+    },
+    {
+      "id": "layout-086",
+      "number": "86",
+      "thumbnail": "thumbnails/layout-086.jpg"
+    },
+    {
+      "id": "layout-087",
+      "number": "87",
+      "thumbnail": "thumbnails/layout-087.jpg"
+    },
+    {
+      "id": "layout-088",
+      "number": "88",
+      "thumbnail": "thumbnails/layout-088.jpg"
+    },
+    {
+      "id": "layout-089",
+      "number": "89",
+      "thumbnail": "thumbnails/layout-089.jpg"
+    },
+    {
+      "id": "layout-090",
+      "number": "90",
+      "thumbnail": "thumbnails/layout-090.jpg"
+    },
+    {
+      "id": "layout-091",
+      "number": "91",
+      "thumbnail": "thumbnails/layout-091.jpg"
+    },
+    {
+      "id": "layout-092",
+      "number": "92",
+      "thumbnail": "thumbnails/layout-092.jpg"
+    },
+    {
+      "id": "layout-093",
+      "number": "93",
+      "thumbnail": "thumbnails/layout-093.jpg"
+    },
+    {
+      "id": "layout-094",
+      "number": "94",
+      "thumbnail": "thumbnails/layout-094.jpg"
+    },
+    {
+      "id": "layout-095",
+      "number": "95",
+      "thumbnail": "thumbnails/layout-095.jpg"
+    },
+    {
+      "id": "layout-096",
+      "number": "96",
+      "thumbnail": "thumbnails/layout-096.jpg"
+    },
+    {
+      "id": "layout-097",
+      "number": "97",
+      "thumbnail": "thumbnails/layout-097.jpg"
+    },
+    {
+      "id": "layout-098",
+      "number": "98",
+      "thumbnail": "thumbnails/layout-098.jpg"
+    },
+    {
+      "id": "layout-099",
+      "number": "99",
+      "thumbnail": "thumbnails/layout-099.jpg"
+    },
+    {
+      "id": "layout-100",
+      "number": "100",
+      "thumbnail": "thumbnails/layout-100.jpg"
+    }
+  ]
+}

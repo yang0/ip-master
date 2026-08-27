@@ -29,6 +29,7 @@ from dependency_utils import (  # noqa: E402
     inspect_dependency_location,
     load_dependency_registry,
 )
+from layout_library import parse_layout_selection  # noqa: E402
 
 
 # The order is meaningful: personal-photo signals must win over generic
@@ -335,6 +336,7 @@ def _empty_result(request: str, operation: str, category: str | None, *, reason:
         "requires_install_confirmation": False,
         "install_command": None,
         "generation_ready": False,
+        "layout_library": None,
         "reason": reason,
     }
 
@@ -445,6 +447,31 @@ def route(
         }
         for item in character_inputs
     ]
+    layout_selection = None
+    if selected is not None and not advice and category == "cover-poster":
+        layout_selection = parse_layout_selection(request, skill_dir=skill_dir)
+        if layout_selection is not None:
+            reference_inputs.append(
+                {
+                    "role": "composition_method",
+                    "layout_id": layout_selection["id"],
+                    "display_name": f"排版 {layout_selection['number']}",
+                    "input_order": len(reference_inputs) + 1,
+                    "prompt_label": layout_selection["prompt_label"],
+                    "layout_method": layout_selection["layout_method"],
+                    "generation_instruction": layout_selection["generation_instruction"],
+                    "visual_isolation_constraint": layout_selection["visual_isolation_constraint"],
+                }
+            )
+    layout_library = None
+    if selected is not None and category == "cover-poster":
+        gallery_path = skill_dir / "assets" / "layout-library" / "index.html"
+        layout_library = {
+            "gallery_path": str(gallery_path.resolve()),
+            "selection": layout_selection,
+            "post_generation_delivery": selected.get("output_mode") != "prompt-only",
+            "delivery_rule": "Append the layout-library note only after a final raster image is confirmed portrait; never attach it to prompt-only output.",
+        }
     install_confirmation = bool(selected and selected["status"] != "installed")
     return {
         "request": request,
@@ -471,6 +498,7 @@ def route(
         "requires_install_confirmation": install_confirmation,
         "install_command": selected["install"]["command"] if selected else None,
         "generation_ready": bool(selected and not install_confirmation),
+        "layout_library": layout_library,
         "reason": (
             "IP Master routes and injects only; the selected external Skill owns generation."
             if selected

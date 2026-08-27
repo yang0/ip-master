@@ -23,6 +23,31 @@ native article-illustration fallback.
   for confirmation before any installation. IP Master itself never installs
   or copies upstream files.
 
+## Portrait-poster layout library
+
+The local `assets/layout-library/index.html` is a reference gallery, not a
+generation target and not a default style. Do not put it into a first-pass
+prompt, including a high-density request, unless the user explicitly selects
+a numbered layout for a re-layout.
+
+- For a user request such as `用 23 重新排版` or `用 layout-023 重排`, resolve
+  the number with `scripts/layout_library.py --select`. Pass its
+  `generation_instruction` as text after character identity inputs; it is a
+  composition method, not a coordinate template. Never pass the thumbnail to
+  the image model.
+- Keep the original target Skill, theme, character identity, required copy,
+  and visual medium. Apply the selected method to the new theme; user-specified
+  placement overrides its default landing. Do not reuse the gallery sample's
+  coordinates, colours, geometry, typography, text, people, objects, brands,
+  or textures.
+- After a selected cover/poster Skill has produced a final raster image, run
+  `scripts/layout_library.py --delivery-note <final-image>`. Append its
+  message only when it reports `eligible: true`. It deliberately excludes
+  landscape images and prompt-only outputs.
+- To check whether the source collection changed, use
+  `scripts/layout_library.py --check`; use `--sync` only when an updated
+  snapshot is wanted. Never synchronize during ordinary image generation.
+
 ## Character references
 
 The built-in registry is [character-registry.json](references/character-registry.json).

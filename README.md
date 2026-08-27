@@ -1,180 +1,180 @@
-# IP Master
+<div align="center">
 
-角色注册、外部设计 Skill 路由与身份参考注入。IP Master 本身不生图，
-也不复制上游 Skill；它只把明确选择的角色原图交给明确选择的外部 Skill。
+# 🎨 IP Master
 
-能力名称按各上游真实交付物整理，不用笼统的“社交卡”代替具体功能：归藏
-实际负责小红书图文组图、公众号 21:9 + 1:1 封面对和 Live Photo 动态卡。
+### 你的专属 AI 视觉 IP 调度大师 · 形象永不走样
 
-## 内置 IP
+先制作你的专属 IP，再一键穿梭全网顶尖画风！  
+**「🌱 制作卡通 IP ➔ 💾 登记加入角色库 ➔ 🚀 全场景画风裂变」**
 
-| 牙仔（默认） | 绒宝 | 阿龅 | 小美 |
-| --- | --- | --- | --- |
-| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/characters/yazai.webp" alt="牙仔" width="170"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/characters/rongbao.webp" alt="绒宝" width="170"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/characters/abao.webp" alt="阿龅" width="170"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/characters/xiaomei.webp" alt="小美" width="136"> |
-| `yazai` / 牙仔<br>[身份图](ip-master/assets/characters/yazai.webp) · [协议](ip-master/references/characters/yazai.md) | `rongbao` / 绒宝<br>[身份图](ip-master/assets/characters/rongbao.webp) · [协议](ip-master/references/characters/rongbao.md) | `abao` / 阿龅<br>[身份图](ip-master/assets/characters/abao.webp) · [协议](ip-master/references/characters/abao.md) | `xiaomei` / 小美<br>[身份图](ip-master/assets/characters/xiaomei.webp) · [协议](ip-master/references/characters/xiaomei.md) |
+<p align="center">
+  <img src="https://img.shields.io/badge/🌱_IP_制作-生成卡通形象即入库-success?style=flat-square" alt="IP Foundation">
+  <img src="https://img.shields.io/badge/🎯_角色一致性-100%25_永不走样-brightgreen?style=flat-square" alt="Consistency">
+  <img src="https://img.shields.io/badge/🚀_全场景裂变-漫画%2F小红书%2F封面%2FPPT-blue?style=flat-square" alt="Multi-Scene">
+  <img src="https://img.shields.io/badge/✨_零门槛-一句话直出-purple?style=flat-square" alt="Zero-friction">
+</p>
 
-写中文名或英文别名即可选择角色；同时写多个名称会按注册顺序分别注入。
-未写角色但已明确外部目标时使用默认牙仔。新增角色必须经过用户确认，见
-[注册流程](ip-master/scripts/register_character.py)。
+> 💡 **IP 是一切视觉创作的基石。**  
+> 制作 IP **只需一步**：将真人照片或原创设定转化为**专属卡通形象**并加入 IP 库。  
+> 拥有了角色原图后，只需对 AI 说一句话，IP Master 就会把这个独一无二的角色注入到**知识漫画、小红书图文、杂志封面、文章插画、演讲 PPT**等全场景中，形象永不走样！
 
-## IP 设计类 Skill
+---
 
-| Skill | 风格数量 | 风格摘要 | 触发 |
-| --- | ---: | --- | --- |
-| [`personal-ip-image-pack`](https://github.com/DoraRabbitYan/personal-ip-image-pack) | 6 | IP-01 至 IP-06；真人照片→个人卡通 IP→表情、动作、贴纸包 | 真人照片、本人卡通形象、博主形象 |
+</div>
 
-个人照片包上游未声明许可证；按需安装，不推断许可证、不复制源码或素材。
-动物、吉祥物和虚构角色不会误路由到个人照片包。Everett Mini Illustration System
-属于可注入的绘制 Skill，不属于 IP 设计工具。
+## 🧬 核心逻辑：从「IP 制作」到「全场景裂变」
 
-| Personal IP Image Pack |
-| --- |
-| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/personal-ip-image-pack.webp" alt="小美个人 IP 制作流程" width="360"> |
-| 真人照片 → 个人卡通 IP 流程 |
+```mermaid
+flowchart TD
+    subgraph S1 ["【 阶段一：IP 制作与入库 · 一切的基石 】"]
+        A1["📸 真人照片<br>(发自拍/生活照)"] -->|"提炼卡通形象"| B["🌟 专属卡通 IP<br>生成卡通形象 ➔ 登记加入 IP 库"]
+        A2["✨ 现成明星角色<br>(牙仔 / 绒宝 / 阿龅 / 小美)"] --> B
+        A3["🎨 原创吉祥物<br>(上传角色原图 ➔ 登记加入 IP 库)"] --> B
+    end
 
-## 可注入 Skill
-
-### 文章配图
-
-| Skill | 风格数量 | 风格摘要 | 备注 |
-| --- | ---: | --- | --- |
-| [`ian-xiaohei-illustrations`](https://github.com/helloianneo/ian-xiaohei-illustrations) | 1 | 白底怪诞手绘、红橙蓝批注、大量留白 | 可选；无默认 |
-| [`ian-xiaohei-scenes`](https://github.com/helloianneo/ian-xiaohei-scenes) | 1 | 小黑 + 真实物件 + 物理动作 + 留白叙事；支持 16:9 正文图与超横版长卷 | 可选；无默认 |
-| [`baoyu-article-illustrator`](https://github.com/JimLiu/baoyu-skills/tree/main/skills/baoyu-article-illustrator) | 23 | 细分风格与编辑插画入口，含场景、流程图、信息图 | 可选；无默认 |
-| [`ip-illustration-character-system`](https://github.com/EverettFish/ip_illustration_for_yourself) | 1 | 萌粒钢笔涂鸦文章插图 | 可选；需 GPT Image 2 |
-
-| 小黑手绘 | Baoyu 编辑插画 | Everett 萌粒插画 |
-| --- | --- | --- |
-| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/xiaohei-article-illustration.webp" alt="小黑文章配图示例" width="280"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-article-illustration.webp" alt="Baoyu 文章插画示例" width="280"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/everett-mini-article-illustration.webp" alt="Everett 萌粒文章插图示例" width="210"> |
-| `ian-xiaohei-illustrations` · 16:9 | `baoyu-article-illustrator` · 16:9 | `ip-illustration-character-system` · 3:4 |
-
-| Ian 小黑实物场景 |
-| --- |
-| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/good-milk-tea-xiaohei-scenes/01-good-milk-tea.png" alt="牙仔与好喝的奶茶：Ian 小黑实物场景示例" width="560"> |
-| `ian-xiaohei-scenes` · 16:9 · 主题：好喝的奶茶 |
-
-| Baoyu · 纸艺拼贴编辑插画 |
-| --- |
-| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-article-paper-cut.webp" alt="Baoyu 纸艺拼贴文章插图" width="420"> |
-
-### 知识漫画
-
-| Skill | 风格数量 | 风格摘要 |
-| --- | ---: | --- |
-| [`baoyu-comic`](https://github.com/JimLiu/baoyu-skills/tree/main/skills/baoyu-comic) | 5 | 5 个漫画预设；6 种画风、7 种情绪和多种分镜版式 |
-
-<img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-comic.webp" alt="Baoyu 知识漫画示例" width="420">
-
-`baoyu-comic` · 4:3 知识漫画
-
-### 封面 / 海报
-
-| Skill | 风格数量 | 风格摘要 |
-| --- | ---: | --- |
-| [`dongfang-cover-design`](https://github.com/yang0/dongfang) | 6 | 东方美学方向；支持高密度缩略图结构、横版、竖版、方图 |
-| [`baoyu-cover-image`](https://github.com/JimLiu/baoyu-skills/tree/main/skills/baoyu-cover-image) | 26 | 文章封面：6 类内容类型、11 套色板、7 种渲染媒介 |
-| [`gbro-cover-design`](https://github.com/pyang5166/gbro-cover-design) | 10 | 3:4 构图风格；只输出封面提示词 |
-
-| Dongfang 横版封面 | Baoyu 封面 | GBRO 3:4 封面提示词 |
-| --- | --- | --- |
-| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/dongfang-cover.webp" alt="Dongfang 横版封面示例" width="280"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-cover.webp" alt="Baoyu 封面示例" width="210"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/gbro-cover.webp" alt="GBRO 封面示例" width="210"> |
-| `dongfang-cover-design` · 16:9 | `baoyu-cover-image` · 4:3 | `gbro-cover-design` · 3:4 |
-
-| Dongfang · 高密度 3D 牙仔封面 |
-| --- |
-| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/dongfang-high-density-3d-yazai.webp" alt="Dongfang 高密度 3D 牙仔封面：最好的IP设计工具" width="560"> |
-| `dongfang-cover-design` · `high-density-thumbnail` · 16:9 · 主题：最好的IP设计工具 |
-
-| Baoyu · 黏土定格 3D | GBRO · 孔版印刷复古海报 |
-| --- | --- |
-| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-cover-clay.webp" alt="Baoyu 黏土 3D 封面" width="280"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/gbro-riso-cover.webp" alt="GBRO 孔版印刷封面" width="210"> |
-
-### 知识卡片 / 信息图
-
-| Skill | 风格数量 | 风格摘要 |
-| --- | ---: | --- |
-| [`baoyu-infographic`](https://github.com/JimLiu/baoyu-skills/tree/main/skills/baoyu-infographic) | 22 | 21 种信息结构 × 22 种视觉风格，生成结构化信息图 |
-| [`ip-illustration-character-system`](https://github.com/EverettFish/ip_illustration_for_yourself) | 1 | 萌粒钢笔涂鸦 3:4 信息图 |
-
-| Baoyu 信息图 | Everett 3:4 信息图 |
-| --- | --- |
-| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-infographic.webp" alt="Baoyu 信息图示例" width="250"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/everett-infographic.webp" alt="Everett 信息图示例" width="210"> |
-| `baoyu-infographic` | `ip-illustration-character-system` |
-
-| Baoyu · 霓虹等距信息图 |
-| --- |
-| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-infographic-neon.webp" alt="Baoyu 霓虹等距信息图" width="420"> |
-
-### 贴纸 / 角色设定
-
-| Skill | 风格数量 | 风格摘要 |
-| --- | ---: | --- |
-| [`personal-ip-image-pack`](https://github.com/DoraRabbitYan/personal-ip-image-pack) | 6 | 真人卡通 IP 的表情、动作与贴纸套图 |
-| [`ip-illustration-character-system`](https://github.com/EverettFish/ip_illustration_for_yourself) | 1 | 萌粒角色锚点、三视图与 3:4 贴纸页 |
-
-<img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/everett-sticker.webp" alt="阿龅贴纸示例" width="240">
-
-`ip-illustration-character-system` · 3:4 单角色贴纸预览
-
-### 小红书图文 / 公众号封面对 / Live Photo
-
-| 归藏 Swiss 瑞士国际主义 | 归藏 Editorial 电子杂志 |
-| --- | --- |
-| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/guizang-social-card.webp" alt="归藏 Swiss 小红书图文组图" width="230"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/guizang-editorial.webp" alt="归藏 Editorial 小红书图文组图" width="230"> |
-| `guizang-social-card-skill` · 网格、锚点色、强字号对比 | `guizang-social-card-skill` · 克制版面、叙事与生活方式 |
-
-### 小红书 / PPT / 提示词增强
-
-| 用途 | Skill | 风格数量 | 风格摘要 |
-| --- | --- | ---: | --- |
-| 小红书 | [`baoyu-xhs-images`](https://github.com/JimLiu/baoyu-skills/tree/main/skills/baoyu-xhs-images) | 12 | 12 种视觉风格 × 8 种版式 × 3 套配色，输出 1–10 张图文卡片 |
-| PPT | [`baoyu-slide-deck`](https://github.com/JimLiu/baoyu-skills/tree/main/skills/baoyu-slide-deck) | 17 | 17 套预设，组合材质、情绪、字体与信息密度 |
-| 提示词增强 | [`gpt-image-2-style-library`](https://github.com/freestylefly/awesome-gpt-image-2) | 500+ | GPT Image 2 案例模板，只增强提示词，不替换基础 Skill |
-
-| Baoyu 小红书 | Baoyu 幻灯片 | GPT Image 2 风格库增强示意 |
-| --- | --- | --- |
-| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-xhs.webp" alt="Baoyu 小红书图文示例" width="210"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-slide-deck.webp" alt="Baoyu 幻灯片示例" width="280"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/gpt-image-2-style-library.webp" alt="高密度彩色海报风格增强示意" width="210"> |
-| `baoyu-xhs-images` · 3:4 | `baoyu-slide-deck` · 16:9 | 增强层与 `dongfang-cover-design` 组合 · 3:4 |
-
-| Baoyu 小红书 · 手账拼贴 | Baoyu 幻灯片 · 暗色 cinematic keynote |
-| --- | --- |
-| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-xhs-scrapbook.webp" alt="Baoyu 小红书手账拼贴" width="210"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-slide-deck-dark.webp" alt="Baoyu 暗色 keynote 幻灯片" width="360"> |
-
-普通“文章配图”与多候选场景会先列出可选 Skill；IP Master 不擅自安装或
-决定一个默认目标。点名 Skill 后，缺失依赖会展示来源和安装命令，确认后
-才由系统安装器处理。完整规则见
-[能力路由](ip-master/references/capability-routing.md)和
-[角色注入协议](ip-master/references/character-injection.md)。
-
-## 示例边界
-
-以上预览均为本项目此前生成的衍生示例，只用于说明可注入后的输出类型；
-不是上游 Skill 的源码、模板或官方素材。
-
-## 最小调用
-
-```text
-用牙仔做一套知识漫画
-用绒宝和阿龅做一张横版封面
-用本人照片制作个人卡通 IP，并使用 personal-ip-image-pack
-我只想知道文章配图有哪些 Skill（不要安装或生图）
+    subgraph S2 ["【 阶段二：全场景设计与裂变 · 形象永不崩塌 】"]
+        B ==> C1["📚 爆款知识漫画"]
+        B ==> C2["📱 小红书 / 社交图文"]
+        B ==> C3["🎨 杂志级封面 & 海报"]
+        B ==> C4["🖌️ 文章插画 & 叙事配图"]
+        B ==> C5["📊 结构化科技信息图"]
+        B ==> C6["📑 电影级 Keynote & PPT"]
+    end
 ```
 
-脚本入口：[`capability_router.py`](ip-master/scripts/capability_router.py)、
-[`dependency_manager.py`](ip-master/scripts/dependency_manager.py)、
-[`doctor.py`](ip-master/scripts/doctor.py)。
+---
 
-## 来源与边界
+## 🌱 第一步：制作与选择你的 IP（一切的基石）
 
-感谢各上游项目维护者。所有可选 Skill 均按需从其公开仓库安装，IP Master
-不复制其源码、模板、示例或素材；许可证与来源以各上游仓库声明为准。
+在开始生成各种设计图片之前，先确立你的 IP 角色。制作 IP 出到卡通形象即自动入库：
 
-- [Personal IP Image Pack](https://github.com/DoraRabbitYan/personal-ip-image-pack)：上游未声明许可证。
-- [IP Mini Illustration System](https://github.com/EverettFish/ip_illustration_for_yourself)
-- [Dongfang](https://github.com/yang0/dongfang)
-- [Baoyu Skills](https://github.com/JimLiu/baoyu-skills)
-- [归藏小红书图文与公众号封面对技能（上游仓库）](https://github.com/op7418/guizang-social-card-skill)
-- [GBRO Cover Design](https://github.com/pyang5166/gbro-cover-design)
-- [GPT Image 2 Style Library](https://github.com/freestylefly/awesome-gpt-image-2)
+### 方案 A：上传真人自拍 ➔ 生成专属卡通形象并入库
+发一张真人照片，AI 自动提炼外貌特征，生成专属的 2D/3D 卡通 IP 形象，并直接登记加入你的专属角色库！
 
-详见 [NOTICE](NOTICE.md) 与 [LICENSE](LICENSE)。
+<div align="center">
+  <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/personal-ip-image-pack.webp" alt="真人照片转个人卡通 IP 流程" width="620">
+  <br>
+  <sub><b>真人照片 ➔ 提炼生成专属卡通 IP 形象 ➔ 登记加入角色库（完成入库）</b></sub>
+</div>
+
+> 💬 **制作咒语**：`"用我的这张自拍照制作个人专属 3D 卡通形象，并加入角色库命名为 [小美]"`
+
+---
+
+### 方案 B：直接使用 4 位常驻明星角色（开箱即用）
+库中已内置 4 位常驻角色，未指定角色时默认由 **牙仔** 登场；也支持多个角色同台互动！
+
+| 🐱 牙仔 (默认主角) | 🐰 绒宝 | 🦖 阿龅 | 👧 小美 |
+| :---: | :---: | :---: | :---: |
+| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/characters/yazai.webp" alt="牙仔" width="160"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/characters/rongbao.webp" alt="绒宝" width="160"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/characters/abao.webp" alt="阿龅" width="160"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/characters/xiaomei.webp" alt="小美" width="130"> |
+| 口令：`牙仔` / `yazai` | 口令：`绒宝` / `rongbao` | 口令：`阿龅` / `abao` | 口令：`小美` / `xiaomei` |
+
+---
+
+### 方案 C：登记你的原创吉祥物与自创角色
+已有品牌吉祥物或原创角色？发送一张原图立绘，告诉 AI *"这是我的新角色 [名字]"*，即可直接登记加入 IP 库。
+
+---
+
+## 🚀 第二步：全场景视觉裂变 · 看看你的 IP 能做什么？
+
+IP 入库后，就进入了下游设计与应用环节，让角色在全网顶尖画风中自由演绎：
+
+### 1. 📚 爆款知识漫画
+多格分镜叙事、生动情绪演绎，让你的 IP 帮你讲干货！
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-comic.webp" alt="Baoyu 知识漫画示例" width="560">
+  <br>
+  <sub><b>💡 适用：科普讲解、趣味故事、行业干货</b></sub>
+</div>
+
+---
+
+### 2. 📱 小红书 / 社交媒体爆款图文
+瑞士排版、电子杂志、手账拼贴，一秒抓住读者眼球！
+
+| 瑞士国际主义风 (Swiss) | 电子杂志风 (Editorial) | 暖心手账拼贴风 |
+| :---: | :---: | :---: |
+| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/guizang-social-card.webp" alt="归藏 Swiss 小红书图文组图" width="240"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/guizang-editorial.webp" alt="归藏 Editorial 小红书图文组图" width="240"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-xhs-scrapbook.webp" alt="Baoyu 小红书手账拼贴" width="240"> |
+| 强排版对比 · 极具冲击力 | 克制高级 · 生活方式与故事感 | 治愈手绘 · 亲和力拉满 |
+
+---
+
+### 3. 🎨 杂志级封面 & 高质感海报
+从 3D 潮流质感到黏土定格、狗哥震惊体，告别千篇一律的 AI 塑料感。
+
+| 高密度 3D 牙仔海报 | 黏土定格 3D 艺术封面 | 狗哥震惊体封面 |
+| :---: | :---: | :---: |
+| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/dongfang-high-density-3d-yazai.webp" alt="Dongfang 高密度 3D 牙仔封面" width="250"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-cover-clay.webp" alt="Baoyu 黏土 3D 封面" width="250"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/gbro-riso-cover.webp" alt="狗哥震惊体封面" width="250"> |
+
+> **竖版海报可选重排**：首稿返图后如不满意，可打开[本地排版库](ip-master/assets/layout-library/index.html)，选择编号（如 `23`）后回复“用 23 重新排版”。高密度图和其他首轮创作不会自动套用排版库。
+
+---
+
+### 4. 🖌️ 故事感文章配图 & 生活场景
+留白叙事、真实物件融合与纸艺质感，让文章更有温度。
+
+| 小黑怪诞手绘 (留白叙事) | 小黑实物生活场景 (牙仔与好喝的奶茶) | 纸艺拼贴艺术插画 |
+| :---: | :---: | :---: |
+| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/xiaohei-article-illustration.webp" alt="小黑手绘配图" width="240"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/good-milk-tea-xiaohei-scenes/01-good-milk-tea.png" alt="牙仔与好喝的奶茶" width="240"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-article-paper-cut.webp" alt="Baoyu 纸艺拼贴文章插图" width="240"> |
+
+---
+
+### 5. 📊 结构化科技信息图
+将枯燥的数据与流程，转化为极具观赏性的视觉图表。
+
+| 霓虹等距科技信息图 | Everett 萌粒风格信息图 |
+| :---: | :---: |
+| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-infographic-neon.webp" alt="Baoyu 霓虹等距信息图" width="300"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/everett-infographic.webp" alt="Everett 萌粒信息图" width="250"> |
+
+---
+
+### 6. 📑 高质感 PPT 幻灯片
+高颜值配色与版式设计，告别土味模板，让汇报大放异彩。
+
+| 暗色电影级 Keynote 幻灯片 | 极简多色块商务 PPT |
+| :---: | :---: |
+| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-slide-deck-dark.webp" alt="Baoyu 暗色 keynote 幻灯片" width="340"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-slide-deck.webp" alt="Baoyu 幻灯片示例" width="340"> |
+
+---
+
+## 🎯 创作者常用咒语（抄作业专区）
+
+复制以下任意一句，直接发送给 AI 即可开始创作：
+
+### 🧬 IP 制作阶段（生成卡通形象并入库）
+- 💬 **真人转卡通 IP**：`"用我的这张自拍照生成专属 3D 卡通 IP 形象，并加入角色库命名为 [名字]"`
+- 💬 **登记原创角色**：`"这是我的原创吉祥物原图，请将其加入 IP 库并命名为 [名字]"`
+
+### 🚀 场景出图阶段（让 IP 出镜）
+| 你的创作目标 | 推荐对 AI 说的话 |
+| :--- | :--- |
+| **小红书爆款图文** | `"用牙仔画一组小红书图文，主题是'打工人的一天'，要瑞士国际主义风"` |
+| **知识漫画** | `"用绒宝画一套 4 格科普漫画，讲解什么是大语言模型"` |
+| **微信公众号封面** | `"用牙仔做一张 16:9 的高密度 3D 风格科技封面，主题是'最好的IP设计工具'"` |
+| **文章趣味配图** | `"用牙仔和小黑实物场景，画一张关于'喝奶茶'的 16:9 故事插画"` |
+| **科技感信息图** | `"用牙仔制作一张 3:4 霓虹等距科技风格的数据流程图"` |
+| **高逼格演讲 PPT** | `"用牙仔制作一组暗色 Keynote 风格的 AI 产品发布会幻灯片"` |
+
+---
+
+## ❤️ 致谢与开源生态
+
+IP Master 的强大视觉表现力离不开开源社区中众多优秀创作者的智慧与灵感。特别鸣谢以下上游项目的卓越贡献：
+
+- 👤 **Personal IP Image Pack** by [@DoraRabbitYan](https://github.com/DoraRabbitYan/personal-ip-image-pack) - 真人照片转卡通 IP 套装（IP 制作核心）
+- 🎨 **Baoyu Skills** by [@JimLiu](https://github.com/JimLiu/baoyu-skills) - 涵盖知识漫画、小红书图文、编辑插画、封面与幻灯片等全能视觉套件
+- 🀄 **Dongfang** by [@yang0](https://github.com/yang0/dongfang) - 东方美学与高密度 3D 视觉封面设计
+- 📱 **归藏社交卡片** by [@op7418](https://github.com/op7418/guizang-social-card-skill) - 瑞士风与杂志风小红书图文、公众号封面对与动态卡
+- 🐱 **Ian Xiaohei 系列** by [@helloianneo](https://github.com/helloianneo/ian-xiaohei-illustrations) - 经典怪诞手绘与实物场景插画
+- 🧸 **Mini Illustration & Character System** by [@EverettFish](https://github.com/EverettFish/ip_illustration_for_yourself) - 萌粒涂鸦与文章插图系统
+- 🖨️ **GBRO Cover Design** by [@pyang5166](https://github.com/pyang5166/gbro-cover-design) - 狗哥震惊体封面与海报设计
+- 🌈 **Awesome GPT Image 2** by [@freestylefly](https://github.com/freestylefly/awesome-gpt-image-2) - 丰富多彩的风格增强库
+- 🧩 **100 Layout Compositions** by [@nevertoday](https://github.com/nevertoday/100-layout-compositions) - 竖版海报本地排版参考库（[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)）
+
+---
+
+<div align="center">
+  <sub>Released under the <a href="LICENSE">MIT License</a>. Created with ❤️ for AI creators.</sub>
+</div>

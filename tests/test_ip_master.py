@@ -15,12 +15,19 @@ sys.path.insert(0, str(SCRIPTS))
 
 import capability_router  # noqa: E402
 import dependency_manager  # noqa: E402
+import layout_library  # noqa: E402
 from character_router import (  # noqa: E402
     CharacterRegistryError,
     inspect_registry,
     resolve_character_inputs,
 )
 from register_character import CharacterRegistrationError, register_character  # noqa: E402
+
+
+def _png_header(width: int, height: int) -> bytes:
+    """Minimal PNG header sufficient for the dimension reader."""
+
+    return b"\x89PNG\r\n\x1a\n" + b"\x00\x00\x00\rIHDR" + width.to_bytes(4, "big") + height.to_bytes(4, "big")
 
 
 def test_character_registry_has_four_roles_and_yazai_default() -> None:
@@ -95,6 +102,68 @@ def test_selected_external_skill_injects_default_and_named_roles_in_registry_ord
         "xiaomei.webp",
     ]
     assert [item["input_order"] for item in multi_result["reference_inputs"]] == [1, 2]
+
+
+def test_layout_library_returns_composition_methods_without_thumbnail_image_inputs() -> None:
+    report = layout_library.validate_library(skill_dir=SKILL_ROOT)
+    assert report["valid"] is True
+    assert report["count"] == 100
+    assert report["blueprint_count"] == 100
+
+    selected = [
+        layout_library.parse_layout_selection(value, skill_dir=SKILL_ROOT)
+        for value in ("用 23 重新排版", "用 023 重新排版", "layout-023")
+    ]
+    assert {item["id"] for item in selected if item is not None} == {"layout-023"}
+    assert all("asset_path" not in item for item in selected if item is not None)
+
+    layout_eight = layout_library.parse_layout_selection("排版用08", skill_dir=SKILL_ROOT)
+    assert layout_eight is not None
+    assert layout_eight["layout_method"]["layout_principle"] == "前后构图"
+    instruction = layout_eight["generation_instruction"]
+    assert all(term in instruction for term in ("前景", "中景", "背景", "遮挡", "尺度", "纵深"))
+    assert "左侧上至中部" not in instruction
+    assert "右下主体" not in instruction
+    assert "不得复用布局样图的配色、几何装饰" not in instruction
+    assert "不复制示例画面的坐标、配色、几何装饰" in instruction
+
+    with pytest.raises(ValueError, match="unknown layout number"):
+        layout_library.parse_layout_selection("用 101 重新排版", skill_dir=SKILL_ROOT)
+
+    routed = capability_router.route(
+        "用 dongfang 做一张竖版海报，用 23 重新排版", operation="create"
+    )
+    assert routed["layout_library"]["selection"]["id"] == "layout-023"
+    assert routed["reference_inputs"][-1]["role"] == "composition_method"
+    assert "asset_path" not in routed["reference_inputs"][-1]
+    assert routed["reference_inputs"][-1]["layout_method"]["layout_principle"] == "Z形构图"
+    assert "layout-023.jpg" not in routed["referenced_image_paths"]
+    assert all("layout-" not in Path(path).name for path in routed["referenced_image_paths"])
+    assert "不复制示例画面的坐标、配色、几何装饰" in routed["reference_inputs"][-1]["generation_instruction"]
+
+    first_pass = capability_router.route("用 dongfang 做一张竖版海报", operation="create")
+    assert first_pass["layout_library"]["selection"] is None
+    assert all(item["role"] != "layout_reference" for item in first_pass["reference_inputs"])
+
+    prompt_only = capability_router.route("用 gbro 做一张 3:4 封面", operation="create")
+    assert prompt_only["layout_library"]["post_generation_delivery"] is False
+
+
+def test_layout_delivery_note_only_applies_to_final_portrait_raster(tmp_path: Path) -> None:
+    portrait = tmp_path / "portrait.png"
+    portrait.write_bytes(_png_header(600, 900))
+    landscape = tmp_path / "landscape.png"
+    landscape.write_bytes(_png_header(900, 600))
+
+    eligible = layout_library.portrait_delivery_note(portrait, skill_dir=SKILL_ROOT)
+    assert eligible["eligible"] is True
+    assert "回复编号（如：23）" in eligible["message"]
+    assert eligible["gallery_path"].endswith("layout-library\\index.html")
+
+    assert layout_library.portrait_delivery_note(landscape, skill_dir=SKILL_ROOT)["eligible"] is False
+    assert layout_library.portrait_delivery_note(
+        portrait, skill_dir=SKILL_ROOT, prompt_only=True
+    )["reason"] == "prompt-only output"
 
 
 def test_personal_photo_boundary_and_animal_exclusion() -> None:
