@@ -39,6 +39,7 @@
 | Skill | 风格数量 | 风格摘要 | 备注 |
 | --- | ---: | --- | --- |
 | [`ian-xiaohei-illustrations`](https://github.com/helloianneo/ian-xiaohei-illustrations) | 1 | 白底怪诞手绘、红橙蓝批注、大量留白 | 可选；无默认 |
+| [`ian-xiaohei-scenes`](https://github.com/helloianneo/ian-xiaohei-scenes) | 1 | 小黑 + 真实物件 + 物理动作 + 留白叙事；支持 16:9 正文图与超横版长卷 | 可选；无默认 |
 | [`baoyu-article-illustrator`](https://github.com/JimLiu/baoyu-skills/tree/main/skills/baoyu-article-illustrator) | 23 | 细分风格与编辑插画入口，含场景、流程图、信息图 | 可选；无默认 |
 | [`ip-illustration-character-system`](https://github.com/EverettFish/ip_illustration_for_yourself) | 1 | 萌粒钢笔涂鸦文章插图 | 可选；需 GPT Image 2 |
 

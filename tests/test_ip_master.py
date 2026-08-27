@@ -51,9 +51,19 @@ def test_multiple_article_candidates_require_selection_without_native_fallback()
     assert result["native_fallback"] is False
     assert {item["skill_id"] for item in result["candidates"]} == {
         "ian-xiaohei-illustrations",
+        "ian-xiaohei-scenes",
         "baoyu-article-illustrator",
         "ip-illustration-character-system",
     }
+
+
+def test_ian_xiaohei_scenes_is_explicitly_routable() -> None:
+    result = capability_router.route(
+        "用 ian-xiaohei-scenes 做小黑实物场景图", operation="create"
+    )
+    assert result["status"] == "ready"
+    assert result["target_skill_id"] == "ian-xiaohei-scenes"
+    assert result["characters"] == ["yazai"]
 
 
 def test_everett_capabilities_are_discoverable_without_becoming_default() -> None:

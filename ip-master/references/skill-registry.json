@@ -52,6 +52,20 @@
       "signals": ["小黑", "白底手绘", "怪诞", "大量留白", "红橙蓝批注"]
     },
     {
+      "skill_id": "ian-xiaohei-scenes",
+      "repo": "helloianneo/ian-xiaohei-scenes",
+      "path": ".",
+      "install_name": "ian-xiaohei-scenes",
+      "ref": "main",
+      "optional": true,
+      "purpose": "article-scene-illustration",
+      "categories": ["article-illustration"],
+      "capabilities": ["article-scene-16x9", "long-scroll-story"],
+      "style_count": 1,
+      "style_summary": "小黑 + 真实物件 + 物理动作 + 留白叙事；支持 16:9 正文图与超横版长卷",
+      "signals": ["小黑实物场景图", "小黑 2.0", "真实物件", "物理动作", "打工人共鸣图", "彩蛋模式", "长卷故事图", "项目复盘", "产品演化", "成长路径"]
+    },
+    {
       "skill_id": "baoyu-article-illustrator",
       "repo": "JimLiu/baoyu-skills",
       "path": "skills/baoyu-article-illustrator",
