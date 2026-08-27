@@ -48,6 +48,11 @@
 | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/xiaohei-article-illustration.webp" alt="小黑文章配图示例" width="280"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-article-illustration.webp" alt="Baoyu 文章插画示例" width="280"> | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/everett-mini-article-illustration.webp" alt="Everett 萌粒文章插图示例" width="210"> |
 | `ian-xiaohei-illustrations` · 16:9 | `baoyu-article-illustrator` · 16:9 | `ip-illustration-character-system` · 3:4 |
 
+| Ian 小黑实物场景 |
+| --- |
+| <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/good-milk-tea-xiaohei-scenes/01-good-milk-tea.png" alt="牙仔与好喝的奶茶：Ian 小黑实物场景示例" width="560"> |
+| `ian-xiaohei-scenes` · 16:9 · 主题：好喝的奶茶 |
+
 | Baoyu · 纸艺拼贴编辑插画 |
 | --- |
 | <img src="https://raw.githubusercontent.com/yang0/ip-master/main/ip-master/assets/showcase/baoyu-article-paper-cut.webp" alt="Baoyu 纸艺拼贴文章插图" width="420"> |
