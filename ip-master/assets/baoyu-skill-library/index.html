@@ -1,0 +1,973 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Baoyu 视觉 Skill 轻量案例库：看图选择，用一句话调用。"
+    />
+    <title>Baoyu 视觉 Skill 图册</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --ink: #f4f0e8;
+        --muted: #aaa79f;
+        --line: rgba(244, 240, 232, 0.18);
+        --paper: #10110f;
+        --panel: #1a1b18;
+        --accent: #d8ff52;
+        --accent-ink: #202700;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font:
+          16px/1.55 Inter,
+          "PingFang SC",
+          "Microsoft YaHei",
+          sans-serif;
+      }
+      button,
+      a {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+      }
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        padding: 15px clamp(20px, 4vw, 64px);
+        border-bottom: 1px solid var(--line);
+        background: rgba(16, 17, 15, 0.88);
+        backdrop-filter: blur(15px);
+      }
+      .brand {
+        color: var(--ink);
+        font-weight: 800;
+        letter-spacing: -0.04em;
+        text-decoration: none;
+      }
+      .brand span {
+        color: var(--accent);
+      }
+      .topbar nav {
+        display: flex;
+        gap: 18px;
+        overflow: auto;
+      }
+      .topbar nav a {
+        color: var(--muted);
+        font-size: 13px;
+        text-decoration: none;
+        white-space: nowrap;
+      }
+      .topbar nav a:hover {
+        color: var(--accent);
+      }
+      .hero {
+        min-height: calc(100svh - 58px);
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(360px, 0.93fr);
+        align-items: end;
+        gap: clamp(24px, 5vw, 80px);
+        padding: clamp(40px, 8vw, 120px) clamp(20px, 7vw, 120px) 48px;
+        overflow: hidden;
+        border-bottom: 1px solid var(--line);
+      }
+      .eyebrow {
+        margin: 0 0 18px;
+        color: var(--accent);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+      h1 {
+        max-width: 760px;
+        margin: 0;
+        font-size: clamp(52px, 8vw, 120px);
+        line-height: 0.9;
+        letter-spacing: -0.085em;
+      }
+      .hero-copy {
+        max-width: 430px;
+        margin: 30px 0 0;
+        color: var(--muted);
+        font-size: 18px;
+      }
+      .hero-note {
+        margin: 24px 0 0;
+        color: var(--ink);
+        font-size: 14px;
+      }
+      .hero-visual {
+        align-self: stretch;
+        min-height: 450px;
+        position: relative;
+      }
+      .hero-visual img {
+        position: absolute;
+        width: 44%;
+        height: 43%;
+        object-fit: contain;
+        background: #090a08;
+        border: 1px solid var(--line);
+        filter: saturate(0.85);
+        box-shadow: 0 18px 55px rgba(0, 0, 0, 0.34);
+        animation: float 7s ease-in-out infinite;
+      }
+      .hero-visual img:nth-child(1) {
+        left: 0;
+        top: 4%;
+        transform: rotate(-6deg);
+      }
+      .hero-visual img:nth-child(2) {
+        right: 3%;
+        top: 0;
+        transform: rotate(5deg);
+        animation-delay: -2s;
+      }
+      .hero-visual img:nth-child(3) {
+        left: 17%;
+        bottom: 6%;
+        width: 52%;
+        height: 48%;
+        transform: rotate(2deg);
+        animation-delay: -4s;
+      }
+      @keyframes float {
+        50% {
+          translate: 0 -12px;
+        }
+      }
+      main {
+        padding: 0 clamp(20px, 7vw, 120px) 80px;
+      }
+      .intro {
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+        align-items: end;
+        padding: 75px 0 26px;
+        border-bottom: 1px solid var(--line);
+      }
+      .intro h2 {
+        margin: 0;
+        font-size: clamp(28px, 4vw, 52px);
+        letter-spacing: -0.05em;
+      }
+      .intro p {
+        max-width: 400px;
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .skill {
+        padding: 28px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .skill-summary {
+        display: grid;
+        grid-template-columns: 82px minmax(0, 1fr) auto;
+        gap: 24px;
+        align-items: center;
+        width: 100%;
+        padding: 0;
+        color: inherit;
+        background: none;
+        border: 0;
+        text-align: left;
+      }
+      .number {
+        color: var(--accent);
+        font:
+          700 13px/1 ui-monospace,
+          SFMono-Regular,
+          Consolas,
+          monospace;
+      }
+      .skill-name {
+        display: block;
+        margin: 0;
+        font-size: clamp(25px, 3vw, 42px);
+        line-height: 1;
+        letter-spacing: -0.06em;
+      }
+      .skill-purpose {
+        display: block;
+        margin: 8px 0 0;
+        color: var(--muted);
+      }
+      .expand {
+        width: 38px;
+        height: 38px;
+        display: grid;
+        place-items: center;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        color: var(--accent);
+        font-size: 23px;
+        transition: 0.25s ease;
+      }
+      .skill.open .expand {
+        background: var(--accent);
+        color: var(--accent-ink);
+        rotate: 45deg;
+      }
+      .skill-detail {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
+        gap: clamp(28px, 5vw, 80px);
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition:
+          max-height 0.55s ease,
+          opacity 0.3s ease,
+          padding 0.45s ease;
+      }
+      .skill.open .skill-detail {
+        max-height: 1100px;
+        padding: 32px 0 10px;
+        opacity: 1;
+      }
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        align-self: start;
+      }
+      .gallery button {
+        min-height: 240px;
+        padding: 0;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        background: #000;
+      }
+      .gallery img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: contain;
+        background: #090a08;
+        transition: transform 0.4s ease;
+      }
+      .gallery button:hover img {
+        transform: scale(1.04);
+      }
+      .gallery button:only-child {
+        grid-column: span 2;
+        max-height: 390px;
+      }
+      .detail-copy h3 {
+        margin: 0 0 8px;
+        font-size: 18px;
+      }
+      .detail-copy > p {
+        margin: 0 0 25px;
+        color: var(--muted);
+      }
+      code {
+        color: var(--accent);
+        font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+        font-size: 0.9em;
+      }
+      .parameter span {
+        color: var(--muted);
+      }
+      .enum-guide {
+        margin: 0 0 25px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.025);
+      }
+      .enum-body {
+        padding: 0 14px 12px;
+      }
+      .enum-row {
+        margin: 0;
+        padding: 10px 0;
+        color: var(--muted);
+        border-top: 1px solid var(--line);
+        font-size: 13px;
+      }
+      .enum-row strong {
+        color: var(--ink);
+      }
+      .command {
+        margin: 0 0 14px;
+        padding: 15px 16px;
+        border-left: 3px solid var(--accent);
+        background: var(--panel);
+        color: #e7e3da;
+        font-size: 14px;
+      }
+      .actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .action {
+        padding: 9px 13px;
+        border: 1px solid var(--line);
+        background: transparent;
+        color: var(--ink);
+        text-decoration: none;
+        font-size: 13px;
+      }
+      .action.primary {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .action:hover {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: var(--accent-ink);
+      }
+      footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 25px clamp(20px, 7vw, 120px);
+        color: var(--muted);
+        border-top: 1px solid var(--line);
+        font-size: 12px;
+      }
+      dialog {
+        width: min(940px, calc(100% - 30px));
+        padding: 0;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        background: #090a08;
+        color: var(--ink);
+      }
+      dialog::backdrop {
+        background: rgba(0, 0, 0, 0.82);
+        backdrop-filter: blur(4px);
+      }
+      dialog img {
+        display: block;
+        width: 100%;
+        max-height: 78svh;
+        object-fit: contain;
+      }
+      .dialog-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+        padding: 10px 14px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .dialog-bar button {
+        border: 0;
+        background: none;
+        color: var(--accent);
+      }
+      @media (max-width: 720px) {
+        .topbar nav {
+          display: none;
+        }
+        .hero {
+          min-height: auto;
+          grid-template-columns: 1fr;
+          padding-top: 64px;
+        }
+        .hero-visual {
+          min-height: 310px;
+        }
+        .intro {
+          display: block;
+          padding-top: 52px;
+        }
+        .intro p {
+          margin-top: 13px;
+        }
+        .skill-summary {
+          grid-template-columns: 42px minmax(0, 1fr) 38px;
+          gap: 12px;
+        }
+        .skill-purpose {
+          font-size: 13px;
+        }
+        .skill-detail {
+          grid-template-columns: 1fr;
+        }
+        .skill.open .skill-detail {
+          max-height: 1500px;
+        }
+        .gallery button {
+          min-height: 185px;
+        }
+        footer {
+          display: block;
+        }
+        footer p + p {
+          margin-top: 8px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          animation: none !important;
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#top">BAOYU <span>/</span> VISUAL</a>
+      <nav aria-label="Skill 导航">
+        <a href="#article">文章配图</a><a href="#comic">知识漫画</a
+        ><a href="#cover">封面</a><a href="#infographic">信息图</a
+        ><a href="#xhs">小红书</a><a href="#slide">PPT</a>
+      </nav>
+    </header>
+    <section class="hero" id="top">
+      <div>
+        <p class="eyebrow">6 visual skills · quick guide</p>
+        <h1>看图选 Skill，<br />一句话开做。</h1>
+        <p class="hero-copy">
+          Baoyu 视觉 Skill
+          的轻量案例册。只告诉你该用哪个、参数怎么挑、怎么开口。
+        </p>
+        <p class="hero-note">
+          点击下方任一 Skill，查看示例、常用参数和可复制指令。
+        </p>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <img
+          src="../../../comic/silver-short/01-cover-silver-energetic-manga-standard-color.png"
+          alt=""
+        /><img
+          src="../generated/yazai-todays-outfit-cute-balanced.png"
+          alt=""
+        /><img src="../showcase/baoyu-comic.webp" alt="" />
+      </div>
+    </section>
+    <main>
+      <section class="intro">
+        <h2>只保留你真正会用到的。</h2>
+        <p>
+          参数并不是越多越好。先用最少的选择把内容、结构和感觉说清楚，其他高级项再去上游文档查。
+        </p>
+      </section>
+
+      <article class="skill" id="article" data-skill="article">
+        <button class="skill-summary" aria-expanded="false">
+          <span class="number">01</span
+          ><span
+            ><span class="skill-name">文章配图</span
+            ><span class="skill-purpose"
+              >给长文补上场景、框架、流程与观点插图。</span
+            ></span
+          ><span class="expand">+</span>
+        </button>
+        <div class="skill-detail">
+          <div class="gallery">
+            <button
+              data-preview="../showcase/baoyu-article-illustration.webp"
+              data-caption="文章配图 · 编辑插画"
+            >
+              <img
+                src="../showcase/baoyu-article-illustration.webp"
+                alt="Baoyu 文章配图示例：编辑插画"
+              /></button
+            ><button
+              data-preview="../showcase/baoyu-article-paper-cut.webp"
+              data-caption="文章配图 · 纸雕风"
+            >
+              <img
+                src="../showcase/baoyu-article-paper-cut.webp"
+                alt="Baoyu 文章配图示例：纸雕风"
+              />
+            </button>
+          </div>
+          <div class="detail-copy">
+            <h3>适合：文章里需要“看一眼就懂”的段落</h3>
+            <p>
+              先说文章或段落，再选图片承担的任务。用框架讲方法、用流程讲步骤、用场景增加代入感。
+            </p>
+            <div class="enum-guide">
+              <div class="enum-body">
+                <p class="enum-row">
+                  <strong>图片结构：</strong
+                  >信息图（<code>infographic</code>）、场景（<code>scene</code>）、流程图（<code>flowchart</code>）、对比图（<code>comparison</code>）、框架图（<code>framework</code>）、时间线（<code>timeline</code>）。
+                </p>
+                <p class="enum-row">
+                  <strong>画面风格：</strong
+                  >矢量插画（<code>vector-illustration</code>）、极简手绘（<code>notion</code>）、优雅商务（<code>elegant</code>）、温暖亲和（<code>warm</code>）、极简留白（<code>minimal</code>）、蓝图技术（<code>blueprint</code>）、水彩（<code>watercolor</code>）、编辑杂志（<code>editorial</code>）、科学图解（<code>scientific</code>）、黑板粉笔（<code>chalkboard</code>）、幻想动画（<code>fantasy-animation</code>）、现代扁平（<code>flat</code>）、扁平涂鸦（<code>flat-doodle</code>）、直觉机器（<code>intuition-machine</code>）、自然有机（<code>nature</code>）、像素艺术（<code>pixel-art</code>）、趣味涂鸦（<code>playful</code>）、复古霓虹（<code>retro</code>）、铅笔草图（<code>sketch</code>）、丝网印刷（<code>screen-print</code>）、手绘笔记（<code>sketch-notes</code>）、墨水笔记（<code>ink-notes</code>）、复古羊皮纸（<code>vintage</code>）。
+                </p>
+                <p class="enum-row">
+                  <strong>配色：</strong
+                  >沿用风格默认（不填）、马卡龙（<code>macaron</code>）、暖色（<code>warm</code>）、霓虹（<code>neon</code>）。
+                </p>
+              </div>
+            </div>
+            <p class="command">
+              读取文章进行配图，IP：牙仔，类型：framework，风格：vector-illustration，出一张就行。
+            </p>
+            <div class="actions">
+              <button class="action primary copy-command">复制这句</button
+              ><a
+                class="action"
+                href="https://github.com/JimLiu/baoyu-skills/tree/main/skills/baoyu-article-illustrator"
+                target="_blank"
+                rel="noreferrer"
+                >完整说明 ↗</a
+              >
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="skill" id="comic" data-skill="comic">
+        <button class="skill-summary" aria-expanded="false">
+          <span class="number">02</span
+          ><span
+            ><span class="skill-name">知识漫画</span
+            ><span class="skill-purpose"
+              >把观点、故事或教程拆成有阅读节奏的漫画。</span
+            ></span
+          ><span class="expand">+</span>
+        </button>
+        <div class="skill-detail">
+          <div class="gallery">
+            <button
+              data-preview="../showcase/baoyu-comic.webp"
+              data-caption="知识漫画"
+            >
+              <img
+                src="../showcase/baoyu-comic.webp"
+                alt="Baoyu 知识漫画示例"
+              />
+            </button>
+          </div>
+          <div class="detail-copy">
+            <h3>适合：想让知识内容更有故事感</h3>
+            <p>
+              先确定阅读氛围，再挑分镜密度。内容复杂时用
+              `dense`，轻巧的一个观点用 `four-panel`。
+            </p>
+            <div class="enum-guide">
+              <div class="enum-body">
+                <p class="enum-row">
+                  <strong>画风：</strong
+                  >清线漫画（<code>ligne-claire</code>，默认）、日漫（<code>manga</code>）、写实（<code>realistic</code>）、水墨（<code>ink-brush</code>）、粉笔（<code>chalk</code>）、极简（<code>minimalist</code>）。
+                </p>
+                <p class="enum-row">
+                  <strong>情绪基调：</strong
+                  >中性（<code>neutral</code>，默认）、温暖（<code>warm</code>）、戏剧化（<code>dramatic</code>）、浪漫（<code>romantic</code>）、活力（<code>energetic</code>）、复古（<code>vintage</code>）、动作感（<code>action</code>）。
+                </p>
+                <p class="enum-row">
+                  <strong>分镜布局：</strong
+                  >标准（<code>standard</code>，默认）、电影感（<code>cinematic</code>）、高密度（<code>dense</code>）、跨页大画面（<code>splash</code>）、混合（<code>mixed</code>）、竖版条漫（<code>webtoon</code>）、四格（<code>four-panel</code>）。
+                </p>
+                <p class="enum-row">
+                  <strong>画幅：</strong>竖版
+                  3:4（<code>3:4</code>，默认）、横版
+                  4:3（<code>4:3</code>）、宽屏 16:9（<code>16:9</code>）。
+                </p>
+              </div>
+            </div>
+            <p class="command">
+              读取文章，用牙仔制作知识漫画，风格：manga，基调：energetic，布局：four-panel。
+            </p>
+            <div class="actions">
+              <button class="action primary copy-command">复制这句</button
+              ><a
+                class="action"
+                href="https://github.com/JimLiu/baoyu-skills/tree/main/skills/baoyu-comic"
+                target="_blank"
+                rel="noreferrer"
+                >完整说明 ↗</a
+              >
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="skill" id="cover" data-skill="cover">
+        <button class="skill-summary" aria-expanded="false">
+          <span class="number">03</span
+          ><span
+            ><span class="skill-name">封面</span
+            ><span class="skill-purpose"
+              >为文章、社媒与品牌主题做第一眼抓人的封面。</span
+            ></span
+          ><span class="expand">+</span>
+        </button>
+        <div class="skill-detail">
+          <div class="gallery">
+            <button
+              data-preview="../showcase/baoyu-cover.webp"
+              data-caption="封面 · 概念型"
+            >
+              <img
+                src="../showcase/baoyu-cover.webp"
+                alt="Baoyu 封面示例"
+              /></button
+            ><button
+              data-preview="../showcase/baoyu-cover-clay.webp"
+              data-caption="封面 · 黏土媒介"
+            >
+              <img
+                src="../showcase/baoyu-cover-clay.webp"
+                alt="Baoyu 黏土封面示例"
+              />
+            </button>
+          </div>
+          <div class="detail-copy">
+            <h3>适合：一张图说清内容的主张</h3>
+            <p>
+              封面先选表达方式：讲概念、造隐喻，还是把关键场景放进画面。再决定颜色和质感。
+            </p>
+            <div class="enum-guide">
+              <div class="enum-body">
+                <p class="enum-row">
+                  <strong>封面类型：</strong
+                  >主视觉（<code>hero</code>）、概念（<code>conceptual</code>）、文字主导（<code>typography</code>）、隐喻（<code>metaphor</code>）、场景（<code>scene</code>）、极简（<code>minimal</code>）。
+                </p>
+                <p class="enum-row">
+                  <strong>配色：</strong
+                  >暖色（<code>warm</code>）、优雅（<code>elegant</code>）、冷色（<code>cool</code>）、深色（<code>dark</code>）、大地色（<code>earth</code>）、鲜艳（<code>vivid</code>）、粉彩（<code>pastel</code>）、单色（<code>mono</code>）、复古（<code>retro</code>）、双色调（<code>duotone</code>）、马卡龙（<code>macaron</code>）。
+                </p>
+                <p class="enum-row">
+                  <strong>绘制媒介：</strong
+                  >扁平矢量（<code>flat-vector</code>）、手绘（<code>hand-drawn</code>）、绘画感（<code>painterly</code>）、数字渲染（<code>digital</code>）、像素（<code>pixel</code>）、粉笔（<code>chalk</code>）、丝网印刷（<code>screen-print</code>）。
+                </p>
+                <p class="enum-row">
+                  <strong>文字量：</strong
+                  >无文字（<code>none</code>）、仅标题（<code>title-only</code>）、标题加副标题（<code>title-subtitle</code>）、丰富文字（<code>text-rich</code>）；<strong>气质：</strong>柔和（<code>subtle</code>）、平衡（<code>balanced</code>）、大胆（<code>bold</code>）；<strong>字体：</strong>干净（<code>clean</code>）、手写（<code>handwritten</code>）、衬线（<code>serif</code>）、展示体（<code>display</code>）。
+                </p>
+                <p class="enum-row">
+                  <strong>比例：</strong>宽屏
+                  16:9（<code>16:9</code>，默认）、电影宽幅
+                  2.35:1（<code>2.35:1</code>）、横版
+                  4:3（<code>4:3</code>）、横版 3:2（<code>3:2</code>）、方图
+                  1:1（<code>1:1</code>）、竖图 3:4（<code>3:4</code>）。
+                </p>
+              </div>
+            </div>
+            <p class="command">
+              读取文章后，用牙仔制作文章封面，类型：conceptual，配色：马卡龙，绘制媒介：手绘，比例：16:9。
+            </p>
+            <div class="actions">
+              <button class="action primary copy-command">复制这句</button
+              ><a
+                class="action"
+                href="https://github.com/JimLiu/baoyu-skills/tree/main/skills/baoyu-cover-image"
+                target="_blank"
+                rel="noreferrer"
+                >完整说明 ↗</a
+              >
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="skill" id="infographic" data-skill="infographic">
+        <button class="skill-summary" aria-expanded="false">
+          <span class="number">04</span
+          ><span
+            ><span class="skill-name">信息图</span
+            ><span class="skill-purpose"
+              >把数据、流程和方法论整理成一张结构清晰的图。</span
+            ></span
+          ><span class="expand">+</span>
+        </button>
+        <div class="skill-detail">
+          <div class="gallery">
+            <button
+              data-preview="../showcase/baoyu-infographic.webp"
+              data-caption="信息图 · 结构化版式"
+            >
+              <img
+                src="../showcase/baoyu-infographic.webp"
+                alt="Baoyu 信息图示例"
+              /></button
+            ><button
+              data-preview="../showcase/baoyu-infographic-neon.webp"
+              data-caption="信息图 · 霓虹风格"
+            >
+              <img
+                src="../showcase/baoyu-infographic-neon.webp"
+                alt="Baoyu 霓虹信息图示例"
+              />
+            </button>
+          </div>
+          <div class="detail-copy">
+            <h3>适合：要把“关系”讲明白的内容</h3>
+            <p>
+              先从信息结构选版式：对比、流程、层级还是高密度模块；再选更接近品牌气质的视觉风格。
+            </p>
+            <div class="enum-guide">
+              <div class="enum-body">
+                <p class="enum-row">
+                  <strong>布局：</strong
+                  >线性流程（<code>linear-progression</code>）、二元对比（<code>binary-comparison</code>）、对比矩阵（<code>comparison-matrix</code>）、层级金字塔（<code>hierarchical-layers</code>）、树状分支（<code>tree-branching</code>）、中心辐射（<code>hub-spoke</code>）、结构拆解（<code>structural-breakdown</code>）、便当网格（<code>bento-grid</code>，默认）、冰山（<code>iceberg</code>）、桥梁（<code>bridge</code>）、漏斗（<code>funnel</code>）、等距地图（<code>isometric-map</code>）、仪表盘（<code>dashboard</code>）、元素周期表（<code>periodic-table</code>）、漫画条（<code>comic-strip</code>）、故事山（<code>story-mountain</code>）、拼图（<code>jigsaw</code>）、维恩图（<code>venn-diagram</code>）、蜿蜒路线图（<code>winding-roadmap</code>）、循环流（<code>circular-flow</code>）、高密度模块（<code>dense-modules</code>）。
+                </p>
+                <p class="enum-row">
+                  <strong>风格：</strong
+                  >手工纸艺（<code>craft-handmade</code>，默认）、黏土定格（<code>claymation</code>）、日系可爱（<code>kawaii</code>）、绘本水彩（<code>storybook-watercolor</code>）、黑板粉笔（<code>chalkboard</code>）、赛博霓虹（<code>cyberpunk-neon</code>）、大胆图形（<code>bold-graphic</code>）、复古学院（<code>aged-academia</code>）、企业孟菲斯（<code>corporate-memphis</code>）、技术蓝图（<code>technical-schematic</code>）、折纸（<code>origami</code>）、像素艺术（<code>pixel-art</code>）、界面线框（<code>ui-wireframe</code>）、地铁图（<code>subway-map</code>）、宜家说明书（<code>ikea-manual</code>）、物品平铺（<code>knolling</code>）、乐高积木（<code>lego-brick</code>）、流行实验室（<code>pop-laboratory</code>）、莫兰迪手账（<code>morandi-journal</code>）、复古波普网格（<code>retro-pop-grid</code>）、手绘教育（<code>hand-drawn-edu</code>）、复古弹窗波普（<code>retro-popup-pop</code>）。
+                </p>
+                <p class="enum-row">
+                  <strong>画幅：</strong>横版
+                  16:9（<code>landscape</code>）、竖版
+                  9:16（<code>portrait</code>）、方图
+                  1:1（<code>square</code>）；也可直接填自定义比例，如
+                  3:4、4:3、2.35:1。
+                </p>
+              </div>
+            </div>
+            <p class="command">
+              用牙仔制作一张信息图，风格：corporate-memphis，布局：hub-spoke，主题：讲解
+              AI Agent 原理。
+            </p>
+            <div class="actions">
+              <button class="action primary copy-command">复制这句</button
+              ><a
+                class="action"
+                href="https://github.com/JimLiu/baoyu-skills/tree/main/skills/baoyu-infographic"
+                target="_blank"
+                rel="noreferrer"
+                >完整说明 ↗</a
+              >
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="skill" id="xhs" data-skill="xhs">
+        <button class="skill-summary" aria-expanded="false">
+          <span class="number">05</span
+          ><span
+            ><span class="skill-name">小红书图文</span
+            ><span class="skill-purpose"
+              >把选题变成可连续阅读、适合分享的图片卡片。</span
+            ></span
+          ><span class="expand">+</span>
+        </button>
+        <div class="skill-detail">
+          <div class="gallery">
+            <button
+              data-preview="../generated/yazai-todays-outfit-cute-balanced.png"
+              data-caption="小红书图文 · 宝玉老师的小红书封面"
+            >
+              <img
+                src="../generated/yazai-todays-outfit-cute-balanced.png"
+                alt="宝玉老师的小红书封面：牙仔今日穿搭"
+              /></button
+            ><button
+              data-preview="../showcase/baoyu-xhs-scrapbook.webp"
+              data-caption="小红书图文 · 剪贴簿"
+            >
+              <img
+                src="../showcase/baoyu-xhs-scrapbook.webp"
+                alt="Baoyu 小红书剪贴簿示例"
+              />
+            </button>
+          </div>
+          <div class="detail-copy">
+            <h3>适合：教程、清单、经验分享和种草内容</h3>
+            <p>
+              把文章拆成多张卡。先定读者看到的风格与排版，再用页数控制信息颗粒度。
+            </p>
+            <div class="enum-guide">
+              <div class="enum-body">
+                <p class="enum-row">
+                  <strong>风格：</strong
+                  >甜美可爱（<code>cute</code>，默认）、清新自然（<code>fresh</code>）、温暖亲和（<code>warm</code>）、大胆吸睛（<code>bold</code>）、极简精致（<code>minimal</code>）、复古怀旧（<code>retro</code>）、活力波普（<code>pop</code>）、Notion
+                  手绘（<code>notion</code>）、黑板粉笔（<code>chalkboard</code>）、学习笔记（<code>study-notes</code>）、丝网印刷（<code>screen-print</code>）、手绘笔记（<code>sketch-notes</code>）。
+                </p>
+                <p class="enum-row">
+                  <strong>布局：</strong
+                  >稀疏重点（<code>sparse</code>，默认）、均衡（<code>balanced</code>）、高密度知识卡（<code>dense</code>）、列表排名（<code>list</code>）、并列对比（<code>comparison</code>）、流程时间线（<code>flow</code>）、中心思维导图（<code>mindmap</code>）、四象限（<code>quadrant</code>）。
+                </p>
+                <p class="enum-row">
+                  <strong>配色：</strong
+                  >马卡龙（<code>macaron</code>）、暖色（<code>warm</code>）、霓虹（<code>neon</code>）；不填写则沿用所选风格配色。
+                </p>
+                <p class="enum-row">
+                  <strong>张数：</strong>可选 1–10 张；1 张用于单页观点，3–4
+                  张用于短分享，5–8 张用于教程/清单，9–10 张用于完整图文。
+                </p>
+              </div>
+            </div>
+            <p class="command">
+              用牙仔做一组小红书图文，风格：cute，布局：balanced，主题：今日穿搭，出
+              6 张。
+            </p>
+            <div class="actions">
+              <button class="action primary copy-command">复制这句</button
+              ><a
+                class="action"
+                href="https://github.com/JimLiu/baoyu-skills/tree/main/skills/baoyu-xhs-images"
+                target="_blank"
+                rel="noreferrer"
+                >完整说明 ↗</a
+              >
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="skill" id="slide" data-skill="slide">
+        <button class="skill-summary" aria-expanded="false">
+          <span class="number">06</span
+          ><span
+            ><span class="skill-name">PPT</span
+            ><span class="skill-purpose"
+              >将一段内容拆成可阅读、可分享的演示页。</span
+            ></span
+          ><span class="expand">+</span>
+        </button>
+        <div class="skill-detail">
+          <div class="gallery">
+            <button
+              data-preview="../showcase/baoyu-slide-deck.webp"
+              data-caption="PPT · 亮色演示页"
+            >
+              <img
+                src="../showcase/baoyu-slide-deck.webp"
+                alt="Baoyu PPT 示例"
+              /></button
+            ><button
+              data-preview="../../../slide-deck/hangzhou-attractions/01-slide-hangzhou-attractions.png"
+              data-caption="PPT · README 杭州景点演示页"
+            >
+              <img
+                src="../../../slide-deck/hangzhou-attractions/01-slide-hangzhou-attractions.png"
+                alt="README 中的牙仔杭州景点 PPT 演示页"
+              />
+            </button>
+          </div>
+          <div class="detail-copy">
+            <h3>适合：报告、课程、发布会与知识长图</h3>
+            <p>
+              它会先整理逻辑再出单页。风格负责气质，读者决定讲解深度，页数决定信息拆分程度。
+            </p>
+            <div class="enum-guide">
+              <div class="enum-body">
+                <p class="enum-row">
+                  <strong>预设风格：</strong
+                  >蓝图技术（<code>blueprint</code>，默认）、黑板粉笔（<code>chalkboard</code>）、企业商务（<code>corporate</code>）、极简（<code>minimal</code>）、手绘笔记（<code>sketch-notes</code>）、手绘教育（<code>hand-drawn-edu</code>）、水彩（<code>watercolor</code>）、深色氛围（<code>dark-atmospheric</code>）、Notion（<code>notion</code>）、大胆编辑（<code>bold-editorial</code>）、编辑信息图（<code>editorial-infographic</code>）、幻想动画（<code>fantasy-animation</code>）、直觉机器（<code>intuition-machine</code>）、像素艺术（<code>pixel-art</code>）、科学（<code>scientific</code>）、矢量插画（<code>vector-illustration</code>）、复古（<code>vintage</code>）。
+                </p>
+                <p class="enum-row">
+                  <strong>受众：</strong
+                  >初学者（<code>beginners</code>）、中级读者（<code>intermediate</code>）、专家（<code>experts</code>）、管理者（<code>executives</code>）、泛大众（<code>general</code>）。
+                </p>
+                <p class="enum-row">
+                  <strong>页数：</strong>建议 8–25 页，最多 30 页；8
+                  页适合短分享，10–15 页适合完整解释，16–25
+                  页适合课程或研究型内容。
+                </p>
+                <p class="enum-row">
+                  <strong>自定义风格：</strong>若选择
+                  <code>custom</code
+                  >，可分别填写：纹理（干净、网格、有机、像素、纸张）、情绪（专业、温暖、冷色、鲜艳、深色、中性、马卡龙）、字体（几何、人文、手写、编辑、技术）、信息密度（极简、均衡、高密度）。
+                </p>
+              </div>
+            </div>
+            <p class="command">
+              读取这篇文章，做一套
+              PPT，风格：editorial-infographic，受众：beginners，页数：8 页。
+            </p>
+            <div class="actions">
+              <button class="action primary copy-command">复制这句</button
+              ><a
+                class="action"
+                href="https://github.com/JimLiu/baoyu-skills/tree/main/skills/baoyu-slide-deck"
+                target="_blank"
+                rel="noreferrer"
+                >完整说明 ↗</a
+              >
+            </div>
+          </div>
+        </div>
+      </article>
+    </main>
+    <footer>
+      <p>Baoyu 视觉 Skill 轻量案例库 · 本地离线浏览</p>
+      <p>
+        示例图来自当前仓库的 showcase；完整参数以
+        <a
+          href="https://github.com/JimLiu/baoyu-skills"
+          target="_blank"
+          rel="noreferrer"
+          >Baoyu Skills</a
+        >
+        上游说明为准。
+      </p>
+    </footer>
+    <dialog id="preview">
+      <img id="preview-image" alt="" />
+      <div class="dialog-bar">
+        <span id="preview-caption"></span
+        ><button id="close-preview">关闭 ×</button>
+      </div>
+    </dialog>
+    <script>
+      const skills = document.querySelectorAll(".skill");
+      skills.forEach((skill) => {
+        skill.querySelector(".skill-summary").addEventListener("click", () => {
+          const open = skill.classList.toggle("open");
+          skill
+            .querySelector(".skill-summary")
+            .setAttribute("aria-expanded", String(open));
+        });
+      });
+      document.querySelectorAll(".copy-command").forEach((button) => {
+        button.addEventListener("click", async () => {
+          const command = button
+            .closest(".detail-copy")
+            .querySelector(".command")
+            .textContent.trim();
+          try {
+            await navigator.clipboard.writeText(command);
+            button.textContent = "已复制";
+          } catch {
+            button.textContent = "请手动复制";
+          }
+          window.setTimeout(() => {
+            button.textContent = "复制这句";
+          }, 1600);
+        });
+      });
+      const dialog = document.querySelector("#preview");
+      document.querySelectorAll("[data-preview]").forEach((button) =>
+        button.addEventListener("click", () => {
+          document.querySelector("#preview-image").src = button.dataset.preview;
+          document.querySelector("#preview-image").alt =
+            button.querySelector("img").alt;
+          document.querySelector("#preview-caption").textContent =
+            button.dataset.caption;
+          dialog.showModal();
+        }),
+      );
+      document
+        .querySelector("#close-preview")
+        .addEventListener("click", () => dialog.close());
+      dialog.addEventListener("click", (event) => {
+        if (event.target === dialog) dialog.close();
+      });
+    </script>
+  </body>
+</html>
