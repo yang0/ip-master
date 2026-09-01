@@ -21,6 +21,14 @@ IP Master 只管理角色、外部 Skill 和安装信息，不提供原生生图
 | PPT | `baoyu-slide-deck` |
 | 提示词增强 | `gpt-image-2-style-library` |
 
+## 首次使用与帮助
+
+`assets/readme/index.html` 是本地 HTML 使用指南，包含最短调用方式和三个
+案例库入口。每个新会话第一次使用 IP Master 时先显示该页，再继续处理同一条
+请求；用户说“第一次用”“怎么用”“帮助”“不会用”或表达使用疑问时，也显示该页。
+这不是一个 Skill 候选：帮助路由返回 `status: guide` 和 `guide_page`，不得选择
+Skill、注入角色、安装依赖或生成图片。
+
 ## 竖版海报排版参考库
 
 `assets/layout-library/index.html` 是本地离线缩略图库，不是路由候选，也
@@ -39,6 +47,12 @@ IP Master 只管理角色、外部 Skill 和安装信息，不提供原生生图
 案例图只供浏览，不得作为生图参考图输入，也不得复制其中的人物、品牌、
 版权素材、文案、坐标或具体画面。主题、角色、文字、尺寸与目标 Skill 规则
 始终优先。
+
+## Baoyu 视觉 Skill 图册
+
+`assets/baoyu-skill-library/index.html` 展示六个 Baoyu 视觉 Skill 的示例图和
+常用参数枚举。它只用于浏览与理解，不会自动选择目标 Skill，也不会覆盖用户
+明确给出的内容、尺寸或参数。
 
 文章配图不绑定默认 Skill。IP 设计请求只有在出现真人照片、本人卡通
 形象、博主形象、个人头像 IP、照片转卡通或人物表情 / 动作包等信号时，

@@ -11,6 +11,15 @@ native article-illustration fallback.
 
 ## Operating modes
 
+- On the first IP Master request in each conversation, display the local
+  [HTML guide](assets/readme/index.html) before proceeding with the same
+  request. This is conversation-local presentation only: do not persist it or
+  ask the user to repeat a concrete request. At any time, show the same guide
+  when the user says `第一次用`、`怎么用`、`帮助`、`不会用` or expresses a
+  usage question. For an explicit help request, use the router's `guide_page`
+  result and navigate its `browser_url` in a rendered browser tab. Do not use a
+  file/code panel for this step because that displays the HTML source. The
+  guide step must not select a Skill, inject references, install, or generate.
 - For advice or capability questions, inspect the registered dependencies and
   the Skills available in the current environment, then return suitable
   candidates. Do not install a dependency, inject a character reference, or
@@ -112,6 +121,15 @@ request such as `用牙仔和 dongfang 做海报，案例 539`.
 - The gallery stores metadata only and loads images from the upstream source.
   Run `scripts/gpt_image_2_case_library.py --check` to detect an update and
   `--sync` only when an updated index is explicitly wanted.
+
+## Baoyu 视觉 Skill 图册
+
+`assets/baoyu-skill-library/index.html` is a local visual reference for the
+six Baoyu creation Skills: article illustration, knowledge comic, cover,
+infographic, Xiaohongshu images, and slide deck. It is a browse-and-learn
+page, not a routing candidate or a default parameter preset. Let users open
+it when they want examples or parameter explanations; their explicit request
+and the selected target Skill contract still control generation.
 
 ## Character references
 

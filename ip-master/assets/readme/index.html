@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="IP Master 图文案例与提示词使用说明">
+  <title>IP Master · 图文案例使用说明</title>
+  <style>
+    :root { color-scheme: dark; --bg:#101214; --surface:#171a1e; --surface-2:#1d2228; --text:#f2f4f6; --muted:#a8afb8; --line:#2b3138; --accent:#90d76b; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--bg); color:var(--text); font:15px/1.55 Inter, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    a { color:inherit; }
+    .topbar { position:sticky; top:0; z-index:10; display:flex; align-items:center; gap:22px; min-height:58px; padding:0 max(20px, calc((100vw - 1180px)/2)); background:rgba(16,18,20,.96); border-bottom:1px solid var(--line); }
+    .brand { font-weight:800; letter-spacing:.02em; text-decoration:none; white-space:nowrap; }
+    nav { display:flex; gap:16px; overflow-x:auto; } nav a { color:var(--muted); font-size:13px; text-decoration:none; white-space:nowrap; } nav a:hover { color:var(--accent); }
+    main, footer { width:min(1180px, calc(100% - 40px)); margin:auto; }
+    .intro { display:flex; justify-content:space-between; align-items:end; gap:24px; padding:30px 0 24px; border-bottom:1px solid var(--line); }
+    h1 { margin:0; font-size:28px; letter-spacing:-.03em; } .intro p { max-width:650px; margin:7px 0 0; color:var(--muted); }
+    section { padding:34px 0; border-bottom:1px solid var(--line); scroll-margin-top:64px; }
+    h2 { margin:0 0 6px; font-size:21px; } .section-note { margin:0 0 20px; color:var(--muted); font-size:14px; }
+    .install { display:grid; grid-template-columns:1fr auto; gap:12px; align-items:center; padding:14px 16px; background:var(--surface); border:1px solid var(--line); }
+    code { color:#dff5d3; font:13px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; overflow-wrap:anywhere; }
+    button { min-height:34px; padding:7px 11px; border:1px solid #3d4852; background:var(--surface-2); color:var(--text); border-radius:4px; cursor:pointer; font:13px inherit; white-space:nowrap; } button:hover { border-color:var(--accent); color:var(--accent); }
+    .ip-grid, .role-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; }
+    .role-grid { grid-template-columns:repeat(4, 1fr); }
+    .ip-card, .role-card { background:var(--surface); border:1px solid var(--line); overflow:hidden; }
+    .ip-card img { display:block; width:100%; aspect-ratio:4/3; object-fit:contain; background:#242a30; }
+    .role-card img { display:block; width:100%; aspect-ratio:1/1; object-fit:contain; background:#242a30; padding:12px; }
+    .card-copy { padding:12px; } .card-copy h3 { margin:0 0 5px; font-size:16px; } .card-copy p { margin:0; color:var(--muted); font-size:13px; } .card-copy button { margin-top:10px; }
+    .case-grid { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:16px; }
+    .case { display:grid; grid-template-columns:minmax(150px, 43%) 1fr; min-height:214px; background:var(--surface); border:1px solid var(--line); overflow:hidden; }
+    .case img { display:block; width:100%; height:auto; min-height:214px; max-height:420px; object-fit:contain; background:#242a30; cursor:zoom-in; }
+    .case-body { display:flex; flex-direction:column; padding:15px; min-width:0; } .case h3 { margin:0 0 6px; font-size:16px; } .case p { margin:0 0 12px; color:var(--muted); font-size:13px; }
+    .prompt { margin-top:auto; padding-top:10px; border-top:1px solid var(--line); } .prompt code { display:block; font-size:12px; } .prompt button { margin-top:9px; }
+    .gallery-how { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-bottom:18px; }
+    .library-shot { display:grid; grid-template-columns:1.2fr .8fr; gap:12px; padding:12px; background:var(--surface); border:1px solid var(--line); }
+    .shot-pair { display:grid; grid-template-columns:1fr .62fr; gap:8px; } .library-shot img { display:block; width:100%; height:auto; object-fit:contain; background:#242a30; } .library-shot h3 { margin:0 0 7px; font-size:16px; } .library-shot p { margin:0; color:var(--muted); font-size:13px; }
+    .library-links { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+    .library-link { display:block; padding:16px; border:1px solid var(--accent); background:#172016; color:var(--text); text-decoration:none; transition:background .15s ease; }
+    .library-link:hover { background:#22301f; } .library-link strong { display:block; margin-bottom:5px; } .library-link span { color:#bfdcac; font-size:13px; }
+    .open { color:var(--accent); font-size:12px; } footer { padding:24px 0 38px; color:var(--muted); font-size:13px; }
+    @media (max-width:820px) { .ip-grid { grid-template-columns:1fr; } .role-grid { grid-template-columns:repeat(2,1fr); } .case-grid, .gallery-how, .library-links { grid-template-columns:1fr; } }
+    @media (max-width:560px) { .topbar { gap:15px; padding:0 16px; } main, footer { width:min(100% - 28px, 1180px); } .intro { padding-top:22px; } h1 { font-size:24px; } .case { grid-template-columns:1fr; } .case img { max-height:330px; min-height:0; } .library-shot { grid-template-columns:1fr; } .install { grid-template-columns:1fr; } }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .library-link { transition:none; } }
+  </style>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="#top">IP Master</a><nav aria-label="页面导航"><a href="#install">安装</a><a href="#ip">设计 IP</a><a href="#roles">内置角色</a><a href="#cases">图文案例</a><a href="#libraries">案例库</a></nav></header>
+  <main id="top">
+    <div class="intro"><div><h1>图文案例与提示词使用说明</h1><p>复制一句提示词即可开始；需要选构图、视觉方向或 Baoyu 参数时，直接打开下面的案例库。</p></div></div>
+    <section id="install"><h2>安装</h2><p class="section-note">把这句话连同仓库链接发给 Codex。</p><div class="install"><code>请安装这个 Skill：https://github.com/yang0/ip-master</code><button type="button" data-copy="请安装这个 Skill：https://github.com/yang0/ip-master">复制安装指令</button></div></section>
+    <section id="ip"><h2>设计新的 IP</h2><p class="section-note">上传照片、给账号或资料、或直接描述需求。下面是三种常用方向。</p><div class="ip-grid">
+      <article class="ip-card"><img src="https://raw.githubusercontent.com/yang0/character-ip/main/docs/assets/readme/ip-selected-19.png" alt="人物 IP 示例"><div class="card-copy"><h3>人物 IP</h3><p>根据照片、账号、资料或需求生成候选方向。</p><button type="button" data-copy="请根据我的照片 / 账号 / 需求，设计一个人物 IP。">复制提示词</button></div></article>
+      <article class="ip-card"><img src="https://raw.githubusercontent.com/yang0/mascot-ip/main/docs/assets/mascot-08-raincoat-frog.png" alt="吉祥物 IP 示例"><div class="card-copy"><h3>吉祥物 IP</h3><p>根据品牌、产品或想法设计原创非人类角色。</p><button type="button" data-copy="请根据我的品牌 / 账号 / 想法，设计一个吉祥物 IP。">复制提示词</button></div></article>
+      <article class="ip-card"><img src="https://raw.githubusercontent.com/DoraRabbitYan/personal-ip-image-pack/main/assets/style-library/assets/references/style-01/ref-01.jpg" alt="个人卡通 IP 示例"><div class="card-copy"><h3>个人卡通 IP</h3><p>使用已授权的真人照片建立个人卡通形象。</p></div></article>
+    </div></section>
+    <section id="roles"><h2>内置角色</h2><p class="section-note">不指定时默认使用牙仔；直接在提示词里替换角色名。</p><div class="role-grid">
+      <article class="role-card"><img src="../characters/yazai.webp" alt="牙仔"><div class="card-copy"><h3>牙仔</h3><p>默认角色</p></div></article>
+      <article class="role-card"><img src="../characters/rongbao.webp" alt="绒宝"><div class="card-copy"><h3>绒宝</h3><p>内置角色</p></div></article>
+      <article class="role-card"><img src="../characters/abao.webp" alt="阿龅"><div class="card-copy"><h3>阿龅</h3><p>内置角色</p></div></article>
+      <article class="role-card"><img src="../characters/xiaomei.webp" alt="小美"><div class="card-copy"><h3>小美</h3><p>内置角色</p></div></article>
+    </div></section>
+    <section id="cases"><h2>图文案例</h2><p class="section-note">每张图均对应 README 原有用法；复制后按自己的主题替换即可。</p><div class="case-grid">
+      <article class="case"><img src="../showcase/baoyu-comic.webp" alt="宝玉老师出品的漫画"><div class="case-body"><h3>宝玉知识漫画</h3><p>读取长文后，让角色生成知识图片。</p><div class="prompt"><code>读取一篇长文后，用牙仔生成知识图片。</code><button type="button" data-copy="读取一篇长文后，用牙仔生成知识图片。">复制提示词</button></div></div></article>
+      <article class="case"><img src="../../../comic/silver-short/01-cover-silver-energetic-manga-standard-color.png" alt="阿龅白银主题彩色知识漫画"><div class="case-body"><h3>彩色日漫知识漫画</h3><p>可指定风格、基调与布局。</p><div class="prompt"><code>读取文章 xxx，用阿龅制作知识漫画，风格：manga，基调：energetic，布局：standard。用彩色日漫四格表现“看空声音”与白银继续上行的反差。</code><button type="button" data-copy="读取文章 xxx，用阿龅制作知识漫画，风格：manga，基调：energetic，布局：standard。用彩色日漫四格表现“看空声音”与白银继续上行的反差。">复制提示词</button></div></div></article>
+      <article class="case"><img src="../generated/yazai-silver-market-framework.png" alt="牙仔白银市场反应框架插图"><div class="case-body"><h3>文章插图</h3><p>读取文章后，为重点内容生成一张配图。</p><div class="prompt"><code>读取文章进行配图，IP：牙仔，Skill：Baoyu 文章插图，类型：framework，出一张就行。</code><button type="button" data-copy="读取文章进行配图，IP：牙仔，Skill：Baoyu 文章插图，类型：framework，出一张就行。">复制提示词</button></div></div></article>
+      <article class="case"><img src="../generated/ai-agent-corporate-memphis-fishbone.png" alt="牙仔 AI Agent 原理信息图"><div class="case-body"><h3>信息图</h3><p>适合数据、流程与复杂概念。</p><div class="prompt"><code>用牙仔制作一张信息图，风格：corporate-memphis，布局：fishbone，主题：讲解 AI Agent 原理。</code><button type="button" data-copy="用牙仔制作一张信息图，风格：corporate-memphis，布局：fishbone，主题：讲解 AI Agent 原理。">复制提示词</button></div></div></article>
+      <article class="case"><img src="../generated/abao-margin-deleveraging-cover.png" alt="阿龅融资余额降至低位文章封面"><div class="case-body"><h3>文章封面</h3><p>可指定类型、配色和绘制媒介。</p><div class="prompt"><code>读取文章后，用阿龅制作一张文章封面，类型：概念，配色：马卡龙，绘制媒介：手绘，图片文字：丰富，气质：平衡，字体感觉：手写。</code><button type="button" data-copy="读取文章后，用阿龅制作一张文章封面，类型：概念，配色：马卡龙，绘制媒介：手绘，图片文字：丰富，气质：平衡，字体感觉：手写。">复制提示词</button></div></div></article>
+      <article class="case"><img src="../generated/yazai-todays-outfit-cute-balanced.png" alt="牙仔今日穿搭小红书封面"><div class="case-body"><h3>小红书封面</h3><p>适合竖版主题封面与内容卡片。</p><div class="prompt"><code>用牙仔做一张小红书封面，风格：cute，布局：balanced，主题：今日穿搭。</code><button type="button" data-copy="用牙仔做一张小红书封面，风格：cute，布局：balanced，主题：今日穿搭。">复制提示词</button></div></div></article>
+      <article class="case"><img src="../../../slide-deck/hangzhou-attractions/01-slide-hangzhou-attractions.png" alt="牙仔杭州景点演示 PPT"><div class="case-body"><h3>PPT 演示页</h3><p>可读取文章并生成多页演示文稿。</p><div class="prompt"><code>用牙仔做 PPT，主题：杭州景点，风格：chalkboard。</code><button type="button" data-copy="用牙仔做 PPT，主题：杭州景点，风格：chalkboard。">复制提示词</button></div></div></article>
+      <article class="case"><img src="../generated/yazai-ai-era-blue-collar-paper-cut-4x3.png" alt="牙仔机器人出海正面对视封面"><div class="case-body"><h3>GBRO 文章封面</h3><p>3:4 提示词封面，适合强视觉标题。</p><div class="prompt"><code>随机读取一篇文章，用牙仔和 gbro Skill 做一张文章封面，比例：4:3，使用内置正面对视风。</code><button type="button" data-copy="随机读取一篇文章，用牙仔和 gbro Skill 做一张文章封面，比例：4:3，使用内置正面对视风。">复制提示词</button></div></div></article>
+      <article class="case"><img src="../showcase/xiaohei-article-illustration.webp" alt="伊恩老师的小黑配图"><div class="case-body"><h3>小黑文章配图</h3><p>按文章内容规划叙事镜头。</p><div class="prompt"><code>让 Codex 读取文章后，用绒宝和 xiaohei Skill 为文章配图。</code><button type="button" data-copy="让 Codex 读取文章后，用绒宝和 xiaohei Skill 为文章配图。">复制提示词</button></div></div></article>
+      <article class="case"><img src="../showcase/xiaohei-real-object-milk-tea.png" alt="小黑与真实奶茶互动"><div class="case-body"><h3>小黑真实物品场景</h3><p>角色与真实物件互动的留白场景图。</p><div class="prompt"><code>使用 IP：牙仔，Skill：小黑真实物品 Skill，做一张 16:9、主题为奶茶的海报。</code><button type="button" data-copy="使用 IP：牙仔，Skill：小黑真实物品 Skill，做一张 16:9、主题为奶茶的海报。">复制提示词</button></div></div></article>
+      <article class="case"><img src="../showcase/dongfang-high-density-3d-yazai.webp" alt="高密度图"><div class="case-body"><h3>高密度科技封面</h3><p>可指定尺寸、主题和参考风格。</p><div class="prompt"><code>用牙仔做一张 16:9 的高密度 3D 风格科技封面，主题是“最好的 IP 设计工具”。</code><button type="button" data-copy="用牙仔做一张 16:9 的高密度 3D 风格科技封面，主题是“最好的 IP 设计工具”。">复制提示词</button></div></div></article>
+      <article class="case"><img src="../showcase/guizang-social-card.webp" alt="归藏老师的社媒卡"><div class="case-body"><h3>社媒卡</h3><p>适合小红书图文与公众号封面对。</p><div class="prompt"><code>读取 xxx 文档（或直接写需求），用牙仔制作一张社媒卡，使用 guizang Skill，风格：瑞士国际主义风。</code><button type="button" data-copy="读取 xxx 文档（或直接写需求），用牙仔制作一张社媒卡，使用 guizang Skill，风格：瑞士国际主义风。">复制提示词</button></div></div></article>
+    </div></section>
+    <section id="libraries"><h2>案例库用法</h2><p class="section-note">返图后改构图，或在设计前选择视觉方向时使用。案例只在明确选择编号后参与设计。</p><div class="gallery-how">
+      <article class="library-shot"><div class="shot-pair"><img src="../showcase/layout-library-first-viewport.png" alt="排版库首屏视口截图"><img src="../showcase/layout-08-front-back-case.png" alt="牙仔前后构图海报案例"></div><div><h3>竖版海报排版库</h3><p>输入“显示排版库”浏览；成图后说“用 08 重新排版”。</p><div class="prompt"><code>用牙仔做一张 3:4 海报，主题是“今晚吃什么？”，用 08 前后构图的方法。</code><button type="button" data-copy="用牙仔做一张 3:4 海报，主题是“今晚吃什么？”，用 08 前后构图的方法。">复制提示词</button></div></div></article>
+      <article class="library-shot"><div class="shot-pair"><img src="../showcase/gpt-image-2-case-library-first-viewport.png" alt="GPT-Image 2 案例库首屏视口截图"><img src="../generated/dongfang-posters/yazai-hangzhou-street-case-495.png" alt="牙仔杭州街头案例 495 海报"></div><div><h3>GPT-Image 2 案例库</h3><p>筛选或搜索案例，点击查看提示词，再复制案例编号。</p><div class="prompt"><code>制作海报，IP：牙仔，案例 495，主题：杭州街头。</code><button type="button" data-copy="制作海报，IP：牙仔，案例 495，主题：杭州街头。">复制提示词</button></div></div></article>
+    </div><div class="library-links">
+      <a class="library-link" href="../layout-library/index.html" target="_blank" rel="noopener"><strong>打开竖版海报排版库 <span class="open">↗ 新标签</span></strong><span>100 个构图编号，适合返图重排。</span></a>
+      <a class="library-link" href="../gpt-image-2-case-library/index.html" target="_blank" rel="noopener"><strong>打开 GPT-Image 2 案例库 <span class="open">↗ 新标签</span></strong><span>浏览、筛选案例并复制编号。</span></a>
+      <a class="library-link" href="../baoyu-skill-library/index.html" target="_blank" rel="noopener"><strong>打开 Baoyu 视觉 Skill 图册 <span class="open">↗ 新标签</span></strong><span>查看六类视觉 Skill 的示例与参数。</span></a>
+    </div></section>
+  </main>
+  <footer>IP Master · 图文案例使用说明 · <a href="../../../LICENSE">MIT License</a></footer>
+  <script>
+    document.querySelectorAll('[data-copy]').forEach((button) => {
+      button.addEventListener('click', async () => {
+        const previous = button.textContent;
+        try { await navigator.clipboard.writeText(button.dataset.copy); button.textContent = '已复制'; }
+        catch { button.textContent = '请手动复制'; }
+        setTimeout(() => { button.textContent = previous; }, 1200);
+      });
+    });
+  </script>
+</body>
+</html>

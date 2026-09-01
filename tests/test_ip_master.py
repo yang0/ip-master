@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 import shutil
 import sys
 from pathlib import Path
@@ -47,6 +48,65 @@ def test_advise_never_injects_or_requests_installation() -> None:
     assert result["inject_character_references"] is False
     assert result["installation_requested"] is False
     assert result["route_mode"] == "advice"
+
+
+def test_help_request_returns_local_guide_without_routing_or_injection() -> None:
+    for request in ("我是第一次用，怎么用 IP Master？", "帮助"):
+        result = capability_router.route(request, operation="create")
+        assert result["status"] == "guide"
+        assert result["route_mode"] == "guide"
+        assert result["guide_page"]["relative_path"] == "assets/readme/index.html"
+        assert result["guide_page"]["display_surface"] == "browser"
+        assert result["guide_page"]["browser_url"].startswith("file:///")
+        assert Path(result["guide_page"]["path"]).is_file()
+        assert result["selected_skill_id"] is None
+        assert result["character_inputs"] == []
+        assert result["referenced_image_paths"] == []
+
+
+def test_guide_html_shows_readme_cases_and_links_local_libraries() -> None:
+    guide = SKILL_ROOT / "assets" / "readme" / "index.html"
+    html = guide.read_text(encoding="utf-8")
+    assert "navigator.clipboard.writeText" in html
+    assert "@media (max-width:820px)" in html
+    assert "object-fit:cover" not in html
+    assert html.count("object-fit:contain") >= 2
+    assert html.count('data-copy="') >= 17
+    image_sources = re.findall(r'<img[^>]+src="([^"]+)"', html)
+    assert len(image_sources) == 23
+    for source in image_sources:
+        if source.startswith("https://"):
+            assert source.startswith("https://raw.githubusercontent.com/")
+        else:
+            assert (guide.parent / source).resolve().is_file()
+
+    for source in (
+        "../showcase/baoyu-comic.webp",
+        "../../../comic/silver-short/01-cover-silver-energetic-manga-standard-color.png",
+        "../generated/yazai-silver-market-framework.png",
+        "../generated/ai-agent-corporate-memphis-fishbone.png",
+        "../showcase/layout-08-front-back-case.png",
+        "../generated/dongfang-posters/yazai-hangzhou-street-case-495.png",
+    ):
+        assert source in image_sources
+
+    links = re.findall(r'href="([^"]+)"', html)
+    for href in (
+        "../layout-library/index.html",
+        "../gpt-image-2-case-library/index.html",
+        "../baoyu-skill-library/index.html",
+    ):
+        assert href in links
+        assert (guide.parent / href).resolve().is_file()
+        assert re.search(
+            rf'href="{re.escape(href)}" target="_blank" rel="noopener"', html
+        )
+
+    readme = (PROJECT_ROOT / "README.md").read_text(encoding="utf-8")
+    skill = (SKILL_ROOT / "SKILL.md").read_text(encoding="utf-8")
+    routing = (SKILL_ROOT / "references" / "capability-routing.md").read_text(encoding="utf-8")
+    for document in (readme, skill, routing):
+        assert "assets/readme/index.html" in document
 
 
 def test_multiple_article_candidates_require_selection_without_native_fallback() -> None:

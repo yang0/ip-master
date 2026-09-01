@@ -19,6 +19,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 SKILL_DIR = SCRIPT_DIR.parent
 REGISTRY_PATH = SKILL_DIR / "references" / "skill-registry.json"
 PERSONAL_IP_SKILL_ID = "personal-ip-image-pack"
+GUIDE_RELATIVE_PATH = "assets/readme/index.html"
 
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
@@ -85,6 +86,18 @@ CATEGORY_SIGNALS: tuple[tuple[str, tuple[str, ...]], ...] = (
 )
 
 ADVICE_SIGNALS = ("建议", "推荐", "哪个skill", "哪个 skill", "能生成什么", "有哪些能力", "不要生图")
+GUIDE_SIGNALS = (
+    "第一次用",
+    "首次使用",
+    "怎么用",
+    "如何使用",
+    "帮助",
+    "不会用",
+    "使用疑问",
+    "使用帮助",
+    "ip master 帮助",
+    "ipmaster 帮助",
+)
 PERSONAL_SIGNALS = {
     "真人照片 ip",
     "真人照片ip",
@@ -339,8 +352,34 @@ def _empty_result(request: str, operation: str, category: str | None, *, reason:
         "generation_ready": False,
         "layout_library": None,
         "case_library": None,
+        "guide_page": None,
         "reason": reason,
     }
+
+
+def _guide_result(request: str, operation: str, skill_dir: Path) -> dict[str, Any]:
+    """Return a display-only local-guide result without selecting a Skill."""
+
+    result = _empty_result(
+        request,
+        operation,
+        None,
+        reason="Open the local IP Master guide, then continue with the user's request when one is present.",
+    )
+    result.update(
+        {
+            "status": "guide",
+            "route_mode": "guide",
+            "guide_page": {
+                "path": str((skill_dir / GUIDE_RELATIVE_PATH).resolve()),
+                "relative_path": GUIDE_RELATIVE_PATH,
+                "browser_url": (skill_dir / GUIDE_RELATIVE_PATH).resolve().as_uri(),
+                "display_surface": "browser",
+                "display_rule": "Navigate to browser_url in a rendered browser tab; do not open path in a code or file panel. Do not select a Skill, inject references, install dependencies, or generate an image.",
+            },
+        }
+    )
+    return result
 
 
 def route(
@@ -361,6 +400,9 @@ def route(
     if operation not in {"advise", "prompt", "create"}:
         raise ValueError("operation must be advise, prompt, or create")
     skill_dir = skill_dir.expanduser().resolve(strict=False)
+    normalized_request = _normalize(request)
+    if any(_contains(normalized_request, signal) for signal in GUIDE_SIGNALS):
+        return _guide_result(request, operation, skill_dir)
     registry = load_dependency_registry(skill_dir / "references" / "skill-registry.json")
     dependencies: list[dict[str, Any]] = registry["dependencies"]
     category = detect_category(request)
