@@ -16,6 +16,7 @@ sys.path.insert(0, str(SCRIPTS))
 import capability_router  # noqa: E402
 import dependency_manager  # noqa: E402
 import layout_library  # noqa: E402
+import gpt_image_2_case_library  # noqa: E402
 from character_router import (  # noqa: E402
     CharacterRegistryError,
     inspect_registry,
@@ -164,6 +165,43 @@ def test_layout_delivery_note_only_applies_to_final_portrait_raster(tmp_path: Pa
     assert layout_library.portrait_delivery_note(
         portrait, skill_dir=SKILL_ROOT, prompt_only=True
     )["reason"] == "prompt-only output"
+
+
+def test_gpt_image_2_case_library_is_source_linked_and_text_only() -> None:
+    report = gpt_image_2_case_library.validate_library(skill_dir=SKILL_ROOT)
+    assert report["valid"] is True
+    assert report["count"] == 541
+    assert report["category_count"] == 13
+    assert report["missing_case_numbers"] == [12, 169, 170]
+
+    selected = gpt_image_2_case_library.parse_case_selection("用案例 539 设计", skill_dir=SKILL_ROOT)
+    assert selected is not None
+    assert selected["id"] == "case-539"
+    assert selected["prompt"]
+    assert selected["image_url"].startswith("https://raw.githubusercontent.com/freestylefly/")
+    assert "不能作为模型输入" in selected["visual_isolation_constraint"]
+    with pytest.raises(ValueError, match="unknown case number"):
+        gpt_image_2_case_library.parse_case_selection("案例 12", skill_dir=SKILL_ROOT)
+
+
+def test_case_selection_routes_to_prompt_or_existing_target_without_image_input() -> None:
+    prompt = capability_router.route("用案例 539 设计一张 AI 海报", operation="prompt")
+    assert prompt["target_skill_id"] == "gpt-image-2-style-library"
+    assert prompt["case_library"]["mode"] == "prompt-only"
+    assert prompt["reference_inputs"][-1]["role"] == "example_case_method"
+    assert "image_url" not in prompt["reference_inputs"][-1]
+
+    enhanced = capability_router.route(
+        "用牙仔和 dongfang 做一张竖版海报，案例 539", operation="create"
+    )
+    assert enhanced["target_skill_id"] == "dongfang-cover-design"
+    assert enhanced["case_library"]["mode"] == "style-enhancement"
+    assert enhanced["reference_inputs"][-1]["case_id"] == "case-539"
+    assert all("case539" not in Path(path).name for path in enhanced["referenced_image_paths"])
+
+    first_pass = capability_router.route("用 dongfang 做一张竖版海报", operation="create")
+    assert first_pass["case_library"] is None
+    assert all(item["role"] != "example_case_method" for item in first_pass["reference_inputs"])
 
 
 def test_personal_photo_boundary_and_animal_exclusion() -> None:

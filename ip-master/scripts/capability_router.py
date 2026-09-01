@@ -30,6 +30,7 @@ from dependency_utils import (  # noqa: E402
     load_dependency_registry,
 )
 from layout_library import parse_layout_selection  # noqa: E402
+from gpt_image_2_case_library import parse_case_selection  # noqa: E402
 
 
 # The order is meaningful: personal-photo signals must win over generic
@@ -337,6 +338,7 @@ def _empty_result(request: str, operation: str, category: str | None, *, reason:
         "install_command": None,
         "generation_ready": False,
         "layout_library": None,
+        "case_library": None,
         "reason": reason,
     }
 
@@ -363,6 +365,14 @@ def route(
     dependencies: list[dict[str, Any]] = registry["dependencies"]
     category = detect_category(request)
     explicit = _explicit_dependency(request, dependencies, category=category)
+    case_selection = parse_case_selection(request, skill_dir=skill_dir)
+
+    # A case number on its own requests the installed prompt-enhancement
+    # workflow. When a concrete design Skill is named, the case remains an
+    # explicit enhancement layer for that target instead.
+    if case_selection is not None and explicit is None:
+        category = "prompt-enhancement"
+        explicit = "gpt-image-2-style-library"
 
     if category is None and explicit is None:
         return _empty_result(
@@ -463,6 +473,21 @@ def route(
                     "visual_isolation_constraint": layout_selection["visual_isolation_constraint"],
                 }
             )
+    if selected is not None and not advice and case_selection is not None:
+        reference_inputs.append(
+            {
+                "role": "example_case_method",
+                "case_id": case_selection["id"],
+                "case_number": case_selection["number"],
+                "display_name": f"案例 {case_selection['number']}",
+                "input_order": len(reference_inputs) + 1,
+                "prompt_label": case_selection["prompt_label"],
+                "category": case_selection["category"],
+                "source_url": case_selection["source_url"],
+                "generation_instruction": case_selection["generation_instruction"],
+                "visual_isolation_constraint": case_selection["visual_isolation_constraint"],
+            }
+        )
     layout_library = None
     if selected is not None and category == "cover-poster":
         gallery_path = skill_dir / "assets" / "layout-library" / "index.html"
@@ -471,6 +496,14 @@ def route(
             "selection": layout_selection,
             "post_generation_delivery": selected.get("output_mode") != "prompt-only",
             "delivery_rule": "Append the layout-library note only after a final raster image is confirmed portrait; never attach it to prompt-only output.",
+        }
+    case_library = None
+    if case_selection is not None:
+        case_library = {
+            "gallery_path": case_selection["gallery_path"],
+            "selection": case_selection,
+            "mode": "prompt-only" if selected and selected["skill_id"] == "gpt-image-2-style-library" else "style-enhancement",
+            "delivery_rule": "Treat the selected case as text-only visual direction; never add its remote image URL to model reference inputs.",
         }
     install_confirmation = bool(selected and selected["status"] != "installed")
     return {
@@ -499,6 +532,7 @@ def route(
         "install_command": selected["install"]["command"] if selected else None,
         "generation_ready": bool(selected and not install_confirmation),
         "layout_library": layout_library,
+        "case_library": case_library,
         "reason": (
             "IP Master routes and injects only; the selected external Skill owns generation."
             if selected

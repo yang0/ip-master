@@ -1,6 +1,6 @@
 ---
 name: ip-master
-description: "Manage registered IP characters and route design requests to optional external Skills; provide advice without installation or injection, and inject selected original references only after a concrete target is chosen."
+description: "Manage registered IP characters and route design requests to suitable available Skills; when several Skills fit, ask the user to choose and remember that choice for the current conversation."
 ---
 
 # IP Master
@@ -11,17 +11,60 @@ native article-illustration fallback.
 
 ## Operating modes
 
-- For advice or capability questions, read the registries and return suitable
+- For advice or capability questions, inspect the registered dependencies and
+  the Skills available in the current environment, then return suitable
   candidates. Do not install a dependency, inject a character reference, or
   generate an image.
-- For `create` or `prompt`, resolve the requested capability first. If more
-  than one external Skill is a plausible target, return `selection-required`
-  and ask the user to choose; do not silently rank one as the winner.
+- For `create` or `prompt`, resolve the requested capability first. Apply the
+  selection protocol below when more than one Skill is a plausible target; do
+  not silently rank one as the winner.
 - After a concrete target is selected, pass the target Skill's own contract
   together with the selected character originals. If the target dependency is
   missing or invalid, show its source and exact installation command and ask
   for confirmation before any installation. IP Master itself never installs
   or copies upstream files.
+
+## Multi-Skill selection protocol
+
+Before starting a design request, discover candidates from both the IP Master
+registry and the current environment's available Skills. A Skill does not need
+to be registered in `skill-registry.json` to be presented as a candidate when
+its own scope clearly satisfies the user's request.
+
+1. If the user explicitly names a compatible Skill, use it. This explicit
+   choice replaces any earlier default for the same capability in this
+   conversation.
+2. If exactly one compatible Skill exists, use it.
+3. If two or more compatible Skills exist and the user has not previously
+   chosen one for this capability in the current conversation, list every
+   candidate by **Skill name** with one concise sentence explaining its
+   relevant difference, then ask: `想用哪个 Skill 来设计？`
+4. After the user selects a Skill, remember it as the default for that
+   capability for the rest of the current conversation. For later compatible
+   requests, use this default without asking again.
+5. Do not reuse a default when the new request is outside that Skill's scope,
+   when it belongs to a different capability, or when the user asks to choose
+   again. Re-run candidate discovery in those cases.
+
+This is conversation-local working state only. Do not write it to a file,
+registry, preference store, or cross-conversation memory.
+
+### Person IP candidates
+
+For a request to design a human, creator, or account-based person IP, evaluate
+at least these two available Skill paths when they are present:
+
+- `character-ip` — turns an account, topic, source materials, reference photo,
+  or persona into a first-pass 5×5 board of 25 human-character candidates.
+- `personal-ip-image-pack` — turns authorised personal photos into a
+  higher-fidelity personal prototype, then supports confirmed-avatar,
+  expression, action, and sticker assets.
+
+When both fit, present both names and their distinction before doing any
+design. An account link alone does not establish the photo authorisation
+required by `personal-ip-image-pack`; keep that limitation explicit. Animal,
+mascot, object, and fictional-character requests are incompatible with both
+of these person-IP paths and must be discovered or routed separately.
 
 ## Portrait-poster layout library
 
@@ -47,6 +90,28 @@ a numbered layout for a re-layout.
 - To check whether the source collection changed, use
   `scripts/layout_library.py --check`; use `--sync` only when an updated
   snapshot is wanted. Never synchronize during ordinary image generation.
+
+## GPT-Image 2 案例参考库
+
+`assets/gpt-image-2-case-library/index.html` is a source-linked case gallery.
+It is opt-in: never select an example case automatically. Users can browse the
+gallery and say `用案例 539 设计`, or add a case number to a concrete design
+request such as `用牙仔和 dongfang 做海报，案例 539`.
+
+- Resolve an explicit selection with `scripts/gpt_image_2_case_library.py
+  --select`. The selection is a text-only visual-direction layer: do not pass
+  its remote image URL to an image model and do not copy its people, brands,
+  protected material, wording, coordinates, or concrete scene.
+- With a case number but no target design Skill, route to
+  `gpt-image-2-style-library` and produce a copyable GPT-Image-2 prompt. With
+  a concrete design Skill, retain that target and append the selection after
+  character and composition inputs as an enhancement layer.
+- User theme, character identity, required copy, dimensions, and the target
+  Skill's own contract always override the example case. A case is not a
+  default style or a model reference image.
+- The gallery stores metadata only and loads images from the upstream source.
+  Run `scripts/gpt_image_2_case_library.py --check` to detect an update and
+  `--sync` only when an updated index is explicitly wanted.
 
 ## Character references
 
