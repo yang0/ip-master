@@ -194,6 +194,38 @@
       "style_summary": "500+ 案例模板，用作显式提示词增强层",
       "requires_gpt_image_2": true,
       "license": "MIT"
+    },
+    {
+      "skill_id": "vibeshot-candid-photography",
+      "repo": "vibeshotclub/vsc-skills",
+      "path": "vibeshot-candid-photography",
+      "ref": "3c33b43e770e4ecd0084fe4adfbd7a637494fa02",
+      "install_name": "vibeshot-candid-photography",
+      "optional": true,
+      "purpose": "candid-portrait-prompt",
+      "categories": ["portrait", "image-generation"],
+      "capabilities": ["candid-portrait-prompt", "batch-prompt-generation"],
+      "skill_type": "design-skill",
+      "ip_injection": "supported",
+      "style_count": 1,
+      "style_summary": "真实生活感、偶然抓拍感和非常规机位的人像摄影提示词",
+      "required_paths": ["SKILL.md", "README.md"]
+    },
+    {
+      "skill_id": "virtual-couple-travel-vlog",
+      "repo": "vibeshotclub/vsc-skills",
+      "path": "virtual-couple-travel-vlog",
+      "ref": "3c33b43e770e4ecd0084fe4adfbd7a637494fa02",
+      "install_name": "virtual-couple-travel-vlog",
+      "optional": true,
+      "purpose": "couple-travel-vlog",
+      "categories": ["image-generation", "video-workflow"],
+      "capabilities": ["travel-photo-wall", "character-cards", "video-prompts", "vlog-pipeline"],
+      "skill_type": "design-skill",
+      "ip_injection": "supported",
+      "style_count": 1,
+      "style_summary": "4x4 旅行照片墙、角色卡、四段视频提示词和 Vlog 拼接工作流",
+      "required_paths": ["SKILL.md", "README.md", "scripts"]
     }
   ]
 }

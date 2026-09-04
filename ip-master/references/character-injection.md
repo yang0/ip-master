@@ -1,6 +1,8 @@
 # 角色注入协议
 
-1. 用 `character_router.py` 按中文名和不区分大小写的英文别名解析角色。
+1. 用 `character_router.py` 按中文名和不区分大小写的英文别名解析角色。传入
+   `--project-dir` 时，同时检索该项目角色库；内置角色仍保持全局可用，项目角色
+   只从项目目录解析素材和身份协议。
 2. 无角色名称但已明确外部目标并进入 `create` / `prompt` 时，使用注册表
    的默认角色牙仔；`advise` 永远不注入默认角色。
 3. 每个选中角色只读取自己的原始参考图和身份协议。原图按注册表顺序
@@ -15,4 +17,6 @@
 7. IP Master 不生图、不复制上游素材，也不在路由阶段安装依赖。
 
 `character_router.py --json "用绒宝和牙仔做知识漫画"` 可检查解析顺序；
+`character_router.py --project-dir "E:\projects\品牌IP" --json "用项目角色做知识漫画"`
+可检查项目角色；
 路由器在目标尚未确定时返回空的 `referenced_image_paths`，避免提前注入。

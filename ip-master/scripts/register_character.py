@@ -29,7 +29,8 @@ CJK_PATTERN = re.compile(r"[\u3400-\u9fff]")
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
-from character_router import _image_read_error, _png_read_error  # noqa: E402
+from character_router import _image_read_error, _png_read_error, _read_registry, _registry_path  # noqa: E402
+from ip_project import IPProjectError, load_project, rebuild_gallery  # noqa: E402
 
 
 class CharacterRegistrationError(ValueError):
@@ -69,16 +70,12 @@ def _normalise_aliases(character_id: str, display_name: str, aliases: Iterable[s
 def _validate_metadata(character_id: str, display_name: str, aliases: list[str]) -> None:
     if not ID_PATTERN.fullmatch(character_id):
         raise CharacterRegistrationError("id must use lowercase letters, digits, and hyphens")
-    if not display_name.strip() or not CJK_PATTERN.search(display_name):
-        raise CharacterRegistrationError("display_name must contain a Chinese name")
-    if len(aliases) < 2:
-        raise CharacterRegistrationError("aliases must include at least Chinese and English aliases")
+    if not display_name.strip():
+        raise CharacterRegistrationError("display_name must not be empty")
+    if not aliases:
+        raise CharacterRegistrationError("aliases must include at least one searchable name")
     if len({alias.casefold() for alias in aliases}) != len(aliases):
         raise CharacterRegistrationError("aliases must be unique")
-    if not any(not alias.isascii() for alias in aliases):
-        raise CharacterRegistrationError("aliases must include a Chinese alias")
-    if not any(alias.isascii() for alias in aliases):
-        raise CharacterRegistrationError("aliases must include an English alias")
 
 
 def _validate_prototype(path: Path) -> None:
@@ -218,7 +215,11 @@ def register_character(
     aliases: Iterable[str],
     prototype: Path,
     *,
-    skill_dir: Path = SKILL_DIR,
+    project_dir: Path | None = None,
+    skill_dir: Path | None = None,
+    age: int | None = None,
+    height_cm: int | None = None,
+    weight_kg: float | None = None,
     identity_text: str | None = None,
     identity_file: Path | None = None,
     confirm: bool = False,
@@ -230,6 +231,10 @@ def register_character(
         raise CharacterRegistrationError(
             "registration requires explicit confirmation; pass --confirm only after the user approves the prototype"
         )
+    if age is None or height_cm is None or weight_kg is None:
+        raise CharacterRegistrationError("age, height_cm, and weight_kg are required for a human IP")
+    if age <= 0 or height_cm <= 0 or weight_kg <= 0:
+        raise CharacterRegistrationError("age, height_cm, and weight_kg must be positive")
     character_id = character_id.strip()
     display_name = display_name.strip()
     supplied_aliases = [alias.strip() for alias in aliases if isinstance(alias, str) and alias.strip()]
@@ -239,9 +244,17 @@ def register_character(
     _validate_prototype(prototype)
     prototype_bytes = _prototype_webp_bytes(prototype)
 
-    skill_dir = skill_dir.expanduser().resolve(strict=False)
-    registry_path = skill_dir / "references" / "character-registry.json"
-    registry = _read_registry(registry_path)
+    if project_dir is None:
+        raise CharacterRegistrationError(
+            "project directory is required; initialize one first with scripts/ip_project.py --init --project-dir <path>"
+        )
+    try:
+        project = load_project(project_dir)
+    except IPProjectError as exc:
+        raise CharacterRegistrationError(str(exc)) from exc
+    project_paths = project["paths"]
+    registry_path = project_paths["registry"]
+    registry = project["registry"]
     characters = registry["characters"]
     same_id_index, conflicts = _conflicts(
         characters,
@@ -249,8 +262,16 @@ def register_character(
         aliases=normalised_aliases,
         update=update,
     )
-    asset_path = skill_dir / "assets" / "characters" / f"{character_id}.webp"
-    identity_path = skill_dir / "references" / f"{character_id}-identity.md"
+    builtins = _read_registry(_registry_path(SKILL_DIR))["characters"]
+    _, builtin_conflicts = _conflicts(
+        builtins,
+        character_id=character_id,
+        aliases=normalised_aliases,
+        update=False,
+    )
+    conflicts.extend(f"built-in character conflict: {message}" for message in builtin_conflicts)
+    asset_path = project_paths["assets"] / f"{character_id}.webp"
+    identity_path = project_paths["identities"] / f"{character_id}.md"
     if not update or same_id_index is None:
         for path, label in ((asset_path, "asset"), (identity_path, "identity protocol")):
             if path.exists():
@@ -258,8 +279,8 @@ def register_character(
     if conflicts:
         raise CharacterRegistrationError("; ".join(dict.fromkeys(conflicts)))
 
-    asset_relative = f"assets/characters/{character_id}.webp"
-    identity_relative = f"references/{character_id}-identity.md"
+    asset_relative = f"characters/assets/{character_id}.webp"
+    identity_relative = f"characters/identities/{character_id}.md"
     identity_content = _identity_protocol(
         display_name=display_name,
         asset_relative_path=asset_relative,
@@ -272,6 +293,11 @@ def register_character(
         "aliases": normalised_aliases,
         "asset": asset_relative,
         "identity_reference": identity_relative,
+        "profile": {
+            "age": age,
+            "height_cm": height_cm,
+            "weight_kg": weight_kg,
+        },
     }
 
     old_registry = registry_path.read_bytes()
@@ -287,6 +313,7 @@ def register_character(
         _atomic_write(asset_path, prototype_bytes)
         _atomic_write(identity_path, identity_content.encode("utf-8"))
         _write_registry(registry_path, registry)
+        rebuild_gallery(project_paths["root"])
     except Exception:
         _atomic_write(registry_path, old_registry)
         if old_asset is None:
@@ -305,6 +332,9 @@ def register_character(
         "character": character_record,
         "asset_path": str(asset_path),
         "identity_reference_path": str(identity_path),
+        "gallery_path": str(project_paths["gallery"]),
+        "gallery_url": project_paths["gallery"].as_uri(),
+        "open_gallery": True,
         "confirmed": True,
     }
 
@@ -329,7 +359,10 @@ def main(argv: list[str] | None = None) -> int:
     )
     parser.add_argument("--identity-file", type=Path, help="approved identity protocol Markdown")
     parser.add_argument("--identity-text", help="identity protocol Markdown text")
-    parser.add_argument("--skill-dir", type=Path, default=SKILL_DIR, help="installed IP Master Skill root")
+    parser.add_argument("--project-dir", type=Path, required=True, help="initialized IP project directory")
+    parser.add_argument("--age", type=int, required=True, help="character age in years")
+    parser.add_argument("--height-cm", type=int, required=True, help="character height in centimeters")
+    parser.add_argument("--weight-kg", type=float, required=True, help="character weight in kilograms")
     parser.add_argument(
         "--confirm",
         action="store_true",
@@ -348,7 +381,10 @@ def main(argv: list[str] | None = None) -> int:
             args.display_name,
             args.aliases,
             args.prototype,
-            skill_dir=args.skill_dir,
+            project_dir=args.project_dir,
+            age=args.age,
+            height_cm=args.height_cm,
+            weight_kg=args.weight_kg,
             identity_text=args.identity_text,
             identity_file=args.identity_file,
             confirm=args.confirm,

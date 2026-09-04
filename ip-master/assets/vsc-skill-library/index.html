@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>VSC 视觉设计 Skill</title>
+  <style>
+    :root{color-scheme:dark;--bg:#111315;--panel:#1a1d20;--line:#30353a;--text:#f2f4f5;--muted:#a7afb6;--accent:#d9b77d}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.7 system-ui,-apple-system,"Microsoft YaHei",sans-serif}
+    a{color:inherit}.wrap{max-width:1120px;margin:auto;padding:0 24px}.topbar{height:64px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}.brand{font-weight:700;text-decoration:none}.back{color:var(--muted);text-decoration:none}.intro{padding:34px 0 22px}.intro h1{font-size:28px;line-height:1.25;margin:0 0 8px}.intro p{margin:0;color:var(--muted);max-width:720px}.notice{border:1px solid #4e432f;background:#211d16;color:#d9c7a8;border-radius:10px;padding:12px 15px;margin:0 0 24px}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}.card img{display:block;width:100%;height:360px;object-fit:contain;background:#0c0e0f}.body{padding:20px}.eyebrow{color:var(--accent);font-size:12px;letter-spacing:.06em;text-transform:uppercase}.card h2{font-size:21px;margin:5px 0 8px}.card p{margin:7px 0;color:var(--muted)}.meta{display:flex;flex-wrap:wrap;gap:7px;margin:13px 0}.tag{border:1px solid var(--line);border-radius:999px;padding:2px 9px;color:#d5dbe0;font-size:12px}.label{font-size:12px;color:var(--accent);margin-top:15px}.prompt{position:relative;margin-top:5px}.prompt pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#0d0f10;border:1px solid var(--line);border-radius:8px;padding:12px 44px 12px 12px;margin:0;color:#e6e9eb;font:13px/1.55 ui-monospace,SFMono-Regular,Consolas,monospace}.copy{position:absolute;right:8px;top:8px;border:1px solid var(--line);background:#252a2e;color:#fff;border-radius:6px;padding:4px 7px;cursor:pointer}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.button{display:inline-block;border:1px solid var(--line);border-radius:7px;padding:6px 10px;text-decoration:none;color:#e8ecef;font-size:13px}.button.primary{background:var(--accent);border-color:var(--accent);color:#181512;font-weight:700}.footer{padding:32px 0 45px;color:var(--muted);font-size:13px}.footer a{color:var(--accent)}
+    @media(max-width:760px){.wrap{padding:0 16px}.topbar{height:56px}.intro{padding:26px 0 18px}.intro h1{font-size:24px}.grid{grid-template-columns:1fr}.card img{height:auto;max-height:none;min-height:240px}.body{padding:16px}}
+  </style>
+</head>
+<body>
+  <header class="topbar wrap"><a class="brand" href="../readme/index.html">IP Master</a><a class="back" href="../readme/index.html">← 返回首页</a></header>
+  <main class="wrap">
+    <section class="intro"><h1>VSC 视觉设计 Skill</h1><p>两个可被 IP 注入的视觉设计 Skill：先指定牙仔、阿宝等角色，再让 Skill 负责摄影方向或旅行叙事。它们不是 IP 设计 Skill，不会替你创建角色。</p></section>
+    <div class="notice">页面中的 Demo 是能力示意。图片用于展示效果，实际调用时请明确写出 IP、主题、数量和输出方式；涉及视频的工作流会分阶段生成图片、角色卡、视频提示词和成片。</div>
+    <section class="grid">
+      <article class="card">
+        <img src="../showcase/vsc-candid-photography-demo.png" alt="真实抓拍人像 Demo">
+        <div class="body"><div class="eyebrow">Portrait design · IP injectable</div><h2>真实抓拍人像</h2><p>把 IP 注入真实生活摄影语境，重点控制场景、动作、焦段、机位、前景遮挡和自然光线，避免影楼摆拍与 AI 假人感。</p><div class="meta"><span class="tag">生活感</span><span class="tag">非常规机位</span><span class="tag">批量提示词</span></div><div class="label">最短用法</div><div class="prompt"><pre>使用 $vibeshot-candid-photography，用牙仔生成 3 组真实抓拍人像，场景：杭州街头，画幅：9:16，只给提示词。</pre><button class="copy" type="button" data-copy="使用 $vibeshot-candid-photography，用牙仔生成 3 组真实抓拍人像，场景：杭州街头，画幅：9:16，只给提示词。">复制</button></div><div class="actions"><a class="button primary" href="https://github.com/vibeshotclub/vsc-skills/tree/3c33b43e770e4ecd0084fe4adfbd7a637494fa02/vibeshot-candid-photography" target="_blank" rel="noopener">打开上游说明 ↗</a></div></div>
+      </article>
+      <article class="card">
+        <img src="../showcase/vsc-couple-travel-vlog-demo.png" alt="情侣旅行照片墙 Demo">
+        <div class="body"><div class="eyebrow">Travel workflow · IP injectable</div><h2>虚拟情侣旅行 Vlog</h2><p>把 IP 作为旅行叙事中的角色，生成 4×4 旅行照片墙、四张记忆图、男女角色卡、四段视频提示词和后续拼接方案。</p><div class="meta"><span class="tag">身份一致</span><span class="tag">4×4 照片墙</span><span class="tag">视频工作流</span></div><div class="label">最短用法</div><div class="prompt"><pre>使用 $virtual-couple-travel-vlog，把牙仔作为旅行伙伴，制作一对虚拟情侣在杭州旅行的照片墙和 Vlog 工作流。</pre><button class="copy" type="button" data-copy="使用 $virtual-couple-travel-vlog，把牙仔作为旅行伙伴，制作一对虚拟情侣在杭州旅行的照片墙和 Vlog 工作流。">复制</button></div><div class="actions"><a class="button primary" href="https://github.com/vibeshotclub/vsc-skills/tree/3c33b43e770e4ecd0084fe4adfbd7a637494fa02/virtual-couple-travel-vlog" target="_blank" rel="noopener">打开上游说明 ↗</a></div></div>
+      </article>
+    </section>
+  </main>
+  <footer class="footer wrap">来源：<a href="https://github.com/vibeshotclub/vsc-skills/tree/3c33b43e770e4ecd0084fe4adfbd7a637494fa02" target="_blank" rel="noopener">vibeshotclub/vsc-skills</a> · 固定提交 3c33b43 · Demo 图片为 IP Master 生成素材。</footer>
+  <script>document.querySelectorAll('[data-copy]').forEach(function(btn){btn.addEventListener('click',function(){navigator.clipboard.writeText(btn.dataset.copy).then(function(){var old=btn.textContent;btn.textContent='已复制';setTimeout(function(){btn.textContent=old},1200)}).catch(function(){btn.textContent='请手动复制'})})});</script>
+</body>
+</html>

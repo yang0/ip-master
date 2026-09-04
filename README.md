@@ -2,6 +2,8 @@
 
 把一个角色做出来，然后让它出现在任何视觉作品里。
 
+首次使用或需要提示词示例时，打开本地 [图文案例使用说明](ip-master/assets/readme/index.html)。页面提供可复制提示词，并可新标签打开布局库、GPT-Image 2 案例库和 Baoyu 图册。
+
 ## 1. 安装
 
 把下面这句话连同本仓库链接一起发给 Codex：
@@ -22,6 +24,8 @@
 请根据我的品牌 / 账号 / 想法，设计一个吉祥物 IP。
 ```
 
+如果上传的是真人照片，IP Master 会先生成纯色背景高清四视图候选（脸部特写、正面、90°侧面、背面），再向你确认姓名、年龄、身高和体重。确认后才会写入项目角色库；这些资料会以文字栏写入四视图图片。
+
 | 人物 IP（[Skill](https://github.com/yang0/character-ip)） | 吉祥物 IP（[Skill](https://github.com/yang0/mascot-ip)） | 个人卡通 IP（[Skill](https://github.com/DoraRabbitYan/personal-ip-image-pack)） |
 | :---: | :---: | :---: |
 | <a href="https://github.com/yang0/character-ip"><img src="https://raw.githubusercontent.com/yang0/character-ip/main/docs/assets/readme/ip-selected-19.png" alt="人物 IP 示例" width="250"></a> | <a href="https://github.com/yang0/mascot-ip"><img src="https://raw.githubusercontent.com/yang0/mascot-ip/main/docs/assets/mascot-08-raincoat-frog.png" alt="吉祥物 IP 示例" width="250"></a> | <a href="https://github.com/DoraRabbitYan/personal-ip-image-pack"><img src="https://raw.githubusercontent.com/DoraRabbitYan/personal-ip-image-pack/main/assets/style-library/assets/references/style-01/ref-01.jpg" alt="个人卡通 IP 示例" width="250"></a> |
@@ -35,7 +39,22 @@
   </tbody>
 </table>
 
-## 4. 让 IP 出图
+## 4. 建立你的项目角色库
+
+内置角色可以直接用；你确认后的自定义 IP 则保存到一个你指定的项目目录，不会写进
+Skill 安装目录。初始化后，项目根目录的 `index.html` 可双击打开，用来浏览项目 IP 并复制调用。
+
+```text
+初始化 IP 项目：E:\projects\品牌IP
+```
+
+确认某个 IP 后，注册到该项目；后续同一对话中声明过项目路径即可继续使用，命令行也可显式传入：
+
+```text
+python ip-master/scripts/capability_router.py "用项目角色做一张海报，主题：新品发布" --project-dir "E:\projects\品牌IP" --operation create --json
+```
+
+## 5. 让 IP 出图
 
 确定角色后，直接说你想要什么：
 
@@ -68,18 +87,16 @@
   </tbody>
 </table>
 
-竖版海报返图后若想换构图，可打开[本地排版库](ip-master/assets/layout-library/index.html)，回复编号即可重排。
+海报、封面或 PPT 需要指定结构时，可打开[350 种视觉布局库](ip-master/assets/layout-library/index.html)，从页面核验后的 `001–350` 中选择编号。图片为固定提交的本地快照，选中编号后只迁移图中构图方法，不把图片作为生图参考输入。
 
 想从 GPT-Image 2 案例中挑选视觉方向，可打开[案例选择库](ip-master/assets/gpt-image-2-case-library/index.html)，筛选或搜索后复制编号。可直接说：`用牙仔做一张海报，案例 539`；案例只迁移视觉方向，原图不会作为生图参考图输入。
 
-### 5. 使用指定构图方式
-* 输入提示词：显示排版库
-* 直接排版： 用 08 进行排版，主题： xxxxxx， 使用IP： xxxx
-* 对之前的图重新排版： 用 08 重新排版
+### 5. 使用指定布局
+* 浏览：`显示布局库`
+* 海报或封面重排：`用 008 重新排版`
+* PPT 结构：`用 341 做 PPT，主题：杭州景点`
 
-| 排版库首屏视口 | “08 · 前后构图”案例 |
-| :---: | :---: |
-| <div align="center"><img src="ip-master/assets/showcase/layout-library-first-viewport.png" alt="排版库首屏视口截图" width="600"></div> | <div align="center"><img src="ip-master/assets/showcase/layout-08-front-back-case.png" alt="牙仔前后构图海报案例" width="300"><br><br><sub><span style="color:#8a8f98">提示词：用牙仔做一张 3:4 海报，主题是“今晚吃什么？”，用 08 前后构图的方法</span></sub></div> |
+布局只在明确给出编号时生效。新版编号按图片实际标题整理，并保留原始上游编号；旧版 1–100 的编号语义已废弃，请以图库当前页面为准。
 
 ### 6. 使用 GPT-Image 2 案例库
 
@@ -114,6 +131,21 @@
 | [Guizang Social Card](https://github.com/op7418/guizang-social-card-skill) | 制作瑞士国际主义 / 电子杂志社媒卡、小红书组图和公众号封面对，围绕 2 套主视觉系统。 |
 | [Baoyu Slide Deck](https://github.com/JimLiu/baoyu-skills/tree/main/skills/baoyu-slide-deck) | 制作演讲和发布会幻灯片，提供 17 种视觉风格。 |
 | [GPT Image 2 Style Library](https://github.com/freestylefly/awesome-gpt-image-2) | 为生图请求匹配风格模板、补全提示词，收录 500+ 案例模板。 |
-| [100 Layout Compositions](https://github.com/nevertoday/100-layout-compositions) | 竖版海报返图后可按 100 个编号构图方法重新排版，并提供本地离线画廊。 |
+| [350 Layout Compositions](https://github.com/nevertoday/350-layout-compositions) | 350 种视觉布局，覆盖 8 类、33 个主题；可为海报、封面和 PPT 显式注入文本化布局方法。 |
+| [VSC Candid Photography](https://github.com/vibeshotclub/vsc-skills/tree/main/vibeshot-candid-photography) | 被 IP 注入的真实抓拍人像设计 Skill，强调生活感、非常规机位和自然摄影质感。 |
+| [VSC Virtual Couple Travel Vlog](https://github.com/vibeshotclub/vsc-skills/tree/main/virtual-couple-travel-vlog) | 被 IP 注入的情侣旅行视觉设计 Skill，可生成 4×4 照片墙、角色卡、视频提示词和 Vlog 工作流。 |
+
+VSC 两个 Skill 属于视觉设计能力，不属于 IP 设计能力。先指定角色，再明确调用对应 Skill，例如：
+
+```text
+使用 $vibeshot-candid-photography，用牙仔生成 3 组真实抓拍人像，场景：杭州街头，画幅：9:16，只给提示词。
+使用 $virtual-couple-travel-vlog，把牙仔作为旅行伙伴，制作一对虚拟情侣在杭州旅行的照片墙和 Vlog 工作流。
+```
+
+| 真实抓拍人像 | 情侣旅行照片墙 |
+| :---: | :---: |
+| <img src="ip-master/assets/showcase/vsc-candid-photography-demo.png" alt="真实抓拍人像 Demo" width="380"> | <img src="ip-master/assets/showcase/vsc-couple-travel-vlog-demo.png" alt="情侣旅行照片墙 Demo" width="380"> |
+
+可打开 [VSC 视觉设计 Skill 图册](ip-master/assets/vsc-skill-library/index.html) 查看 Demo 图片、能力说明和复制用法。
 
 <sub>Released under the <a href="LICENSE">MIT License</a>.</sub>

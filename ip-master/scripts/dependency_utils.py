@@ -317,6 +317,8 @@ def inspect_dependency(
         "license": dependency.get("license"),
         "maintainer": dependency.get("maintainer"),
         "purpose": dependency.get("purpose"),
+        "skill_type": dependency.get("skill_type", "external-skill"),
+        "ip_injection": dependency.get("ip_injection", "unsupported"),
         "output_mode": dependency.get("output_mode"),
         "fixed_aspect_ratio": dependency.get("fixed_aspect_ratio"),
         "required_paths": dependency_required_paths(dependency),

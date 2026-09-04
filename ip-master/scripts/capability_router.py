@@ -56,6 +56,8 @@ CATEGORY_SIGNALS: tuple[tuple[str, tuple[str, ...]], ...] = (
             "个人卡通ip",
             "个人 ip",
             "个人ip",
+            "人物 ip",
+            "人物ip",
             "设计 ip",
             "设计ip",
             "制作 ip",
@@ -78,6 +80,14 @@ CATEGORY_SIGNALS: tuple[tuple[str, tuple[str, ...]], ...] = (
     ("knowledge-card", ("知识卡片", "知识卡", "信息图", "infographic")),
     ("xiaohongshu", ("小红书", "xhs", "rednote")),
     ("slide-deck", ("ppt", "幻灯片", "演示文稿", "slide deck", "presentation")),
+    (
+        "portrait",
+        ("真实抓拍人像", "生活感人像", "偶然抓拍", "candid photography", "抓拍写真"),
+    ),
+    (
+        "video-workflow",
+        ("情侣旅行 vlog", "情侣旅行vlog", "旅行照片墙", "虚拟情侣", "travel vlog"),
+    ),
     ("sticker", ("贴纸", "贴纸页", "表情包", "sticker")),
     (
         "prompt-enhancement",
@@ -124,6 +134,27 @@ EXCLUDED_PERSONAL_SIGNALS = (
     "虚构角色",
     "虚构人物",
 )
+PHOTO_SOURCE_SIGNALS = ("真人照片", "人物照片", "上传照片", "上传的照片", "参考照片", "参考图")
+FOUR_VIEW_CHOICES = (
+    "四视图",
+    "转面图",
+    "人物四视图",
+)
+PHOTO_TRAIT_CHOICES = (
+    "直接用照片设计",
+    "直接使用照片",
+    "基于照片",
+    "基于真人照片",
+    "真人照片特征",
+    "基于上传照片",
+    "基于上传的照片",
+    "根据照片",
+    "根据上传照片",
+    "参考照片设计",
+    "提取照片特征",
+    "只参考脸部",
+    "仅参考照片",
+)
 
 EXPLICIT_ALIASES: dict[str, tuple[str, ...]] = {
     PERSONAL_IP_SKILL_ID: (
@@ -150,6 +181,19 @@ EXPLICIT_ALIASES: dict[str, tuple[str, ...]] = {
         "gpt image 2 模板库",
         "模板库增强",
     ),
+    "vibeshot-candid-photography": (
+        "vibeshot candid photography",
+        "真实抓拍人像",
+        "偶然抓拍写真",
+        "生活感人像",
+    ),
+    "virtual-couple-travel-vlog": (
+        "virtual couple travel vlog",
+        "情侣旅行 vlog",
+        "情侣旅行vlog",
+        "虚拟情侣旅行",
+        "旅行照片墙",
+    ),
 }
 CAPABILITY_ALIASES: dict[str, tuple[str, ...]] = {
     "character-anchor": ("角色锚点", "角色形象", "character anchor"),
@@ -170,6 +214,8 @@ CAPABILITY_ALIASES: dict[str, tuple[str, ...]] = {
     "xhs-social-cards": ("小红书图文组图", "归藏社交卡"),
     "slide-deck": ("幻灯片", "ppt", "slide deck"),
     "prompt-enhancement": ("提示词增强", "风格库增强", "模板增强"),
+    "candid-portrait-prompt": ("真实抓拍人像", "偶然抓拍", "抓拍写真"),
+    "travel-photo-wall": ("旅行照片墙", "4x4 照片墙", "情侣旅行"),
 }
 
 
@@ -206,6 +252,53 @@ def _has_personal_signal(request: str) -> bool:
 def _has_excluded_personal_signal(request: str) -> bool:
     text = _normalize(request)
     return any(_contains(text, signal) for signal in EXCLUDED_PERSONAL_SIGNALS)
+
+
+def _has_photo_source_signal(request: str) -> bool:
+    text = _normalize(request)
+    return any(_contains(text, signal) for signal in PHOTO_SOURCE_SIGNALS)
+
+
+def _has_photo_workflow_choice(request: str) -> bool:
+    text = _normalize(request)
+    return any(_contains(text, signal) for signal in FOUR_VIEW_CHOICES + PHOTO_TRAIT_CHOICES)
+
+
+def _has_four_view_choice(request: str) -> bool:
+    text = _normalize(request)
+    return any(_contains(text, signal) for signal in FOUR_VIEW_CHOICES)
+
+
+def _photo_workflow_choice_result(request: str, operation: str, category: str) -> dict[str, Any]:
+    result = _empty_result(
+        request,
+        operation,
+        category,
+        reason="A real-person photo IP request must choose a four-view identity asset or photo-trait-based IP design before routing.",
+    )
+    result.update(
+        {
+            "status": "photo-workflow-choice",
+            "route_mode": "clarification",
+            "clarification_required": True,
+            "clarification": {
+                "question": "你希望哪一种？",
+                "options": [
+                    {
+                        "id": "four-view-first",
+                        "label": "先生成四视图，再作为 IP 身份资产",
+                        "next": "先生成四视图候选，再收集并确认名称、年龄、身高、体重，确认后入库。",
+                    },
+                    {
+                        "id": "photo-traits-first",
+                        "label": "基于照片特征直接设计 IP",
+                        "next": "只提取脸部特征、年龄感和气质来设计 IP，不把照片直接作为正式四视图资产。",
+                    },
+                ],
+            },
+        }
+    )
+    return result
 
 
 def _dependency_aliases(dependency: dict[str, Any]) -> list[str]:
@@ -388,6 +481,8 @@ def route(
     operation: str = "create",
     skill_dir: Path = SKILL_DIR,
     dependency_root: Path | None = None,
+    project_dir: Path | None = None,
+    reference_photo: bool | None = None,
 ) -> dict[str, Any]:
     """Route one request without installing or generating anything.
 
@@ -406,6 +501,15 @@ def route(
     registry = load_dependency_registry(skill_dir / "references" / "skill-registry.json")
     dependencies: list[dict[str, Any]] = registry["dependencies"]
     category = detect_category(request)
+    photo_present = _has_photo_source_signal(request) if reference_photo is None else reference_photo
+    if (
+        operation in {"create", "prompt"}
+        and category == "ip-design"
+        and photo_present
+        and not _has_excluded_personal_signal(request)
+        and not _has_photo_workflow_choice(request)
+    ):
+        return _photo_workflow_choice_result(request, operation, category)
     explicit = _explicit_dependency(request, dependencies, category=category)
     case_selection = parse_case_selection(request, skill_dir=skill_dir)
 
@@ -475,7 +579,7 @@ def route(
     status = "advice" if advice else ("ready" if selected else ("selection-required" if selection_required else "unsupported"))
     character_inputs: list[dict[str, Any]] = []
     if selected is not None and not advice:
-        character_inputs = resolve_character_inputs(request, skill_dir=skill_dir)
+        character_inputs = resolve_character_inputs(request, skill_dir=skill_dir, project_dir=project_dir)
 
     selected_definition = next(
         (item for item in dependencies if selected and item["skill_id"] == selected["skill_id"]),
@@ -499,15 +603,16 @@ def route(
         }
         for item in character_inputs
     ]
+    layout_categories = {"cover-poster", "slide-deck"}
     layout_selection = None
-    if selected is not None and not advice and category == "cover-poster":
+    if selected is not None and not advice and category in layout_categories:
         layout_selection = parse_layout_selection(request, skill_dir=skill_dir)
         if layout_selection is not None:
             reference_inputs.append(
                 {
                     "role": "composition_method",
                     "layout_id": layout_selection["id"],
-                    "display_name": f"排版 {layout_selection['number']}",
+                    "display_name": f"布局 {layout_selection['number']} · {layout_selection['name']}",
                     "input_order": len(reference_inputs) + 1,
                     "prompt_label": layout_selection["prompt_label"],
                     "layout_method": layout_selection["layout_method"],
@@ -531,13 +636,18 @@ def route(
             }
         )
     layout_library = None
-    if selected is not None and category == "cover-poster":
+    if selected is not None and category in layout_categories:
         gallery_path = skill_dir / "assets" / "layout-library" / "index.html"
         layout_library = {
             "gallery_path": str(gallery_path.resolve()),
             "selection": layout_selection,
-            "post_generation_delivery": selected.get("output_mode") != "prompt-only",
-            "delivery_rule": "Append the layout-library note only after a final raster image is confirmed portrait; never attach it to prompt-only output.",
+            "post_generation_delivery": category == "cover-poster" and selected.get("output_mode") != "prompt-only",
+            "delivery_rule": (
+                "Append the layout-library note only after a final raster image is confirmed portrait; "
+                "never attach it to prompt-only output."
+                if category == "cover-poster"
+                else "For slide decks, use a selected layout only as a text method; do not append a portrait-raster delivery note."
+            ),
         }
     case_library = None
     if case_selection is not None:
@@ -548,6 +658,11 @@ def route(
             "delivery_rule": "Treat the selected case as text-only visual direction; never add its remote image URL to model reference inputs.",
         }
     install_confirmation = bool(selected and selected["status"] != "installed")
+    human_photo_workflow = bool(
+        category == "ip-design"
+        and photo_present
+        and not _has_excluded_personal_signal(request)
+    )
     return {
         "request": request,
         "operation": operation,
@@ -566,6 +681,17 @@ def route(
         "inject_characters": bool(character_inputs),
         "inject_character_references": bool(character_inputs),
         "characters": [item["id"] for item in character_inputs],
+        "project_dir": str(project_dir.expanduser().resolve(strict=False)) if project_dir else None,
+        "character_workflow": (
+            {
+                "mode": "human-photo-four-view-first" if _has_four_view_choice(request) else "human-photo-traits-first",
+                "required_profile": ["name", "age", "height_cm", "weight_kg"] if _has_four_view_choice(request) else [],
+                "requires_user_confirmation_before_registration": _has_four_view_choice(request),
+                "annotate_profile_on_image": _has_four_view_choice(request),
+            }
+            if human_photo_workflow
+            else None
+        ),
         "character_inputs": character_inputs,
         "referenced_image_paths": referenced_image_paths,
         "reference_inputs": reference_inputs,
@@ -589,6 +715,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--operation", choices=("advise", "prompt", "create"), default="create")
     parser.add_argument("--skill-dir", type=Path, default=SKILL_DIR, help="IP Master Skill root")
     parser.add_argument("--dependency-root", type=Path, help="optional installed dependency root to probe first")
+    parser.add_argument("--project-dir", type=Path, help="optional initialized IP project directory")
+    parser.add_argument("--reference-photo", action="store_true", help="indicate an attached real-person reference photo")
     parser.add_argument("--json", action="store_true", dest="as_json")
     args = parser.parse_args(argv)
     try:
@@ -597,6 +725,8 @@ def main(argv: list[str] | None = None) -> int:
             operation=args.operation,
             skill_dir=args.skill_dir,
             dependency_root=args.dependency_root,
+            project_dir=args.project_dir,
+            reference_photo=True if args.reference_photo else None,
         )
     except (OSError, ValueError, json.JSONDecodeError) as exc:
         print(f"router error: {exc}", file=sys.stderr)

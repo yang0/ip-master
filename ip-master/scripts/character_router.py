@@ -73,6 +73,18 @@ def _resolve_skill_path(relative_path: str, skill_dir: Path = SKILL_DIR) -> Path
     return (skill_dir.expanduser().resolve(strict=False) / relative_path).resolve(strict=False)
 
 
+def _resolve_project_path(relative_path: str, project_dir: Path) -> Path:
+    """Resolve a project-owned asset and reject paths escaping the project root."""
+
+    candidate = (project_dir.expanduser().resolve(strict=False) / relative_path).resolve(strict=False)
+    root = project_dir.expanduser().resolve(strict=False)
+    try:
+        candidate.relative_to(root)
+    except ValueError as exc:
+        raise CharacterRegistryError(f"project asset escapes project directory: {relative_path}") from exc
+    return candidate
+
+
 def _png_read_error(path: Path) -> str | None:
     """Return a concise error when *path* is not a readable PNG file.
 
@@ -266,16 +278,82 @@ def _load_validated_registry(*, skill_dir: Path = SKILL_DIR) -> dict[str, Any]:
     return _read_registry(_registry_path(skill_dir))
 
 
+def _project_records(project_dir: Path | None) -> list[dict[str, Any]]:
+    """Load project characters with their own asset root; projects have no default."""
+
+    if project_dir is None:
+        return []
+    try:
+        from ip_project import IPProjectError, load_project
+
+        project = load_project(project_dir)
+    except (ImportError, IPProjectError) as exc:
+        raise CharacterRegistryError(str(exc)) from exc
+    root = project["paths"]["root"]
+    records: list[dict[str, Any]] = []
+    seen_ids: set[str] = set()
+    seen_aliases: set[str] = set()
+    for index, item in enumerate(project["registry"]["characters"]):
+        if not isinstance(item, dict):
+            raise CharacterRegistryError(f"project character[{index}] must be an object")
+        character_id = item.get("id")
+        display_name = item.get("display_name")
+        aliases = item.get("aliases")
+        asset = item.get("asset")
+        identity_reference = item.get("identity_reference")
+        if not isinstance(character_id, str) or not re.fullmatch(r"[a-z0-9][a-z0-9-]*", character_id):
+            raise CharacterRegistryError(f"project character[{index}] has invalid id")
+        if character_id in seen_ids:
+            raise CharacterRegistryError(f"duplicate project character id: {character_id}")
+        if not isinstance(display_name, str) or not display_name.strip() or not isinstance(aliases, list) or not aliases:
+            raise CharacterRegistryError(f"project character[{index}] has incomplete metadata")
+        if not isinstance(asset, str) or not isinstance(identity_reference, str):
+            raise CharacterRegistryError(f"project character[{index}] has invalid asset paths")
+        asset_path = _resolve_project_path(asset, root)
+        identity_path = _resolve_project_path(identity_reference, root)
+        if not asset_path.is_file() or not identity_path.is_file():
+            raise CharacterRegistryError(f"project character[{index}] has missing asset or identity protocol")
+        if _image_read_error(asset_path):
+            raise CharacterRegistryError(f"project character[{index}] has invalid image asset")
+        normalized_aliases: list[str] = []
+        for alias in aliases:
+            if not isinstance(alias, str) or not alias.strip():
+                raise CharacterRegistryError(f"project character[{index}] has invalid alias")
+            key = alias.casefold()
+            if key in seen_aliases:
+                raise CharacterRegistryError(f"duplicate project character alias: {alias}")
+            seen_aliases.add(key)
+            normalized_aliases.append(alias)
+        seen_ids.add(character_id)
+        records.append({**item, "aliases": normalized_aliases, "_root": root, "_source": "project"})
+    return records
+
+
+def _all_character_records(*, skill_dir: Path = SKILL_DIR, project_dir: Path | None = None) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    builtin = _load_validated_registry(skill_dir=skill_dir)
+    builtin_records = [{**item, "_root": skill_dir.expanduser().resolve(strict=False), "_source": "builtin"} for item in builtin["characters"]]
+    project_records = _project_records(project_dir)
+    builtin_ids = {item["id"] for item in builtin_records}
+    builtin_aliases = {alias.casefold() for item in builtin_records for alias in item["aliases"]}
+    for item in project_records:
+        if item["id"] in builtin_ids:
+            raise CharacterRegistryError(f"project character id conflicts with built-in character: {item['id']}")
+        duplicate = next((alias for alias in item["aliases"] if alias.casefold() in builtin_aliases), None)
+        if duplicate:
+            raise CharacterRegistryError(f"project character alias conflicts with built-in character: {duplicate}")
+    return builtin, builtin_records + project_records
+
+
 def resolve_characters(
     request: str | None = None,
     *,
     explicit: bool = False,
     skill_dir: Path = SKILL_DIR,
+    project_dir: Path | None = None,
 ) -> list[str]:
     """Resolve aliases in request text, defaulting to Yazai when unnamed."""
 
-    registry = _load_validated_registry(skill_dir=skill_dir)
-    characters = registry["characters"]
+    registry, characters = _all_character_records(skill_dir=skill_dir, project_dir=project_dir)
     text = (request or "").strip().casefold()
     if not text:
         return [registry["default_character"]]
@@ -297,6 +375,7 @@ def resolve_character_inputs(
     *,
     explicit: bool = False,
     skill_dir: Path = SKILL_DIR,
+    project_dir: Path | None = None,
 ) -> list[dict[str, Any]]:
     """Resolve selected characters and their installed image/protocol paths.
 
@@ -305,14 +384,14 @@ def resolve_character_inputs(
     from this script's Skill root rather than the caller's current directory.
     """
 
-    registry = _load_validated_registry(skill_dir=skill_dir)
-    selected_ids = resolve_characters(request, explicit=explicit, skill_dir=skill_dir)
-    by_id = {item["id"]: item for item in registry["characters"]}
+    _, characters = _all_character_records(skill_dir=skill_dir, project_dir=project_dir)
+    selected_ids = resolve_characters(request, explicit=explicit, skill_dir=skill_dir, project_dir=project_dir)
+    by_id = {item["id"]: item for item in characters}
     inputs: list[dict[str, Any]] = []
     for index, character_id in enumerate(selected_ids, start=1):
         item = by_id[character_id]
-        asset_path = _resolve_skill_path(item["asset"], skill_dir)
-        identity_reference_path = _resolve_skill_path(item["identity_reference"], skill_dir)
+        asset_path = (item["_root"] / item["asset"]).resolve(strict=False)
+        identity_reference_path = (item["_root"] / item["identity_reference"]).resolve(strict=False)
         inputs.append(
             {
                 "id": item["id"],
@@ -323,6 +402,7 @@ def resolve_character_inputs(
                 "identity_reference_path": str(identity_reference_path),
                 "input_order": index,
                 "prompt_label": f"Image {index}: {item['display_name']} identity reference only",
+                "source": item["_source"],
             }
         )
     return inputs
@@ -337,9 +417,10 @@ def main(argv: list[str] | None = None) -> int:
         help="error when an explicitly requested character name is unmatched",
     )
     parser.add_argument("--json", action="store_true", dest="as_json", help="emit JSON")
+    parser.add_argument("--project-dir", type=Path, help="optional initialized IP project directory")
     args = parser.parse_args(argv)
     try:
-        selected = resolve_characters(args.request, explicit=args.explicit)
+        selected = resolve_characters(args.request, explicit=args.explicit, project_dir=args.project_dir)
     except UnknownCharacterError as exc:
         if args.as_json:
             print(json.dumps({"error": str(exc), "supported": exc.supported}, ensure_ascii=False, indent=2))
@@ -352,7 +433,7 @@ def main(argv: list[str] | None = None) -> int:
     result = {
         "request": args.request,
         "characters": selected,
-        "character_inputs": resolve_character_inputs(args.request, explicit=args.explicit),
+        "character_inputs": resolve_character_inputs(args.request, explicit=args.explicit, project_dir=args.project_dir),
     }
     if args.as_json:
         print(json.dumps(result, ensure_ascii=False, indent=2))

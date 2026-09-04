@@ -6,7 +6,7 @@
   <title>IP Master · GPT-Image 2 案例库</title>
   <style>
     :root { color-scheme: light; font-family: Inter, "PingFang SC", "Microsoft YaHei", sans-serif; }
-    body { margin: 0; background: #f5f5f2; color: #171717; } header { padding: 40px clamp(20px,6vw,96px) 26px; background:#171717; color:#fff; }
+    body { margin: 0; background: #f5f5f2; color: #171717; } header { padding: 40px clamp(20px,6vw,96px) 26px; background:#171717; color:#fff; } header .home-link { display:inline-block; margin-bottom:18px; color:#d7d7d7; font-size:13px; text-decoration:none; } header .home-link:hover { color:#fff; text-decoration:underline; }
     h1 { margin:0 0 10px; font-size:clamp(28px,4vw,48px); } header p { max-width:780px; margin:0; color:#d7d7d7; line-height:1.7; }
     main { padding:28px clamp(20px,6vw,96px) 56px; } .tools { display:flex; flex-wrap:wrap; gap:10px; margin:0 0 24px; }
     input, button, select { font:inherit; } input { min-width:min(100%,320px); padding:10px 12px; border:1px solid #bbb; border-radius:8px; }
@@ -18,7 +18,7 @@
   </style>
 </head>
 <body>
-  <header><h1>GPT-Image 2 案例库</h1><p>浏览案例、搜索或按类别筛选；选中后复制“用案例 N 设计”。案例只提供可迁移的视觉方向，图片不会作为生图参考图输入。</p></header>
+  <header><a class="home-link" href="../readme/index.html">← 返回首页</a><h1>GPT-Image 2 案例库</h1><p>浏览案例、搜索或按类别筛选；选中后复制“用案例 N 设计”。案例只提供可迁移的视觉方向，图片不会作为生图参考图输入。</p></header>
   <main><div class="tools"><input id="search" type="search" placeholder="搜索案例号、标题或类别" aria-label="搜索案例"><button class="filter active" data-category="">全部</button><span id="filters"></span></div><p id="count"></p><section id="grid" class="grid" aria-label="GPT-Image 2 案例列表"></section></main>
   <dialog id="preview"><div class="modal"><img id="preview-image" alt=""><h2 id="preview-title"></h2><p id="preview-hint"></p><div class="prompt-label">源案例提示词</div><pre class="prompt" id="preview-prompt"></pre><div class="actions"><button class="copy" id="copy">复制编号</button><button class="copy" id="copy-prompt">复制提示词</button><a class="source" id="source" target="_blank" rel="noreferrer">查看源案例</a><button class="close" id="close" aria-label="关闭">×</button></div></div></dialog>
   <footer>案例索引来自 <a href="https://github.com/freestylefly/awesome-gpt-image-2" target="_blank" rel="noreferrer">freestylefly/awesome-gpt-image-2</a>，按 <a href="https://github.com/freestylefly/awesome-gpt-image-2/blob/main/LICENSE" target="_blank" rel="noreferrer">MIT</a> 使用；固定提交：<code>c7d293963b21c60bf338003915438cc5c39dd3ca</code>。案例图及提示词仅供学习与参考；第三方内容的商业使用须取得原权利人授权。</footer>

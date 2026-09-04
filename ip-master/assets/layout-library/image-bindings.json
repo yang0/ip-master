@@ -1,0 +1,3157 @@
+ {
+   "version": 1,
+   "basis": "visual title audit of upstream thumbnails",
+   "upstream_commit": "34dc39cb5128776b594754624fa2202d5942a35b",
+   "bindings": [
+     {
+       "number": "001",
+       "source_number": "001",
+       "recognized_catalog_number": "001",
+       "recognized_title": "三分法构图",
+       "recognition_status": "verified",
+       "sha256": "c19e8c085f5d8c3b27a2b90db1b1873a461e91689297daa6a9163dc0ebc748cf",
+       "local_image": "images/layout-001.jpg"
+     },
+     {
+       "number": "002",
+       "source_number": "002",
+       "recognized_catalog_number": "002",
+       "recognized_title": "黄金比例构图",
+       "recognition_status": "verified",
+       "sha256": "cfe185e2c1232a2b2caa5e765ae4bea27817e39e78f3a75351fa08249a4c5d07",
+       "local_image": "images/layout-002.jpg"
+     },
+     {
+       "number": "003",
+       "source_number": "003",
+       "recognized_catalog_number": "003",
+       "recognized_title": "黄金螺旋构图",
+       "recognition_status": "verified",
+       "sha256": "cfa91db976541cb34e1de2fe316dca59f6edea968eead2d3309f899e1f2f802a",
+       "local_image": "images/layout-003.jpg"
+     },
+     {
+       "number": "004",
+       "source_number": "004",
+       "recognized_catalog_number": "004",
+       "recognized_title": "黄金三角构图",
+       "recognition_status": "verified",
+       "sha256": "e858474f782a5e8889e410db6731b24d032828254665159ad77617afada6a7b5",
+       "local_image": "images/layout-004.jpg"
+     },
+     {
+       "number": "005",
+       "source_number": "005",
+       "recognized_catalog_number": "005",
+       "recognized_title": "对角线法构图",
+       "recognition_status": "verified",
+       "sha256": "db9a71a902d4feb35f4de6434356a34a411e2f43744246385a0a1d9448e09a11",
+       "local_image": "images/layout-005.jpg"
+     },
+     {
+       "number": "006",
+       "source_number": "006",
+       "recognized_catalog_number": "006",
+       "recognized_title": "矩形折入法构图",
+       "recognition_status": "verified",
+       "sha256": "e5d8361346036c1c6302b00b31913ded81704557f3dc951e0c7623409ab6f920",
+       "local_image": "images/layout-006.jpg"
+     },
+     {
+       "number": "007",
+       "source_number": "007",
+       "recognized_catalog_number": "007",
+       "recognized_title": "奇数法则构图",
+       "recognition_status": "verified",
+       "sha256": "e6a778468bf121c10f49102b4ae15fb41108e8749113c2a02388a4fc31f6c384",
+       "local_image": "images/layout-007.jpg"
+     },
+     {
+       "number": "008",
+       "source_number": "008",
+       "recognized_catalog_number": "008",
+       "recognized_title": "空间法则构图",
+       "recognition_status": "verified",
+       "sha256": "e4cce222c38a77d093ea34045281375a9b5ce61e40a63163eab09f3392910e62",
+       "local_image": "images/layout-008.jpg"
+     },
+     {
+       "number": "009",
+       "source_number": "009",
+       "recognized_catalog_number": "009",
+       "recognized_title": "视线空间构图",
+       "recognition_status": "verified",
+       "sha256": "9e4756aff3726663c349c94d11d8e3e35d4fbad873d77f1a01ea78b48626780c",
+       "local_image": "images/layout-009.jpg"
+     },
+     {
+       "number": "010",
+       "source_number": "010",
+       "recognized_catalog_number": "010",
+       "recognized_title": "运动空间构图",
+       "recognition_status": "verified",
+       "sha256": "b4014be65e2544998a3b53498d94b851e51eedd92fe1133b459e19b2b92f6263",
+       "local_image": "images/layout-010.jpg"
+     },
+     {
+       "number": "011",
+       "source_number": "011",
+       "recognized_catalog_number": "011",
+       "recognized_title": "头部空间构图",
+       "recognition_status": "verified",
+       "sha256": "d7e33a0e7187d5db97c11cdef23131a7f087c7ddf28e4f2c75f1ca10a0323802",
+       "local_image": "images/layout-011.jpg"
+     },
+     {
+       "number": "012",
+       "source_number": "012",
+       "recognized_catalog_number": "012",
+       "recognized_title": "填满画面构图",
+       "recognition_status": "verified",
+       "sha256": "514292d6dad3aca2f109d1fb8384c97ec54ef78277ce8a2223468b3a43a49c0e",
+       "local_image": "images/layout-012.jpg"
+     },
+     {
+       "number": "013",
+       "source_number": "013",
+       "recognized_catalog_number": "013",
+       "recognized_title": "负空间构图",
+       "recognition_status": "verified",
+       "sha256": "5fc9560222c82e6d6cd8aea16cec3965713f165e781107cbcc72ecc0fb9c6475",
+       "local_image": "images/layout-013.jpg"
+     },
+     {
+       "number": "014",
+       "source_number": "014",
+       "recognized_catalog_number": "014",
+       "recognized_title": "框中框构图",
+       "recognition_status": "verified",
+       "sha256": "db2153d8722382231da94e3723fb4b897bb58a6d3d678cb2d88c4f6ad4a62fa4",
+       "local_image": "images/layout-014.jpg"
+     },
+     {
+       "number": "015",
+       "source_number": "015",
+       "recognized_catalog_number": "015",
+       "recognized_title": "引导线构图",
+       "recognition_status": "verified",
+       "sha256": "acf5a36950fe279b7b55c361dc82f4b6af8855a496e56a70126db69e43e5c769",
+       "local_image": "images/layout-015.jpg"
+     },
+     {
+       "number": "016",
+       "source_number": "016",
+       "recognized_catalog_number": "016",
+       "recognized_title": "居中构图",
+       "recognition_status": "verified",
+       "sha256": "9d838150fb44f6e939a7fc621b12c66955903478a244f31328c684a0117139d3",
+       "local_image": "images/layout-016.jpg"
+     },
+     {
+       "number": "017",
+       "source_number": "017",
+       "recognized_catalog_number": "017",
+       "recognized_title": "偏心构图",
+       "recognition_status": "verified",
+       "sha256": "03f51659e388d07ec748d78d45378191ac3b9ca42cddb1e9f8129ab87f68d047",
+       "local_image": "images/layout-017.jpg"
+     },
+     {
+       "number": "018",
+       "source_number": "018",
+       "recognized_catalog_number": "018",
+       "recognized_title": "对称构图",
+       "recognition_status": "verified",
+       "sha256": "537de4846effbd4345fd6eed91ab2f08ea17ced4542eba6701443d99705fb53e",
+       "local_image": "images/layout-018.jpg"
+     },
+     {
+       "number": "019",
+       "source_number": "019",
+       "recognized_catalog_number": "019",
+       "recognized_title": "非对称构图",
+       "recognition_status": "verified",
+       "sha256": "8080de493d7ee7909758a19423c9d5a10976c4d5aefc4a9a7f0fba84d4c605ee",
+       "local_image": "images/layout-019.jpg"
+     },
+     {
+       "number": "020",
+       "source_number": "020",
+       "recognized_catalog_number": "020",
+       "recognized_title": "镜像构图",
+       "recognition_status": "verified",
+       "sha256": "d7fc4cab2f81a223351ad63abab6afcca3a1f2f85a74acf9048300ed3dbe09bc",
+       "local_image": "images/layout-020.jpg"
+     },
+     {
+       "number": "021",
+       "source_number": "051",
+       "recognized_catalog_number": "021",
+       "recognized_title": "水平构图",
+       "recognition_status": "verified",
+       "sha256": "ec92de64c3e64b904059e6a97387e7b7ffb220d1ccdde2557a1214900b24f825",
+       "local_image": "images/layout-021.jpg"
+     },
+     {
+       "number": "022",
+       "source_number": "052",
+       "recognized_catalog_number": "022",
+       "recognized_title": "垂直构图",
+       "recognition_status": "verified",
+       "sha256": "7e11827d2dd5033375c0aa857695cdf54a0f8e649307508171f6c3f57929d2d6",
+       "local_image": "images/layout-022.jpg"
+     },
+     {
+       "number": "023",
+       "source_number": "053",
+       "recognized_catalog_number": "023",
+       "recognized_title": "对角线构图",
+       "recognition_status": "verified",
+       "sha256": "33c2761e06353abf929b8f673a7a69b564d762475a117c013836dd74cbc10652",
+       "local_image": "images/layout-023.jpg"
+     },
+     {
+       "number": "024",
+       "source_number": "054",
+       "recognized_catalog_number": "024",
+       "recognized_title": "平行线构图",
+       "recognition_status": "verified",
+       "sha256": "3416b49f59fba11efec941e2f8ab893ee9faf702aa05d78f824baabf8f8c3625",
+       "local_image": "images/layout-024.jpg"
+     },
+     {
+       "number": "025",
+       "source_number": "055",
+       "recognized_catalog_number": "025",
+       "recognized_title": "汇聚线构图",
+       "recognition_status": "verified",
+       "sha256": "2e7450d9d1d4cdc5fc734258937648634d8b4dfe4e4476c4883be8b0b5905b6f",
+       "local_image": "images/layout-025.jpg"
+     },
+     {
+       "number": "026",
+       "source_number": "056",
+       "recognized_catalog_number": "026",
+       "recognized_title": "交叉线构图",
+       "recognition_status": "verified",
+       "sha256": "8701a70d07eaa1ca881faff9476aada3c7397f39e3b079afdd5f9debb34944f1",
+       "local_image": "images/layout-026.jpg"
+     },
+     {
+       "number": "027",
+       "source_number": "057",
+       "recognized_catalog_number": "027",
+       "recognized_title": "中轴构图",
+       "recognition_status": "verified",
+       "sha256": "d2db73ea4af64df5a6fc9a6e12afd7cad427eec94562c1fa3c84347e426ac84b",
+       "local_image": "images/layout-027.jpg"
+     },
+     {
+       "number": "028",
+       "source_number": "058",
+       "recognized_catalog_number": "028",
+       "recognized_title": "偏轴构图",
+       "recognition_status": "verified",
+       "sha256": "d6a4bcf4b7494f8626ef1dd9e0c6f611fb7ba23eda79d160686fa8f6464e4c6f",
+       "local_image": "images/layout-028.jpg"
+     },
+     {
+       "number": "029",
+       "source_number": "059",
+       "recognized_catalog_number": "029",
+       "recognized_title": "双轴构图",
+       "recognition_status": "verified",
+       "sha256": "30d527b6af03dff6a3a603af3ae650064d55bb315d7052dd8fe1f4634b1142e5",
+       "local_image": "images/layout-029.jpg"
+     },
+     {
+       "number": "030",
+       "source_number": "060",
+       "recognized_catalog_number": "030",
+       "recognized_title": "十字构图",
+       "recognition_status": "verified",
+       "sha256": "d96c292e522adf1dcf757b0d138ebf504eb982067a61144417ccffce9fe915f9",
+       "local_image": "images/layout-030.jpg"
+     },
+     {
+       "number": "031",
+       "source_number": "061",
+       "recognized_catalog_number": "031",
+       "recognized_title": "X 形构图",
+       "recognition_status": "verified",
+       "sha256": "1a7a1625aba6025084e1a1aee47b685f6fdfd18c288d271b3631cc67ee45ceba",
+       "local_image": "images/layout-031.jpg"
+     },
+     {
+       "number": "032",
+       "source_number": "062",
+       "recognized_catalog_number": "032",
+       "recognized_title": "T 形构图",
+       "recognition_status": "verified",
+       "sha256": "bd343a895258194e96ed9a01487e2d947357d31b066d6917b961ecc4a48fdfcd",
+       "local_image": "images/layout-032.jpg"
+     },
+     {
+       "number": "033",
+       "source_number": "063",
+       "recognized_catalog_number": "033",
+       "recognized_title": "L 形构图",
+       "recognition_status": "verified",
+       "sha256": "a21dd3e53614c4e80df924bcc9b65d3e9feda96c6c20bd6e9c7a06a14fa1462f",
+       "local_image": "images/layout-033.jpg"
+     },
+     {
+       "number": "034",
+       "source_number": "064",
+       "recognized_catalog_number": "034",
+       "recognized_title": "V 形构图",
+       "recognition_status": "verified",
+       "sha256": "fd7fbef7f1232044490ea67437228b5363eda72a435851bf8e01a09b816ac08e",
+       "local_image": "images/layout-034.jpg"
+     },
+     {
+       "number": "035",
+       "source_number": "065",
+       "recognized_catalog_number": "035",
+       "recognized_title": "Z 形构图",
+       "recognition_status": "verified",
+       "sha256": "bb435dadcc160a67d846f70d6d259059994ce731b91b6eb6f1ad0ddec800e4c8",
+       "local_image": "images/layout-035.jpg"
+     },
+     {
+       "number": "036",
+       "source_number": "066",
+       "recognized_catalog_number": "036",
+       "recognized_title": "C 形构图",
+       "recognition_status": "verified",
+       "sha256": "5c99a78771c2f294b87b711fe4eef93b61f4dad7963d8d4441385278fb659469",
+       "local_image": "images/layout-036.jpg"
+     },
+     {
+       "number": "037",
+       "source_number": "067",
+       "recognized_catalog_number": "037",
+       "recognized_title": "S 形构图",
+       "recognition_status": "verified",
+       "sha256": "2c2fc5bfbaa1a3f1e2356c3a9dc321741f8f4cbb214113c0f55ee2a6e26fb898",
+       "local_image": "images/layout-037.jpg"
+     },
+     {
+       "number": "038",
+       "source_number": "068",
+       "recognized_catalog_number": "038",
+       "recognized_title": "曲线构图",
+       "recognition_status": "verified",
+       "sha256": "d9772c6072e6a304a3b62c6364ac8c8f73fbf04cc62537405cdeed21bd432626",
+       "local_image": "images/layout-038.jpg"
+     },
+     {
+       "number": "039",
+       "source_number": "069",
+       "recognized_catalog_number": "039",
+       "recognized_title": "波浪形构图",
+       "recognition_status": "verified",
+       "sha256": "09236f3984de7efc4c578fe5a771ddf226b5af0b27279b6ef6d641806e1e5c19",
+       "local_image": "images/layout-039.jpg"
+     },
+     {
+       "number": "040",
+       "source_number": "070",
+       "recognized_catalog_number": "040",
+       "recognized_title": "锯齿形构图",
+       "recognition_status": "verified",
+       "sha256": "8bb750b68f1392b95a1e6f0b33e7133605b92225863e350da27d404b483b7b97",
+       "local_image": "images/layout-040.jpg"
+     },
+     {
+       "number": "041",
+       "source_number": "071",
+       "recognized_catalog_number": "041",
+       "recognized_title": "三角构图",
+       "recognition_status": "verified",
+       "sha256": "d2670b832d40880bb4d9a20c5f60e067bf69ed7fae2876e5a841b3420f15bdd0",
+       "local_image": "images/layout-041.jpg"
+     },
+     {
+       "number": "042",
+       "source_number": "072",
+       "recognized_catalog_number": "042",
+       "recognized_title": "金字塔构图",
+       "recognition_status": "verified",
+       "sha256": "859030c05804a4716507945b9b5c7248a3209fd9d19316e7eaaf6784efb32ce6",
+       "local_image": "images/layout-042.jpg"
+     },
+     {
+       "number": "043",
+       "source_number": "073",
+       "recognized_catalog_number": "043",
+       "recognized_title": "倒三角构图",
+       "recognition_status": "verified",
+       "sha256": "48cb7b6c2ead6a614a4b6ac2802bbf27e8911ec8190810f29d62220a0a5fe015",
+       "local_image": "images/layout-043.jpg"
+     },
+     {
+       "number": "044",
+       "source_number": "074",
+       "recognized_catalog_number": "044",
+       "recognized_title": "菱形构图",
+       "recognition_status": "verified",
+       "sha256": "ed066d66d4d9b24de7e64b65f6afbbd00b1fa6440fd064c714ab78b14ceed3aa",
+       "local_image": "images/layout-044.jpg"
+     },
+     {
+       "number": "045",
+       "source_number": "075",
+       "recognized_catalog_number": "045",
+       "recognized_title": "方形构图",
+       "recognition_status": "verified",
+       "sha256": "66c234596e815916b4ec55fbe38c76101c37e9311f9570d68188ec698d6acc83",
+       "local_image": "images/layout-045.jpg"
+     },
+     {
+       "number": "046",
+       "source_number": "076",
+       "recognized_catalog_number": "046",
+       "recognized_title": "矩形构图",
+       "recognition_status": "verified",
+       "sha256": "ad1b48d9d0351752795d8a61a5e329e70fb188807d2a2e7f1395032f94ee55ac",
+       "local_image": "images/layout-046.jpg"
+     },
+     {
+       "number": "047",
+       "source_number": "077",
+       "recognized_catalog_number": "047",
+       "recognized_title": "圆形构图",
+       "recognition_status": "verified",
+       "sha256": "9123e883afae2d5ed01e166439861592b81168efe8cc3c62c52e46e64914be99",
+       "local_image": "images/layout-047.jpg"
+     },
+     {
+       "number": "048",
+       "source_number": "078",
+       "recognized_catalog_number": "048",
+       "recognized_title": "椭圆构图",
+       "recognition_status": "verified",
+       "sha256": "e1b5aa7841360fa6a6b71b88ca0e84e0798ce9f59c76467206c7cf985ccadc17",
+       "local_image": "images/layout-048.jpg"
+     },
+     {
+       "number": "049",
+       "source_number": "079",
+       "recognized_catalog_number": "049",
+       "recognized_title": "弧形构图",
+       "recognition_status": "verified",
+       "sha256": "734a1751ad7fced670b028522abd90197775f560105148c84b82074750163951",
+       "local_image": "images/layout-049.jpg"
+     },
+     {
+       "number": "050",
+       "source_number": "080",
+       "recognized_catalog_number": "050",
+       "recognized_title": "环形构图",
+       "recognition_status": "verified",
+       "sha256": "de47676d49fb03d1eff0783f94e56f536daeb6136aa13a10ed564c4ffa1ac641",
+       "local_image": "images/layout-050.jpg"
+     },
+     {
+       "number": "051",
+       "source_number": "081",
+       "recognized_catalog_number": "051",
+       "recognized_title": "螺旋构图",
+       "recognition_status": "verified",
+       "sha256": "ea7e22b4706e96f6f7cad4a6b1e4a48a64f722f9d83b4abeef815db57aead666",
+       "local_image": "images/layout-051.jpg"
+     },
+     {
+       "number": "052",
+       "source_number": "082",
+       "recognized_catalog_number": "052",
+       "recognized_title": "放射式构图",
+       "recognition_status": "verified",
+       "sha256": "cde6c03881fd6f6a9fb5aa11dd7fd6d91c452d85a11b8b636649b39b8fdd1136",
+       "local_image": "images/layout-052.jpg"
+     },
+     {
+       "number": "053",
+       "source_number": "083",
+       "recognized_catalog_number": "053",
+       "recognized_title": "向心式构图",
+       "recognition_status": "verified",
+       "sha256": "14fa525ecf9a44c036fe15a452ce58d4d4d2e3bc60d0c22bb857a9a9d9ff56bc",
+       "local_image": "images/layout-053.jpg"
+     },
+     {
+       "number": "054",
+       "source_number": "084",
+       "recognized_catalog_number": "054",
+       "recognized_title": "离心式构图",
+       "recognition_status": "verified",
+       "sha256": "568ad6dd943af1ca1ed18f6121bc218799007c66259032ac0cb86a44d69b816e",
+       "local_image": "images/layout-054.jpg"
+     },
+     {
+       "number": "055",
+       "source_number": "085",
+       "recognized_catalog_number": "055",
+       "recognized_title": "同心式构图",
+       "recognition_status": "verified",
+       "sha256": "d5939be1e764c780f02f894da9168b7b63e732252cc74d1c4890801969c85316",
+       "local_image": "images/layout-055.jpg"
+     },
+     {
+       "number": "056",
+       "source_number": "086",
+       "recognized_catalog_number": "056",
+       "recognized_title": "四象限构图",
+       "recognition_status": "verified",
+       "sha256": "857f63006109e4faf715aa5caa7640b2ebb773a552f7374604c4b46e56aa6146",
+       "local_image": "images/layout-056.jpg"
+     },
+     {
+       "number": "057",
+       "source_number": "087",
+       "recognized_catalog_number": "057",
+       "recognized_title": "棋盘构图",
+       "recognition_status": "verified",
+       "sha256": "bf841df7a4a70ad23fc7a86b0f34adf55d1d0c2842562b066a1aecb7215a30af",
+       "local_image": "images/layout-057.jpg"
+     },
+     {
+       "number": "058",
+       "source_number": "088",
+       "recognized_catalog_number": "058",
+       "recognized_title": "阶梯构图",
+       "recognition_status": "verified",
+       "sha256": "38103915bb83fbb9bd779980f8688e80f6b23b3cc88071771c4b1dbd791f9f7e",
+       "local_image": "images/layout-058.jpg"
+     },
+     {
+       "number": "059",
+       "source_number": "089",
+       "recognized_catalog_number": "059",
+       "recognized_title": "层叠构图",
+       "recognition_status": "verified",
+       "sha256": "0cd36e1a5065c75666afe76d872246a7062294daf4249a1d08a0bc63e9a24222",
+       "local_image": "images/layout-059.jpg"
+     },
+     {
+       "number": "060",
+       "source_number": "090",
+       "recognized_catalog_number": "060",
+       "recognized_title": "级联构图",
+       "recognition_status": "verified",
+       "sha256": "4083a9299e9ec0eef8c9f957daa799d29ebdedcacd487f48fac2dc8b6f373e34",
+       "local_image": "images/layout-060.jpg"
+     },
+     {
+       "number": "061",
+       "source_number": "091",
+       "recognized_catalog_number": "061",
+       "recognized_title": "聚类构图",
+       "recognition_status": "verified",
+       "sha256": "225bc01793d1e33e1579b2a737899e1e7409479c326ed3a6b2a480c7269fe5f8",
+       "local_image": "images/layout-061.jpg"
+     },
+     {
+       "number": "062",
+       "source_number": "092",
+       "recognized_catalog_number": "062",
+       "recognized_title": "分散构图",
+       "recognition_status": "verified",
+       "sha256": "a785247ac7f3da1ad025bade7d05d0add27e65c671f1cb5114ca7bedd5514a43",
+       "local_image": "images/layout-062.jpg"
+     },
+     {
+       "number": "063",
+       "source_number": "099",
+       "recognized_catalog_number": "064",
+       "recognized_title": "网络构图",
+       "recognition_status": "verified",
+       "sha256": "f7014807046bd7ac0862ce5a04b154f8458adcee829419b23b6ca75c4bf3258b",
+       "local_image": "images/layout-063.jpg"
+     },
+     {
+       "number": "064",
+       "source_number": "100",
+       "recognized_catalog_number": "065",
+       "recognized_title": "前中后景构图",
+       "recognition_status": "verified",
+       "sha256": "81fd6303702664226438174aa661b7ebc7dc4372c225253043a04cb45f339bce",
+       "local_image": "images/layout-064.jpg"
+     },
+     {
+       "number": "065",
+       "source_number": "094",
+       "recognized_catalog_number": "063",
+       "recognized_title": "前景框架构图（图像变体）",
+       "recognition_status": "duplicate-title-unresolved",
+       "sha256": "2d4456698ec7452cda688ed988222436fc9ef5e388ebceb6fcb5f04a1f602924",
+       "local_image": "images/layout-065.jpg"
+     },
+     {
+       "number": "066",
+       "source_number": "097",
+       "recognized_catalog_number": "066",
+       "recognized_title": "前景框架构图（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "ddbf8191dc444ceb812c0376f22fbbf10f816d03194d4e92d7382d6407ce5a20",
+       "local_image": "images/layout-066.jpg"
+     },
+     {
+       "number": "067",
+       "source_number": "096",
+       "recognized_catalog_number": "067",
+       "recognized_title": "重叠空间构图",
+       "recognition_status": "verified",
+       "sha256": "129069ab692a1f15a04c03a7b423808de6f4b3bffe811b716ae38bbae7a65afb",
+       "local_image": "images/layout-067.jpg"
+     },
+     {
+       "number": "068",
+       "source_number": "093",
+       "recognized_catalog_number": "068",
+       "recognized_title": "尺度递减构图",
+       "recognition_status": "verified",
+       "sha256": "d9c844a3fceca29f5d820da4b97eb648ad500430586b35448053bedc25db022a",
+       "local_image": "images/layout-068.jpg"
+     },
+     {
+       "number": "069",
+       "source_number": "098",
+       "recognized_catalog_number": "069",
+       "recognized_title": "线性透视",
+       "recognition_status": "verified",
+       "sha256": "1c79a6243c7a972ff1b2cf13fc3596233a80c155ad01a0c66d62280691681f38",
+       "local_image": "images/layout-069.jpg"
+     },
+     {
+       "number": "070",
+       "source_number": "095",
+       "recognized_catalog_number": "070",
+       "recognized_title": "一点透视",
+       "recognition_status": "verified",
+       "sha256": "c840f94551d40f71a8bbedd2ad00317fe737bc90377f46ec30bc99c8a5e71736",
+       "local_image": "images/layout-070.jpg"
+     },
+     {
+       "number": "071",
+       "source_number": "101",
+       "recognized_catalog_number": "071",
+       "recognized_title": "两点透视",
+       "recognition_status": "verified",
+       "sha256": "35b80f2325252592229be84b66f9bf86d793451a09843c115973e476b9805e4b",
+       "local_image": "images/layout-071.jpg"
+     },
+     {
+       "number": "072",
+       "source_number": "102",
+       "recognized_catalog_number": "072",
+       "recognized_title": "三点透视",
+       "recognition_status": "verified",
+       "sha256": "853a40a5657225aa760bfacb4fca6dfa2548c03965074ea3cd104d283cff4503",
+       "local_image": "images/layout-072.jpg"
+     },
+     {
+       "number": "073",
+       "source_number": "103",
+       "recognized_catalog_number": "073",
+       "recognized_title": "平行透视构图",
+       "recognition_status": "verified",
+       "sha256": "89f69dd8e6770c6c4203e26a1f1fd74bf060139375361361f8af4149817712e9",
+       "local_image": "images/layout-073.jpg"
+     },
+     {
+       "number": "074",
+       "source_number": "104",
+       "recognized_catalog_number": "074",
+       "recognized_title": "斜投影构图",
+       "recognition_status": "verified",
+       "sha256": "4282ce782ec9ac75cfa76d2a2868bb5223f1a9bbd70b09ea401ad37b29bad62b",
+       "local_image": "images/layout-074.jpg"
+     },
+     {
+       "number": "075",
+       "source_number": "105",
+       "recognized_catalog_number": "075",
+       "recognized_title": "等距构图",
+       "recognition_status": "verified",
+       "sha256": "db0e1f0d3826fbfa75e7e38eb8d88e7d822021fb5da9de10cdb2642ca63dc605",
+       "local_image": "images/layout-075.jpg"
+     },
+     {
+       "number": "076",
+       "source_number": "106",
+       "recognized_catalog_number": "076",
+       "recognized_title": "轴测构图",
+       "recognition_status": "verified",
+       "sha256": "3832b0aa96b1041c3edb7b078ffc31fe577616197858f3825c63f33c34bb352d",
+       "local_image": "images/layout-076.jpg"
+     },
+     {
+       "number": "077",
+       "source_number": "107",
+       "recognized_catalog_number": "077",
+       "recognized_title": "鸟瞰构图",
+       "recognition_status": "verified",
+       "sha256": "6db258bc9d65570f90af6d06fbef687e5424a19b009d8f65d8ccf81df2106709",
+       "local_image": "images/layout-077.jpg"
+     },
+     {
+       "number": "078",
+       "source_number": "108",
+       "recognized_catalog_number": "078",
+       "recognized_title": "虫视构图",
+       "recognition_status": "verified",
+       "sha256": "04211c60176fe4ddbcba3be0a5028310962cde83909fa3f6bf7209e183c183f1",
+       "local_image": "images/layout-078.jpg"
+     },
+     {
+       "number": "079",
+       "source_number": "109",
+       "recognized_catalog_number": "079",
+       "recognized_title": "顶视构图",
+       "recognition_status": "verified",
+       "sha256": "28f3fd1f93fc3acd0e21a2dc9e08f784dabac22f3792ef1a6846c64a274d2178",
+       "local_image": "images/layout-079.jpg"
+     },
+     {
+       "number": "080",
+       "source_number": "110",
+       "recognized_catalog_number": "080",
+       "recognized_title": "平视构图",
+       "recognition_status": "verified",
+       "sha256": "de0ce8fe21479184f79b918b8f4ccb3e50ace23dbe696663b1afbe046e093c3f",
+       "local_image": "images/layout-080.jpg"
+     },
+     {
+       "number": "081",
+       "source_number": "131",
+       "recognized_catalog_number": "081",
+       "recognized_title": "强制透视构图",
+       "recognition_status": "verified",
+       "sha256": "90664e5c7689b0d862bdd0cc36ea14eae3f5fd8e371f30f9bc67ed89443f1d62",
+       "local_image": "images/layout-081.jpg"
+     },
+     {
+       "number": "082",
+       "source_number": "132",
+       "recognized_catalog_number": "082",
+       "recognized_title": "空气透视构图",
+       "recognition_status": "verified",
+       "sha256": "6362e0da1917654ed59acd0d7a836f9f19fd3268ee5a0a39e916acc962030e41",
+       "local_image": "images/layout-082.jpg"
+     },
+     {
+       "number": "083",
+       "source_number": "133",
+       "recognized_catalog_number": "083",
+       "recognized_title": "浅景深构图",
+       "recognition_status": "verified",
+       "sha256": "ac1ddf51c493e8c2fb20890b20797b28abddd8364d652c7882936e268aa984bf",
+       "local_image": "images/layout-083.jpg"
+     },
+     {
+       "number": "084",
+       "source_number": "134",
+       "recognized_catalog_number": "084",
+       "recognized_title": "深焦构图",
+       "recognition_status": "verified",
+       "sha256": "de90af1092a340a866c778d2106ba8c57d796ac78ea5931567de59bebb9c0512",
+       "local_image": "images/layout-084.jpg"
+     },
+     {
+       "number": "085",
+       "source_number": "135",
+       "recognized_catalog_number": "085",
+       "recognized_title": "平面化构图",
+       "recognition_status": "verified",
+       "sha256": "23d9c85db2bd08b39def34a68d1e561acf9af684f7b664ad41d1e0499392c49b",
+       "local_image": "images/layout-085.jpg"
+     },
+     {
+       "number": "086",
+       "source_number": "136",
+       "recognized_catalog_number": "086",
+       "recognized_title": "深空间构图",
+       "recognition_status": "verified",
+       "sha256": "96f39e555139c647c8c095a708aceb7da124444860f68a2ce521ed2c29d44f87",
+       "local_image": "images/layout-086.jpg"
+     },
+     {
+       "number": "087",
+       "source_number": "021",
+       "recognized_catalog_number": "087",
+       "recognized_title": "放射平衡原则",
+       "recognition_status": "verified",
+       "sha256": "38c0d15a5b4c09cbe739773a5c24840b9a08b7ae4e8c93b916a556ab43302b47",
+       "local_image": "images/layout-087.jpg"
+     },
+     {
+       "number": "088",
+       "source_number": "022",
+       "recognized_catalog_number": "088",
+       "recognized_title": "晶体式平衡原则",
+       "recognition_status": "verified",
+       "sha256": "bdf17c269a316f2f0b608088df4983e5eec72ee7dbff0834b69abcc4ba10979d",
+       "local_image": "images/layout-088.jpg"
+     },
+     {
+       "number": "089",
+       "source_number": "023",
+       "recognized_catalog_number": "089",
+       "recognized_title": "静态构图",
+       "recognition_status": "verified",
+       "sha256": "6233c416243c9b9a2653df9ae6bcc138b5232b2b8175d4144da4644a5a2999a9",
+       "local_image": "images/layout-089.jpg"
+     },
+     {
+       "number": "090",
+       "source_number": "024",
+       "recognized_catalog_number": "090",
+       "recognized_title": "动态构图",
+       "recognition_status": "verified",
+       "sha256": "0edd76b6723235a790a9637554256df0302855557c3d0e66d49e97f545f64637",
+       "local_image": "images/layout-090.jpg"
+     },
+     {
+       "number": "091",
+       "source_number": "025",
+       "recognized_catalog_number": "091",
+       "recognized_title": "开放式构图",
+       "recognition_status": "verified",
+       "sha256": "225d50ddbbd9cbf212879d2249601f69561f82d4da74306dcb7336a50ba35627",
+       "local_image": "images/layout-091.jpg"
+     },
+     {
+       "number": "092",
+       "source_number": "026",
+       "recognized_catalog_number": "092",
+       "recognized_title": "封闭式构图",
+       "recognition_status": "verified",
+       "sha256": "0e95bb2acc2e219a2e296667968d9120fba1d455c06ec0b7bc5285d069201d52",
+       "local_image": "images/layout-092.jpg"
+     },
+     {
+       "number": "093",
+       "source_number": "027",
+       "recognized_catalog_number": "093",
+       "recognized_title": "单一焦点构图",
+       "recognition_status": "verified",
+       "sha256": "080de8ba7ec33498e7497db7af12b0b9730b0bb739e1a8587ea8bcbc90c04bce",
+       "local_image": "images/layout-093.jpg"
+     },
+     {
+       "number": "094",
+       "source_number": "028",
+       "recognized_catalog_number": "094",
+       "recognized_title": "多重焦点构图",
+       "recognition_status": "verified",
+       "sha256": "86a54dd4e3cfa8d2a1388bf64ac114cec024e8e7172197737ed63a29aadd2005",
+       "local_image": "images/layout-094.jpg"
+     },
+     {
+       "number": "095",
+       "source_number": "029",
+       "recognized_catalog_number": "095",
+       "recognized_title": "视觉层级原则",
+       "recognition_status": "verified",
+       "sha256": "613468fbacb862cd75d48d8d285f5bdec01f6dd2758af4ea3e8351f59af08ea1",
+       "local_image": "images/layout-095.jpg"
+     },
+     {
+       "number": "096",
+       "source_number": "030",
+       "recognized_catalog_number": "096",
+       "recognized_title": "主次关系原则",
+       "recognition_status": "verified",
+       "sha256": "9fafb472902642dbae4acfa932af1cfef73a25b9e13fc7d8b8937d8cd1a62341",
+       "local_image": "images/layout-096.jpg"
+     },
+     {
+       "number": "097",
+       "source_number": "031",
+       "recognized_catalog_number": "097",
+       "recognized_title": "平衡原则",
+       "recognition_status": "verified",
+       "sha256": "9d96bf4c832f941ac99886e6fa0dd965773de090a4f213853f70fd1a8159c249",
+       "local_image": "images/layout-097.jpg"
+     },
+     {
+       "number": "098",
+       "source_number": "032",
+       "recognized_catalog_number": "098",
+       "recognized_title": "比例原则",
+       "recognition_status": "verified",
+       "sha256": "9106dc8824281295e3b80e3f8537eeb238b1888b60f9ea396b63b9ca8e06a7af",
+       "local_image": "images/layout-098.jpg"
+     },
+     {
+       "number": "099",
+       "source_number": "033",
+       "recognized_catalog_number": "099",
+       "recognized_title": "尺度对比原则",
+       "recognition_status": "verified",
+       "sha256": "72f7cb38846566cbb917d6945b10eb05df6d23895dd92ee22a045566dfafa75d",
+       "local_image": "images/layout-099.jpg"
+     },
+     {
+       "number": "100",
+       "source_number": "034",
+       "recognized_catalog_number": "100",
+       "recognized_title": "明暗对比原则",
+       "recognition_status": "verified",
+       "sha256": "43625ba77f2e7bb467b9dca171c089206fe4ff32875fdab19676af1d14b510ff",
+       "local_image": "images/layout-100.jpg"
+     },
+     {
+       "number": "101",
+       "source_number": "035",
+       "recognized_catalog_number": "101",
+       "recognized_title": "色彩对比原则",
+       "recognition_status": "verified",
+       "sha256": "087e22cbf4e0e042b325da91c61299311df6ca53f93c3c33f8adaad03a6a7ba6",
+       "local_image": "images/layout-101.jpg"
+     },
+     {
+       "number": "102",
+       "source_number": "036",
+       "recognized_catalog_number": "102",
+       "recognized_title": "形状对比原则",
+       "recognition_status": "verified",
+       "sha256": "9bed906682e2414dfacb5ed61b3944c1a5ce09f72a0a8a47211116df5d54e59a",
+       "local_image": "images/layout-102.jpg"
+     },
+     {
+       "number": "103",
+       "source_number": "037",
+       "recognized_catalog_number": "103",
+       "recognized_title": "质感对比原则",
+       "recognition_status": "verified",
+       "sha256": "2a1a940cc0affde259c07446043b779caf530e9fde4ec28dba9e30d15a100036",
+       "local_image": "images/layout-103.jpg"
+     },
+     {
+       "number": "104",
+       "source_number": "038",
+       "recognized_catalog_number": "104",
+       "recognized_title": "动静对比原则",
+       "recognition_status": "verified",
+       "sha256": "680237d867505c7fb43bcc55a71b68dedbfba743f04efdd04a34f2c9eebd9248",
+       "local_image": "images/layout-104.jpg"
+     },
+     {
+       "number": "105",
+       "source_number": "039",
+       "recognized_catalog_number": "105",
+       "recognized_title": "并置原则",
+       "recognition_status": "verified",
+       "sha256": "dbd76d0234aca48ebc53279ae5c67547e035ac57511a3faa9a46e7bae1229006",
+       "local_image": "images/layout-105.jpg"
+     },
+     {
+       "number": "106",
+       "source_number": "040",
+       "recognized_catalog_number": "106",
+       "recognized_title": "隔离原则",
+       "recognition_status": "verified",
+       "sha256": "a75ae0c3022ddd9fb754966fcbb2f5a471bb542626aa4b90e8f86c04925b34c3",
+       "local_image": "images/layout-106.jpg"
+     },
+     {
+       "number": "107",
+       "source_number": "041",
+       "recognized_catalog_number": "107",
+       "recognized_title": "重复原则",
+       "recognition_status": "verified",
+       "sha256": "7d37e294997b86ad501b0ad44c4db4f92d034a5c3b3ef29652761d9921256ae2",
+       "local_image": "images/layout-107.jpg"
+     },
+     {
+       "number": "108",
+       "source_number": "042",
+       "recognized_catalog_number": "108",
+       "recognized_title": "图案组织",
+       "recognition_status": "verified",
+       "sha256": "4fe105cec125dcef3a122002ffbc4760ab65176af12c254352da5639a02bb2e7",
+       "local_image": "images/layout-108.jpg"
+     },
+     {
+       "number": "109",
+       "source_number": "043",
+       "recognized_catalog_number": "109",
+       "recognized_title": "节奏组织",
+       "recognition_status": "verified",
+       "sha256": "0da5df53c14bff06919b3ef16b81d466e751bfe223778aa683accf267df61ff6",
+       "local_image": "images/layout-109.jpg"
+     },
+     {
+       "number": "110",
+       "source_number": "044",
+       "recognized_catalog_number": "110",
+       "recognized_title": "渐变组织",
+       "recognition_status": "verified",
+       "sha256": "eb2b690226151ae3902bee32f3db7e3d067903f7098935ab025955fbe70018f6",
+       "local_image": "images/layout-110.jpg"
+     },
+     {
+       "number": "111",
+       "source_number": "045",
+       "recognized_catalog_number": "111",
+       "recognized_title": "交替节奏组织",
+       "recognition_status": "verified",
+       "sha256": "dcd8fa051d117c65ba1d42fb2f16b85d65f2a4184cf02cf3408d67105a556b9c",
+       "local_image": "images/layout-111.jpg"
+     },
+     {
+       "number": "112",
+       "source_number": "046",
+       "recognized_catalog_number": "112",
+       "recognized_title": "渐进节奏组织",
+       "recognition_status": "verified",
+       "sha256": "b2a7f826d1f4e5b0e0d2e2c4dc65f8697da8f70620cba2ae5fb051f8defb8d8a",
+       "local_image": "images/layout-112.jpg"
+     },
+     {
+       "number": "113",
+       "source_number": "047",
+       "recognized_catalog_number": "113",
+       "recognized_title": "流动节奏组织",
+       "recognition_status": "verified",
+       "sha256": "4ccc681d865d7af930383ba642aecbe8975ef4507d9fe95642234ad8579ae422",
+       "local_image": "images/layout-113.jpg"
+     },
+     {
+       "number": "114",
+       "source_number": "048",
+       "recognized_catalog_number": "114",
+       "recognized_title": "随机节奏组织",
+       "recognition_status": "verified",
+       "sha256": "7f09c31ba8b576e5440e477aefbaf0f2dc9cb15e4aabe0c9c343541a8d8b6387",
+       "local_image": "images/layout-114.jpg"
+     },
+     {
+       "number": "115",
+       "source_number": "049",
+       "recognized_catalog_number": "115",
+       "recognized_title": "相似性原则",
+       "recognition_status": "verified",
+       "sha256": "1e8b51df47252a46025f8d61fca111f9e6dd7a7803aa1563f00b73baa05846cd",
+       "local_image": "images/layout-115.jpg"
+     },
+     {
+       "number": "116",
+       "source_number": "050",
+       "recognized_catalog_number": "116",
+       "recognized_title": "邻近性原则",
+       "recognition_status": "verified",
+       "sha256": "1c0653daffc8cd05bafc7e09dfef06d8063f87af2159ee28f369b8fbe3e19f5e",
+       "local_image": "images/layout-116.jpg"
+     },
+     {
+       "number": "117",
+       "source_number": "286",
+       "recognized_catalog_number": "127",
+       "recognized_title": "F 型扫描模式",
+       "recognition_status": "verified",
+       "sha256": "e3b156a36d67ad397a63fb6f9448bf348be47bce013c2ec76861895aade64c31",
+       "local_image": "images/layout-117.jpg"
+     },
+     {
+       "number": "118",
+       "source_number": "287",
+       "recognized_catalog_number": "128",
+       "recognized_title": "Z 型扫描模式",
+       "recognition_status": "verified",
+       "sha256": "3fc2eae0c03d13b90d7ac6bdbba90b37c44199368cb7df5b4bc56286faa44aac",
+       "local_image": "images/layout-118.jpg"
+     },
+     {
+       "number": "119",
+       "source_number": "288",
+       "recognized_catalog_number": "129",
+       "recognized_title": "古腾堡图式",
+       "recognition_status": "verified",
+       "sha256": "0739aa4c8924e943275dfe3f648dd2f4e0f3bdecf26077eb5bd5b1c674f782a6",
+       "local_image": "images/layout-119.jpg"
+     },
+     {
+       "number": "120",
+       "source_number": "289",
+       "recognized_catalog_number": "130",
+       "recognized_title": "层蛋糕扫描模式",
+       "recognition_status": "verified",
+       "sha256": "6dccd26354512417307e079df462a2cb9a94a760dee611be4b8ffc4439779ec0",
+       "local_image": "images/layout-120.jpg"
+     },
+     {
+       "number": "121",
+       "source_number": "290",
+       "recognized_catalog_number": "131",
+       "recognized_title": "斑点扫描模式",
+       "recognition_status": "verified",
+       "sha256": "0f7bac24744fd75eba5019cced1979dfc1ff2062a5ef406ccc8be1c0a61dd982",
+       "local_image": "images/layout-121.jpg"
+     },
+     {
+       "number": "122",
+       "source_number": "151",
+       "recognized_catalog_number": "132",
+       "recognized_title": "单栏版式",
+       "recognition_status": "verified",
+       "sha256": "707963f67ef7eeb16525b12b943f17f78987f92fa32ddb60220868aceeef25e6",
+       "local_image": "images/layout-122.jpg"
+     },
+     {
+       "number": "123",
+       "source_number": "154",
+       "recognized_catalog_number": "133",
+       "recognized_title": "双栏版式",
+       "recognition_status": "verified",
+       "sha256": "f375b5d086ed4c236ff4f05194a04367a3925e73bf50a651bb2ac3fec4605f62",
+       "local_image": "images/layout-123.jpg"
+     },
+     {
+       "number": "124",
+       "source_number": "160",
+       "recognized_catalog_number": "134",
+       "recognized_title": "多栏版式",
+       "recognition_status": "verified",
+       "sha256": "a410b9ee7c3a3ba735d75e30f81a567fc8afc9e50660ed798b99f0905018d007",
+       "local_image": "images/layout-124.jpg"
+     },
+     {
+       "number": "125",
+       "source_number": "152",
+       "recognized_catalog_number": "135",
+       "recognized_title": "对称跨页",
+       "recognition_status": "verified",
+       "sha256": "6a0cb8fa774ef4310f1c99adaa5b64fbc9fc454ef0dfdd1b86ccc5138e477e3a",
+       "local_image": "images/layout-125.jpg"
+     },
+     {
+       "number": "126",
+       "source_number": "157",
+       "recognized_catalog_number": "136",
+       "recognized_title": "非对称跨页",
+       "recognition_status": "verified",
+       "sha256": "d1533d181750f4154809f7ad8816b94a97e1451658e761307975adcd42a98aff",
+       "local_image": "images/layout-126.jpg"
+     },
+     {
+       "number": "127",
+       "source_number": "153",
+       "recognized_catalog_number": "137",
+       "recognized_title": "通版跨页",
+       "recognition_status": "verified",
+       "sha256": "b58229cfef3b152f0ea0af4ef94f7748cbbc63a2b6d4092315dc6ba8c3f425ae",
+       "local_image": "images/layout-127.jpg"
+     },
+     {
+       "number": "128",
+       "source_number": "159",
+       "recognized_catalog_number": "138",
+       "recognized_title": "满出血版式",
+       "recognition_status": "verified",
+       "sha256": "a268c9e8fd2add98cadc7952bb0459d54d7ccd68637636331a70c49c5ba0530d",
+       "local_image": "images/layout-128.jpg"
+     },
+     {
+       "number": "129",
+       "source_number": "156",
+       "recognized_catalog_number": "139",
+       "recognized_title": "无出血版式",
+       "recognition_status": "verified",
+       "sha256": "8aad9783bc1802f30c361f4d9adb5fca4aa38fc9a38191c53fabf90027839a08",
+       "local_image": "images/layout-129.jpg"
+     },
+     {
+       "number": "130",
+       "source_number": "155",
+       "recognized_catalog_number": "140",
+       "recognized_title": "图片主导版式",
+       "recognition_status": "verified",
+       "sha256": "5994e984a1e1b64296f94b52ec18fba240044ca0579b1827706bf96e3b344ded",
+       "local_image": "images/layout-130.jpg"
+     },
+     {
+       "number": "131",
+       "source_number": "158",
+       "recognized_catalog_number": "141",
+       "recognized_title": "文字主导版式",
+       "recognition_status": "verified",
+       "sha256": "6e8016f79f9db74c0218f68328c4a73519191383042348dd124f54b67b712679",
+       "local_image": "images/layout-131.jpg"
+     },
+     {
+       "number": "132",
+       "source_number": "181",
+       "recognized_catalog_number": "142",
+       "recognized_title": "大标题版式",
+       "recognition_status": "verified",
+       "sha256": "5e9a9f5129abdb220e2d18d0a88f8184c6895a88b7cadc40431c63aaae6d1b62",
+       "local_image": "images/layout-132.jpg"
+     },
+     {
+       "number": "133",
+       "source_number": "182",
+       "recognized_catalog_number": "143",
+       "recognized_title": "图片窗口版式",
+       "recognition_status": "verified",
+       "sha256": "85edfea8944809a41edeebb36e1751adfab184cd2e8df84f9e37071e252cb445",
+       "local_image": "images/layout-133.jpg"
+     },
+     {
+       "number": "134",
+       "source_number": "183",
+       "recognized_catalog_number": "144",
+       "recognized_title": "框架版式",
+       "recognition_status": "verified",
+       "sha256": "8f8e305dac8e7ec0f8ef39a2519a90698da9562ab3530d22ed4ffc8f348ed4de",
+       "local_image": "images/layout-134.jpg"
+     },
+     {
+       "number": "135",
+       "source_number": "184",
+       "recognized_catalog_number": "145",
+       "recognized_title": "多面板版式",
+       "recognition_status": "verified",
+       "sha256": "bdc29f1374f8629633ccbb229add688570a6e750d5bd4003e5bc640792cf5588",
+       "local_image": "images/layout-135.jpg"
+     },
+     {
+       "number": "136",
+       "source_number": "185",
+       "recognized_catalog_number": "146",
+       "recognized_title": "蒙德里安版式",
+       "recognition_status": "verified",
+       "sha256": "b8fb94bd39c217afa261601992772775943ecce0f43bb90c785bad930c5a5cbf",
+       "local_image": "images/layout-136.jpg"
+     },
+     {
+       "number": "137",
+       "source_number": "186",
+       "recognized_catalog_number": "147",
+       "recognized_title": "马戏团版式",
+       "recognition_status": "verified",
+       "sha256": "6f9e1433a4debb7939a8327c704ad23b7655422fad7bfabeeeb4c249da29c5bb",
+       "local_image": "images/layout-137.jpg"
+     },
+     {
+       "number": "138",
+       "source_number": "187",
+       "recognized_catalog_number": "148",
+       "recognized_title": "剪影版式",
+       "recognition_status": "verified",
+       "sha256": "a37444ae452ce153b39a5e15ee3c93a7939e950adaf682171ac9b031d84ea2ec",
+       "local_image": "images/layout-138.jpg"
+     },
+     {
+       "number": "139",
+       "source_number": "188",
+       "recognized_catalog_number": "149",
+       "recognized_title": "字母造型版式",
+       "recognition_status": "verified",
+       "sha256": "9559ccff04058117d6f2ab0aa70ab23db5c60344d73007788eb6dc4bf957fc9a",
+       "local_image": "images/layout-139.jpg"
+     },
+     {
+       "number": "140",
+       "source_number": "189",
+       "recognized_catalog_number": "150",
+       "recognized_title": "图文谜语版式",
+       "recognition_status": "verified",
+       "sha256": "7085016af0267c777ca1668aad5d643f1687ecbe166bc2dce9df14c6ee493e8c",
+       "local_image": "images/layout-140.jpg"
+     },
+     {
+       "number": "141",
+       "source_number": "190",
+       "recognized_catalog_number": "151",
+       "recognized_title": "拼贴版式",
+       "recognition_status": "verified",
+       "sha256": "bfdb15f7d4ba5187e09f8a4015306a9e8e9267573733512f7ea45ce0decc05aa",
+       "local_image": "images/layout-141.jpg"
+     },
+     {
+       "number": "142",
+       "source_number": "191",
+       "recognized_catalog_number": "152",
+       "recognized_title": "蒙太奇版式",
+       "recognition_status": "verified",
+       "sha256": "2cccbea3ca5a1c1a853bdeb7294c69c6ce1a1a40c311642cfc87da6e99c55d72",
+       "local_image": "images/layout-142.jpg"
+     },
+     {
+       "number": "143",
+       "source_number": "192",
+       "recognized_catalog_number": "153",
+       "recognized_title": "模块化页面",
+       "recognition_status": "verified",
+       "sha256": "3aa2e606e1d820f66af258edfe46cd2867329504b46b54d7f6ac6dcc84eb9574",
+       "local_image": "images/layout-143.jpg"
+     },
+     {
+       "number": "144",
+       "source_number": "193",
+       "recognized_catalog_number": "154",
+       "recognized_title": "区块式版式",
+       "recognition_status": "verified",
+       "sha256": "9b997e2a73bf99fdb744544404b841fabc80d948e93f5489b9205725f62737b7",
+       "local_image": "images/layout-144.jpg"
+     },
+     {
+       "number": "145",
+       "source_number": "194",
+       "recognized_catalog_number": "155",
+       "recognized_title": "插页式版式",
+       "recognition_status": "verified",
+       "sha256": "a7829005e01b544064b7598e09f2c336dedce05480ca61773e98b96b8f527340",
+       "local_image": "images/layout-145.jpg"
+     },
+     {
+       "number": "146",
+       "source_number": "195",
+       "recognized_catalog_number": "156",
+       "recognized_title": "侧栏版式",
+       "recognition_status": "verified",
+       "sha256": "e0e67bb186dff62d09b86e34070501b8e6b181fe0716668afa8977d8742bc46d",
+       "local_image": "images/layout-146.jpg"
+     },
+     {
+       "number": "147",
+       "source_number": "196",
+       "recognized_catalog_number": "157",
+       "recognized_title": "边注版式",
+       "recognition_status": "verified",
+       "sha256": "21b29593ac3c02cd4f71d29f1a68072bea41ea0a5ff526dbb0309b4a780e0e41",
+       "local_image": "images/layout-147.jpg"
+     },
+     {
+       "number": "148",
+       "source_number": "197",
+       "recognized_catalog_number": "158",
+       "recognized_title": "环绕图版式",
+       "recognition_status": "verified",
+       "sha256": "cdd8794f7e2d385df37fce65fae30d5de702e685114e278f434268f3cfe7d347",
+       "local_image": "images/layout-148.jpg"
+     },
+     {
+       "number": "149",
+       "source_number": "198",
+       "recognized_catalog_number": "159",
+       "recognized_title": "浮动块版式",
+       "recognition_status": "verified",
+       "sha256": "8511de73bd343c5714232ce0b518b1b439bd1281af5dff0b044cb36aaab6cff9",
+       "local_image": "images/layout-149.jpg"
+     },
+     {
+       "number": "150",
+       "source_number": "199",
+       "recognized_catalog_number": "160",
+       "recognized_title": "封面版式",
+       "recognition_status": "verified",
+       "sha256": "52d2af3a8454ed5fce13f41e10e9310f464db2d9aaad5d619e4ff9fae27ebe34",
+       "local_image": "images/layout-150.jpg"
+     },
+     {
+       "number": "151",
+       "source_number": "200",
+       "recognized_catalog_number": "161",
+       "recognized_title": "章节扉页",
+       "recognition_status": "verified",
+       "sha256": "aaed2d486c3e416c19de1c8b9589cc8a923e6d58078e95da71803cbf8c581ef8",
+       "local_image": "images/layout-151.jpg"
+     },
+     {
+       "number": "152",
+       "source_number": "137",
+       "recognized_catalog_number": "168",
+       "recognized_title": "轴线系统",
+       "recognition_status": "verified",
+       "sha256": "3800eb5c7a3b90c7cd3f4a8234f3c1d2e77ad4f9942677d0915e339658169e31",
+       "local_image": "images/layout-152.jpg"
+     },
+     {
+       "number": "153",
+       "source_number": "138",
+       "recognized_catalog_number": "169",
+       "recognized_title": "放射系统",
+       "recognition_status": "verified",
+       "sha256": "c04c76333dd2ab38ead3328b9f4a33c27b80275caca399a7cae9ac3f513ff13f",
+       "local_image": "images/layout-153.jpg"
+     },
+     {
+       "number": "154",
+       "source_number": "139",
+       "recognized_catalog_number": "170",
+       "recognized_title": "扩张系统",
+       "recognition_status": "verified",
+       "sha256": "b732a4f72ff920e0f71288230c93d4a59ab7c61223d8bf85c4240e0fb6c363a5",
+       "local_image": "images/layout-154.jpg"
+     },
+     {
+       "number": "155",
+       "source_number": "140",
+       "recognized_catalog_number": "171",
+       "recognized_title": "随机系统",
+       "recognition_status": "verified",
+       "sha256": "307cf2d6140aa2072386b995aa2df205652a264e8647270cdb04a0935e4dfde9",
+       "local_image": "images/layout-155.jpg"
+     },
+     {
+       "number": "156",
+       "source_number": "141",
+       "recognized_catalog_number": "172",
+       "recognized_title": "网格系统",
+       "recognition_status": "verified",
+       "sha256": "6955e156678bdddfe524dbf0ae45a0474e873e960c3fbb0cbb426ede48d4feb6",
+       "local_image": "images/layout-156.jpg"
+     },
+     {
+       "number": "157",
+       "source_number": "142",
+       "recognized_catalog_number": "173",
+       "recognized_title": "模块系统",
+       "recognition_status": "verified",
+       "sha256": "e46ef6f4ff89d2e82e399a4832daeb88d8bd560b72c1bcd0b46b6bdf591db184",
+       "local_image": "images/layout-157.jpg"
+     },
+     {
+       "number": "158",
+       "source_number": "143",
+       "recognized_catalog_number": "174",
+       "recognized_title": "过渡系统",
+       "recognition_status": "verified",
+       "sha256": "648a398eeff850431ba4cea6dc2e413ff3da8a8556d67fa00787ea49cf2a3188",
+       "local_image": "images/layout-158.jpg"
+     },
+     {
+       "number": "159",
+       "source_number": "144",
+       "recognized_catalog_number": "175",
+       "recognized_title": "双边系统",
+       "recognition_status": "verified",
+       "sha256": "6a4d00073ec560f0ae7a971964c1da11923097a1fb49bcdee849d25954982a08",
+       "local_image": "images/layout-159.jpg"
+     },
+     {
+       "number": "160",
+       "source_number": "145",
+       "recognized_catalog_number": "176",
+       "recognized_title": "左对齐右参差",
+       "recognition_status": "verified",
+       "sha256": "76f52ddaeaa66a9ac3cd3611cbc0e9c72b7b07bfb12551f5ac757df14afe9483",
+       "local_image": "images/layout-160.jpg"
+     },
+     {
+       "number": "161",
+       "source_number": "146",
+       "recognized_catalog_number": "177",
+       "recognized_title": "右对齐左参差",
+       "recognition_status": "verified",
+       "sha256": "abe3b4b4f3bb71b954dc6157ebe1eab908fee712d53f77d0774f87dd54a7e36e",
+       "local_image": "images/layout-161.jpg"
+     },
+     {
+       "number": "162",
+       "source_number": "147",
+       "recognized_catalog_number": "178",
+       "recognized_title": "居中排版",
+       "recognition_status": "verified",
+       "sha256": "77a93bf6377c029103d37c0f12f946026887fef5171f0d66a48f04fc1a57e568",
+       "local_image": "images/layout-162.jpg"
+     },
+     {
+       "number": "163",
+       "source_number": "148",
+       "recognized_catalog_number": "179",
+       "recognized_title": "两端对齐",
+       "recognition_status": "verified",
+       "sha256": "927adfd6d95c6fbba6a75e094fff82910e5eaf15648bb245ee3dcc23f48a4446",
+       "local_image": "images/layout-163.jpg"
+     },
+     {
+       "number": "164",
+       "source_number": "149",
+       "recognized_catalog_number": "180",
+       "recognized_title": "强制两端对齐",
+       "recognition_status": "verified",
+       "sha256": "2529f94d6ffda68771619bf8235e0cd81e4f4da9c9473d40bb56ad3df793b88d",
+       "local_image": "images/layout-164.jpg"
+     },
+     {
+       "number": "165",
+       "source_number": "150",
+       "recognized_catalog_number": "181",
+       "recognized_title": "非对称字体排版",
+       "recognition_status": "verified",
+       "sha256": "6aab57e60b76b189b25f482d86416d6ca10d7d1bec3d54ded3ba15a4612cc839",
+       "local_image": "images/layout-165.jpg"
+     },
+     {
+       "number": "166",
+       "source_number": "121",
+       "recognized_catalog_number": "182",
+       "recognized_title": "轮廓绕排",
+       "recognition_status": "verified",
+       "sha256": "790f6c3589274dba734aa9b4823bc88f0caaf80b120d64669682d5b435bb9939",
+       "local_image": "images/layout-166.jpg"
+     },
+     {
+       "number": "167",
+       "source_number": "122",
+       "recognized_catalog_number": "183",
+       "recognized_title": "矩形绕排",
+       "recognition_status": "verified",
+       "sha256": "58b5f0bdf23c37ed2b73adb6a072e025a2062d8516a83616e652af6f22ccc2ef",
+       "local_image": "images/layout-167.jpg"
+     },
+     {
+       "number": "168",
+       "source_number": "123",
+       "recognized_catalog_number": "184",
+       "recognized_title": "跨栏标题",
+       "recognition_status": "verified",
+       "sha256": "7612bae9d50c4dc08917c24b7b8f862d369269b3864e641aacf6110c06b9aef0",
+       "local_image": "images/layout-168.jpg"
+     },
+     {
+       "number": "169",
+       "source_number": "124",
+       "recognized_catalog_number": "185",
+       "recognized_title": "悬挂缩进",
+       "recognition_status": "verified",
+       "sha256": "788895491b3f0389c95adef8a4d50e48397913c07ad6e2130eaf8f7eb08068b4",
+       "local_image": "images/layout-169.jpg"
+     },
+     {
+       "number": "170",
+       "source_number": "125",
+       "recognized_catalog_number": "186",
+       "recognized_title": "首行缩进",
+       "recognition_status": "verified",
+       "sha256": "c17a7c6848d90ee41ea1b67a3455e8a768e744ba8726ea30b714145b07d9c21d",
+       "local_image": "images/layout-170.jpg"
+     },
+     {
+       "number": "171",
+       "source_number": "126",
+       "recognized_catalog_number": "187",
+       "recognized_title": "凸排标点",
+       "recognition_status": "verified",
+       "sha256": "95796ba387631c99b1fbb6e2d9d22e5f019b1e7e057ad2b058dfcfe6d5466548",
+       "local_image": "images/layout-171.jpg"
+     },
+     {
+       "number": "172",
+       "source_number": "127",
+       "recognized_catalog_number": "188",
+       "recognized_title": "基线对齐",
+       "recognition_status": "verified",
+       "sha256": "fd8a1900a24b95d8d628aa9fd36537b061a366b825c18af499966e3081a0e7a7",
+       "local_image": "images/layout-172.jpg"
+     },
+     {
+       "number": "173",
+       "source_number": "128",
+       "recognized_catalog_number": "189",
+       "recognized_title": "形状文字",
+       "recognition_status": "verified",
+       "sha256": "53a7ad86ed122e61f8c646011fb6379b89fad31b02605295a0ccf7e4e5bcff63",
+       "local_image": "images/layout-173.jpg"
+     },
+     {
+       "number": "174",
+       "source_number": "129",
+       "recognized_catalog_number": "190",
+       "recognized_title": "图形诗排版",
+       "recognition_status": "verified",
+       "sha256": "1b1e6fab8d96ecc311eaa3ded6dd9e3f5494640fc916d1d5178c00bc691cf3c0",
+       "local_image": "images/layout-174.jpg"
+     },
+     {
+       "number": "175",
+       "source_number": "130",
+       "recognized_catalog_number": "191",
+       "recognized_title": "路径文字",
+       "recognition_status": "verified",
+       "sha256": "88acce490d22b9c619f7df25f0ae2c7bf940bdd32b66334eef4198519b85cc64",
+       "local_image": "images/layout-175.jpg"
+     },
+     {
+       "number": "176",
+       "source_number": "111",
+       "recognized_catalog_number": "192",
+       "recognized_title": "垂直文字排版（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "2d1afad0fcd8456b94ebe162bfd16f3ee045950aaf3c56acfc55cf88ecf882e5",
+       "local_image": "images/layout-176.jpg"
+     },
+     {
+       "number": "177",
+       "source_number": "170",
+       "recognized_catalog_number": "192",
+       "recognized_title": "垂直文字排版（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "ce9d2ab1d8ba5169e9e0900adfede2429edabeea482e8fe0ec51881aa760b602",
+       "local_image": "images/layout-177.jpg"
+     },
+     {
+       "number": "178",
+       "source_number": "112",
+       "recognized_catalog_number": "193",
+       "recognized_title": "水平文字排版（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "fa78abe9f7e0d9548915a0384ed83943fe33eaf0cc012a9e1fe532c7d28401d0",
+       "local_image": "images/layout-178.jpg"
+     },
+     {
+       "number": "179",
+       "source_number": "168",
+       "recognized_catalog_number": "193",
+       "recognized_title": "水平文字排版（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "a0cacd4e614cc026fe858f02e4a7067eead4297d91d255b27f8b82e356af5fa6",
+       "local_image": "images/layout-179.jpg"
+     },
+     {
+       "number": "180",
+       "source_number": "113",
+       "recognized_catalog_number": "194",
+       "recognized_title": "手稿网格（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "6112b2d4767af3050972d0f2b2f1be669a80bbe78d1772731707f3ccc34a542b",
+       "local_image": "images/layout-180.jpg"
+     },
+     {
+       "number": "181",
+       "source_number": "164",
+       "recognized_catalog_number": "194",
+       "recognized_title": "手稿网格（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "73b912bf7fd93e066d6793a9e2e6f88dabc3fd3580dae5b96ad7bb21168fd412",
+       "local_image": "images/layout-181.jpg"
+     },
+     {
+       "number": "182",
+       "source_number": "114",
+       "recognized_catalog_number": "195",
+       "recognized_title": "分栏网格（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "ee77662391f69c1405476547479cb8288fb04a48afb0b597643dbcf00395d264",
+       "local_image": "images/layout-182.jpg"
+     },
+     {
+       "number": "183",
+       "source_number": "166",
+       "recognized_catalog_number": "195",
+       "recognized_title": "分栏网格（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "4b77802ed02c7978feb800c509d93845e6f5981970eb8f7927d85fff00a5f4f9",
+       "local_image": "images/layout-183.jpg"
+     },
+     {
+       "number": "184",
+       "source_number": "115",
+       "recognized_catalog_number": "196",
+       "recognized_title": "模块化网格（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "99d69767192c52b511b13c7085cbc02a4420bae1fb660aea89aec02515bb4810",
+       "local_image": "images/layout-184.jpg"
+     },
+     {
+       "number": "185",
+       "source_number": "162",
+       "recognized_catalog_number": "196",
+       "recognized_title": "模块化网格（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "f6e5e8b0380f4ac0db993eaa81d3318de9c2c8df63a5cb75e016fb5d5d60b565",
+       "local_image": "images/layout-185.jpg"
+     },
+     {
+       "number": "186",
+       "source_number": "116",
+       "recognized_catalog_number": "197",
+       "recognized_title": "层级网格（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "5e150ca34990374aa7af55e8e47fba98b93c1e47f151fcffaa4cf0380cecae5f",
+       "local_image": "images/layout-186.jpg"
+     },
+     {
+       "number": "187",
+       "source_number": "165",
+       "recognized_catalog_number": "197",
+       "recognized_title": "层级网格（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "5469dc46ee4846899f74d18665de83e39e2a0208aff5e858c2123dd3af488522",
+       "local_image": "images/layout-187.jpg"
+     },
+     {
+       "number": "188",
+       "source_number": "117",
+       "recognized_catalog_number": "198",
+       "recognized_title": "基线网格（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "43da00ccabc373bb65075db0a58bf1ae81b06851ec288982c7387bb43fe74e21",
+       "local_image": "images/layout-188.jpg"
+     },
+     {
+       "number": "189",
+       "source_number": "167",
+       "recognized_catalog_number": "198",
+       "recognized_title": "基线网格（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "e9652b648d813af9cae6175b47b62fe63ffc1b94c8f170c301d7928d6547efa3",
+       "local_image": "images/layout-189.jpg"
+     },
+     {
+       "number": "190",
+       "source_number": "118",
+       "recognized_catalog_number": "199",
+       "recognized_title": "复合网格（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "a5d4572466bc97effeb2fc9f2a1bd29a7375e2ed22ed1828d1471a3e2514d466",
+       "local_image": "images/layout-190.jpg"
+     },
+     {
+       "number": "191",
+       "source_number": "169",
+       "recognized_catalog_number": "199",
+       "recognized_title": "复合网格（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "a7ea718e6831276a96e08e83b4d24cedc2209fcbce6c6a9bf40e2098bcc57039",
+       "local_image": "images/layout-191.jpg"
+     },
+     {
+       "number": "192",
+       "source_number": "119",
+       "recognized_catalog_number": "200",
+       "recognized_title": "非对称网格（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "de9f4d1f577985c9db5755b586d1797da444ed3b187a9da7bd773dc645e26db5",
+       "local_image": "images/layout-192.jpg"
+     },
+     {
+       "number": "193",
+       "source_number": "163",
+       "recognized_catalog_number": "200",
+       "recognized_title": "非对称网格（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "a1e95a8b656ae1acbb0baa13e75af4b7d5cdcce3a514b16bb0dc3a3732d60c10",
+       "local_image": "images/layout-193.jpg"
+     },
+     {
+       "number": "194",
+       "source_number": "120",
+       "recognized_catalog_number": "201",
+       "recognized_title": "方格网格（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "7a5d37990b0867c696d442dc0ee249333f855ac223a268031bba14fb7351cd47",
+       "local_image": "images/layout-194.jpg"
+     },
+     {
+       "number": "195",
+       "source_number": "161",
+       "recognized_catalog_number": "201",
+       "recognized_title": "方格网格（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "ac727a2a0362e43d0f7d41869f8ddc6f1b3bd24d05de028de6cb47c024664c2a",
+       "local_image": "images/layout-195.jpg"
+     },
+     {
+       "number": "196",
+       "source_number": "171",
+       "recognized_catalog_number": "202",
+       "recognized_title": "等距网格",
+       "recognition_status": "verified",
+       "sha256": "b226867c9227700811dd89d860c131bbe33068ba4538db36588111fb8b9e06f0",
+       "local_image": "images/layout-196.jpg"
+     },
+     {
+       "number": "197",
+       "source_number": "172",
+       "recognized_catalog_number": "203",
+       "recognized_title": "放射网格",
+       "recognition_status": "verified",
+       "sha256": "23987bb5b916aa31e5a302a43fc8e32313f48ac0b7be0035448fc0d2839519f7",
+       "local_image": "images/layout-197.jpg"
+     },
+     {
+       "number": "198",
+       "source_number": "173",
+       "recognized_catalog_number": "204",
+       "recognized_title": "极坐标网格",
+       "recognition_status": "verified",
+       "sha256": "d82d70e2b95141afaafddf7d60940c4bc354b6f0663026e286503c1db2168b68",
+       "local_image": "images/layout-198.jpg"
+     },
+     {
+       "number": "199",
+       "source_number": "174",
+       "recognized_catalog_number": "205",
+       "recognized_title": "嵌套网格",
+       "recognition_status": "verified",
+       "sha256": "052014a54475eabcdf36d5f0cb118ed546699ac7a1242251c78ab8270544158d",
+       "local_image": "images/layout-199.jpg"
+     },
+     {
+       "number": "200",
+       "source_number": "175",
+       "recognized_catalog_number": "206",
+       "recognized_title": "子网格",
+       "recognition_status": "verified",
+       "sha256": "0e60438dad6ed53fe4246d91320a1a67d0df6298d2c7447577a1077b94fab8d8",
+       "local_image": "images/layout-200.jpg"
+     },
+     {
+       "number": "201",
+       "source_number": "176",
+       "recognized_catalog_number": "207",
+       "recognized_title": "固定网格",
+       "recognition_status": "verified",
+       "sha256": "a5bde5b1ecf235a1eea8a9e682df22469c8d00dbb4e21dc532eadbe1bd801fc8",
+       "local_image": "images/layout-201.jpg"
+     },
+     {
+       "number": "202",
+       "source_number": "177",
+       "recognized_catalog_number": "208",
+       "recognized_title": "流体网格",
+       "recognition_status": "verified",
+       "sha256": "28b958e28c8cf0408a769bb2ff40b09093b280aa10cca43c0cf841c257838aaf",
+       "local_image": "images/layout-202.jpg"
+     },
+     {
+       "number": "203",
+       "source_number": "178",
+       "recognized_catalog_number": "209",
+       "recognized_title": "响应式网格",
+       "recognition_status": "verified",
+       "sha256": "e6a1dfcc2fb33c1cd1560335bfd17a7555a3f495f9defd26a44ddeb10e4bb0f4",
+       "local_image": "images/layout-203.jpg"
+     },
+     {
+       "number": "204",
+       "source_number": "179",
+       "recognized_catalog_number": "210",
+       "recognized_title": "破格网格",
+       "recognition_status": "verified",
+       "sha256": "68400f7be6eb49626f0883fba47bdd21889b568b4802630af54dcd0c367ac0d5",
+       "local_image": "images/layout-204.jpg"
+     },
+     {
+       "number": "205",
+       "source_number": "180",
+       "recognized_catalog_number": "211",
+       "recognized_title": "解构网格",
+       "recognition_status": "verified",
+       "sha256": "b7ec14367fd7bec792f68b516110d29e4e4db56d4d15b8e77f9bc1947bbf6793",
+       "local_image": "images/layout-205.jpg"
+     },
+     {
+       "number": "206",
+       "source_number": "345",
+       "recognized_catalog_number": "212",
+       "recognized_title": "横排左起",
+       "recognition_status": "verified",
+       "sha256": "b6c8e0e74e375762f7fa2b32f7cca38634daaa7ed9b3f06956031e17a90d63f1",
+       "local_image": "images/layout-206.jpg"
+     },
+     {
+       "number": "207",
+       "source_number": "346",
+       "recognized_catalog_number": "213",
+       "recognized_title": "横排右起",
+       "recognition_status": "verified",
+       "sha256": "81f9483d7b8958bc67d38cd47cf0f91e7b4b3751a3dafee9085b7b09a72c32c0",
+       "local_image": "images/layout-207.jpg"
+     },
+     {
+       "number": "208",
+       "source_number": "347",
+       "recognized_catalog_number": "214",
+       "recognized_title": "直排右起",
+       "recognition_status": "verified",
+       "sha256": "717337fc4fd31abc4245157782de886ed1ff54bf249b70e5ec8ef75d165fb19c",
+       "local_image": "images/layout-208.jpg"
+     },
+     {
+       "number": "209",
+       "source_number": "348",
+       "recognized_catalog_number": "215",
+       "recognized_title": "直排左起",
+       "recognition_status": "verified",
+       "sha256": "362f8dda887307dc24eca8ced7d2e39dcd7ee75cb99965f8121bae6ab0a9e45e",
+       "local_image": "images/layout-209.jpg"
+     },
+     {
+       "number": "210",
+       "source_number": "349",
+       "recognized_catalog_number": "216",
+       "recognized_title": "横直混排",
+       "recognition_status": "verified",
+       "sha256": "44cb4a75689f48c6553089dc55aa176bbe7cdaad8b43baa87a0a65ae083826e5",
+       "local_image": "images/layout-210.jpg"
+     },
+     {
+       "number": "211",
+       "source_number": "350",
+       "recognized_catalog_number": "217",
+       "recognized_title": "纵中横排",
+       "recognition_status": "verified",
+       "sha256": "d7750cec10ff43d01fde7b24d83e0f6e130de0ef189460ec7994d60f4b21d54b",
+       "local_image": "images/layout-211.jpg"
+     },
+     {
+       "number": "212",
+       "source_number": "321",
+       "recognized_catalog_number": "218",
+       "recognized_title": "直排中西文转向",
+       "recognition_status": "verified",
+       "sha256": "d1426c2aca26690a444eb839803cb61b90030a774298f8e15bbac077b9e2643f",
+       "local_image": "images/layout-212.jpg"
+     },
+     {
+       "number": "213",
+       "source_number": "322",
+       "recognized_catalog_number": "219",
+       "recognized_title": "直排中西文直立",
+       "recognition_status": "verified",
+       "sha256": "8c7aa18d51870980f9dcaa10df300ee0ad43bdd326dae976a43661f6c33566fd",
+       "local_image": "images/layout-213.jpg"
+     },
+     {
+       "number": "214",
+       "source_number": "323",
+       "recognized_catalog_number": "220",
+       "recognized_title": "双向文字排版",
+       "recognition_status": "verified",
+       "sha256": "9f717abd9b941f8ce9af1a921f9f382f38dcc82939064105039b5bdfb2aa4c29",
+       "local_image": "images/layout-214.jpg"
+     },
+     {
+       "number": "215",
+       "source_number": "324",
+       "recognized_catalog_number": "221",
+       "recognized_title": "旁注（Ruby）排版",
+       "recognition_status": "verified",
+       "sha256": "5cc95cd8ca9c708de99be657d7002ca326cdec11fb18facba7f2eb7c3438b47b",
+       "local_image": "images/layout-215.jpg"
+     },
+     {
+       "number": "216",
+       "source_number": "201",
+       "recognized_catalog_number": "226",
+       "recognized_title": "弹性盒布局",
+       "recognition_status": "verified",
+       "sha256": "dcb5648fef6c5d117f476727d872e362368d475803423de7073ade39813a4ed6",
+       "local_image": "images/layout-216.jpg"
+     },
+     {
+       "number": "217",
+       "source_number": "202",
+       "recognized_catalog_number": "227",
+       "recognized_title": "网格布局",
+       "recognition_status": "verified",
+       "sha256": "cf0dfb0d939ed0dc153971048bccd4244d78a5f54fbc1a79e2c86eefee602ee9",
+       "local_image": "images/layout-217.jpg"
+     },
+     {
+       "number": "218",
+       "source_number": "203",
+       "recognized_catalog_number": "228",
+       "recognized_title": "子网格布局",
+       "recognition_status": "verified",
+       "sha256": "43f72d32ebb40bed8f5fa61c17de85c7f74969f395b63a8b2f430ea37d07313e",
+       "local_image": "images/layout-218.jpg"
+     },
+     {
+       "number": "219",
+       "source_number": "204",
+       "recognized_catalog_number": "229",
+       "recognized_title": "多栏布局",
+       "recognition_status": "verified",
+       "sha256": "5f8747c5467368d2389b71fdaf2e5fe5c2faf4efba07114b0538c26238a07820",
+       "local_image": "images/layout-219.jpg"
+     },
+     {
+       "number": "220",
+       "source_number": "205",
+       "recognized_catalog_number": "230",
+       "recognized_title": "表格布局",
+       "recognition_status": "verified",
+       "sha256": "e0d00975563701b363852495b6750fb6fa372ca21ff1cc72b62ab6ff82fad83c",
+       "local_image": "images/layout-220.jpg"
+     },
+     {
+       "number": "221",
+       "source_number": "206",
+       "recognized_catalog_number": "231",
+       "recognized_title": "浮动布局",
+       "recognition_status": "verified",
+       "sha256": "d84798420bc4617f50727a6093efe7e7ed7a917d0020434902a199eafac6217c",
+       "local_image": "images/layout-221.jpg"
+     },
+     {
+       "number": "222",
+       "source_number": "207",
+       "recognized_catalog_number": "232",
+       "recognized_title": "相对定位布局",
+       "recognition_status": "verified",
+       "sha256": "bc9de61132c44a3272c02155aca6290bb46d0f2aadaa52e39e830c6639727468",
+       "local_image": "images/layout-222.jpg"
+     },
+     {
+       "number": "223",
+       "source_number": "208",
+       "recognized_catalog_number": "233",
+       "recognized_title": "绝对定位布局",
+       "recognition_status": "verified",
+       "sha256": "e06b9f79805abfe816207f6241bef093b69206458604adcdb5fdb5427e3a03e4",
+       "local_image": "images/layout-223.jpg"
+     },
+     {
+       "number": "224",
+       "source_number": "209",
+       "recognized_catalog_number": "234",
+       "recognized_title": "固定定位布局",
+       "recognition_status": "verified",
+       "sha256": "b5b8cd3a77bc06273b2e15762153a7a9cdc1d695a7c8355d0e710785954fc584",
+       "local_image": "images/layout-224.jpg"
+     },
+     {
+       "number": "225",
+       "source_number": "210",
+       "recognized_catalog_number": "235",
+       "recognized_title": "粘性定位布局",
+       "recognition_status": "verified",
+       "sha256": "744d502b2da578e411d475d9f225a25123940c44f26cbc98e81804849fb0a183",
+       "local_image": "images/layout-225.jpg"
+     },
+     {
+       "number": "226",
+       "source_number": "211",
+       "recognized_catalog_number": "236",
+       "recognized_title": "瀑布流布局",
+       "recognition_status": "verified",
+       "sha256": "b0f911ddf8fc053613d73530fbd148a74ec54b647101b7777468f647c6912132",
+       "local_image": "images/layout-226.jpg"
+     },
+     {
+       "number": "227",
+       "source_number": "212",
+       "recognized_catalog_number": "237",
+       "recognized_title": "覆盖布局",
+       "recognition_status": "verified",
+       "sha256": "87e41646c3b43c5b5cc439cf19e197583e6e4c3bdd303593f393f7f74578e575",
+       "local_image": "images/layout-227.jpg"
+     },
+     {
+       "number": "228",
+       "source_number": "213",
+       "recognized_catalog_number": "238",
+       "recognized_title": "固定宽度布局",
+       "recognition_status": "verified",
+       "sha256": "3e8f87c1edd9b37923bf1dd1f8411505d575a5d1e2c02e6f538dc82737b490b9",
+       "local_image": "images/layout-228.jpg"
+     },
+     {
+       "number": "229",
+       "source_number": "214",
+       "recognized_catalog_number": "239",
+       "recognized_title": "流体布局",
+       "recognition_status": "verified",
+       "sha256": "35e49a35c259117fb88683d6bda83a68a16fbfffa350ad4e543c8ff993409c2a",
+       "local_image": "images/layout-229.jpg"
+     },
+     {
+       "number": "230",
+       "source_number": "215",
+       "recognized_catalog_number": "240",
+       "recognized_title": "响应式布局",
+       "recognition_status": "verified",
+       "sha256": "d206a1885664cd1d9f568f6db9c850e402a9fafed17a669237cbc5db1c0918fe",
+       "local_image": "images/layout-230.jpg"
+     },
+     {
+       "number": "231",
+       "source_number": "216",
+       "recognized_catalog_number": "241",
+       "recognized_title": "自适应布局",
+       "recognition_status": "verified",
+       "sha256": "1a10ac7dad62b2f254855fe5da43d2fcf9842ae739ec8ecaa1f7f470fce07895",
+       "local_image": "images/layout-231.jpg"
+     },
+     {
+       "number": "232",
+       "source_number": "217",
+       "recognized_catalog_number": "242",
+       "recognized_title": "容器查询布局",
+       "recognition_status": "verified",
+       "sha256": "835434fca59bc51ce0f4ed9412782c8950b01679f91a2d758975c7a5c3d25581",
+       "local_image": "images/layout-232.jpg"
+     },
+     {
+       "number": "233",
+       "source_number": "218",
+       "recognized_catalog_number": "243",
+       "recognized_title": "堆栈",
+       "recognition_status": "verified",
+       "sha256": "d6ae639542c116f0b2f20d7e0382f54b357c4961025ee36fae6f9c5c613cb1a8",
+       "local_image": "images/layout-233.jpg"
+     },
+     {
+       "number": "234",
+       "source_number": "219",
+       "recognized_catalog_number": "244",
+       "recognized_title": "盒子",
+       "recognition_status": "verified",
+       "sha256": "02afd85cefc47866f7bcfdde92f2f280fdfb8e914593d816bb9e80bde235d783",
+       "local_image": "images/layout-234.jpg"
+     },
+     {
+       "number": "235",
+       "source_number": "220",
+       "recognized_catalog_number": "245",
+       "recognized_title": "居中器",
+       "recognition_status": "verified",
+       "sha256": "5da0581b94f34c915fe142fa5cca9b489961b087be60c7edafa12ecaafa4ce58",
+       "local_image": "images/layout-235.jpg"
+     },
+     {
+       "number": "236",
+       "source_number": "221",
+       "recognized_catalog_number": "246",
+       "recognized_title": "簇群",
+       "recognition_status": "verified",
+       "sha256": "34f7165d919a7d9ab8defedacfed9d36aff0ef5a17e3ff9ca973e4c89df90f5a",
+       "local_image": "images/layout-236.jpg"
+     },
+     {
+       "number": "237",
+       "source_number": "222",
+       "recognized_catalog_number": "247",
+       "recognized_title": "侧栏原语",
+       "recognition_status": "verified",
+       "sha256": "ee9baa7170992906b87368beeb149c406a469ee7621f587c5b6668bc733382df",
+       "local_image": "images/layout-237.jpg"
+     },
+     {
+       "number": "238",
+       "source_number": "223",
+       "recognized_catalog_number": "248",
+       "recognized_title": "切换器",
+       "recognition_status": "verified",
+       "sha256": "94f7e2a5460e1e59c5785627f8af9ed82b2353a60f1c82da2195d84eb10fbd32",
+       "local_image": "images/layout-238.jpg"
+     },
+     {
+       "number": "239",
+       "source_number": "224",
+       "recognized_catalog_number": "249",
+       "recognized_title": "封面原语",
+       "recognition_status": "verified",
+       "sha256": "4846c7d4ef9955a76003b6e10a840035dff23f96dd478c9e1927ee62f52e0752",
+       "local_image": "images/layout-239.jpg"
+     },
+     {
+       "number": "240",
+       "source_number": "225",
+       "recognized_catalog_number": "250",
+       "recognized_title": "自适应网格原语",
+       "recognition_status": "verified",
+       "sha256": "1f6460c00a3f2eac44da5734f05dfd3eea76f753111524de8f4ff2df45c835f2",
+       "local_image": "images/layout-240.jpg"
+     },
+     {
+       "number": "241",
+       "source_number": "226",
+       "recognized_catalog_number": "251",
+       "recognized_title": "比例框",
+       "recognition_status": "verified",
+       "sha256": "809731997449bd71df6a1a1870690803f9d06fd640887f67397914d5add891c0",
+       "local_image": "images/layout-241.jpg"
+     },
+     {
+       "number": "242",
+       "source_number": "227",
+       "recognized_catalog_number": "252",
+       "recognized_title": "横向卷轴",
+       "recognition_status": "verified",
+       "sha256": "589c5de8113889bb50d26e8976eab198a9bb13f4d0a0ec69c97fe7fcddc81596",
+       "local_image": "images/layout-242.jpg"
+     },
+     {
+       "number": "243",
+       "source_number": "228",
+       "recognized_catalog_number": "253",
+       "recognized_title": "悬浮层",
+       "recognition_status": "verified",
+       "sha256": "9777b3a6e9cdc8804e9abb8b1f1672f99fbb2f5c3fb84e04bcb421a8cc6a9bf0",
+       "local_image": "images/layout-243.jpg"
+     },
+     {
+       "number": "244",
+       "source_number": "229",
+       "recognized_catalog_number": "254",
+       "recognized_title": "图标文字组合",
+       "recognition_status": "verified",
+       "sha256": "5ccf996022c4ab44f897516b4b39859acde1cd50aedbe5915a015dfdd18083b5",
+       "local_image": "images/layout-244.jpg"
+     },
+     {
+       "number": "245",
+       "source_number": "230",
+       "recognized_catalog_number": "255",
+       "recognized_title": "单列页面",
+       "recognition_status": "verified",
+       "sha256": "666536d23fd35051dfe1b40cb676e4204b75d73211a18fbc6945754fffa3eafd",
+       "local_image": "images/layout-245.jpg"
+     },
+     {
+       "number": "246",
+       "source_number": "231",
+       "recognized_catalog_number": "256",
+       "recognized_title": "双列页面",
+       "recognition_status": "verified",
+       "sha256": "f22730531abb4949c7f7da7d6262be3917df7ad2d7f51ef6d9dd395d3b5ebc5d",
+       "local_image": "images/layout-246.jpg"
+     },
+     {
+       "number": "247",
+       "source_number": "232",
+       "recognized_catalog_number": "257",
+       "recognized_title": "三列页面",
+       "recognition_status": "verified",
+       "sha256": "8d11afdc579342a844c8181e15f29ffeaad133dca513633e290475f4578dd668",
+       "local_image": "images/layout-247.jpg"
+     },
+     {
+       "number": "248",
+       "source_number": "233",
+       "recognized_catalog_number": "258",
+       "recognized_title": "侧边栏页面",
+       "recognition_status": "verified",
+       "sha256": "88713ca607ca6330131a391f21fcb4a6e99613eb1371a3ed75faaec37aec3a2a",
+       "local_image": "images/layout-248.jpg"
+     },
+     {
+       "number": "249",
+       "source_number": "234",
+       "recognized_catalog_number": "259",
+       "recognized_title": "分屏布局",
+       "recognition_status": "verified",
+       "sha256": "c3fa483aa0ac04d928139f13591f8c62ced77a004d62eced9fd6d0c77e16e016",
+       "local_image": "images/layout-249.jpg"
+     },
+     {
+       "number": "250",
+       "source_number": "235",
+       "recognized_catalog_number": "260",
+       "recognized_title": "圣杯布局",
+       "recognition_status": "verified",
+       "sha256": "a2e3bc841443447ebe75258924a0d37676e60d2bc546bc0024647c1ff0df0a6e",
+       "local_image": "images/layout-250.jpg"
+     },
+     {
+       "number": "251",
+       "source_number": "236",
+       "recognized_catalog_number": "261",
+       "recognized_title": "页眉—主体—页脚",
+       "recognition_status": "verified",
+       "sha256": "eb154115d3c7288e6065be5a3fec63df26fbfb1cd28cfe2cdf825b8ac8c699ca",
+       "local_image": "images/layout-251.jpg"
+     },
+     {
+       "number": "252",
+       "source_number": "237",
+       "recognized_catalog_number": "262",
+       "recognized_title": "顶部导航布局",
+       "recognition_status": "verified",
+       "sha256": "5a1084335c54f670163ade32fca60cbc5adc5334ce46e1f8c5dcde3d95b8cd04",
+       "local_image": "images/layout-252.jpg"
+     },
+     {
+       "number": "253",
+       "source_number": "238",
+       "recognized_catalog_number": "263",
+       "recognized_title": "导航抽屉布局",
+       "recognition_status": "verified",
+       "sha256": "34282d14ff9d3603d7b84884b8ec8ebc105fe8b1fd373b784df5754420323145",
+       "local_image": "images/layout-253.jpg"
+     },
+     {
+       "number": "254",
+       "source_number": "239",
+       "recognized_catalog_number": "264",
+       "recognized_title": "底部导航布局",
+       "recognition_status": "verified",
+       "sha256": "bba52d23274e7146bdb01f51e9e70d0cee6b28a3a44a9f7026f7a9ba90defa15",
+       "local_image": "images/layout-254.jpg"
+     },
+     {
+       "number": "255",
+       "source_number": "240",
+       "recognized_catalog_number": "265",
+       "recognized_title": "标签页布局",
+       "recognition_status": "verified",
+       "sha256": "3d9ad79e576638e1546a3c5ca2c08498e926bd2c49b8f00e0466a978258beef1",
+       "local_image": "images/layout-255.jpg"
+     },
+     {
+       "number": "256",
+       "source_number": "241",
+       "recognized_catalog_number": "266",
+       "recognized_title": "手风琴布局",
+       "recognition_status": "verified",
+       "sha256": "253c78a8c704163d29535354fe7f771e44e1f57f7f77ec98b3a3cb74a86b2757",
+       "local_image": "images/layout-256.jpg"
+     },
+     {
+       "number": "257",
+       "source_number": "242",
+       "recognized_catalog_number": "267",
+       "recognized_title": "列表—详情布局",
+       "recognition_status": "verified",
+       "sha256": "7bf0236f7af4397af43e84d6e41a271ad6857a25b628e08ede6afec6d85d566e",
+       "local_image": "images/layout-257.jpg"
+     },
+     {
+       "number": "258",
+       "source_number": "243",
+       "recognized_catalog_number": "268",
+       "recognized_title": "辅助窗格布局",
+       "recognition_status": "verified",
+       "sha256": "85ad48b722c0167e3b0ecdf391edd0a2f2edbe4e1dbfc1154c020123154464e8",
+       "local_image": "images/layout-258.jpg"
+     },
+     {
+       "number": "259",
+       "source_number": "244",
+       "recognized_catalog_number": "269",
+       "recognized_title": "信息流布局",
+       "recognition_status": "verified",
+       "sha256": "4d7a7b4bf44fb5622f40300951c436c3cec93e5585c2017acab92b4a981c0526",
+       "local_image": "images/layout-259.jpg"
+     },
+     {
+       "number": "260",
+       "source_number": "245",
+       "recognized_catalog_number": "270",
+       "recognized_title": "卡片网格布局",
+       "recognition_status": "verified",
+       "sha256": "5caaa5ebd3d731577b9fa16c9a5cc5c192c4586768eedcf997a1db45a576c5be",
+       "local_image": "images/layout-260.jpg"
+     },
+     {
+       "number": "261",
+       "source_number": "246",
+       "recognized_catalog_number": "271",
+       "recognized_title": "瀑布流页面",
+       "recognition_status": "verified",
+       "sha256": "3cee406300b9bbd88309c8f7275832f5eebbc053ae26d13bfde4ba9dc67b309e",
+       "local_image": "images/layout-261.jpg"
+     },
+     {
+       "number": "262",
+       "source_number": "247",
+       "recognized_catalog_number": "272",
+       "recognized_title": "便当盒布局",
+       "recognition_status": "verified",
+       "sha256": "0fb9f32a7503f8be8d281aee1717109280784b14a1525b87f6b63a3491c99afa",
+       "local_image": "images/layout-262.jpg"
+     },
+     {
+       "number": "263",
+       "source_number": "248",
+       "recognized_catalog_number": "273",
+       "recognized_title": "仪表盘布局",
+       "recognition_status": "verified",
+       "sha256": "bfb8462c0eecaf3f51b56e50d7cf4e48077102cea4e3412e76a2c3c2b421b56e",
+       "local_image": "images/layout-263.jpg"
+     },
+     {
+       "number": "264",
+       "source_number": "249",
+       "recognized_catalog_number": "274",
+       "recognized_title": "数据表格布局",
+       "recognition_status": "verified",
+       "sha256": "b841834f178a761cbef3ded25a1668e38be9d88f3bb8a71736bc16d9e62e5228",
+       "local_image": "images/layout-264.jpg"
+     },
+     {
+       "number": "265",
+       "source_number": "250",
+       "recognized_catalog_number": "275",
+       "recognized_title": "画廊布局",
+       "recognition_status": "verified",
+       "sha256": "d3279e2f7d06e4b9062e87a95d7136846a12df477ebc4df6cae494a88d07ae4a",
+       "local_image": "images/layout-265.jpg"
+     },
+     {
+       "number": "266",
+       "source_number": "251",
+       "recognized_catalog_number": "276",
+       "recognized_title": "轮播布局（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "a6bdca4a8f9e60f9458ab9a9608287f1b223b202b4d40318502b6da4a23ef7cf",
+       "local_image": "images/layout-266.jpg"
+     },
+     {
+       "number": "267",
+       "source_number": "291",
+       "recognized_catalog_number": "276",
+       "recognized_title": "轮播布局（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "0fe53387da9065023b704c920f230a6f523ade59338fe9eaf97956d993644019",
+       "local_image": "images/layout-267.jpg"
+     },
+     {
+       "number": "268",
+       "source_number": "252",
+       "recognized_catalog_number": "277",
+       "recognized_title": "时间线布局（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "bc09c803528bda9716508733b58af54afe9047879d875fe0e5045e6fbf4ec9bf",
+       "local_image": "images/layout-268.jpg"
+     },
+     {
+       "number": "269",
+       "source_number": "292",
+       "recognized_catalog_number": "277",
+       "recognized_title": "时间线布局（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "8d94459069a039caec77d493b6225218f652181c12a53e0b4bb7bbfcb5d77a22",
+       "local_image": "images/layout-269.jpg"
+     },
+     {
+       "number": "270",
+       "source_number": "253",
+       "recognized_catalog_number": "278",
+       "recognized_title": "看板布局（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "004bae4f9fe24720c0932b04517449145ed6864f92dcb86c08683e6950f4b5ff",
+       "local_image": "images/layout-270.jpg"
+     },
+     {
+       "number": "271",
+       "source_number": "293",
+       "recognized_catalog_number": "278",
+       "recognized_title": "看板布局（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "c9a62f2a9879190269d6d2eae16774bac7a91a5a1f70e042ab8e366b2e654fc4",
+       "local_image": "images/layout-271.jpg"
+     },
+     {
+       "number": "272",
+       "source_number": "254",
+       "recognized_catalog_number": "279",
+       "recognized_title": "日历布局（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "bba77d6261a5c9adb7a1dbe21319f2b27b9830dbf33d3651fbe02b3d831cb9f7",
+       "local_image": "images/layout-272.jpg"
+     },
+     {
+       "number": "273",
+       "source_number": "294",
+       "recognized_catalog_number": "279",
+       "recognized_title": "日历布局（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "67d8b31071857e82793ad88364eb9328c2b02aecc5a2b9badfe91601273f52fb",
+       "local_image": "images/layout-273.jpg"
+     },
+     {
+       "number": "274",
+       "source_number": "255",
+       "recognized_catalog_number": "280",
+       "recognized_title": "树形浏览布局（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "2cdb78941e0e98d88d82c5fe712eb94f4a3f58c9055c639b4c305721bd13a6b6",
+       "local_image": "images/layout-274.jpg"
+     },
+     {
+       "number": "275",
+       "source_number": "295",
+       "recognized_catalog_number": "280",
+       "recognized_title": "树形浏览布局（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "5fe9d311c3a45f73dcb8eb989f9ccb4d8501552df6fe13ec1d9d8ab58f1ea75b",
+       "local_image": "images/layout-275.jpg"
+     },
+     {
+       "number": "276",
+       "source_number": "256",
+       "recognized_catalog_number": "281",
+       "recognized_title": "对话布局（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "536db320d65185876e38e60d9fd8b14cb052c6cafb519b0ee0235e562773663f",
+       "local_image": "images/layout-276.jpg"
+     },
+     {
+       "number": "277",
+       "source_number": "296",
+       "recognized_catalog_number": "281",
+       "recognized_title": "对话布局（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "d110c9ed5c854aa281dff9a18145c791e8ba381df2f5ace70baf64262463909e",
+       "local_image": "images/layout-277.jpg"
+     },
+     {
+       "number": "278",
+       "source_number": "257",
+       "recognized_catalog_number": "282",
+       "recognized_title": "地图主导布局（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "4e819e64fcd04ac0fa1739b725f05d5634ed5d0aa2f0f60b504d3831792c4a0a",
+       "local_image": "images/layout-278.jpg"
+     },
+     {
+       "number": "279",
+       "source_number": "297",
+       "recognized_catalog_number": "282",
+       "recognized_title": "地图主导布局（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "89c7df914fd8f6586c34f3d4a2ffc1bc64fd808e84e8085a807af8b32ce9c2df",
+       "local_image": "images/layout-279.jpg"
+     },
+     {
+       "number": "280",
+       "source_number": "258",
+       "recognized_catalog_number": "283",
+       "recognized_title": "画布工作区布局（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "b7440537498c9d0d72467e07462d3e293b2ebd82b9fced8c25a4f868353239ea",
+       "local_image": "images/layout-280.jpg"
+     },
+     {
+       "number": "281",
+       "source_number": "298",
+       "recognized_catalog_number": "283",
+       "recognized_title": "画布工作区布局（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "5191a3415b4813a260b578d525403e584372827d78a8c763dc5af2907d5c43e8",
+       "local_image": "images/layout-281.jpg"
+     },
+     {
+       "number": "282",
+       "source_number": "259",
+       "recognized_catalog_number": "284",
+       "recognized_title": "表单布局（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "b17f0da8858bf505c8b7b97c0c240ae31f0b5de0b66cdddadad33c5b67f16572",
+       "local_image": "images/layout-282.jpg"
+     },
+     {
+       "number": "283",
+       "source_number": "299",
+       "recognized_catalog_number": "284",
+       "recognized_title": "表单布局（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "f2badfd02ff7030ac35014d0caf94ced4f480a09d84ad2a14c774a50d980b528",
+       "local_image": "images/layout-283.jpg"
+     },
+     {
+       "number": "284",
+       "source_number": "260",
+       "recognized_catalog_number": "285",
+       "recognized_title": "分步表单（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "6305e5e1984ba021369616b1a7fd55104964abc821d6448f84a20dec030d1f65",
+       "local_image": "images/layout-284.jpg"
+     },
+     {
+       "number": "285",
+       "source_number": "300",
+       "recognized_catalog_number": "285",
+       "recognized_title": "分步表单（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "68bf49f404a2e11003318f7925dab037d4338ee58442caee25ea6ac22980a952",
+       "local_image": "images/layout-285.jpg"
+     },
+     {
+       "number": "286",
+       "source_number": "261",
+       "recognized_catalog_number": "286",
+       "recognized_title": "搜索结果布局",
+       "recognition_status": "verified",
+       "sha256": "54ce668dceee0ee77b43622ec809edc57f29e71ed6b31da2f7274ce74c1a7226",
+       "local_image": "images/layout-286.jpg"
+     },
+     {
+       "number": "287",
+       "source_number": "262",
+       "recognized_catalog_number": "287",
+       "recognized_title": "设置页面布局",
+       "recognition_status": "verified",
+       "sha256": "298b929e2e9f673dc94d3bf061f92c4693255d9a408201c1776a159c35ccf663",
+       "local_image": "images/layout-287.jpg"
+     },
+     {
+       "number": "288",
+       "source_number": "263",
+       "recognized_catalog_number": "288",
+       "recognized_title": "媒体对象布局",
+       "recognition_status": "verified",
+       "sha256": "c77c0135e511b6d9bab979dae176b3441c8593bf53d09a92916d9f3e8c46430c",
+       "local_image": "images/layout-288.jpg"
+     },
+     {
+       "number": "289",
+       "source_number": "264",
+       "recognized_catalog_number": "289",
+       "recognized_title": "Hero 主视觉布局",
+       "recognition_status": "verified",
+       "sha256": "eddd10995220b526c35db9679da5efa51749759f8c16c02c3167e1c804dd074d",
+       "local_image": "images/layout-289.jpg"
+     },
+     {
+       "number": "290",
+       "source_number": "265",
+       "recognized_catalog_number": "290",
+       "recognized_title": "分层导航布局",
+       "recognition_status": "verified",
+       "sha256": "07db400804bf1173b9c6e6136347073c277ad2af0296a3f984dd57e628086454",
+       "local_image": "images/layout-290.jpg"
+     },
+     {
+       "number": "291",
+       "source_number": "266",
+       "recognized_catalog_number": "291",
+       "recognized_title": "大体流动模式",
+       "recognition_status": "verified",
+       "sha256": "2844ba3ce32b587c62d934268816cc890aa5f0922e567a6884681210a437d589",
+       "local_image": "images/layout-291.jpg"
+     },
+     {
+       "number": "292",
+       "source_number": "267",
+       "recognized_catalog_number": "292",
+       "recognized_title": "列下落模式",
+       "recognition_status": "verified",
+       "sha256": "1b08e497d16bcb7878daf9a8651c136846249112fb04459cc5381262ea3b9b21",
+       "local_image": "images/layout-292.jpg"
+     },
+     {
+       "number": "293",
+       "source_number": "268",
+       "recognized_catalog_number": "293",
+       "recognized_title": "布局切换模式",
+       "recognition_status": "verified",
+       "sha256": "40c1ae6d6498b8c6cfed7d505ec6a7a44aa7480a42e7b85dde7dce558e736e0e",
+       "local_image": "images/layout-293.jpg"
+     },
+     {
+       "number": "294",
+       "source_number": "269",
+       "recognized_catalog_number": "294",
+       "recognized_title": "微调模式",
+       "recognition_status": "verified",
+       "sha256": "732a6e9ba309fcda294c2a256f7e8d3affe05b16cefdd76aa53b7da63eedbb17",
+       "local_image": "images/layout-294.jpg"
+     },
+     {
+       "number": "295",
+       "source_number": "270",
+       "recognized_catalog_number": "295",
+       "recognized_title": "画布外模式",
+       "recognition_status": "verified",
+       "sha256": "e475e38c8f655cb96bcc9473654014bd365058c9fe814c920fde65db36ecd95b",
+       "local_image": "images/layout-295.jpg"
+     },
+     {
+       "number": "296",
+       "source_number": "271",
+       "recognized_catalog_number": "296",
+       "recognized_title": "堆叠重排（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "d014bf14da83074e551ce0ae75984c6259aca01cde40d76cdad419153d02edda",
+       "local_image": "images/layout-296.jpg"
+     },
+     {
+       "number": "297",
+       "source_number": "281",
+       "recognized_catalog_number": "296",
+       "recognized_title": "堆叠重排（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "29376c5a66303e5835317ed008d5751e439a3b513f7b868e9492df7b4f934b35",
+       "local_image": "images/layout-297.jpg"
+     },
+     {
+       "number": "298",
+       "source_number": "272",
+       "recognized_catalog_number": "297",
+       "recognized_title": "顺序重排（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "3e78f6a5b4ea23b11c152f3b65d74a69d2028f7e90cc5dd2ea25297a91b4900f",
+       "local_image": "images/layout-298.jpg"
+     },
+     {
+       "number": "299",
+       "source_number": "282",
+       "recognized_catalog_number": "297",
+       "recognized_title": "顺序重排（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "2c58eb73becd736c037163f55b0fccde8ff04087ea41952203141c3d72b56e11",
+       "local_image": "images/layout-299.jpg"
+     },
+     {
+       "number": "300",
+       "source_number": "273",
+       "recognized_catalog_number": "298",
+       "recognized_title": "折叠双窗格（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "7a16d6f27e5f01e6d24974692370590343d50493ba54ac78922ac4333b0de634",
+       "local_image": "images/layout-300.jpg"
+     },
+     {
+       "number": "301",
+       "source_number": "283",
+       "recognized_catalog_number": "298",
+       "recognized_title": "折叠双窗格（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "40682b4894b53ed8d0556447293bf1eefb812821423f78e9751ded7b6b6a0034",
+       "local_image": "images/layout-301.jpg"
+     },
+     {
+       "number": "302",
+       "source_number": "274",
+       "recognized_catalog_number": "299",
+       "recognized_title": "自适应网格（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "2bb24d958316095b08521970570ce3775a5a31b5be87fca26ed846a72ea6a637",
+       "local_image": "images/layout-302.jpg"
+     },
+     {
+       "number": "303",
+       "source_number": "284",
+       "recognized_catalog_number": "299",
+       "recognized_title": "自适应网格（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "314154267086f8820dd792d86814e3a4bf403f1c40d228add0ce0f654b6b385f",
+       "local_image": "images/layout-303.jpg"
+     },
+     {
+       "number": "304",
+       "source_number": "275",
+       "recognized_catalog_number": "300",
+       "recognized_title": "组件级响应布局（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "b86304f3d2f9e785565ba4bdb8959db72a64cc839700ebfd839cf878a6e040c4",
+       "local_image": "images/layout-304.jpg"
+     },
+     {
+       "number": "305",
+       "source_number": "285",
+       "recognized_catalog_number": "300",
+       "recognized_title": "组件级响应布局（图像变体）",
+       "recognition_status": "duplicate-title-variant",
+       "sha256": "cd55da340d4c7b52763b99260daff5a2e7f5ce8f95039236211a5a5adeeb61de",
+       "local_image": "images/layout-305.jpg"
+     },
+     {
+       "number": "306",
+       "source_number": "276",
+       "recognized_catalog_number": "306",
+       "recognized_title": "主观视角构图",
+       "recognition_status": "verified",
+       "sha256": "4cfb39b746c0f6b8d176f4468072ace6ad024cecaefa4a911fb845a002263288",
+       "local_image": "images/layout-306.jpg"
+     },
+     {
+       "number": "307",
+       "source_number": "277",
+       "recognized_catalog_number": "307",
+       "recognized_title": "客观视角构图",
+       "recognition_status": "verified",
+       "sha256": "97b3994f6ae1821df548d8e1e054e8d2c17b581303403b1825b390907f9761f3",
+       "local_image": "images/layout-307.jpg"
+     },
+     {
+       "number": "308",
+       "source_number": "278",
+       "recognized_catalog_number": "308",
+       "recognized_title": "净单人镜头",
+       "recognition_status": "verified",
+       "sha256": "2cf56d1a97876b092f6cc50c64962ecf03b3c4b0812df53177c24c3f040594ea",
+       "local_image": "images/layout-308.jpg"
+     },
+     {
+       "number": "309",
+       "source_number": "279",
+       "recognized_catalog_number": "309",
+       "recognized_title": "脏单人镜头",
+       "recognition_status": "verified",
+       "sha256": "6834b0a372a4e9a4fc66038d75c9d276a6543d9aba772a167149aea67350366a",
+       "local_image": "images/layout-309.jpg"
+     },
+     {
+       "number": "310",
+       "source_number": "280",
+       "recognized_catalog_number": "310",
+       "recognized_title": "深度调度",
+       "recognition_status": "verified",
+       "sha256": "7503d0923bef64620d854f8057893e8b832958dd0173ed6ffaf5b602812f6669",
+       "local_image": "images/layout-310.jpg"
+     },
+     {
+       "number": "311",
+       "source_number": "301",
+       "recognized_catalog_number": "311",
+       "recognized_title": "平面调度",
+       "recognition_status": "verified",
+       "sha256": "f71ea09c8a7fd70886a0bef7a2e70ab52fea5a9541df1f5876fced1fd8030d4c",
+       "local_image": "images/layout-311.jpg"
+     },
+     {
+       "number": "312",
+       "source_number": "302",
+       "recognized_catalog_number": "312",
+       "recognized_title": "三角调度",
+       "recognition_status": "verified",
+       "sha256": "dca69eeaf96e8c6f1ecdb9db67b34fb52bba53b25564fd4a0ebf8612bfcaa5f2",
+       "local_image": "images/layout-312.jpg"
+     },
+     {
+       "number": "313",
+       "source_number": "303",
+       "recognized_catalog_number": "313",
+       "recognized_title": "横向调度",
+       "recognition_status": "verified",
+       "sha256": "250ee0df4c449e6c15dc31231c867baeb6e6656279f14aa7124d8b498cbd0947",
+       "local_image": "images/layout-313.jpg"
+     },
+     {
+       "number": "314",
+       "source_number": "304",
+       "recognized_catalog_number": "314",
+       "recognized_title": "多层前景调度",
+       "recognition_status": "verified",
+       "sha256": "978025da1cb7bd61a73a4b1441c9795763068080266a71691d3c0686c1789325",
+       "local_image": "images/layout-314.jpg"
+     },
+     {
+       "number": "315",
+       "source_number": "305",
+       "recognized_catalog_number": "315",
+       "recognized_title": "高远法",
+       "recognition_status": "verified",
+       "sha256": "075625a1e671b362e69f60b2960bcadf2cc2f15ed705ba785697b349fdcb7ec7",
+       "local_image": "images/layout-315.jpg"
+     },
+     {
+       "number": "316",
+       "source_number": "306",
+       "recognized_catalog_number": "316",
+       "recognized_title": "深远法",
+       "recognition_status": "verified",
+       "sha256": "49941190b508d9107938291468b286f30aa2df9a950adcee3626e6603d5b09cf",
+       "local_image": "images/layout-316.jpg"
+     },
+     {
+       "number": "317",
+       "source_number": "307",
+       "recognized_catalog_number": "317",
+       "recognized_title": "平远法",
+       "recognition_status": "verified",
+       "sha256": "bf2d615bac1925c284a95ede8c191587979535c50aa3284a13820a9aa5c15829",
+       "local_image": "images/layout-317.jpg"
+     },
+     {
+       "number": "318",
+       "source_number": "308",
+       "recognized_catalog_number": "318",
+       "recognized_title": "三远综合构图",
+       "recognition_status": "verified",
+       "sha256": "841be1ea2258893715f2121047e4da839b555e30b645261ea62c954f11ff7131",
+       "local_image": "images/layout-318.jpg"
+     },
+     {
+       "number": "319",
+       "source_number": "309",
+       "recognized_catalog_number": "319",
+       "recognized_title": "散点透视",
+       "recognition_status": "verified",
+       "sha256": "f276a53c5f918cdb720b4d77d8d9c5818c272c7f4a50cacc4059e101210f246f",
+       "local_image": "images/layout-319.jpg"
+     },
+     {
+       "number": "320",
+       "source_number": "310",
+       "recognized_catalog_number": "320",
+       "recognized_title": "游观式构图",
+       "recognition_status": "verified",
+       "sha256": "0edcfff4b03688a3172bfe8f47559077de3a9c661389d34e4a85a4a5da7f2cf1",
+       "local_image": "images/layout-320.jpg"
+     },
+     {
+       "number": "321",
+       "source_number": "311",
+       "recognized_catalog_number": "321",
+       "recognized_title": "全景式构图",
+       "recognition_status": "verified",
+       "sha256": "2fbae46070dbaf2133521288d19798487e4cc967f8582fabcbac9b935cf53441",
+       "local_image": "images/layout-321.jpg"
+     },
+     {
+       "number": "322",
+       "source_number": "312",
+       "recognized_catalog_number": "322",
+       "recognized_title": "一河两岸式",
+       "recognition_status": "verified",
+       "sha256": "3a1fe73d609aa682ea2a9f48f8a423beeaed3b4c139e0b192bde5c589c335f63",
+       "local_image": "images/layout-322.jpg"
+     },
+     {
+       "number": "323",
+       "source_number": "313",
+       "recognized_catalog_number": "323",
+       "recognized_title": "边角式构图",
+       "recognition_status": "verified",
+       "sha256": "4d7d68f67578ddf2e4ca2b8b73c1dab6ebc3a0448f963f298c896e9d98177820",
+       "local_image": "images/layout-323.jpg"
+     },
+     {
+       "number": "324",
+       "source_number": "314",
+       "recognized_catalog_number": "324",
+       "recognized_title": "截景式构图",
+       "recognition_status": "verified",
+       "sha256": "de36f5a050fbe53e56dd8965c066891cff7a6836ef9e472f8a19d50a20f590b0",
+       "local_image": "images/layout-324.jpg"
+     },
+     {
+       "number": "325",
+       "source_number": "315",
+       "recognized_catalog_number": "325",
+       "recognized_title": "折枝式构图",
+       "recognition_status": "verified",
+       "sha256": "671495c9c8f7019d719bab01914c8bf0287a7c44b90e304f73e84e19bc0a6522",
+       "local_image": "images/layout-325.jpg"
+     },
+     {
+       "number": "326",
+       "source_number": "316",
+       "recognized_catalog_number": "326",
+       "recognized_title": "留白构图",
+       "recognition_status": "verified",
+       "sha256": "bd935a7e6828270b98f35217e855653f25dcc1606ff0cbd5fd1ca9216150127b",
+       "local_image": "images/layout-326.jpg"
+     },
+     {
+       "number": "327",
+       "source_number": "317",
+       "recognized_catalog_number": "327",
+       "recognized_title": "计白当黑构图",
+       "recognition_status": "verified",
+       "sha256": "7bd1b3e6352f749c1b1fc5e2bbfac42578654238bca7b4040154aa03457632d8",
+       "local_image": "images/layout-327.jpg"
+     },
+     {
+       "number": "328",
+       "source_number": "318",
+       "recognized_catalog_number": "328",
+       "recognized_title": "虚实相生构图",
+       "recognition_status": "verified",
+       "sha256": "c07923d385405b14f5c92ed9045fb955ca3259e8551837ac8dd7f765f250d3e7",
+       "local_image": "images/layout-328.jpg"
+     },
+     {
+       "number": "329",
+       "source_number": "319",
+       "recognized_catalog_number": "329",
+       "recognized_title": "疏密相间构图",
+       "recognition_status": "verified",
+       "sha256": "b321f8efec3ffb31cc14ea5cb266219f464e61e3cd993456007faf5f1fcd7c82",
+       "local_image": "images/layout-329.jpg"
+     },
+     {
+       "number": "330",
+       "source_number": "320",
+       "recognized_catalog_number": "330",
+       "recognized_title": "主宾关系构图",
+       "recognition_status": "verified",
+       "sha256": "6b2672ee34b7ccb21a12cc07b139c3b31cf5621a3a0a0283196ff02fb530378c",
+       "local_image": "images/layout-330.jpg"
+     },
+     {
+       "number": "331",
+       "source_number": "341",
+       "recognized_catalog_number": "331",
+       "recognized_title": "开合构图",
+       "recognition_status": "verified",
+       "sha256": "b717942c283fa56a221b80610c26c5c5cb299e766da8a31148010a5b2db61d47",
+       "local_image": "images/layout-331.jpg"
+     },
+     {
+       "number": "332",
+       "source_number": "342",
+       "recognized_catalog_number": "332",
+       "recognized_title": "起承转合构图",
+       "recognition_status": "verified",
+       "sha256": "4c6dba56b36ffb3d88dd53f1b259eae32b05870c51297cdd7086b9ff8a9baff0",
+       "local_image": "images/layout-332.jpg"
+     },
+     {
+       "number": "333",
+       "source_number": "343",
+       "recognized_catalog_number": "333",
+       "recognized_title": "藏露关系构图",
+       "recognition_status": "verified",
+       "sha256": "3e1ec3e56c65e6eee4b6ba710d615c6006184bf251bf0138db083c346b1dab16",
+       "local_image": "images/layout-333.jpg"
+     },
+     {
+       "number": "334",
+       "source_number": "344",
+       "recognized_catalog_number": "334",
+       "recognized_title": "欹正关系构图",
+       "recognition_status": "verified",
+       "sha256": "20837c8fadc884f1839182c6c4a6e1aed9014eba0d5792600557d118bdf13219",
+       "local_image": "images/layout-334.jpg"
+     },
+     {
+       "number": "335",
+       "source_number": "325",
+       "recognized_catalog_number": "335",
+       "recognized_title": "标题幻灯片幻灯片版式",
+       "recognition_status": "verified",
+       "sha256": "529c1a670c16ddee4297447096df1b09b924cc3039cd363579a00b2026e038f5",
+       "local_image": "images/layout-335.jpg"
+     },
+     {
+       "number": "336",
+       "source_number": "326",
+       "recognized_catalog_number": "336",
+       "recognized_title": "标题和内容幻灯片版式",
+       "recognition_status": "verified",
+       "sha256": "a360ad9ac8d3b7bc4e16ad85cb7d7eaeaaf37b8245cf7c67bc07cfdb1ebf38a9",
+       "local_image": "images/layout-336.jpg"
+     },
+     {
+       "number": "337",
+       "source_number": "327",
+       "recognized_catalog_number": "337",
+       "recognized_title": "节标题幻灯片版式",
+       "recognition_status": "verified",
+       "sha256": "27f487e13d4865b1309b3cd1ba4d9676c511fe11dd17c54e28686a320cf22585",
+       "local_image": "images/layout-337.jpg"
+     },
+     {
+       "number": "338",
+       "source_number": "328",
+       "recognized_catalog_number": "338",
+       "recognized_title": "两项内容幻灯片版式",
+       "recognition_status": "verified",
+       "sha256": "b3790e198827e3e0c1cf9d911a73285a11c1d7eff6bbbf8791de7f18c43d2686",
+       "local_image": "images/layout-338.jpg"
+     },
+     {
+       "number": "339",
+       "source_number": "329",
+       "recognized_catalog_number": "339",
+       "recognized_title": "比较幻灯片版式",
+       "recognition_status": "verified",
+       "sha256": "4f0aa9439b696e74ad8fa3d3a7f2071c0baa6bb668bf0fdd292bfe5f1b728bc7",
+       "local_image": "images/layout-339.jpg"
+     },
+     {
+       "number": "340",
+       "source_number": "330",
+       "recognized_catalog_number": "340",
+       "recognized_title": "仅标题幻灯片版式",
+       "recognition_status": "verified",
+       "sha256": "60f5b5e073ca7cfedfca2cae77d6e8e50c342b3523b9b730508348f755d17299",
+       "local_image": "images/layout-340.jpg"
+     },
+     {
+       "number": "341",
+       "source_number": "331",
+       "recognized_catalog_number": "341",
+       "recognized_title": "空白幻灯片版式",
+       "recognition_status": "verified",
+       "sha256": "f6ea2203faf31b13f4ead19874a15be270f251b18902b04555ae42526a78af82",
+       "local_image": "images/layout-341.jpg"
+     },
+     {
+       "number": "342",
+       "source_number": "332",
+       "recognized_catalog_number": "342",
+       "recognized_title": "内容与标题说明幻灯片版式",
+       "recognition_status": "verified",
+       "sha256": "5214424be742b3bc901a4d5788ad1e35cf269668fb630a1e538e3f94fc58fef9",
+       "local_image": "images/layout-342.jpg"
+     },
+     {
+       "number": "343",
+       "source_number": "333",
+       "recognized_catalog_number": "343",
+       "recognized_title": "图片与标题说明幻灯片版式",
+       "recognition_status": "verified",
+       "sha256": "26c88b8232a743ed88979d50c374c890079407221f9b25602848fd3afaeff4cf",
+       "local_image": "images/layout-343.jpg"
+     },
+     {
+       "number": "344",
+       "source_number": "334",
+       "recognized_catalog_number": "344",
+       "recognized_title": "大数字页幻灯片版式",
+       "recognition_status": "verified",
+       "sha256": "7adaac532e7b89a7557e3fd9189b328913cc99c6734397898982481f7dd7d2ea",
+       "local_image": "images/layout-344.jpg"
+     },
+     {
+       "number": "345",
+       "source_number": "335",
+       "recognized_catalog_number": "345",
+       "recognized_title": "引语页幻灯片版式",
+       "recognition_status": "verified",
+       "sha256": "126ddf0f138491a941972b7752d2e60aba5d13d91ca13e915995ee18e4b07cf7",
+       "local_image": "images/layout-345.jpg"
+     },
+     {
+       "number": "346",
+       "source_number": "336",
+       "recognized_catalog_number": "346",
+       "recognized_title": "时间线页幻灯片版式",
+       "recognition_status": "verified",
+       "sha256": "f4aa0ffc778c1c98f045c646aa6644c3bac277572be075bf29c0c7e5ead66f8b",
+       "local_image": "images/layout-346.jpg"
+     },
+     {
+       "number": "347",
+       "source_number": "337",
+       "recognized_catalog_number": "347",
+       "recognized_title": "流程页幻灯片版式",
+       "recognition_status": "verified",
+       "sha256": "3e2a8edf3b8ed7039fca361eaa9d4aab9207cb14c8b4da6b2af3ee15e360da53",
+       "local_image": "images/layout-347.jpg"
+     },
+     {
+       "number": "348",
+       "source_number": "338",
+       "recognized_catalog_number": "348",
+       "recognized_title": "矩阵页幻灯片版式",
+       "recognition_status": "verified",
+       "sha256": "44b47ad1424a8fcca0a33df110e386b5cd6c43cf818591e8b0a859e752c15f7a",
+       "local_image": "images/layout-348.jpg"
+     },
+     {
+       "number": "349",
+       "source_number": "339",
+       "recognized_catalog_number": "349",
+       "recognized_title": "数据图表页幻灯片版式",
+       "recognition_status": "verified",
+       "sha256": "14a6ae4c6d319f7eeeaf82860c55533fb2063286263beb1375d38d93f9f55ccc",
+       "local_image": "images/layout-349.jpg"
+     },
+     {
+       "number": "350",
+       "source_number": "340",
+       "recognized_catalog_number": "350",
+       "recognized_title": "全图页幻灯片版式",
+       "recognition_status": "verified",
+       "sha256": "b6bab3e7e98179d8eb978bf26891515483d64ce7980f0eefa759c6b547e50154",
+       "local_image": "images/layout-350.jpg"
+     }
+   ]
+ }

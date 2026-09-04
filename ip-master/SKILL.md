@@ -58,6 +58,22 @@ its own scope clearly satisfies the user's request.
 This is conversation-local working state only. Do not write it to a file,
 registry, preference store, or cross-conversation memory.
 
+### VSC visual design Skills
+
+The registry includes two VSC Skills from `vibeshotclub/vsc-skills`:
+
+- `vibeshot-candid-photography` — real-life candid portrait direction with
+  unusual camera positions, natural occlusion, and varied prompt batches.
+- `virtual-couple-travel-vlog` — a virtual-couple travel asset workflow with
+  a 4×4 memory wall, identity-consistent character cards, video prompts, and
+  staged Vlog assembly.
+
+These are design Skills, not IP-design Skills. When the user names one, first
+resolve the explicitly named IP character and then pass its identity inputs to
+the selected Skill. They must not be silently selected for ordinary poster,
+cover, or IP-creation requests. The local visual overview is
+`assets/vsc-skill-library/index.html`.
+
 ### Person IP candidates
 
 For a request to design a human, creator, or account-based person IP, evaluate
@@ -75,27 +91,48 @@ required by `personal-ip-image-pack`; keep that limitation explicit. Animal,
 mascot, object, and fictional-character requests are incompatible with both
 of these person-IP paths and must be discovered or routed separately.
 
-## Portrait-poster layout library
+### 真人照片入库流程
 
-The local `assets/layout-library/index.html` is a reference gallery, not a
-generation target and not a default style. Do not put it into a first-pass
-prompt, including a high-density request, unless the user explicitly selects
-a numbered layout for a re-layout.
+如果用户上传真人照片并要求“设计人物 IP”，但没有说明是“先做四视图作为身份资产”还是“只基于照片特征设计 IP”，必须先询问并暂停生成；不得替用户默认选择。路由器对此返回 `status: photo-workflow-choice` 和两个选项。
 
-- For a user request such as `用 23 重新排版` or `用 layout-023 重排`, resolve
-  the number with `scripts/layout_library.py --select`. Pass its
+当用户上传清晰真人照片并要建立人物 IP 时，先走 `human-photo-four-view-first`，不要直接把原照片注册进项目：
+
+1. 读取照片的整体头部特征、年龄感和气质，不复制原场景、姿势、瞬时表情或原服装。
+2. 先生成一张纯色背景的高清四视图候选：颈部以上脸部特写、全身正视、严格 90° 侧视、全身背视；四个视图必须是同一人且全身不裁切。
+3. 要求用户补充并确认名称、年龄、身高和体重。姓名和这三项资料必须以清晰文字写入四视图图片；生成后优先用确定性图像标注脚本校正文字，不依赖模型自由生成文字。
+4. 候选图交给用户确认。未确认前只放在项目 `candidates/`，不写入角色注册表，也不进入正式 IP 图册。
+5. 用户确认后，使用 `scripts/register_character.py --project-dir <项目目录> --id <id> --display-name <名称> --age <年龄> --height-cm <身高> --weight-kg <体重> --prototype <四视图图片> --confirm` 注册；注册后的图片、资料和项目图册只写入项目目录。
+6. 每次注册成功后，立即用渲染浏览器打开返回结果中的 `gallery_url`（项目根目录 `index.html`），让用户查看新 IP；不要用代码面板打开，以免显示 HTML 源码。
+
+四视图是身份参考资产，不是最终设计作品；后续目标 Skill 仍决定媒介、服装、场景和构图。姓名、年龄、身高和体重属于项目元数据，不得从照片臆测，缺失时必须询问。
+
+## 350 visual layout library
+
+The local `assets/layout-library/index.html` is a 350-item browser gallery,
+not a generation target and not a default style. Its thumbnails are locally
+cloned from the pinned upstream commit, with original source paths retained.
+Do not put it into a first-pass
+prompt unless the user explicitly selects a numbered layout for a poster,
+cover, or slide deck.
+
+- For a user request such as `用 008 重新排版`, `layout-008`, or `用 341 做
+  PPT`, resolve the number with `scripts/layout_library.py --select`. Pass its
   `generation_instruction` as text after character identity inputs; it is a
-  composition method, not a coordinate template. Never pass the thumbnail to
-  the image model.
+  composition method, not a coordinate template. Never pass a gallery image
+  to the image model.
 - Keep the original target Skill, theme, character identity, required copy,
   and visual medium. Apply the selected method to the new theme; user-specified
   placement overrides its default landing. Do not reuse the gallery sample's
   coordinates, colours, geometry, typography, text, people, objects, brands,
   or textures.
-- After a selected cover/poster Skill has produced a final raster image, run
+- After a selected cover/poster Skill has produced a final portrait raster image, run
   `scripts/layout_library.py --delivery-note <final-image>`. Append its
   message only when it reports `eligible: true`. It deliberately excludes
   landscape images and prompt-only outputs.
+- `001–350` are the verified display numbers ordered by the actual titles in
+  the images; each record also keeps the original upstream number. Old 1–100
+  meanings are retired. Always use the current gallery label rather than
+  assuming an old number has the same meaning.
 - To check whether the source collection changed, use
   `scripts/layout_library.py --check`; use `--sync` only when an updated
   snapshot is wanted. Never synchronize during ordinary image generation.
@@ -133,6 +170,17 @@ and the selected target Skill contract still control generation.
 
 ## Character references
 
+### Project character libraries
+
+Built-in roles remain global defaults. User-approved custom roles belong to an
+explicit IP project, never this installed Skill directory. Initialize one at a
+user-selected location with `python scripts/ip_project.py --init --project-dir
+"E:\\projects\\品牌IP" --name "品牌 IP"`. Register an approved prototype with
+`scripts/register_character.py --project-dir "E:\\projects\\品牌IP" --confirm
+...`; its registry, WebP asset, identity protocol, and `index.html` are written
+only under that project. Supply the same `--project-dir` when routing. Reuse a
+user-declared project for the current conversation only; do not persist it.
+
 The built-in registry is [character-registry.json](references/character-registry.json).
 It contains `yazai`/牙仔 (the default), `rongbao`/绒宝, `abao`/阿龅, and
 `xiaomei`/小美. Explicit Chinese or English aliases select one or more
@@ -159,11 +207,12 @@ Run the read-only helpers when deterministic output is needed:
 
 ```text
 python scripts/capability_router.py "用牙仔做知识漫画" --operation create --json
+python scripts/capability_router.py "用项目角色做知识漫画" --project-dir "E:\\projects\\品牌IP" --operation create --json
 python scripts/capability_router.py "我想知道有哪些 Skill" --operation advise --json
 python scripts/doctor.py --strict --json
 ```
 
 For dependency metadata and display-only installation plans, use
 `scripts/dependency_manager.py`. For an explicitly user-approved new role,
-use `scripts/register_character.py --confirm`; never register a prototype
+use `scripts/register_character.py --project-dir <project-path> --confirm`; never register a prototype
 without the user's confirmation and a non-conflicting id/alias set.
