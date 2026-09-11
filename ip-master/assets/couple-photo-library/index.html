@@ -1,0 +1,37 @@
+<!doctype html>
+<script src="../github-title-link.js" defer></script>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Couple Photo · 情侣照工作流</title>
+  <style>
+    :root{color-scheme:dark;--bg:#111417;--panel:#1a2025;--line:#303a43;--text:#f2f5f6;--muted:#aab4bd;--accent:#a8e36d}
+    *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font:15px/1.65 Inter,"PingFang SC","Microsoft YaHei",sans-serif}
+    main{width:min(1120px,calc(100% - 32px));margin:auto;padding:28px 0 56px} header{border-bottom:1px solid var(--line);padding-bottom:20px}
+    h1{margin:0;font-size:25px;display:flex;align-items:center;gap:8px}.source{display:inline-grid;place-items:center;width:25px;height:25px;border:1px solid var(--line);border-radius:5px;color:var(--muted);text-decoration:none}.source:hover{color:var(--accent);border-color:var(--accent)}
+    .lede,.muted{color:var(--muted)}.lede{margin:6px 0 0}.notice{margin:18px 0;padding:13px 15px;background:#20282e;border-left:3px solid var(--accent)}
+    h2{margin:28px 0 10px;font-size:18px}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.step{padding:14px;background:var(--panel);border:1px solid var(--line)}.step b{display:block;color:var(--accent);font-size:13px;margin-bottom:4px}
+    .examples{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.example{background:var(--panel);border:1px solid var(--line);padding:10px}.example img{display:block;width:100%;max-height:330px;object-fit:contain;background:#252c32}.example figcaption{padding:9px 2px 2px;color:var(--muted);font-size:13px}
+    .commands{display:grid;gap:8px}.command{display:flex;align-items:flex-start;gap:10px;padding:11px 12px;background:var(--panel);border:1px solid var(--line)}code{flex:1;white-space:pre-wrap;overflow-wrap:anywhere;color:#dfe8e2}.copy{border:1px solid #4b5963;background:#222b31;color:var(--text);border-radius:4px;padding:6px 10px;cursor:pointer;white-space:nowrap}.copy:hover{color:var(--accent);border-color:var(--accent)}
+    ul{margin:8px 0 0;padding-left:22px;color:var(--muted)}a{color:var(--accent)}
+    @media(max-width:760px){main{width:min(100% - 24px,1120px);padding-top:18px}.steps,.examples{grid-template-columns:1fr}.command{flex-direction:column}.copy{align-self:flex-start}}
+  </style>
+</head>
+<body><main>
+  <header><h1>Couple Photo 情侣照工作流 <a class="source" href="https://github.com/yang0/couple-photo" target="_blank" rel="noopener" title="查看上游仓库" aria-label="查看上游仓库"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M8 0a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38l-.01-1.49c-2.01.44-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.63 7.63 0 0 1 8 4.73c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48l-.01 2.19c0 .21.15.46.55.38A8 8 0 0 0 8 0Z"/></svg></a></h1><p class="lede">从模糊想法开始，逐步确认情侣造型、场景、拍摄画面，再生成精修图。</p></header>
+  <div class="notice"><strong>先选择绝对项目目录。</strong> 这个工作流会在项目目录中保存需求、Look、Shot List、宫格和精修结果；不会默认复用当前目录或历史项目。</div>
+  <h2>怎么使用</h2><div class="steps"><div class="step"><b>01 · 项目</b>选择或新建一个空的绝对路径。</div><div class="step"><b>02 · 需求</b>上传两张人物参考图，说主题、地点或想要的感觉。</div><div class="step"><b>03 · 确认</b>确认 Couple Look，再确认 8 条拍摄画面。</div><div class="step"><b>04 · 出图</b>生成 2×4 宫格，再选编号精修成横版或竖版。</div></div>
+  <h2>官方 README 流程示例</h2><div class="examples">
+    <figure class="example"><img src="https://raw.githubusercontent.com/yang0/couple-photo/5b15ba756798ba4f08faf9c8907ce8f68ef66055/docs/assets/readme/reference-female.png" alt="女生人物参考图"><figcaption>先上传女生人物参考图</figcaption></figure>
+    <figure class="example"><img src="https://raw.githubusercontent.com/yang0/couple-photo/5b15ba756798ba4f08faf9c8907ce8f68ef66055/docs/assets/readme/reference-male.png" alt="男生人物参考图"><figcaption>再上传男生人物参考图</figcaption></figure>
+    <figure class="example"><img src="https://raw.githubusercontent.com/yang0/couple-photo/5b15ba756798ba4f08faf9c8907ce8f68ef66055/docs/assets/readme/shotboard-8-grid.png" alt="8 个拍摄画面宫格"><figcaption>确认 8 个拍摄画面</figcaption></figure>
+    <figure class="example"><img src="https://raw.githubusercontent.com/yang0/couple-photo/5b15ba756798ba4f08faf9c8907ce8f68ef66055/docs/assets/readme/shot-006-landscape.png" alt="6 号横版精修图"><figcaption>选择编号后放大成横版</figcaption></figure>
+  </div>
+  <h2>可直接复制的最短用法</h2><div class="commands">
+    <div class="command"><code>使用 couple-photo-orchestrator：我想拍一组情侣照。</code><button class="copy" type="button">复制</button></div>
+    <div class="command"><code>使用 couple-photo-orchestrator：我想拍婚纱照。</code><button class="copy" type="button">复制</button></div>
+  </div>
+  <h2>它负责什么</h2><ul><li>需求确认：把主题、服装、场景和道具整理成可确认的 Couple Look。</li><li>拍摄规划：为每套 Look 生成 8 条有差异的 Shot List 和 2×4 宫格。</li><li>换装候选：主题确认后生成 6 套情侣服装组合，用户选中后回流主流程。</li><li>精修输出：用户选定宫格编号后，保留人物身份、互动和场景关系进行精修。</li></ul>
+  <p class="muted">示例图片来自上游 README，仅用于理解工作流，不是固定模板。需要更完整规则时，请打开标题旁的 GitHub 图标。</p>
+</main><script>document.querySelectorAll('.copy').forEach(button=>button.addEventListener('click',async()=>{const text=button.previousElementSibling.textContent;const old=button.textContent;try{await navigator.clipboard.writeText(text);button.textContent='已复制'}catch{window.prompt('复制这句：',text);button.textContent='请手动复制'}setTimeout(()=>button.textContent=old,1200)}));</script></body></html>

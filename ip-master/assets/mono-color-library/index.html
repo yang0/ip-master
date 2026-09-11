@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Mono Color · 单色编辑印刷</title>
+  <style>
+    :root{color-scheme:dark;--bg:#111417;--panel:#1a2025;--line:#303940;--text:#f2f5f6;--muted:#a2adb5;--accent:#a8e36d}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.65 Inter,"PingFang SC","Microsoft YaHei",sans-serif}main{width:min(1120px,calc(100% - 32px));margin:auto;padding:24px 0 48px}header{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding-bottom:18px}h1{font-size:20px;margin:0}h2{font-size:16px;margin:28px 0 8px}p{color:var(--muted);margin:6px 0}.link,.copy{border:1px solid var(--line);border-radius:5px;background:#20272c;color:var(--text);padding:8px 10px;text-decoration:none;white-space:nowrap;cursor:pointer}.link:hover,.copy:hover{border-color:var(--accent);color:var(--accent)}.intro{margin:18px 0;padding:12px 14px;border-left:2px solid var(--accent);background:#171c20}.rules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 22px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:13px 0}.rules strong{display:block;font-size:13px}.prompt{display:flex;align-items:flex-start;gap:12px;margin:10px 0;background:#171c20;border:1px solid var(--line);padding:10px 12px;color:#dce5dd}.prompt code{flex:1;white-space:pre-wrap;overflow-wrap:anywhere}.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.sample{border:1px solid var(--line);background:var(--panel);overflow:hidden}.preview{display:block;border:0;padding:0;width:100%;cursor:zoom-in;background:#f7f5ef}.preview img{display:block;width:100%;aspect-ratio:4/3;object-fit:contain}.label{padding:9px 11px;color:var(--muted)}dialog{border:1px solid var(--line);background:#151a1e;color:var(--text);max-width:min(940px,94vw);padding:16px}dialog img{display:block;max-width:88vw;max-height:75vh;object-fit:contain;background:#f7f5ef}dialog form{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:10px}dialog button{border:1px solid var(--line);border-radius:5px;background:#20272c;color:var(--text);padding:8px 10px;cursor:pointer}@media(max-width:760px){main{width:min(100% - 24px,1120px);padding-top:16px}header{display:block}.link{display:inline-block;margin-top:12px}.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.rules{grid-template-columns:1fr}.prompt{align-items:stretch;flex-direction:column}}@media(max-width:480px){.gallery{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <main>
+    <header><div><h1>Mono Color · 单色 / 受控双色编辑印刷</h1><p>把主题、短句、物件、文章想法或照片，重建成原创编辑视觉。</p></div><a class="link" href="https://github.com/yanliudesign/mono-color-skill" target="_blank" rel="noopener">GitHub ↗</a></header>
+    <section class="intro"><strong>怎么描述需求</strong><p>直接说用途、主题、需要保留的文字或照片主体；没有额外指定时，Skill 会自行选择适合的油墨、版式和字体关系。明确说“单色 / 单墨”才使用单一油墨，否则默认受控双色。</p></section>
+    <section class="rules"><div><strong>可提供的输入</strong><span>主题、短句、物件、文章想法、授权照片。</span></div><div><strong>可按需指定</strong><span>单色或双色墨色、标题、用途、横竖比例、是否保留照片身份。</span></div><div><strong>核心规则</strong><span>最多两块印版；保留 25%–55% 可见纸张；默认当代编辑印刷，不自动做旧。</span></div><div><strong>参考边界</strong><span>示例是输出案例，不是模板，也不会作为模型参考图传入。</span></div></section>
+    <h2>最短调用示例</h2>
+    <div class="prompt"><code>使用 mono-color-skill 做一张关于凌晨便利店的竖版海报，文案是“still open”。</code><button class="copy" type="button">复制</button></div>
+    <div class="prompt"><code>使用 mono-color-skill 把这张人物照片做成钴蓝单色编辑 Zine 封面，保留人物身份和表情。</code><button class="copy" type="button">复制</button></div>
+    <div class="prompt"><code>使用 mono-color-skill 用群青 + 安全橙做一张城市骑行叠印海报，让自行车与超大标题在局部交叉。</code><button class="copy" type="button">复制</button></div>
+    <div class="prompt"><code>使用 mono-color-skill 把这个产品做成青蓝 + 砖红的重复物件封面，为标题和事实型小字保留一块空白区域。</code><button class="copy" type="button">复制</button></div>
+    <h2>官方输出案例</h2><p>仅用于了解可达到的结果范围；点击可放大查看。</p>
+    <section class="gallery" id="gallery"></section>
+  </main>
+  <dialog id="viewer"><img id="viewer-image" alt=""><form method="dialog"><span id="viewer-title"></span><button>关闭</button></form></dialog>
+  <script>
+    const REF='c8ff70597ddedcd65f21a0b528f6a70c35690b0a';
+    const ROOT=`https://raw.githubusercontent.com/yanliudesign/mono-color-skill/${REF}/examples/`;
+    const SAMPLES=[
+      ['example-cycling.png','夏日骑行'],['example-zebra.png','田野观察'],['example-chair.png','日常空间'],
+      ['example-sardines.png','沙丁鱼包装'],['example-headphones.png','耳机包装'],['example-sunscreen.png','防晒包装'],
+      ['example-teapot.png','留一点温度'],['example-merchandise.png','品牌周边'],['example-tea.png','慢叶茶'],
+      ['example-night-photography.png','夜里还有什么'],['example-radio.png','周日收音机'],['example-night-market.png','夜市']
+    ];
+    const gallery=document.querySelector('#gallery'),dialog=document.querySelector('#viewer'),image=document.querySelector('#viewer-image'),title=document.querySelector('#viewer-title');
+    const esc=value=>String(value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+    gallery.innerHTML=SAMPLES.map((sample,index)=>`<article class="sample"><button class="preview" data-index="${index}" aria-label="放大查看 ${esc(sample[1])}"><img loading="lazy" src="${ROOT+sample[0]}" alt="${esc(sample[1]+' · Mono Color 官方输出案例')}"></button><div class="label">${esc(sample[1])}</div></article>`).join('');
+    async function copyPrompt(button){const text=button.parentElement.querySelector('code').textContent;try{await navigator.clipboard.writeText(text)}catch{window.prompt('复制这句：',text)}button.textContent='已复制';setTimeout(()=>button.textContent='复制',1200)}
+    document.querySelectorAll('.copy').forEach(button=>button.addEventListener('click',()=>copyPrompt(button)));
+    gallery.addEventListener('click',event=>{const button=event.target.closest('[data-index]');if(!button)return;const sample=SAMPLES[Number(button.dataset.index)];image.src=ROOT+sample[0];image.alt=sample[1];title.textContent=sample[1];dialog.showModal();});
+  </script>
+</body>
+</html>

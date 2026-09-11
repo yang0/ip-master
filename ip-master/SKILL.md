@@ -35,6 +35,16 @@ native article-illustration fallback.
 
 ## Multi-Skill selection protocol
 
+For combinations, apply `composition_contract` from the router and read
+[character-injection.md](references/character-injection.md). A named design
+Skill supplies the content method; an explicitly numbered hand-drawn style
+supplies the visual treatment; an explicitly named IP replaces the method
+Skill's default actor. Do not concatenate conflicting complete prompts.
+小黑配图 2.0 means `ian-xiaohei-scenes`; 1.0 means
+`ian-xiaohei-illustrations`. When 2.0 supplies only the 配图逻辑, retain its
+article-derived physical metaphor and action, while the requested hand-drawn
+style replaces its default photographic rendering.
+
 Before starting a design request, discover candidates from both the IP Master
 registry and the current environment's available Skills. A Skill does not need
 to be registered in `skill-registry.json` to be presented as a candidate when
@@ -74,7 +84,44 @@ the selected Skill. They must not be silently selected for ordinary poster,
 cover, or IP-creation requests. The local visual overview is
 `assets/vsc-skill-library/index.html`.
 
+The registry also includes `handdraw-style-prompter` from
+`yang0/handraw-style`. It is a design Skill for the `001–261` numbered
+hand-drawn style library. Use it only when the user explicitly names the Skill
+or provides a hand-drawn style number and theme, such as `041号手绘风格，主题：
+秋天的第一杯奶茶`. It returns Chinese and English prompts by default; an
+explicit image-generation request may use the upstream model-capability
+decision for a style-only prompt, positive style traits, or the matching style
+reference image. The reference image is style-only and must not transfer its
+subject, person, composition, layout, text, or story. This Skill is not an
+IP-creation Skill, but an IP character may be explicitly injected into its
+theme.
+
+### Couple Photo 情侣照工作流
+
+`yang0/couple-photo` 提供完整的四阶段工作流，固定到提交
+`5b15ba756798ba4f08faf9c8907ce8f68ef66055`：`kefu` 负责需求确认和 Couple
+Look，`paishe` 负责 8 条 Shot List、2×4 宫格与选片精修，`huanzhuang` 负责
+主题确认后的 6 套换装候选，`zongkong` 是默认总协调入口。用户明确说“情侣照”或
+“婚纱照”时进入 `couple-photo-orchestrator`；明确要求某个阶段时再命中对应子
+Skill。首次使用必须先提供绝对项目目录，确认需求、Look 和 8 条 Shot 后才出图。
+它与 `virtual-couple-travel-vlog` 分开，后者专注虚拟情侣旅行照片墙和 Vlog 资产。
+流程图册见 `assets/couple-photo-library/index.html`。
+
 ### Person IP candidates
+
+`ip-as-logo` 是独立的 IP 吉祥物设计 Skill，适合用户明确要设计吉祥物、极简
+圆润 IP 或可识别角色形象时使用。它默认提出 3 个方向，确认后生成 6 张独立
+候选；不要把它自动套用于普通海报、文章配图或封面请求。预览页是
+`assets/ip-as-logo-library/index.html`。
+
+Punk-Skill 的 `punk-cover` 与 `punk-avatar` 是两个独立入口：前者生成文章和社媒
+封面，后者生成人物、宠物和物件头像。用户明确点名时才调用，不自动覆盖其他
+设计 Skill；预览页是 `assets/punk-skill-library/index.html`。
+
+Mono Color 按其 README 的自然语言工作方式使用：输入主题、短句、物件、文章想法
+或照片；默认采用受控双色，明确要求“单色 / 单墨”时才切换为单墨。图册的官方输出
+案例只用于浏览，绝不作为模型参考图传入。`PC01–PC31` 与 `PA01–PA07` 分别是
+Punk 封面与头像风格编号，用户明确给出时才读取编号映射出的文本参数。
 
 For a request to design a human, creator, or account-based person IP, evaluate
 at least these two available Skill paths when they are present:
@@ -161,18 +208,22 @@ request such as `用牙仔和 dongfang 做海报，案例 539`.
 
 ## Baoyu 视觉 Skill 图册
 
-`assets/baoyu-skill-library/index.html` is a local visual reference for the
+`assets/baoyu-skill-library/index.html` is a parameter visual guide for the
 six Baoyu creation Skills: article illustration, knowledge comic, cover,
-infographic, Xiaohongshu images, and slide deck. It is a browse-and-learn
-page, not a routing candidate or a default parameter preset. Let users open
-it when they want examples or parameter explanations; their explicit request
-and the selected target Skill contract still control generation.
+  infographic, Xiaohongshu images, and slide deck. Its 124 official screenshots
+are grouped by what they control (style, information structure, or panel
+layout), not presented as final-output examples. Clicking a card copies a
+fillable call template; the gallery is browse-only and never chooses a Skill
+or preset automatically.
+
+Never add a gallery screenshot URL or path to model reference inputs, and never
+inherit its topic, people, copy, brands, data, or finished composition.
 
 ## Character references
 
 ### Project character libraries
 
-Built-in roles remain global defaults. User-approved custom roles belong to an
+Built-in roles remain globally available. User-approved custom roles belong to an
 explicit IP project, never this installed Skill directory. Initialize one at a
 user-selected location with `python scripts/ip_project.py --init --project-dir
 "E:\\projects\\品牌IP" --name "品牌 IP"`. Register an approved prototype with
@@ -182,11 +233,12 @@ only under that project. Supply the same `--project-dir` when routing. Reuse a
 user-declared project for the current conversation only; do not persist it.
 
 The built-in registry is [character-registry.json](references/character-registry.json).
-It contains `yazai`/牙仔 (the default), `rongbao`/绒宝, `abao`/阿龅, and
+It contains `yazai`/牙仔, `rongbao`/绒宝, `abao`/阿龅, and
 `xiaomei`/小美. Explicit Chinese or English aliases select one or more
 characters; multiple characters remain separate and are passed in registry
-order. When a target is selected without a character name, use the registered
-default 牙仔.
+order. Without an explicitly requested character, inject no IP. Do not carry
+牙仔 over from a previous independent design request. The legacy registry
+default field is metadata, not authorization to inject a character.
 
 Read each selected character's original asset and identity protocol. Put the
 original asset paths before all target-Skill style or layout references, and

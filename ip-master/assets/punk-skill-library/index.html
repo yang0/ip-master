@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Punk Skill 风格图册</title>
+<style>:root{color-scheme:dark;--bg:#111417;--panel:#1a2025;--line:#303940;--text:#f2f5f6;--muted:#a2adb5;--accent:#a8e36d}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.6 Inter,"PingFang SC","Microsoft YaHei",sans-serif}main{width:min(1120px,calc(100% - 32px));margin:auto;padding:24px 0 48px}header{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding-bottom:18px}h1{font-size:20px;margin:0}h2{font-size:17px;margin:28px 0 5px}p{color:var(--muted);margin:6px 0}.link,button{border:1px solid var(--line);border-radius:5px;background:#20272c;color:var(--text);padding:8px 10px;text-decoration:none;cursor:pointer}.link:hover,button:hover{border-color:var(--accent);color:var(--accent)}.note{margin:18px 0;padding:12px 14px;border-left:2px solid var(--accent);background:#171c20}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{border:1px solid var(--line);background:var(--panel);overflow:hidden}.preview{display:block;width:100%;padding:0;border:0;border-radius:0;background:#f7f5ef}.preview img{display:block;width:100%;aspect-ratio:4/3;object-fit:contain}.body{padding:11px}.code{color:var(--accent);font:600 12px ui-monospace,monospace}.style{font:12px/1.35 ui-monospace,monospace;color:var(--muted);overflow-wrap:anywhere}.actions{margin-top:10px}dialog{border:1px solid var(--line);background:#151a1e;color:var(--text);max-width:min(940px,94vw);padding:16px}dialog img{display:block;max-width:88vw;max-height:75vh;object-fit:contain;background:#f7f5ef}dialog form{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:10px}@media(max-width:760px){main{width:min(100% - 24px,1120px);padding-top:16px}header{display:block}.link{display:inline-block;margin-top:12px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:480px){.grid{grid-template-columns:1fr}}</style></head>
+<body><main><header><div><h1>Punk Skill · 封面与头像</h1><p>选择编号复制调用；所有图片均为上游风格示意，不是最终成片模板。</p></div><a class="link" href="https://github.com/adrianpunk/Punk-Skill" target="_blank" rel="noopener">GitHub ↗</a></header>
+<div class="note"><strong>怎么使用</strong><p><code>PC01–PC31</code> 用于 <code>punk-cover</code>；<code>PA01–PA07</code> 用于 <code>punk-avatar</code>。可直接说“用 PC08 做封面”或点击按钮复制完整参数。图册图片只供浏览，绝不作为模型参考图输入。</p></div><h2>punk-cover · 31 种封面风格</h2><section class="grid" id="cover"></section><h2>punk-avatar · 7 种头像风格</h2><section class="grid" id="avatar"></section></main><dialog id="viewer"><img id="viewer-image" alt=""><form method="dialog"><span id="viewer-title"></span><button>关闭</button></form></dialog>
+<script>const REF='bda2d0fd535d764c53cf6795e1003553a54da9d9',ROOT=`https://raw.githubusercontent.com/adrianpunk/Punk-Skill/${REF}/`;const C=`PC01|黑白极简概念|black-white-minimal-concept|black-white-minimal-concept.png|抽象、编辑、哲学与策略封面
+PC02|黑白复古蚀刻版画封面|black-white-etching-editorial-cover|black-white-etching-editorial-cover.png|超现实隐喻、批判与哲学主题
+PC03|语义转译极简|semantic-minimal-translation|semantic-minimal-translation.png|短词、口号与概念转译
+PC04|复古手撕拼贴|retro-torn-collage|retro-torn-collage.png|文化议题、街头能量与社媒
+PC05|方块世界|block-world|block-world.jpg|工具、教程、搭建与学习
+PC06|巨型透视中文标题|giant-perspective-chinese-title|giant-perspective-chinese-title.png|标题主导、活动与高冲击封面
+PC07|超大标题图文穿插|interleaved-title-editorial-poster|interleaved-title-editorial-poster.png|现代编辑海报与短标题封面
+PC08|立体纸雕概念海报|layered-paper-cut-concept-poster|layered-paper-cut-concept-poster.png|空间隐喻、纸张质感与留白
+PC09|纸面击凸压凹封面|paper-emboss-deboss-cover|paper-emboss-deboss-cover.png|艺术书、独立杂志与克制隐喻
+PC10|Godot 2D 像素隐喻海报|godot-2d-pixel-metaphor-poster|godot-2d-pixel-metaphor-poster.png|游戏化抽象主题与系统叙事
+PC11|OSB 工业蓝线条隐喻|osb-industrial-blue-line-metaphor|osb-industrial-blue-line-metaphor.png|工作流、工具与组织关系
+PC12|积木世界|brick-world|brick-world.png|团队、教育、计划与建构主题
+PC13|咨询报告视觉|consulting-report-visual|consulting-report-visual.jpg|商业策略、框架与运营分析
+PC14|科研期刊概念|research-journal-concept|research-journal-concept.jpg|科学、研究、医疗与机制主题
+PC15|复古弥散渐变|retro-diffuse-gradient|retro-diffuse-gradient.jpg|艺术、音乐、品牌与情绪内容
+PC16|复古时代错位编辑封面|midcentury-surreal-editorial-cover|midcentury-surreal-editorial-cover.png|AI、编程与未来工具
+PC17|极简公共空间摄影|minimal-public-space-photography|minimal-public-space-photography.jpg|文化观察、长文与空间隐喻
+PC18|商业杂志头版|business-magazine-front-page|business-magazine-front-page.jpg|商业、科技、AI 与趋势分析
+PC19|黑白灰先锋几何|black-white-gray-avant-geometry|black-white-gray-avant-geometry.jpg|现代主义、实验与几何海报
+PC20|黑红剪影|black-red-silhouette|black-red-silhouette.png|工具、金融、电影与直接隐喻
+PC21|先锋复古建筑海报|avant-retro-architecture-poster|avant-retro-architecture-poster.png|建筑、城市、旅行与展览
+PC22|复古油墨点阵隐喻|retro-ink-dot-matrix-metaphor|retro-ink-dot-matrix-metaphor.png|科技、AI、系统与研究
+PC23|黑色复古现代主义封面|black-midcentury-modernist-cover|black-midcentury-modernist-cover.png|服务、产品、人物与概念封面
+PC24|银色锡纸蓝字|silver-foil-blue-minimal|silver-foil-blue-minimal.png|增长、方法、AI 工具与商业系统
+PC25|彩色新构成主义巨构海报|color-neo-constructivist-megastructure-poster|color-neo-constructivist-megastructure-poster.png|活动、运动、城市与高冲击主题
+PC26|复古日本科幻动画|retro-japanese-sci-fi-anime-cover|retro-japanese-sci-fi-anime-cover.png|科技、系统、心理与方法
+PC27|法式极简墨线海报|french-minimal-ink-poster|french-minimal-ink-poster.png|关系、社会系统与抽象议题
+PC28|品牌协同连接|brand-collaboration-connection|brand-collaboration-connection.png|工具集成、自动化与品牌合作
+PC29|Anthropic Research 风格|anthropic-research-style|anthropic-research-style.png|AI 研究、知识系统与设计研究
+PC30|kimi 风格|kimi-stlye|kimi-stlye.png|项目档案、材料研究与静物隐喻
+PC31|极简视觉隐喻风|minimal-visual-metaphor|minimal-visual-metaphor.png|商业科技、产品与系统变化`.split('\n').map(x=>x.split('|'));const A=`PA01|像素头像|pixel-avatar|pixel-avatar.png|人物、宠物、物件的通用头像
+PA02|怪诞灵魂手绘|grotesque-soul-sketch|grotesque-soul-sketch.jpg|有性格的人物或宠物头像
+PA03|凌乱蜡笔宠物肖像|messy-crayon-pet-portrait|messy-crayon-pet-portrait.jpg|命名宠物肖像
+PA04|时尚速写观察页|fashion-sketch-observation|fashion-sketch-observation.jpg|人物、旅行与街拍肖像
+PA05|拍立得纪念卡|polaroid-keepsake|polaroid-keepsake.jpg|宠物纪念卡与收藏图
+PA06|极简纸感丙烯色块插画|minimal-paper-acrylic-block-illustration|minimal-paper-acrylic-block-illustration.png|人物、物件、场景与概念
+PA07|立体人物扁平景色纸艺|surreal-pop-up-paper-landscape|surreal-pop-up-paper-landscape.png|人物照片的纸艺空间转换`.split('\n').map(x=>x.split('|'));const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const source=(x,kind)=>ROOT+`screenshots/punk-${kind}-styles/`+x[3];const command=(x,kind)=>kind==='cover'?`使用 punk-cover 制作封面，style=${x[2]}，主题：待填写，平台/比例：待填写。`:`使用 punk-avatar 生成头像，style=${x[2]}，主体：待填写，比例：1:1${x[0]==='PA07'?'，mode=before-after/final-artwork（待填写）':''}。`;async function copy(t,b){try{await navigator.clipboard.writeText(t)}catch{prompt('复制这句：',t)}b.textContent='已复制';setTimeout(()=>b.textContent='采用此风格',1200)}const dialog=document.querySelector('#viewer'),image=document.querySelector('#viewer-image'),title=document.querySelector('#viewer-title');function render(id,data,kind){document.querySelector(id).innerHTML=data.map((x,i)=>`<article class="card"><button class="preview" data-kind="${kind}" data-i="${i}" aria-label="放大预览 ${esc(x[1])}"><img loading="lazy" src="${source(x,kind)}" alt="${esc(x[0]+' '+x[1])}"></button><div class="body"><div class="code">${x[0]}</div><strong>${esc(x[1])}</strong><div class="style">style=${esc(x[2])}</div><p>${esc(x[4])}</p><div class="actions"><button data-copy="${kind}:${i}">采用此风格</button></div></div></article>`).join('')}render('#cover',C,'cover');render('#avatar',A,'avatar');document.body.addEventListener('click',e=>{let b=e.target.closest('[data-kind]');if(b){let d=b.dataset.kind==='cover'?C:A,x=d[+b.dataset.i];image.src=source(x,b.dataset.kind);image.alt=x[1];title.textContent=x[0]+' · '+x[1];dialog.showModal();return}b=e.target.closest('[data-copy]');if(b){let[k,i]=b.dataset.copy.split(':'),x=(k==='cover'?C:A)[+i];copy(command(x,k),b)}});</script></body></html>

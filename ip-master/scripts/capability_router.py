@@ -32,6 +32,7 @@ from dependency_utils import (  # noqa: E402
 )
 from layout_library import parse_layout_selection  # noqa: E402
 from gpt_image_2_case_library import parse_case_selection  # noqa: E402
+from visual_style_library import parse_visual_style_selection  # noqa: E402
 
 
 # The order is meaningful: personal-photo signals must win over generic
@@ -80,6 +81,7 @@ CATEGORY_SIGNALS: tuple[tuple[str, tuple[str, ...]], ...] = (
     ("knowledge-card", ("知识卡片", "知识卡", "信息图", "infographic")),
     ("xiaohongshu", ("小红书", "xhs", "rednote")),
     ("slide-deck", ("ppt", "幻灯片", "演示文稿", "slide deck", "presentation")),
+    ("couple-photo", ("情侣照", "情侣写真", "婚纱照", "couple photo", "couple-photo")),
     (
         "portrait",
         ("真实抓拍人像", "生活感人像", "偶然抓拍", "candid photography", "抓拍写真"),
@@ -91,11 +93,25 @@ CATEGORY_SIGNALS: tuple[tuple[str, tuple[str, ...]], ...] = (
     ("sticker", ("贴纸", "贴纸页", "表情包", "sticker")),
     (
         "prompt-enhancement",
-        ("提示词增强", "风格库增强", "模板增强", "gpt image 2 风格库", "prompt enhancement"),
+        (
+            "提示词增强",
+            "风格库增强",
+            "模板增强",
+            "gpt image 2 风格库",
+            "prompt enhancement",
+            "手绘风格",
+            "手绘风格库",
+            "手绘提示词",
+            "handdraw style",
+            "handraw style",
+        ),
     ),
 )
 
-ADVICE_SIGNALS = ("建议", "推荐", "哪个skill", "哪个 skill", "能生成什么", "有哪些能力", "不要生图")
+# Bare words such as “建议” also occur in article paths (for example
+# 运营建议); advice mode requires an intent phrase so paths do not cancel a
+# concrete design request.
+ADVICE_SIGNALS = ("给我建议", "提供建议", "推荐哪个", "建议用哪个", "哪个skill", "哪个 skill", "能生成什么", "有哪些能力", "不要生图")
 GUIDE_SIGNALS = (
     "第一次用",
     "首次使用",
@@ -157,6 +173,27 @@ PHOTO_TRAIT_CHOICES = (
 )
 
 EXPLICIT_ALIASES: dict[str, tuple[str, ...]] = {
+    "punk-cover": ("punk cover", "punk-cover", "朋克封面", "Punk 封面"),
+    "punk-avatar": ("punk avatar", "punk-avatar", "朋克头像", "Punk 头像", "头像生成"),
+    "mono-color": (
+        "mono color",
+        "mono-color",
+        "mono-color-skill",
+        "单色海报",
+        "双色印刷",
+        "单色调视觉",
+        "孔版印刷",
+        "risograph",
+        "网点照片",
+    ),
+    "ip-as-logo": (
+        "ip as logo",
+        "ip-as-logo",
+        "ip 吉祥物",
+        "吉祥物",
+        "圆润 ip",
+        "极简 ip",
+    ),
     PERSONAL_IP_SKILL_ID: (
         "personal ip image pack",
         "personal ip",
@@ -194,8 +231,57 @@ EXPLICIT_ALIASES: dict[str, tuple[str, ...]] = {
         "虚拟情侣旅行",
         "旅行照片墙",
     ),
+    "couple-photo-requirements-planner": (
+        "couple photo requirements planner",
+        "情侣照需求确认",
+        "情侣写真需求",
+        "情侣照需求规划",
+    ),
+    "couple-photo-shooting-planner": (
+        "couple photo shooting planner",
+        "情侣照拍摄规划",
+        "情侣照 shot list",
+        "8 宫格拍摄",
+    ),
+    "couple-photo-wardrobe-board": (
+        "couple photo wardrobe board",
+        "情侣换装",
+        "情侣换衣服",
+        "重新搭配情侣服装",
+    ),
+    "couple-photo-orchestrator": (
+        "couple photo orchestrator",
+        "couple photo",
+        "couple-photo",
+        "情侣照",
+        "情侣写真",
+        "婚纱照",
+    ),
+    "handdraw-style-prompter": (
+        "handdraw style prompter",
+        "handraw style",
+        "handdraw style",
+        "手绘风格",
+        "手绘风格库",
+        "手绘提示词",
+        "手绘画风",
+    ),
 }
 CAPABILITY_ALIASES: dict[str, tuple[str, ...]] = {
+    "punk-cover": ("朋克封面", "cover prompt"),
+    "cover-prompt": ("封面提示词", "cover prompt"),
+    "cover-image-generation": ("封面生图", "生成封面"),
+    "punk-avatar": ("朋克头像", "avatar prompt"),
+    "avatar-image-generation": ("头像生图", "生成头像"),
+    "pet-avatar": ("宠物头像", "pet avatar"),
+    "object-avatar": ("物品头像", "object avatar"),
+    "mono-color-editorial": ("单色编辑", "编辑印刷", "editorial print"),
+    "one-ink-print": ("单色印刷", "单墨", "one ink"),
+    "duotone-print": ("双色", "双色印刷", "duotone"),
+    "editorial-layout": ("编辑排版", "zine", "杂志排版"),
+    "mascot-ip": ("IP 吉祥物", "吉祥物", "mascot", "mascot IP"),
+    "rounded-silhouette": ("圆润轮廓", "圆润造型", "simplified mascot"),
+    "six-candidate-generation": ("六个候选", "6 个候选", "six candidates"),
     "character-anchor": ("角色锚点", "角色形象", "character anchor"),
     "turnaround-sheet": ("三视图", "转面图", "turnaround"),
     "mini-article-illustration": ("萌粒", "萌粒文章插图", "mini illustration"),
@@ -216,6 +302,7 @@ CAPABILITY_ALIASES: dict[str, tuple[str, ...]] = {
     "prompt-enhancement": ("提示词增强", "风格库增强", "模板增强"),
     "candid-portrait-prompt": ("真实抓拍人像", "偶然抓拍", "抓拍写真"),
     "travel-photo-wall": ("旅行照片墙", "4x4 照片墙", "情侣旅行"),
+    "numbered-hand-drawn-style": ("手绘风格", "手绘风格库", "手绘画风", "handdraw style"),
 }
 
 
@@ -320,6 +407,9 @@ def _explicit_dependency(
     """Find an explicitly named dependency, without treating generic words as names."""
 
     text = _normalize(request)
+    # Versioned names must win over the generic 小黑配图 alias and a style layer.
+    if re.search(r"小黑\s*(?:配图\s*)?2\.0", text):
+        return "ian-xiaohei-scenes"
     for dependency in dependencies:
         if any(_contains(text, alias) for alias in _dependency_aliases(dependency)):
             return str(dependency["skill_id"])
@@ -354,6 +444,16 @@ def _rank(request: str, candidates: list[dict[str, Any]]) -> list[dict[str, Any]
 def _supports_category(dependency: dict[str, Any], category: str | None) -> bool:
     if category is None:
         return True
+    if dependency.get("skill_id") == "handdraw-style-prompter" and category in {
+        "cover-poster",
+        "article-illustration",
+        "knowledge-card",
+        "xiaohongshu",
+        "slide-deck",
+        "portrait",
+        "prompt-enhancement",
+    }:
+        return True
     if category in dependency.get("categories", []):
         return True
     capabilities = {str(item) for item in dependency.get("capabilities", [])}
@@ -379,7 +479,7 @@ def _target_capability(request: str, dependency: dict[str, Any], category: str |
             return capability
     if category:
         category_caps = {
-            "ip-design": ("personal-ip-prototype", "character-anchor"),
+            "ip-design": ("personal-ip-prototype", "character-anchor", "mascot-ip"),
             "article-illustration": ("article-illustration", "article-shot-list", "mini-article-illustration"),
             "knowledge-comic": ("comic",),
             "cover-poster": ("landscape-cover", "cover-image", "cover-prompt-3x4"),
@@ -387,6 +487,7 @@ def _target_capability(request: str, dependency: dict[str, Any], category: str |
             "xiaohongshu": ("xhs-images", "xhs-social-cards"),
             "wechat-cover": ("wechat-cover-pair", "cover-image"),
             "slide-deck": ("slide-deck",),
+            "couple-photo": ("couple-photo-orchestration", "couple-requirements", "shot-list", "wardrobe-board"),
             "sticker": ("sticker-pack", "sticker-sheet-3x4"),
             "prompt-enhancement": ("prompt-enhancement",),
         }
@@ -501,16 +602,53 @@ def route(
     registry = load_dependency_registry(skill_dir / "references" / "skill-registry.json")
     dependencies: list[dict[str, Any]] = registry["dependencies"]
     category = detect_category(request)
+    try:
+        visual_style_selection = parse_visual_style_selection(request, skill_dir=skill_dir)
+    except ValueError as error:
+        return {
+            **_empty_result(request, operation, category, reason=str(error)),
+            "status": "invalid-visual-style",
+        }
+    if visual_style_selection is not None:
+        category = category or ("ip-design" if visual_style_selection["library"] == "punk-avatar" else "cover-poster")
     photo_present = _has_photo_source_signal(request) if reference_photo is None else reference_photo
     if (
         operation in {"create", "prompt"}
         and category == "ip-design"
         and photo_present
+        and visual_style_selection is None
         and not _has_excluded_personal_signal(request)
         and not _has_photo_workflow_choice(request)
     ):
         return _photo_workflow_choice_result(request, operation, category)
     explicit = _explicit_dependency(request, dependencies, category=category)
+    named_explicit = explicit
+    style_match = re.search(r"(?:手绘(?:风格库|风格|画风|库|风)?|handdraw\s+style)\s*[:：#]?\s*(\d{1,3})(?!\d)", normalized_request)
+    style_number = int(style_match.group(1)) if style_match else None
+    if visual_style_selection is not None and style_number is not None:
+        return {
+            **_empty_result(request, operation, category, reason="一次请求不能同时选择手绘编号与 PC、PA 编号"),
+            "status": "incompatible-style-selection",
+        }
+    if style_number is not None and not 1 <= style_number <= 261:
+        return {**_empty_result(request, operation, category, reason="手绘风格编号必须在 001–261 之间"), "status": "invalid-style"}
+    if style_number is not None:
+        method_dependencies = [item for item in dependencies if item["skill_id"] not in {"handdraw-style-prompter", "gpt-image-2-style-library"}]
+        explicit = _explicit_dependency(request, method_dependencies, category=category) or explicit or "handdraw-style-prompter"
+    if visual_style_selection is not None:
+        if named_explicit is not None and named_explicit != visual_style_selection["library"]:
+            return {
+                **_empty_result(
+                    request,
+                    operation,
+                    category,
+                    reason=f"{visual_style_selection['code']} 只能用于 {visual_style_selection['library']}，不能与 {named_explicit} 混用",
+                ),
+                "status": "incompatible-style-selection",
+            }
+        explicit = visual_style_selection["library"]
+    if explicit == "ian-xiaohei-scenes":
+        category = "article-illustration"
     case_selection = parse_case_selection(request, skill_dir=skill_dir)
 
     # A case number on its own requests the installed prompt-enhancement
@@ -663,6 +801,69 @@ def route(
         and photo_present
         and not _has_excluded_personal_signal(request)
     )
+    composition_contract = {
+        "method_skill_id": selected["skill_id"] if selected else None,
+        "character_mode": "replace-default" if character_inputs else "no-injection",
+        "character_instruction": (
+            "指定 IP 替换目标 Skill 默认角色，并承担其核心动作。删除默认角色的名称、外形及参考图；只有用户明确要求同框才保留。"
+            if character_inputs else "未明确指定角色，不注入牙仔或其他项目角色；目标 Skill 自带角色按其自身规则处理。"
+        ),
+        "style_override": None,
+        "visual_style_override": None,
+        "qa": ["指定 IP 是否替换默认角色", "角色是否承担核心动作", "画风是否符合选中风格而非原 Skill 默认画风"],
+    }
+    if visual_style_selection is not None and selected is not None:
+        selection = visual_style_selection
+        expected_skill = selection["library"]
+        if selected["skill_id"] != expected_skill:
+            return {
+                **_empty_result(
+                    request,
+                    operation,
+                    category,
+                    reason=f"{selection['code']} 只能用于 {expected_skill}",
+                ),
+                "status": "incompatible-style-selection",
+            }
+        item = selection["item"]
+        visual_instruction = (
+            f"采用编号 {selection['code']} 的文本化视觉方法：{item['name']}。"
+            + (
+                f"设置 style={item['style']}。" if "style" in item else
+                f"设置 mode={item['mode']}，palette={item['palette']}，layout={item['layout']}。"
+            )
+            + " 图册图片仅供浏览，不得作为模型参考图传入。"
+        )
+        visual_method = {
+            "role": "visual_style_method",
+            "style_code": selection["code"],
+            "library": expected_skill,
+            "display_name": f"{selection['code']} · {item['name']}",
+            "input_order": len(reference_inputs) + 1,
+            "generation_instruction": visual_instruction,
+            "visual_isolation_constraint": "Do not add gallery screenshots or remote image URLs to model reference inputs.",
+        }
+        if "style" in item:
+            visual_method["style"] = item["style"]
+        else:
+            visual_method["recipe"] = {key: item[key] for key in ("mode", "palette", "layout")}
+        if item.get("requires_mode"):
+            visual_method["required_parameters"] = ["mode"]
+            visual_method["mode_options"] = ["before-after", "final-artwork"]
+        reference_inputs.append(visual_method)
+        composition_contract["visual_style_override"] = visual_method
+    if style_number is not None:
+        style_definition = next(item for item in dependencies if item["skill_id"] == "handdraw-style-prompter")
+        style_dependency = _dependency_report(style_definition, skill_dir=skill_dir, dependency_root=None)
+        composition_contract["style_override"] = {
+            "skill_id": "handdraw-style-prompter",
+            "number": f"{style_number:03d}",
+            "dependency": style_dependency,
+            "instruction": "读取该编号风格与实际模型的 resolve_reference.py 结果，按结果使用风格名、正向特征或参考图。显式风格接管媒介、笔触、配色和材质；移除目标 Skill 冲突的默认画风要求。保留其文章分析、隐喻、物理动作和输出用途。角色参考图只控制身份。",
+        }
+        if not style_dependency["available"]:
+            install_confirmation = True
+            status = "missing-style-dependency"
     return {
         "request": request,
         "operation": operation,
@@ -693,6 +894,7 @@ def route(
             else None
         ),
         "character_inputs": character_inputs,
+        "composition_contract": composition_contract,
         "referenced_image_paths": referenced_image_paths,
         "reference_inputs": reference_inputs,
         "installation_requested": False,

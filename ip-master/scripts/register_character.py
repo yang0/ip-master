@@ -30,7 +30,7 @@ if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
 from character_router import _image_read_error, _png_read_error, _read_registry, _registry_path  # noqa: E402
-from ip_project import IPProjectError, load_project, rebuild_gallery  # noqa: E402
+from ip_project import IPProjectError, load_project, rebuild_gallery, visual_hub_url  # noqa: E402
 
 
 class CharacterRegistrationError(ValueError):
@@ -334,6 +334,7 @@ def register_character(
         "identity_reference_path": str(identity_path),
         "gallery_path": str(project_paths["gallery"]),
         "gallery_url": project_paths["gallery"].as_uri(),
+        "visual_hub_url": visual_hub_url(project_paths["gallery"]),
         "open_gallery": True,
         "confirmed": True,
     }

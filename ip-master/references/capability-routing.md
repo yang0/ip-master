@@ -8,7 +8,10 @@ IP Master 只管理角色、外部 Skill 和安装信息，不提供原生生图
 
 | 用途 | 可选 Skill |
 | --- | --- |
-| IP 设计 | `personal-ip-image-pack` |
+| IP 设计 | `personal-ip-image-pack`、`ip-as-logo` |
+| 单色 / 双色编辑印刷 | `mono-color` |
+| 封面 | `punk-cover` |
+| 人物 / 宠物 / 物件头像 | `punk-avatar` |
 | 角色绘制媒介 / 可注入风格 | `ip-illustration-character-system` |
 | 文章配图 | `ian-xiaohei-illustrations`、`baoyu-article-illustrator`、`ip-illustration-character-system` |
 | 知识漫画 | `baoyu-comic` |
@@ -22,10 +25,47 @@ IP Master 只管理角色、外部 Skill 和安装信息，不提供原生生图
 | 提示词增强 | `gpt-image-2-style-library` |
 | 真实抓拍人像设计 | `vibeshot-candid-photography` |
 | 情侣旅行 Vlog 设计 | `virtual-couple-travel-vlog` |
+| 手绘风格提示词 | `handdraw-style-prompter` |
 
 VSC 的两个 Skill 是“被 IP 注入的设计 Skill”，不是 IP 设计 Skill：先解析用户
 明确指定的角色，再把角色作为视觉设计主体或叙事角色交给目标 Skill。普通 IP
 设计请求不会自动触发它们。
+
+`yang0/couple-photo` 是一个完整的情侣照工作流，包含 `kefu` 需求确认、`paishe`
+拍摄与 8 宫格、`huanzhuang` 6 套换装候选和 `zongkong` 总协调。用户明确说“情侣照”、
+“情侣写真”或“婚纱照”时，默认进入 `couple-photo-orchestrator`；明确提到需求确认、
+拍摄规划或情侣换装时命中对应阶段。首次进入必须提供绝对项目目录，按“需求 → Couple
+Look → 8 条 Shot → 2×4 宫格 → 选编号精修”推进；不自动复用目录，不把流程图册图片作为
+模型参考图。预览页是 `assets/couple-photo-library/index.html`。
+
+`handdraw-style-prompter` 是手绘视觉设计 Skill，不负责创建 IP。用户需要明确
+给出 `001–261` 的风格编号和主题，例如“041 号手绘风格，主题：秋天的第一杯
+奶茶”。Skill 默认输出中文和英文提示词；明确要求生图时，再依据当前模型能力
+决定只使用风格名称、加入可迁移风格特征，或使用对应编号的单张风格参考图。
+风格图只用于画风参考，不得把其中的主体、人物、构图、文字或故事带入新图。
+
+`ip-as-logo` 是 IP 设计 Skill，适合设计极简、圆润、可长期复用的吉祥物形象。
+默认从用户指定的动物、物件或角色概念提出 3 个设计方向，用户确认后生成 6 张
+独立候选；它不是文章配图或普通海报 Skill。预览页见
+`assets/ip-as-logo-library/index.html`。
+
+`mono-color` 是被 IP 注入的视觉设计 Skill，适合单色海报、双色孔版印刷、网点
+照片、编辑排版、zine 和社媒卡。它负责纸张、墨色、网点、留白和版式语法；用户
+明确指定 IP 时才注入角色，普通请求不会自动使用。
+
+Mono Color 使用 README 的自然语言工作方式：用户提供主题、短句、物件、文章想法
+或照片；默认受控双色，明确要求“单色 / 单墨”时才切换为单墨。用户可以按需说明
+油墨、用途、标题、比例与是否保留照片主体身份；具体版式和字体关系由 Skill 决定。
+图册中的官方输出案例只用于浏览，不得作为模型参考图。
+
+Punk-Skill 包含两个独立入口：`punk-cover` 负责文章、小红书、公众号和 X 封面；
+`punk-avatar` 负责人物、宠物和物件头像。两者都需要显式调用，不会自动替换
+其他封面或 IP 设计 Skill；视觉预览见 `assets/punk-skill-library/index.html`。
+
+Punk 图册提供 `PC01–PC31`（封面）与 `PA01–PA07`（头像）编号。可直接说
+“用 PC08 做封面”或“用 PA04 做人物头像”；路由只注入对应的 `style` 文本参数。
+`PA07` 还需要明确 `mode=before-after` 或 `mode=final-artwork`。图册图片不进入
+模型参考图输入。
 
 ## 首次使用与帮助
 
@@ -37,7 +77,7 @@ Skill、注入角色、安装依赖或生成图片。
 
 ## 项目角色库
 
-内置角色保留在 IP Master Skill 中，可直接调用且默认仍是牙仔。用户确认后的
+内置角色保留在 IP Master Skill 中，只有明确点名才注入。用户确认后的
 自定义 IP 必须注册到用户指定的独立项目目录：先运行
 `scripts/ip_project.py --init --project-dir <项目目录>`，再运行
 `scripts/register_character.py --project-dir <项目目录> --confirm ...`。
@@ -69,9 +109,12 @@ Skill、注入角色、安装依赖或生成图片。
 
 ## Baoyu 视觉 Skill 图册
 
-`assets/baoyu-skill-library/index.html` 展示六个 Baoyu 视觉 Skill 的示例图和
-常用参数枚举。它只用于浏览与理解，不会自动选择目标 Skill，也不会覆盖用户
-明确给出的内容、尺寸或参数。
+`assets/baoyu-skill-library/index.html` 将 124 张 Baoyu 官方图片按参数功能
+分组：画风、信息结构、分镜布局或成稿视觉系统。图片是参数示意，不是最终成片
+示范；它们不会自动选择目标 Skill，也不会覆盖用户明确给出的内容、尺寸或参数。
+
+点击图册的参数卡片会复制带有 `待填写` 字段的调用模板；图册不参与路由，也不
+自动选择参数。绝不把 Baoyu 示例图片作为模型参考图输入。
 
 文章配图不绑定默认 Skill。IP 设计请求只有在出现真人照片、本人卡通
 形象、博主形象、个人头像 IP、照片转卡通或人物表情 / 动作包等信号时，

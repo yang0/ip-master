@@ -2,7 +2,11 @@
 
 把一个角色做出来，然后让它出现在任何视觉作品里。
 
-首次使用或需要提示词示例时，打开本地 [图文案例使用说明](ip-master/assets/readme/index.html)。页面提供可复制提示词，并可新标签打开布局库、GPT-Image 2 案例库和 Baoyu 图册。
+仅在明确指定 IP 时注入角色；未点名时不会自动加入牙仔。组合示例：
+`IP：牙仔 + 小黑配图2.0的配图逻辑 + 手绘库047风格，为文章配一张图`。
+这里牙仔替换小黑并承担核心动作，2.0 提供文章隐喻与物件互动方法，047 接管画风。
+
+首次使用或需要提示词示例时，打开本地 [图文案例使用说明](ip-master/assets/readme/index.html)。需要在多个图库之间快速切换时，打开 [视觉预览中心](ip-master/assets/visual-skill-hub/index.html)；页面可集中浏览布局库、GPT-Image 2 案例库、Baoyu、VSC 和手绘风格库。Baoyu 图册按参数功能展示 124 张官方风格/布局示意图；点击“采用这个风格/布局”即可复制可补充主题的调用模板，示意图不会作为最终成片或模型参考图。
 
 ## 1. 安装
 
@@ -118,6 +122,9 @@ python ip-master/scripts/capability_router.py "用项目角色做一张海报，
 | [Character IP](https://github.com/yang0/character-ip) | 根据账号、资料、照片或需求设计人物 IP；先给 25 个候选，再按编号精修。 |
 | [Mascot IP](https://github.com/yang0/mascot-ip) | 为品牌、产品和概念设计原创非人类吉祥物；先给 25 个候选，后续可扩展表情、动作和设定。 |
 | [Personal IP Image Pack](https://github.com/DoraRabbitYan/personal-ip-image-pack) | 用 1–3 张授权真人照片建立个人卡通 IP；提供 6 个风格方向，并可扩展表情、动作与贴纸。 |
+| [IP as Logo](https://github.com/s1dashu/ip-as-logo-skill) | 设计极简、圆润、易识别的 IP 吉祥物；默认先提出 3 个方向，确认后生成 6 个候选。 |
+| [Mono Color](https://github.com/yanliudesign/mono-color-skill) | 制作单色或受控双色的编辑印刷视觉，适合海报、文章配图、社媒卡和包装；强调网点、纸张、留白与克制排版。 |
+| [Punk Skill](https://github.com/adrianpunk/Punk-Skill) | `punk-cover` 生成文章与社媒封面，`punk-avatar` 生成人物、宠物和物件头像；共享 31 种封面风格与 7 种头像风格。 |
 | [IP Illustration Character System](https://github.com/EverettFish/ip_illustration_for_yourself) | 建立角色锚点与三视图，再生成萌粒钢笔涂鸦文章配图、3:4 信息图和贴纸。 |
 | [Ian Xiaohei Illustrations](https://github.com/helloianneo/ian-xiaohei-illustrations) | 为中文文章规划镜头，并生成小黑留白怪诞手绘的 16:9 正文图。 |
 | [Ian Xiaohei Scenes](https://github.com/helloianneo/ian-xiaohei-scenes) | 用“小黑 + 真实物件 + 物理动作”制作 16:9 生活场景图和超横版长卷。 |
@@ -134,6 +141,8 @@ python ip-master/scripts/capability_router.py "用项目角色做一张海报，
 | [350 Layout Compositions](https://github.com/nevertoday/350-layout-compositions) | 350 种视觉布局，覆盖 8 类、33 个主题；可为海报、封面和 PPT 显式注入文本化布局方法。 |
 | [VSC Candid Photography](https://github.com/vibeshotclub/vsc-skills/tree/main/vibeshot-candid-photography) | 被 IP 注入的真实抓拍人像设计 Skill，强调生活感、非常规机位和自然摄影质感。 |
 | [VSC Virtual Couple Travel Vlog](https://github.com/vibeshotclub/vsc-skills/tree/main/virtual-couple-travel-vlog) | 被 IP 注入的情侣旅行视觉设计 Skill，可生成 4×4 照片墙、角色卡、视频提示词和 Vlog 工作流。 |
+| [Couple Photo](https://github.com/yang0/couple-photo) | 完整的情侣写真工作流：需求确认、Couple Look、8 条 Shot List、换装候选和选片精修。 |
+| [Handraw Style Prompter](https://github.com/yang0/handraw-style/tree/master/handdraw-style-prompter) | 001–261 手绘风格编号提示词 Skill；输入编号和主题即可生成中英文提示词，明确要求生图时再按模型能力决定风格参考图策略。 |
 
 VSC 两个 Skill 属于视觉设计能力，不属于 IP 设计能力。先指定角色，再明确调用对应 Skill，例如：
 
@@ -147,5 +156,7 @@ VSC 两个 Skill 属于视觉设计能力，不属于 IP 设计能力。先指�
 | <img src="ip-master/assets/showcase/vsc-candid-photography-demo.png" alt="真实抓拍人像 Demo" width="380"> | <img src="ip-master/assets/showcase/vsc-couple-travel-vlog-demo.png" alt="情侣旅行照片墙 Demo" width="380"> |
 
 可打开 [VSC 视觉设计 Skill 图册](ip-master/assets/vsc-skill-library/index.html) 查看 Demo 图片、能力说明和复制用法。
+
+Couple Photo 是情侣写真项目工作流，不是单张图片生成器。先选择绝对项目目录，再上传两张人物参考图并描述主题；确认 Couple Look 和 8 条 Shot 后，才能生成 2×4 宫格并选择编号精修。可打开 [Couple Photo 情侣照工作流](ip-master/assets/couple-photo-library/index.html) 查看流程示例。
 
 <sub>Released under the <a href="LICENSE">MIT License</a>.</sub>

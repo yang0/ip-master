@@ -17,6 +17,8 @@ import capability_router  # noqa: E402
 import dependency_manager  # noqa: E402
 import layout_library  # noqa: E402
 import gpt_image_2_case_library  # noqa: E402
+import baoyu_skill_library  # noqa: E402
+import visual_style_library  # noqa: E402
 from character_router import (  # noqa: E402
     CharacterRegistryError,
     inspect_registry,
@@ -136,17 +138,45 @@ def test_guide_html_shows_readme_cases_and_links_local_libraries() -> None:
     assert "350 种视觉布局库" in html
 
 
-def test_visual_libraries_have_a_working_home_link() -> None:
+def test_embedded_visual_libraries_do_not_repeat_home_navigation() -> None:
     for relative_path in (
         "assets/layout-library/index.html",
         "assets/gpt-image-2-case-library/index.html",
-        "assets/baoyu-skill-library/index.html",
+        "assets/vsc-skill-library/index.html",
     ):
         page = SKILL_ROOT / relative_path
         html = page.read_text(encoding="utf-8")
-        assert 'href="../readme/index.html"' in html
-        assert "返回首页" in html
-        assert (page.parent / "../readme/index.html").resolve().is_file()
+        assert 'href="../readme/index.html"' not in html
+        assert "返回首页" not in html
+
+
+def test_baoyu_parameter_gallery_is_browse_only_with_fillable_templates() -> None:
+    report = baoyu_skill_library.validate_library(skill_dir=SKILL_ROOT)
+    assert report["valid"] is True
+    assert report["count"] == 124
+    assert report["group_count"] == 9
+
+    html = (SKILL_ROOT / "assets" / "baoyu-skill-library" / "index.html").read_text(encoding="utf-8")
+    assert "首屏浮动" not in html
+    assert "不是最终成片示范" in html
+    assert "展开参数说明" in html
+    assert "参数说明" in html and "马卡龙" in html and "清线" in html
+    assert "使用 baoyu skill 设计小红书图文" in html
+    assert "value('layout')" in html and "palette=待填写" in html
+    assert "preview-dialog" in html and "data-preview" in html
+    assert 'href="${esc(s.source_url)}"' not in html
+    assert "复制编号调用" not in html
+    assert "B001" not in html and "B124" not in html
+    assert "https://raw.githubusercontent.com/JimLiu/baoyu-skills/55223daf5c7c21ce6343935f138fcbe33d683000/screenshots/" in html
+    assert 'href="../readme/index.html"' in html
+
+    title_link_script = (SKILL_ROOT / "assets" / "github-title-link.js").read_text(encoding="utf-8")
+    assert "library === 'baoyu-skill-library'" in title_link_script
+    assert "document.querySelector('.top')?.remove()" in title_link_script
+
+    routed = capability_router.route("用 baoyu-infographic 做信息图", operation="create")
+    assert routed["target_skill_id"] == "baoyu-infographic"
+    assert all(item["role"] != "baoyu_parameter_method" for item in routed["reference_inputs"])
 
 
 def test_vsc_design_skills_are_registered_and_ip_injectable() -> None:
@@ -195,6 +225,130 @@ def test_vsc_design_skills_are_registered_and_ip_injectable() -> None:
     assert trait_based["character_workflow"]["requires_user_confirmation_before_registration"] is False
 
 
+def test_couple_photo_workflow_is_registered_and_explicitly_routed() -> None:
+    registry = json.loads((SKILL_ROOT / "references" / "skill-registry.json").read_text(encoding="utf-8"))
+    items = {item["skill_id"]: item for item in registry["dependencies"]}
+    expected = {
+        "couple-photo-requirements-planner": "skills/kefu",
+        "couple-photo-shooting-planner": "skills/paishe",
+        "couple-photo-wardrobe-board": "skills/huanzhuang",
+        "couple-photo-orchestrator": "skills/zongkong",
+    }
+    for skill_id, path in expected.items():
+        assert skill_id in items
+        assert items[skill_id]["repo"] == "yang0/couple-photo"
+        assert items[skill_id]["path"] == path
+        assert items[skill_id]["ref"] == "5b15ba756798ba4f08faf9c8907ce8f68ef66055"
+    assert items["couple-photo-orchestrator"]["workflow_entry"] == "primary"
+
+    orchestrated = capability_router.route("我想拍一组情侣照", operation="create")
+    assert orchestrated["target_skill_id"] == "couple-photo-orchestrator"
+    assert orchestrated["category"] == "couple-photo"
+    wedding = capability_router.route("我想拍婚纱照", operation="create")
+    assert wedding["target_skill_id"] == "couple-photo-orchestrator"
+    wardrobe = capability_router.route("情侣换装", operation="create")
+    assert wardrobe["target_skill_id"] == "couple-photo-wardrobe-board"
+    shooting = capability_router.route("情侣照拍摄规划", operation="create")
+    assert shooting["target_skill_id"] == "couple-photo-shooting-planner"
+    ordinary = capability_router.route("制作一张人物写真", operation="create")
+    assert not str(ordinary.get("target_skill_id") or "").startswith("couple-photo-")
+
+
+def test_couple_photo_library_page_uses_remote_readme_examples() -> None:
+    page = SKILL_ROOT / "assets" / "couple-photo-library" / "index.html"
+    html = page.read_text(encoding="utf-8")
+    assert "Couple Photo 情侣照工作流" in html
+    assert html.count("raw.githubusercontent.com/yang0/couple-photo/5b15ba756798ba4f08faf9c8907ce8f68ef66055/docs/assets/readme/") == 4
+    assert "reference-female.png" in html and "reference-male.png" in html
+    assert html.count("class=\"copy\"") == 2
+    assert html.count("使用 couple-photo-orchestrator") == 2
+    assert "选择绝对项目目录" in html
+    assert "需求确认" in html and "2×4 宫格" in html and "选编号精修" in html
+    assert 'href="https://github.com/yang0/couple-photo"' in html
+    assert 'target="_blank" rel="noopener"' in html
+    assert "navigator.clipboard.writeText" in html and "window.prompt" in html
+
+
+def test_visual_skill_hub_includes_couple_photo_gallery() -> None:
+    hub = (SKILL_ROOT / "assets" / "visual-skill-hub" / "index.html").read_text(encoding="utf-8")
+    assert "Couple Photo 情侣照" in hub
+    assert "../couple-photo-library/index.html" in hub
+    assert "4 阶段" in hub
+
+
+def test_handdraw_style_skill_is_registered_and_explicitly_routed() -> None:
+    registry = json.loads((SKILL_ROOT / "references" / "skill-registry.json").read_text(encoding="utf-8"))
+    items = {item["skill_id"]: item for item in registry["dependencies"]}
+    item = items["handdraw-style-prompter"]
+    assert item["repo"] == "yang0/handraw-style"
+    assert item["path"] == "."
+    assert item["ref"] == "58dee6151874c6fc381e6a0d97430f1c275c1696"
+    assert item["style_count"] == 261
+    assert item["skill_type"] == "design-skill"
+    assert item["ip_injection"] == "supported"
+
+    by_name = capability_router.route(
+        "使用 handdraw-style-prompter，用牙仔做 041 号手绘风格海报，主题：秋天的第一杯奶茶",
+        operation="prompt",
+    )
+    assert by_name["target_skill_id"] == "handdraw-style-prompter"
+    assert by_name["target_capability"] == "numbered-hand-drawn-style"
+    assert by_name["characters"] == ["yazai"]
+
+    by_alias = capability_router.route("041号手绘风格，主题：秋天的第一杯奶茶", operation="prompt")
+    assert by_alias["target_skill_id"] == "handdraw-style-prompter"
+    assert by_alias["target_capability"] == "numbered-hand-drawn-style"
+
+    ordinary = capability_router.route("用牙仔做一张海报，主题是杭州街头", operation="create")
+    assert ordinary["target_skill_id"] != "handdraw-style-prompter"
+
+
+def test_mono_readme_gallery_and_punk_numbered_visual_libraries() -> None:
+    manifest = visual_style_library.load_manifest(skill_dir=SKILL_ROOT)
+    libraries = manifest["libraries"]
+    assert [item["code"] for item in libraries["punk-cover"]["items"]] == [f"PC{i:02d}" for i in range(1, 32)]
+    assert [item["code"] for item in libraries["punk-avatar"]["items"]] == [f"PA{i:02d}" for i in range(1, 8)]
+    assert libraries["punk-cover"]["ref"] == "bda2d0fd535d764c53cf6795e1003553a54da9d9"
+
+    cover = capability_router.route("用 PC08 做封面", operation="create")
+    avatar = capability_router.route("用 PA04 做人物头像", operation="create")
+    paper = capability_router.route("用 PA07 做人物头像", operation="create")
+    assert cover["target_skill_id"] == "punk-cover"
+    assert avatar["target_skill_id"] == "punk-avatar"
+    assert cover["composition_contract"]["visual_style_override"]["style"] == "layered-paper-cut-concept-poster"
+    assert avatar["composition_contract"]["visual_style_override"]["style"] == "fashion-sketch-observation"
+    assert paper["composition_contract"]["visual_style_override"]["required_parameters"] == ["mode"]
+    for result in (cover, avatar):
+        assert result["referenced_image_paths"] == []
+        assert result["reference_inputs"][-1]["role"] == "visual_style_method"
+
+    assert capability_router.route("用 PC99 做封面")["status"] == "invalid-visual-style"
+    assert capability_router.route("用 PC08 和 PC09 做封面")["status"] == "invalid-visual-style"
+    assert capability_router.route("用 PA04 做封面")["status"] == "incompatible"
+    legacy_mono = capability_router.route("用 MC03 做海报")
+    assert legacy_mono["selected_skill_id"] != "mono-color"
+    natural_mono = capability_router.route("使用 mono-color-skill 做单色海报", operation="create")
+    assert natural_mono["target_skill_id"] == "mono-color"
+
+    mono_page = (SKILL_ROOT / "assets" / "mono-color-library" / "index.html").read_text(encoding="utf-8")
+    punk_page = (SKILL_ROOT / "assets" / "punk-skill-library" / "index.html").read_text(encoding="utf-8")
+    assert "MC01" not in mono_page and "recipe=" not in mono_page
+    assert "navigator.clipboard.writeText" in mono_page and "dialog.showModal()" in mono_page
+    assert mono_page.count('class="copy"') == 4
+    assert mono_page.count("使用 mono-color-skill") == 4
+    assert mono_page.count("https://raw.githubusercontent.com/yanliudesign/mono-color-skill/") == 1
+    for filename in (
+        "example-cycling.png", "example-zebra.png", "example-chair.png", "example-sardines.png",
+        "example-headphones.png", "example-sunscreen.png", "example-teapot.png", "example-merchandise.png",
+        "example-tea.png", "example-night-photography.png", "example-radio.png", "example-night-market.png",
+    ):
+        assert filename in mono_page
+    assert "不是模板" in mono_page and "不会作为模型参考图传入" in mono_page
+    assert "PC01" in punk_page and "PC31" in punk_page and "PA07" in punk_page
+    assert "navigator.clipboard.writeText" in punk_page and "dialog.showModal()" in punk_page
+    assert "raw.githubusercontent.com/adrianpunk/Punk-Skill" in punk_page
+
+
 def test_vsc_library_page_and_assets_exist() -> None:
     page = SKILL_ROOT / "assets" / "vsc-skill-library" / "index.html"
     html = page.read_text(encoding="utf-8")
@@ -204,7 +358,7 @@ def test_vsc_library_page_and_assets_exist() -> None:
     assert "vsc-couple-travel-vlog-demo.png" in html
     assert "navigator.clipboard.writeText" in html
     assert "target=\"_blank\" rel=\"noopener\"" in html
-    assert 'href="../readme/index.html"' in html
+    assert 'href="../readme/index.html"' not in html
     for source in re.findall(r'<img[^>]+src="([^"]+)"', html):
         assert (page.parent / source).resolve().is_file()
     for prompt in (
@@ -215,11 +369,117 @@ def test_vsc_library_page_and_assets_exist() -> None:
     guide = (SKILL_ROOT / "assets" / "readme" / "index.html").read_text(encoding="utf-8")
     assert "../vsc-skill-library/index.html" in guide
     assert "VSC 视觉设计 Skill 图册" in guide
+
+
+def test_visual_skill_hub_links_all_galleries_and_accepts_project_role_library() -> None:
+    hub = SKILL_ROOT / "assets" / "visual-skill-hub" / "index.html"
+    page = hub.read_text(encoding="utf-8")
+    assert "项目角色库" in page
+    assert "手绘风格库" in page
+    assert "350 布局库" in page
+    assert "GPT-Image 2 案例库" in page
+    assert "Baoyu 图册" in page
+    assert "预置角色" in page
+    assert "小黑配图" in page
+    assert "归藏图册" in page
+    assert "狗哥图册" in page
+    assert "VSC 图册" in page
+    for source in (
+        "../layout-library/index.html",
+        "../gpt-image-2-case-library/index.html",
+        "../baoyu-skill-library/index.html",
+        "../built-in-character-library/index.html",
+        "../xiaohei-skill-library/index.html",
+        "../guizang-skill-library/index.html",
+        "../gbro-skill-library/index.html",
+        "../vsc-skill-library/index.html",
+        "file:///C:/Users/yang0/.codex/skills/handdraw-style-prompter/handdraw-style-prompter/gallery/index.html",
+    ):
+        assert source in page
+    assert "get('project')" in page
+    assert "<iframe" in page
     readme = (PROJECT_ROOT / "README.md").read_text(encoding="utf-8")
     assert "VSC Candid Photography" in readme
     assert "VSC Virtual Couple Travel Vlog" in readme
     assert "ip-master/assets/showcase/vsc-candid-photography-demo.png" in readme
     assert "ip-master/assets/showcase/vsc-couple-travel-vlog-demo.png" in readme
+
+
+def test_new_visual_hub_galleries_keep_official_images_remote() -> None:
+    builtins = SKILL_ROOT / "assets" / "built-in-character-library" / "index.html"
+    xiaohei = SKILL_ROOT / "assets" / "xiaohei-skill-library" / "index.html"
+    guizang = SKILL_ROOT / "assets" / "guizang-skill-library" / "index.html"
+    gbro = SKILL_ROOT / "assets" / "gbro-skill-library" / "index.html"
+    for page in (builtins, xiaohei, guizang, gbro):
+        assert page.is_file()
+        html = page.read_text(encoding="utf-8")
+        assert "navigator.clipboard.writeText" in html
+
+    builtins_html = builtins.read_text(encoding="utf-8")
+    for name in ("牙仔", "绒宝", "阿龅", "小美"):
+        assert name in builtins_html
+
+    xiaohei_html = xiaohei.read_text(encoding="utf-8")
+    for filename in (
+        "01-two-breakpoints.png",
+        "14-trust-bridge.png",
+        "01-meeting-pull-in.png",
+        "07-long-scroll-story-master.png",
+    ):
+        assert filename in xiaohei_html
+    assert "ian-xiaohei-illustrations" in xiaohei_html
+    assert "ian-xiaohei-scenes" in xiaohei_html
+    assert xiaohei_html.count("先读取并理解传入的文章") == 2
+    assert "file:///C:/Users/yang0/.codex/skills/" in xiaohei_html
+
+    guizang_html = guizang.read_text(encoding="utf-8")
+    assert "归藏 PPT Skill" in guizang_html
+    assert "归藏社媒卡 Skill" in guizang_html
+    assert "user-attachments/assets/5dc316a2" in guizang_html
+    assert "user-attachments/assets/d370abcc" in guizang_html
+
+    gbro_html = gbro.read_text(encoding="utf-8")
+    assert "10 种构图怎么选" in gbro_html
+    assert "为传入的文章设计" in gbro_html
+    assert "自动提炼并优化" in gbro_html
+    assert "8d1a0a5487e9ee6539b2b0a471b58469aadfedd6" in gbro_html
+    assert "raw.githubusercontent.com/pyang5166/gbro-cover-design" in gbro_html
+
+    for label in (
+        "Style A · 电子杂志风",
+        "Style B · 瑞士国际主义风",
+        "Editorial 社媒卡",
+        "Swiss 社媒卡",
+        "墨水经典",
+        "IKB 蓝",
+        "Live Photo",
+    ):
+        assert label in guizang_html
+
+
+def test_library_titles_load_the_shared_github_source_link() -> None:
+    script = SKILL_ROOT / "assets" / "github-title-link.js"
+    source = script.read_text(encoding="utf-8")
+    assert "github.com/pyang5166/gbro-cover-design" in source
+    assert "github.com/op7418/guizang-ppt-skill" in source
+    assert "github.com/JimLiu/baoyu-skills" in source
+    assert "aria-label" in source
+
+    for relative_path in (
+        "assets/readme/index.html",
+        "assets/visual-skill-hub/index.html",
+        "assets/built-in-character-library/index.html",
+        "assets/xiaohei-skill-library/index.html",
+        "assets/guizang-skill-library/index.html",
+        "assets/gbro-skill-library/index.html",
+        "assets/layout-library/index.html",
+        "assets/gpt-image-2-case-library/index.html",
+        "assets/baoyu-skill-library/index.html",
+        "assets/vsc-skill-library/index.html",
+        "assets/couple-photo-library/index.html",
+    ):
+        html = (SKILL_ROOT / relative_path).read_text(encoding="utf-8")
+        assert 'src="../github-title-link.js" defer' in html
 
 
 def test_layout_gallery_uses_verified_local_image_bindings() -> None:
@@ -233,8 +493,8 @@ def test_layout_gallery_uses_verified_local_image_bindings() -> None:
     assert f"https://raw.githubusercontent.com/nevertoday/350-layout-compositions/{commit}/v2/images/" in html
     assert "image.src = item.image_url" in html
     assert "image.src = item.thumbnail;" not in html
-    assert 'href="../readme/index.html"' in html
-    assert "返回首页" in html
+    assert 'href="../readme/index.html"' not in html
+    assert "返回首页" not in html
     assert "const categories" in html
     assert "构图逻辑" in html
     assert "演示文稿页面" in html
@@ -258,7 +518,33 @@ def test_multiple_article_candidates_require_selection_without_native_fallback()
         "ian-xiaohei-scenes",
         "baoyu-article-illustrator",
         "ip-illustration-character-system",
+        "mono-color",
     }
+
+
+def test_composed_method_character_and_style() -> None:
+    result = capability_router.route("ip:牙仔+小黑配图2.0的配图逻辑+手绘库047风格 为文章配图")
+    assert result["target_skill_id"] == "ian-xiaohei-scenes"
+    assert result["characters"] == ["yazai"]
+    contract = result["composition_contract"]
+    assert contract["character_mode"] == "replace-default"
+    assert contract["style_override"]["number"] == "047"
+    assert [Path(p).name for p in result["referenced_image_paths"]] == ["yazai.webp"]
+    plain = capability_router.route("类似案例72，手绘风199，主题苹果")
+    assert plain["characters"] == []
+    assert plain["composition_contract"]["style_override"]["number"] == "199"
+    assert plain["case_library"]["selection"]["number"] == 72
+    assert capability_router.route("手绘库999风格苹果")["status"] == "invalid-style"
+    article_path = capability_router.route(
+        "ip:牙仔+小黑配图2.0的配图逻辑+手绘库046风格 为G:\\投资笔记\\运营建议 下的文章配图，只要出一张就行"
+    )
+    assert article_path["status"] == "ready"
+    assert article_path["characters"] == ["yazai"]
+    assert article_path["composition_contract"]["character_mode"] == "replace-default"
+    for operation in ("create", "prompt", "advise"):
+        unnamed = capability_router.route("使用 baoyu-comic 制作漫画", operation=operation)
+        assert unnamed["characters"] == []
+        assert unnamed["referenced_image_paths"] == []
 
 
 def test_ian_xiaohei_scenes_is_explicitly_routable() -> None:
@@ -267,7 +553,7 @@ def test_ian_xiaohei_scenes_is_explicitly_routable() -> None:
     )
     assert result["status"] == "ready"
     assert result["target_skill_id"] == "ian-xiaohei-scenes"
-    assert result["characters"] == ["yazai"]
+    assert result["characters"] == []
 
 
 def test_everett_capabilities_are_discoverable_without_becoming_default() -> None:
@@ -286,8 +572,8 @@ def test_selected_external_skill_injects_default_and_named_roles_in_registry_ord
     default_result = capability_router.route("用 baoyu-comic 做知识漫画", operation="create")
     assert default_result["status"] == "ready"
     assert default_result["target_skill_id"] == "baoyu-comic"
-    assert default_result["characters"] == ["yazai"]
-    assert [Path(path).name for path in default_result["referenced_image_paths"]] == ["yazai.webp"]
+    assert default_result["characters"] == []
+    assert default_result["referenced_image_paths"] == []
 
     multi_result = capability_router.route(
         "用小美和绒宝让 baoyu-comic 做一套知识漫画", operation="create"
@@ -449,6 +735,20 @@ def test_dependency_manager_is_read_only_and_emits_exact_install_plan() -> None:
         dependency_manager.get_dependency("not-registered", skill_dir=SKILL_ROOT)
 
 
+def test_empty_project_gallery_has_role_creation_prompt_without_visual_hub_link(tmp_path: Path) -> None:
+    project_dir = tmp_path / "empty-project"
+    initialized = initialize_project(project_dir, name="空项目")
+
+    assert initialized["initialized"] is True
+    gallery = (project_dir / "index.html").read_text(encoding="utf-8")
+    assert "打开视觉预览中心" not in gallery
+    assert "使用上传的人物参考图生成一张高清人物四视图" in gallery
+    assert "复制创建提示词" in gallery
+    assert "navigator.clipboard.writeText" in gallery
+    assert "window.prompt" in gallery
+    assert "内置角色仍可直接调用，但不会显示在这里" in gallery
+
+
 def test_project_character_registration_stays_outside_skill_and_builds_gallery(tmp_path: Path) -> None:
     project_dir = tmp_path / "brand-ip"
     initialized = initialize_project(project_dir, name="品牌 IP")
@@ -485,6 +785,7 @@ def test_project_character_registration_stays_outside_skill_and_builds_gallery(t
     assert result["open_gallery"] is True
     assert result["gallery_url"].startswith("file:///")
     assert Path(result["gallery_path"]).is_file()
+    assert result["visual_hub_url"].startswith("file:///")
     assert (project_dir / "characters" / "assets" / "newrole.webp").is_file()
     assert not (SKILL_ROOT / "assets" / "characters" / "newrole.webp").exists()
     registry = json.loads(
@@ -496,7 +797,7 @@ def test_project_character_registration_stays_outside_skill_and_builds_gallery(t
     resolved = resolve_character_inputs("用新角做图", skill_dir=SKILL_ROOT, project_dir=project_dir)
     assert resolved[0]["id"] == "newrole"
     assert resolved[0]["source"] == "project"
-    assert resolve_character_inputs("做图", skill_dir=SKILL_ROOT, project_dir=project_dir)[0]["id"] == "yazai"
+    assert resolve_character_inputs("做图", skill_dir=SKILL_ROOT, project_dir=project_dir) == []
     gallery = (project_dir / "index.html").read_text(encoding="utf-8")
     assert "新角" in gallery
     assert "yazai.webp" not in gallery

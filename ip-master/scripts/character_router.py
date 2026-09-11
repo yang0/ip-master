@@ -351,15 +351,19 @@ def resolve_characters(
     skill_dir: Path = SKILL_DIR,
     project_dir: Path | None = None,
 ) -> list[str]:
-    """Resolve aliases in request text, defaulting to Yazai when unnamed."""
+    """Resolve only explicitly named characters; unnamed requests inject none."""
 
     registry, characters = _all_character_records(skill_dir=skill_dir, project_dir=project_dir)
     text = (request or "").strip().casefold()
     if not text:
-        return [registry["default_character"]]
+        return []
+    if re.search(r"不(?:用|要|使用|加入|添加|注入)(?:任何)?\s*(?:ip|角色|人物)", text):
+        return []
     selected: list[str] = []
     for character in characters:
         aliases = character["aliases"]
+        if any(re.search(r"不(?:用|要|使用|加入|添加|注入)\s*" + re.escape(alias.casefold()), text) for alias in aliases):
+            continue
         if any(_alias_matches(alias, text) for alias in aliases):
             selected.append(character["id"])
     if selected:
@@ -367,7 +371,7 @@ def resolve_characters(
     if explicit:
         supported = _supported(characters)
         raise UnknownCharacterError(request or "", supported)
-    return [registry["default_character"]]
+    return []
 
 
 def resolve_character_inputs(

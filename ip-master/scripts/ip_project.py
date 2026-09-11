@@ -8,11 +8,15 @@ import html
 import json
 from pathlib import Path
 from typing import Any
+from urllib.parse import quote
 
 
 PROJECT_MANIFEST = "ip-master-project.json"
 PROJECT_REGISTRY = Path("characters") / "registry.json"
 PROJECT_GALLERY = "index.html"
+SCRIPT_DIR = Path(__file__).resolve().parent
+SKILL_ROOT = SCRIPT_DIR.parent
+VISUAL_HUB = SKILL_ROOT / "assets" / "visual-skill-hub" / "index.html"
 
 
 class IPProjectError(ValueError):
@@ -36,6 +40,13 @@ def project_paths(project_dir: Path) -> dict[str, Path]:
     }
 
 
+def visual_hub_url(gallery: Path) -> str:
+    """Return the shared visual hub URL with this project's role library selected."""
+
+    project_url = quote(gallery.resolve().as_uri(), safe="")
+    return f"{VISUAL_HUB.resolve().as_uri()}?project={project_url}"
+
+
 def initialize_project(project_dir: Path, *, name: str | None = None) -> dict[str, str | bool]:
     """Initialize an empty project without touching the installed Skill."""
 
@@ -53,6 +64,7 @@ def initialize_project(project_dir: Path, *, name: str | None = None) -> dict[st
             "project_dir": str(root),
             "gallery_path": str(paths["gallery"]),
             "gallery_url": paths["gallery"].as_uri(),
+            "visual_hub_url": visual_hub_url(paths["gallery"]),
         }
 
     root.mkdir(parents=True, exist_ok=True)
@@ -78,6 +90,7 @@ def initialize_project(project_dir: Path, *, name: str | None = None) -> dict[st
         "project_dir": str(root),
         "gallery_path": str(paths["gallery"]),
         "gallery_url": paths["gallery"].as_uri(),
+        "visual_hub_url": visual_hub_url(paths["gallery"]),
     }
 
 
@@ -130,15 +143,22 @@ def rebuild_gallery(project_dir: Path) -> Path:
             f"<button type=\"button\" data-copy=\"{html.escape(call, quote=True)}\">复制调用</button>"
             "</div></article>"
         )
+    empty_prompt = html.escape(
+        "使用上传的人物参考图生成一张高清人物四视图，纯色背景，包含正视图、侧视图、背视图和脸部特写；生成后请先让我确认年龄、身高、体重和名称，再加入项目角色库。",
+        quote=True,
+    )
     content = "\n".join(cards) if cards else (
-        "<div class=\"empty\"><h2>还没有项目角色</h2><p>让 Codex 设计 IP；确认后使用注册命令保存到当前项目。内置角色仍可直接调用，但不会显示在这里。</p></div>"
+        "<div class=\"empty\"><h2>还没有项目角色</h2>"
+        "<p>先创建并确认一个自定义 IP。内置角色仍可直接调用，但不会显示在这里。</p>"
+        f"<div class=\"empty-prompt\" style=\"display:grid;gap:12px;margin-top:16px;padding:12px;background:#20262c\"><code style=\"white-space:pre-wrap;overflow-wrap:anywhere;color:#dfe8e2\">{empty_prompt}</code>"
+        f"<button type=\"button\" data-copy=\"{empty_prompt}\">复制创建提示词</button></div></div>"
     )
     title = html.escape(str(project["manifest"].get("name") or "IP Master 项目"))
     page = f"""<!doctype html>
 <html lang=\"zh-CN\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>{title} · IP 角色库</title>
 <style>:root{{color-scheme:dark;--bg:#101214;--surface:#191d22;--line:#303842;--text:#f2f4f6;--muted:#aab3bd;--accent:#90d76b}}*{{box-sizing:border-box}}body{{margin:0;background:var(--bg);color:var(--text);font:15px/1.6 Inter,"PingFang SC","Microsoft YaHei",sans-serif}}main{{width:min(1120px,calc(100% - 36px));margin:auto}}header{{padding:28px 0 22px;border-bottom:1px solid var(--line)}}h1{{margin:0;font-size:26px}}.note,.aliases,p{{color:var(--muted)}}.grid{{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding:24px 0 42px}}.card,.empty{{border:1px solid var(--line);background:var(--surface)}}.card img{{display:block;width:100%;aspect-ratio:1;object-fit:contain;background:#242a30;padding:10px}}.body{{padding:14px}}h2{{margin:0;font-size:17px}}.aliases{{margin:3px 0 9px;font-size:13px}}button{{border:1px solid #495762;background:#222a31;color:var(--text);border-radius:4px;padding:8px 11px;cursor:pointer}}button:hover{{color:var(--accent);border-color:var(--accent)}}.empty{{grid-column:1/-1;padding:28px}}@media(max-width:760px){{.grid{{grid-template-columns:1fr}}main{{width:min(100% - 28px,1120px)}}}}</style></head>
 <body><main><header><h1>{title} · IP 角色库</h1><p class=\"note\">仅展示本项目已登记的自定义 IP。内置角色可继续直接调用，但不在此列表中。</p></header><section class=\"grid\">{content}</section></main>
-<script>document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',async()=>{{const t=b.textContent;try{{await navigator.clipboard.writeText(b.dataset.copy);b.textContent='已复制'}}catch{{b.textContent='请手动复制'}}setTimeout(()=>b.textContent=t,1200)}}));</script></body></html>"""
+<script>document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',async()=>{{const t=b.textContent;try{{await navigator.clipboard.writeText(b.dataset.copy);b.textContent='已复制'}}catch{{window.prompt('复制这句：',b.dataset.copy);b.textContent='请手动复制'}}setTimeout(()=>b.textContent=t,1200)}}));</script></body></html>"""
     _write_text(paths["gallery"], page)
     return paths["gallery"]
 
@@ -158,7 +178,11 @@ def main(argv: list[str] | None = None) -> int:
             result = initialize_project(args.project_dir, name=args.name)
         else:
             gallery = rebuild_gallery(args.project_dir)
-            result = {"gallery_path": str(gallery), "gallery_url": gallery.as_uri()}
+            result = {
+                "gallery_path": str(gallery),
+                "gallery_url": gallery.as_uri(),
+                "visual_hub_url": visual_hub_url(gallery),
+            }
     except IPProjectError as exc:
         result = {"error": str(exc)}
         if args.as_json:
